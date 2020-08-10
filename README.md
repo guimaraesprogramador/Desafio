@@ -1,4 +1,4 @@
-# Sumario
+# Sumário
 
 >1 [Introdução](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/introdu%C3%A7%C3%A3o/introdu%C3%A7%C3%A3o.md) 
 ***
@@ -14,5 +14,7 @@
 ***
 >7 [Implatação]()
 ***
->8 [Referência]()
+>8 [Considerações Finais e Recomendações]()
+***
+>9 [Referência]()
 ***
