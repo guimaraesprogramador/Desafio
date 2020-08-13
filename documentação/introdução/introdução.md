@@ -27,7 +27,8 @@ O objetivo do software e aplicativo mobile é trazer alguns operadores matemáti
 2. definir tarefa na panilha de pareto para fazer o esboço principal do projeto.
 
 ##### Resultados:
-1. ![image]()
+1. ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/analise%20de%20benchmarking.png)
+
 2. ![image]() 
 ##### PREVISÃO até 14 de agosto de 2020.
 
