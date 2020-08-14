@@ -21,7 +21,7 @@ O objetivo do software e aplicativo mobile é trazer alguns operadores matemáti
 ***
 
 ### 1.5 Cronograma das atividades do projeto.
-#### ETAPA 1.
+#### ETAPA 1 Completo.
 ##### objetivos:
 1. realizar pesquisa sobre usabilidade em jogos e desenvolver uma análise de benchmarking de 3 jogos populares em questão educacional.
 2. definir tarefa na panilha de pareto para fazer o projeto.
