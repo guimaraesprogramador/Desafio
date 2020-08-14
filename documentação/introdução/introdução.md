@@ -24,12 +24,14 @@ O objetivo do software e aplicativo mobile é trazer alguns operadores matemáti
 #### ETAPA 1.
 ##### objetivos:
 1. realizar pesquisa sobre usabilidade em jogos e desenvolver uma análise de benchmarking de 3 jogos populares em questão educacional.
-2. definir tarefa na panilha de pareto para fazer o esboço principal do projeto.
+2. definir tarefa na panilha de pareto para fazer o projeto.
 
 ##### Resultados:
-1. ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/analise%20de%20benchmarking.png)
+**1. A análise de benchmarking:**
+![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/analise%20de%20benchmarking.png)
 
-2. ![image]() 
+**2. A tarefas na panilha de pareto:**
+![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/PARETO-pagina%20inicial.png) 
 ##### PREVISÃO até 14 de agosto de 2020.
 
 ***
