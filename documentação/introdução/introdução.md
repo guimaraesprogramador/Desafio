@@ -1,20 +1,22 @@
 ## 1 introdução
 
 ### 1.1 Justificativa da Escolha do tema
-Devido ao cenário de pandemia causada pelo coronavírus, as crianças são que mais sofre por causa uma exclusão social, pois, elas ficam sem ir à escola e ficam a necessárias do governado federal por ver tem um sistema muito ruim.
+A maioria criança são que mais sofre quando as escolas estão fechadas, isso piora devido ao cenário de pandemia causada pela Codiv-19, pois elas ficam sem ir à escola e ficam dependo do governado federal, tendo um sistema muito ruim.
 Mediante a tecnologia atual possa a ajudar de forma pedagógica como: os operadores matemáticos que envolver soma, subtração, multiplicação, e divisão.
 
 ***
 
 ### 1.2 Demilitação do Problema
-O objetivo do software e aplicativo mobile é trazer alguns operadores matemáticos para auxlia as crianças ou jovens que não estão  ou estão na escola para não pedir o fundamento na matemática.
+No Brasil, ainda existem pessoas que não tem acesso a ensino básico, sendo assim trago um jogo  aonde  o aluno se diverte com um pouco noção de matemática de forma dinâmica os resultados das operações matemáticas.
 ***
 ### 1.3 Objetivo do Projeto
 #### 1.3.1 Objetivo Geral:
+O objetivo do software e aplicativo mobile é trazer uma competição entre maquina e ser humano com uns elementos da matemática que são os operadores matemáticos para auxliar as crianças ou jovens que não estão  ou estão na escola para não pedir o fundamento na matemática.
 
 ***
 
 #### 1.3.1 Objetivos Específicos:
+Trazer noções básicas ao aluno que precisam ou querem conhecer uns elementos da matemática.
 
 ***
 ### 1.4 Metodologia de desenvolvimento de software:
@@ -22,7 +24,7 @@ O objetivo do software e aplicativo mobile é trazer alguns operadores matemáti
 
 ### 1.5 Cronograma das atividades do projeto.
 #### ETAPA 1 Completo.
-##### objetivos:
+##### Objetivos:
 1. realizar pesquisa sobre usabilidade em jogos e desenvolver uma análise de benchmarking de 3 jogos populares em questão educacional.
 2. definir tarefa na panilha de pareto para fazer o projeto.
 
@@ -32,7 +34,16 @@ O objetivo do software e aplicativo mobile é trazer alguns operadores matemáti
 
 **2. A tarefas na panilha de pareto:**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/PARETO-pagina%20inicial.png) 
-##### PREVISÃO até 14 de agosto de 2020.
+##### Pevisão até 14 de agosto de 2020.
+#### ETAPA 2 
+##### Objetivos:
+1. Realizar esboço do projeto.
+2. Fazer cada diagrama do projeto.
+
+##### Resultados:
+##### Pevisão até 26 de agosto de 2020.
+***
+
+### 1.6 Organização do Trabalho: 
 
 ***
-### 1.6 Organização do Trabalho: 
