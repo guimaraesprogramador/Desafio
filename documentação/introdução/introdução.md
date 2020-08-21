@@ -18,8 +18,15 @@ O objetivo do software e aplicativo mobile é trazer uma competição entre maqu
 #### 1.3.1 Objetivos Específicos:
 Trazer noções básicas ao aluno que precisam ou querem conhecer uns elementos da matemática.
 
+
 ***
+
 ### 1.4 Metodologia de desenvolvimento de software:
+
+O software voltado tando para desktop e para mobile utilizar o framework **Angularjs** que tem o padrão MVC que representar o M(Model), V(View) e C(Controller), sendo o Model responsável pela leitura e escrita e validações dos dados, a View a interação com o usuário e o Controller é o responsável pelas requisições do usuário.
+
+
+Juntamente com a metodologia ágil o **Kanban** feito a escrita para ajustar com o todo o projeto.
 ***
 
 ### 1.5 Cronograma das atividades do projeto.
@@ -46,4 +53,12 @@ Trazer noções básicas ao aluno que precisam ou querem conhecer uns elementos 
 
 ### 1.6 Organização do Trabalho: 
 
+Língua de verificação: 
+Português do Brasil
+
+Estilo de escrita: 
+Formal
+Foi detectado 1 erro sintático.	Cancelar	   Aceitar Alterações
+
+O software é separado em capítulo sendo dividir subcapítulos dentro dos capítulos.
 ***
