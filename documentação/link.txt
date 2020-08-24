@@ -7,5 +7,5 @@ http://cin.ufpe.br/~sbgames/proceedings/aprovados/23657.pdf
 // homem em 100px
 <img src="https://img.icons8.com/nolan/100/men-age-group-4--v2.png"/>
 
-//icon de pergunta de 26 px
-<img src="https://img.icons8.com/nolan/26/question.png"/>
+//icon de ponto de interrogação de 26 px
+<img src="https://img.icons8.com/nolan/26/question-mark.png"/>
