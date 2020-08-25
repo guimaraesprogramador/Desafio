@@ -9,3 +9,9 @@ http://cin.ufpe.br/~sbgames/proceedings/aprovados/23657.pdf
 
 //icon de ponto de interrogação de 26 px
 <img src="https://img.icons8.com/nolan/26/question-mark.png"/>
+// icon de v
+https://material.io/resources/icons/?icon=check&style=baseline
+
+//icon de cancel
+https://material.io/resources/icons/?icon=cancel&style=baseline
+
