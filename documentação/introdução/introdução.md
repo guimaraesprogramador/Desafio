@@ -50,7 +50,8 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 **1. Realizar esboço principal do projeto.**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/esbo%C3%A7o.gif)
 **2. Fazer cada diagrama do projeto.**
-** diagrama de classe **
+**2.1 diagrama de classe:**
+
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20f%C3%A1cil.png)
 ***
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20m%C3%A9dia.png)
@@ -58,7 +59,8 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20d%C3%ADficil.png)
 ***
-** diagrama de sequencia **
+
+**2.2 diagrama de sequência:**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20sequencia%20do%20jogo.png)
 ##### Pevisão até 26 de agosto de 2020.
 ***
