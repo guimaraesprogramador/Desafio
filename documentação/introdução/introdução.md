@@ -50,6 +50,8 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 **1. Realizar esboço principal do projeto.**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/esbo%C3%A7o.gif)
 **2. Fazer cada diagrama do projeto.**
+
+
 **2.1 diagrama de classe:**
 
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20f%C3%A1cil.png)
