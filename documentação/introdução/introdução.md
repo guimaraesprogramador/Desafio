@@ -41,12 +41,22 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 **2. A tarefas na panilha de pareto:**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/PARETO-pagina%20inicial.png) 
 ##### Pevisão até 14 de agosto de 2020.
-#### ETAPA 2 
+#### ETAPA 2 Completo
 ##### Objetivos:
 1. Realizar esboço principal do projeto.
 2. Fazer cada diagrama do projeto.
 
 ##### Resultados:
+**1. Realizar esboço principal do projeto.**
+![image]()
+**2. Fazer cada diagrama do projeto.**
+![image]()
+***
+![image]()
+***
+![image]()
+***
+![image]()
 ##### Pevisão até 26 de agosto de 2020.
 ***
 
