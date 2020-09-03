@@ -59,24 +59,31 @@ $scope.verificar_plataforma = function(){
     
 };
 $scope.carregar_dados = function(){
-var iniciar = document.getElementsByTagName("button")[0];
-iniciar.addEventListener("click",function(ev){
-    $scope.verificar_plataforma().then(p=>{
-        if(p == "permitido"){
-         window.location.assign(valor[3]);
-    
-        }
-        else console.log(p);
+    // index.html
+if(window.location.pathname == "/index.html"){
+    var iniciar = document.getElementsByTagName("button")[0];
+    iniciar.addEventListener("click",function(ev){
+        $scope.verificar_plataforma().then(p=>{
+            if(p == "permitido"){
+             window.location.assign(valor[3]);
+        
+            }
+            else console.log(p);
+        })
     })
-})
-var pontos = document.getElementsByTagName("button")[1];
-pontos.addEventListener("click",function(ev){
-console.log(pontos.value);
-})
-var quem_somos = document.getElementsByTagName("button")[2];
-quem_somos.addEventListener("click",function(ev){
-    console.log(quem_somos.value)
-})
+    var pontos = document.getElementsByTagName("button")[1];
+    pontos.addEventListener("click",function(ev){
+    console.log(pontos.value);
+    })
+    var quem_somos = document.getElementsByTagName("button")[2];
+    quem_somos.addEventListener("click",function(ev){
+        console.log(quem_somos.value)
+    })
+    
+}
+else if(window.location.pathname == "/login.html"){
+
+}
 
 }
 }]);
