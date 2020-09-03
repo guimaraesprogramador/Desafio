@@ -2,26 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
     <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-cordova/0.1.27-alpha/ng-cordova.js"></script>
     <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
+    <script src="src/criptografia-rsa.js"></script>
     <script  src="./src/angular.js"></script>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="./src/rsa.js"></script>
-</head>
-<body ng-app="Desafio" ng-controller="Contra-IA">
-    
-    <div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    </div>
-    
+    <script src="./src/rsa.js"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body ng-app="Desafio" ng-controller="Contra-IA" >
+        <div class="container ">
+            <div class="col-12" style="text-align:center">
+                    <div class="row">
+                            <div class="col" >
+                            <button type="button" class="btn btn-light" style="background-color: #ff3333;"
+                            ng-click="carregar_dados()" value="Iniciar">Iniciar</button>
+                            
+                            
+                        </div>
+                        
+                       
+                    </div>
+                    
+            </div>
+            <div class="col-12" style="text-align:center">
+                    <div class="row">
+                            <div class="col" >
+                                    <button type="button" ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Pontuação">Pontuação</button>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-12" style="text-align:center">
+                    <div class="row">
+                            <div class="col" >
+                                <button type="button" ng-click="carregar_dados()"  class="btn btn-light"  value="Quem somos" style="background-color: #ff3333;">Quem somos</button> 
+                        </div>
+                    </div>
+            </div>
+        </div>
 </body>
 </html>
