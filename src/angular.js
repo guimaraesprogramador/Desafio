@@ -13,10 +13,7 @@ window.onload = function(){
             }
             else{
               ev.data.link =   
-              window.location.origin +"/login.html"+
-              
-              "?p="+ev.data.primo1 +
-              "&q="+ev.data.primo2;
+              window.location.origin +"/login.html";
              valor.push(ev.data.criptografia[0].chave_publica,
                 ev.data.criptografia[0].chave_privada, 
                 ev.data.criptografia[0].mod,
@@ -24,6 +21,7 @@ window.onload = function(){
                 theads.pop();
     
             }
+            console.log(valor);
             
         }
     }

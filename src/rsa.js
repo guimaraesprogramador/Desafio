@@ -116,7 +116,7 @@ var rsa = modulos();
 switch(tipo){
     case "começo":
    var array =  rsa.Regras();
-    this.postMessage({criptografia:array,primo1:rsa.p,primo2:rsa.q,link:rsa.link});
+    this.postMessage({criptografia:array,link:rsa.link});
     this.self.close();
     break;
 }

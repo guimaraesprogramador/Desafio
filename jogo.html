@@ -5,8 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-<body>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+    <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-cordova/0.1.27-alpha/ng-cordova.js"></script>
+    <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
+    <script src="src/criptografia-rsa.js"></script>
+    <script  src="./src/angular.js"></script>
     
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./src/rsa.js"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body  ng-app="Desafio" ng-controller="Contra-IA" >
+    <div class="container ">
+        <div class="col-12" style="text-align:center">
+                <div class="row">
+                        <div class="col" >
+                        <h3 
+                        >Iniciando</h3>
+                        
+                        
+                    </div>
+                    
+                   
+                </div>
+                
+        </div>
+        ><
+        <div class="col-12" style="text-align:center">
+                <div class="row">
+                        <div class="col" >
+                              <label>Nome:</label>
+                              <input type="text" name="login"/>
+                              <button type="button" id="Entrar" ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Entrar">Entrar</button>
+                        </div>
+                </div>
+        </div>
+        <div class="col-12" style="text-align:center">
+                <div class="row">
+                        <div class="col" >
+                            <img src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
+                            <input type="radio" value="" name="sexo">
+                            <img src="https://img.icons8.com/nolan/100/men-age-group-4--v2.png"/>
+                            <input type="radio" value="" name="sexo">
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>

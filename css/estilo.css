@@ -2,8 +2,34 @@ button{
 width: 7.39cm;
 height: 1.40cm;
 margin-top: 10%;
-
+opacity: 0.5;
 }
 body{
-    background-color: #3465a4;
+    opacity: 0.5;
+    background-color: rgb(0,0,204)
+   
+}
+h3{
+    margin-top: 30%;
+  color: #333333;
+  font-family:"Liberation Sans";
+}
+#Entrar{
+    width: 2.1cm;
+    height: 1.50cm;
+    opacity: 0.5;  
+    background-position-y: 6.31cm;
+    background-position-x: 19.20cm ;
+    bottom: 16%;
+    margin-top: auto;
+}
+img{
+background-color: white;
+-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+input[name=login]{
+width: 7.40cm;
+height: 1.40cm;
 }
