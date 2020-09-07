@@ -66,13 +66,25 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20sequencia%20do%20jogo.png)
 ##### Pevisão até 26 de agosto de 2020.
 ***
-#### ETAPA 
+#### ETAPA 3 completo
 ##### Objetivos:
 1. impletar a primeira e segunda parte do esboço para android e desktop.
 
 ##### Resultados:
+1. Utilizar a Criptografia este site a seguir: [RSA](https://www.cs.drexel.edu/~jpopyack/IntroCS/HW/RSAWorksheet.html) 
+2. Utilizado localStorage para guarda a chaves Criptografia e enviar para terceira parte.
+3. Utilizar bootstrap 4 em alguns elementos.
 
 ##### Pevisão até 06 de setembro de 2020.
+
+#### ETAPA 4 
+##### Objetivos:
+1. Implementar a terceira parte do esboço para android e desktop.
+
+##### Resultados:
+
+##### Pevisão até 16 de setembro de 2020.
+
 ### 1.6 Organização do Trabalho: 
 
 A documentação é separado em capítulo sendo dividir subcapítulos dentro dos capítulos.
