@@ -12,7 +12,7 @@ window.onload = function(){
                 location.reload(true);
             }
             else{
-              ev.data.link =   window.location.href.replace("/index.htm","/login.html");
+              ev.data.link =   window.location.href.replace("/index.html","/login.html");
              valor.push(ev.data.criptografia[0].chave_publica,
                 ev.data.criptografia[0].chave_privada, 
                 ev.data.criptografia[0].mod,
@@ -23,6 +23,13 @@ window.onload = function(){
            
             
         }
+    }
+    else{
+        Swal.fire({
+            icon:"warning",
+            title: 'Oops...',
+            text:"Precisa de internet !!!"
+        })
     }
 
 }
@@ -60,13 +67,7 @@ $scope.carregar_dados = function(){
 if(window.location.pathname == "/index.html"){
     var iniciar = document.getElementsByTagName("button")[0];
     iniciar.addEventListener("click",function(ev){
-        // $scope.verificar_plataforma().then(p=>{
-        //     if(p == "permitido"){
              window.location.replace(valor[3]);
-        
-        //     }
-        //     else console.log(p);
-        // })
     })
     var pontos = document.getElementsByTagName("button")[1];
     pontos.addEventListener("click",function(ev){
@@ -84,13 +85,14 @@ else if(window.location.pathname == "/login.html"){
        
         entrar.addEventListener("click",function(ev){
             var texto = document.querySelectorAll("input[name=usuário]")[0];
-            var validar_radio = document.querySelectorAll("input[name=sexo]:checked")[0];
-            if(validar_radio.checked){
+            var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
+            
+            if(validar_radio.length != 0){
                 if(texto.value != ""){
-                    
+                 
                     var conversor = new StringToBinary();  
                    var  binario_texto = conversor.convert(texto.value);
-                    var binario_radio = conversor.convert(validar_radio.value);
+                    var binario_radio = conversor.convert(validar_radio[0].value);
                     var criptografia_texto = [];
                     var criptografia_radio = [];
                     binario_texto.forEach((value,index,array)=>{
@@ -99,12 +101,12 @@ else if(window.location.pathname == "/login.html"){
                     binario_radio.forEach((value,index,array)=>{
                         criptografia_radio.push(PowerMod(value.toString(),valor[0],valor[2]));
                     })
-                    console.log(criptografia_texto);
+                   
                    window.localStorage.setItem("nome",criptografia_texto);
                    window.localStorage.setItem("sexo",criptografia_radio);
                    window.localStorage.setItem("chave",valor[1]);
                    window.localStorage.setItem("mod",valor[2]);
-                 var caminho =  window.location.href.replace("/index.htm","/jogo.html");
+                 var caminho =  window.location.href.replace("/login.html","/jogo.html");
                  window.location.replace(caminho);
                 }
                 else {
@@ -125,15 +127,28 @@ else if(window.location.pathname == "/login.html"){
         })
     }
     catch(ev){
-        console.error("error em algum lugar no código do login");
+        Swal.fire({
+            icon:"error",
+            title: 'Oops...',
+            text:"error em algum lugar no código do login"
+        })
     }
     
 }
 else if(window.location.pathname == "/jogo.html"){
     try{
+    $scope.verificar_plataforma().then(p=>{
+            if(p == "permitido"){
 
+            }
+            else console.log(p);
+        })
     }catch(ev){
-        console.error("error em algum lugar no código do jogo");
+        Swal.fire({
+            icon:"error",
+            title: 'Oops...',
+            text:"error em algum lugar no código do jogo"
+        })
     }
 }
 

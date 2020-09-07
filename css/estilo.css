@@ -10,7 +10,7 @@ body{
    
 }
 h3{
-    margin-top: 30%;
+    margin-top: 20%;
   color: #333333;
   font-family:"Liberation Sans";
 }
@@ -32,4 +32,19 @@ background-color: white;
 input[name=login]{
 width: 7.40cm;
 height: 1.40cm;
+}
+
+#esquerda-radio{
+  background-color: white;
+}
+#direita-raido{
+  background-color: white;
+}
+#esquerda-radio + #direita-raido{
+  margin-left: 25px;
+}
+.nav{
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
