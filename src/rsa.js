@@ -54,19 +54,18 @@ class rsa{
         return atual;
     }
     Url(){
-       
-       // 0 até 100;
+       if(this.link == ""){
+
+       }
+     
          
     }
-    artificial(){
-        return new Promise(function(response,rejec){
-            navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
-                response("permitido")
-             })
-        })
-       
-        
-        
+   async artificial(){ 
+        var resposta = await  navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
+                var r = "permitido";
+                return r;
+            })
+        return resposta;
     }
     Regras(){
        var valores = [];
@@ -102,7 +101,8 @@ class rsa{
 
     }
     modulos_fácil(){
-
+    this.link = "fácil";
+    console.log(this.link);
     }
 }
 function modulos(){
@@ -119,5 +119,9 @@ switch(tipo){
     this.postMessage({criptografia:array,link:rsa.link});
     this.self.close();
     break;
+    case "fácil":
+    rsa.modulos_fácil();
+    this.self.close();
+        break;
 }
 })

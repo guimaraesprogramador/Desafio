@@ -5,24 +5,28 @@ window.onload = function(){
     document.body.style.visibility ="hidden";
     if(navigator.onLine){
         document.body.style.visibility = "visible";
-        theads.push(new Worker("./src/rsa.js"));
-        theads[0].postMessage("começo");
-        theads[0].onmessage = function(ev){
-            if(ev.data.criptografia.length == 0){
-                location.reload(true);
+        if(window.location.pathname == "/login.html"){
+            theads.push(new Worker("./src/rsa.js"));
+            theads[0].postMessage("começo");
+            theads[0].onmessage = function(ev){
+                if(ev.data.criptografia.length == 0){
+                    location.reload(true);
+                }
+                else{
+                  ev.data.link =   window.location.href.replace("/login.html","/jogo.html");
+                 
+                 valor.push(ev.data.criptografia[0].chave_publica,
+                    ev.data.criptografia[0].chave_privada, 
+                    ev.data.criptografia[0].mod,
+                    ev.data.link);
+                    theads.pop();
+        
+                }
+               
+                
             }
-            else{
-              ev.data.link =   window.location.href.replace("/index.html","/login.html");
-             valor.push(ev.data.criptografia[0].chave_publica,
-                ev.data.criptografia[0].chave_privada, 
-                ev.data.criptografia[0].mod,
-                ev.data.link);
-                theads.pop();
-    
-            }
-           
-            
         }
+        
     }
     else{
         Swal.fire({
@@ -35,55 +39,49 @@ window.onload = function(){
 }
 var app = angular.module('Desafio',['ngBrowser'])
 
-app.controller('Contra-IA',['$scope','appBrowser',
+app.controller('Contra-IA',['$scope','appBrowser','$location',
 
-function($scope,appBrowser){
+function($scope,appBrowser,$location){
     
 $scope.verificar_plataforma = function(){
-    
+    var permitido = "";
     var elementos_navagador ={
         platform:appBrowser.getBrowserInfo().platform,
         name:appBrowser.getBrowserInfo().name
     }
-    return new Promise(function(resp,reject){
+   
     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
-
-        modulos().artificial().then(r=>{
-           resp(r);
-        }).catch(e=>{
- 
-        })
-    
-        
-        
-     }else{
-        resp("sem permissão");
+      permitido = modulos().artificial()
+     }else
+     {
+     permitido = "sem permissão";
      }
-})
+     return permitido;
     
 };
 $scope.carregar_dados = function(){
     // index.html
 if(window.location.pathname == "/index.html"){
     var iniciar = document.getElementsByTagName("button")[0];
-    iniciar.addEventListener("click",function(ev){
-             window.location.replace(valor[3]);
-    })
+    iniciar.onclick = function(ev){
+       var caminho =  window.location.href.replace("/index.html","/login.html");
+             window.location.replace(caminho);
+    }
     var pontos = document.getElementsByTagName("button")[1];
-    pontos.addEventListener("click",function(ev){
+    pontos.onclick = function(ev){
     console.log(pontos.value);
-    })
+    }
     var quem_somos = document.getElementsByTagName("button")[2];
-    quem_somos.addEventListener("click",function(ev){
+    quem_somos.onclick = function(ev){
         console.log(quem_somos.value)
-    })
+    }
     
 }
 else if(window.location.pathname == "/login.html"){
     try{
         var entrar = document.getElementsByTagName("button")[0];
        
-        entrar.addEventListener("click",function(ev){
+        entrar.onclick = function(ev){
             var texto = document.querySelectorAll("input[name=usuário]")[0];
             var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
             
@@ -96,18 +94,25 @@ else if(window.location.pathname == "/login.html"){
                     var criptografia_texto = [];
                     var criptografia_radio = [];
                     binario_texto.forEach((value,index,array)=>{
-                        criptografia_texto.push(PowerMod(value.toString(),valor[0],valor[2]));
+                       var decimal = parseInt(value.toString(),2);
+                        criptografia_texto.push(PowerMod(decimal,valor[0],valor[2]));
                     })
                     binario_radio.forEach((value,index,array)=>{
-                        criptografia_radio.push(PowerMod(value.toString(),valor[0],valor[2]));
+                        var decimal = parseInt(value.toString(),2);
+                        criptografia_radio.push(PowerMod(decimal,valor[0],valor[2]));
                     })
-                   
-                   window.localStorage.setItem("nome",criptografia_texto);
-                   window.localStorage.setItem("sexo",criptografia_radio);
+                  
+                   criptografia_texto.forEach((value,index,array)=>{
+                    window.localStorage.setItem("letra_nome"+index,value.toString());
+                })
+                criptografia_radio.forEach((value,index,array)=>{
+                    window.localStorage.setItem("letra_sexo"+index,value.toString());
+                });
+                  
                    window.localStorage.setItem("chave",valor[1]);
                    window.localStorage.setItem("mod",valor[2]);
-                 var caminho =  window.location.href.replace("/login.html","/jogo.html");
-                 window.location.replace(caminho);
+                
+                window.location.replace(valor[3]);
                 }
                 else {
                     Swal.fire({
@@ -124,7 +129,7 @@ else if(window.location.pathname == "/login.html"){
                     text:"campo sexo não foi preenchido!"
                 })
             }
-        })
+        }
     }
     catch(ev){
         Swal.fire({
@@ -137,12 +142,8 @@ else if(window.location.pathname == "/login.html"){
 }
 else if(window.location.pathname == "/jogo.html"){
     try{
-    $scope.verificar_plataforma().then(p=>{
-            if(p == "permitido"){
-
-            }
-            else console.log(p);
-        })
+      
+   
     }catch(ev){
         Swal.fire({
             icon:"error",
@@ -153,4 +154,21 @@ else if(window.location.pathname == "/jogo.html"){
 }
 
 }
+if(window.location.pathname == "/jogo.html"){
+    var permissão = $scope.verificar_plataforma();
+    permissão.then(r=>{
+    if(r != ""){
+  
+        
+          
+        
+        // theads.push(new Worker("./src/rsa.js"));
+        // theads[0].postMessage("fácil");
+        // theads[0].onmessage = function(ev){
+        // };
+    }
+})
+}
+
+
 }]);
