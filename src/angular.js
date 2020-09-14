@@ -51,12 +51,15 @@ $scope.verificar_plataforma = function(){
     }
    
     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
-      permitido = modulos().artificial()
+
+      permitido = modulos().artificial();
+      return permitido;
      }else
      {
      permitido = "sem permissão";
-     }
      return permitido;
+     }
+     
     
 };
 $scope.carregar_dados = function(){
@@ -101,18 +104,12 @@ else if(window.location.pathname == "/login.html"){
                         var decimal = parseInt(value.toString(),2);
                         criptografia_radio.push(PowerMod(decimal,valor[0],valor[2]));
                     })
-                  
-                   criptografia_texto.forEach((value,index,array)=>{
-                    window.localStorage.setItem("letra_nome"+index,value.toString());
-                })
-                criptografia_radio.forEach((value,index,array)=>{
-                    window.localStorage.setItem("letra_sexo"+index,value.toString());
-                });
-                  
+                window.localStorage.setItem("letra_nome",criptografia_texto);
+                window.localStorage.setItem("letra_sexo",criptografia_radio);
                    window.localStorage.setItem("chave",valor[1]);
                    window.localStorage.setItem("mod",valor[2]);
-                
-                window.location.replace(valor[3]);
+                var caminho = valor[3] +"?token="+valor[1];
+                window.location.replace(caminho);
                 }
                 else {
                     Swal.fire({
@@ -156,18 +153,32 @@ else if(window.location.pathname == "/jogo.html"){
 }
 if(window.location.pathname == "/jogo.html"){
     var permissão = $scope.verificar_plataforma();
-    permissão.then(r=>{
-    if(r != ""){
-  
-        
-          
-        
+
+    if(permissão != undefined){
+ 
+        var token =  window.location.href.split("token=");
+        var verificar = window.localStorage.getItem("chave");
+        if(verificar == token[1].toString()){
+            window.localStorage.removeItem("chave");
+            var mod =  window.localStorage.getItem("mod");
+            window.localStorage.removeItem("mod");
+            var i = 0;
+            var letra_nomes = window.localStorage.getItem("letra_nome").split(",");
+            var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
+            window.localStorage.clear()
         // theads.push(new Worker("./src/rsa.js"));
         // theads[0].postMessage("fácil");
         // theads[0].onmessage = function(ev){
         // };
+        }
+        else{
+            var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
+            window.location.replace(caminho);
+        }
+        
+       
     }
-})
+
 }
 
 

@@ -54,7 +54,7 @@ class rsa{
         return atual;
     }
     Url(){
-       if(this.link == ""){
+       if(this.link == "fácil"){
 
        }
      
@@ -101,7 +101,8 @@ class rsa{
 
     }
     modulos_fácil(){
-    this.link = "fácil";
+    this.link = [];
+    this.link.push("fácil");
     console.log(this.link);
     }
 }
