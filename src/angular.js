@@ -28,12 +28,11 @@ window.onload = function(){
         }
         
     }
-    else{
-        Swal.fire({
-            icon:"warning",
-            title: 'Oops...',
-            text:"Precisa de internet !!!"
-        })
+    else
+    {
+     
+
+        window.location.replace(window.location.href.replace(window.location.pathname,"/404.html"));
     }
 
 }

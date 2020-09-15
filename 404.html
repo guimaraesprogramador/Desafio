@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+  function  voltar(){
+        window.location.replace(window.location.href.replace(window.location.pathname,"/index.html"));
+    }
+    </script>
+    <style type="text/css">
+    .erro404{
+        font-family: Arial, Helvetica, sans-serif;
+        margin-left: 40%;
+        margin-top: 20%;
+        position: relative;
+    }
+    .erro404 button{
+        background-color: #ff3333;
+        margin-top: 3%;
+        margin-left: 10%; 
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="erro404">
+            <span> Erro de conexão com a internet</span><br>
+            <button type="reset" onclick="voltar()">Atualizar Novamente</button> 
+    </div>
+   
+</body>
+</html>
