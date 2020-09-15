@@ -1,50 +1,74 @@
-button{
-width: 7.39cm;
-height: 1.40cm;
-margin-top: 10%;
-opacity: 0.5;
-}
+
 body{
-    opacity: 0.5;
+    opacity: 0.9;
     background-color: rgb(127,127,229)
    
 }
-h3{
+button{
+  width: 7.39cm;
+  height: 1.40cm;
+  margin-top: 10%;
+  margin-left: 2%;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+   h3{
     margin-top: 20%;
-  color: #333333;
-  font-family:"Liberation Sans";
-}
-#Entrar{
-    width: 2.1cm;
-    height: 1.50cm;
-    opacity: 0.5;  
-    background-position-y: 6.31cm;
-    background-position-x: 19.20cm ;
-    bottom: 16%;
-    margin-top: auto;
-}
-img{
-background-color: white;
--webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  filter: gray;
-}
-input[name=login]{
-width: 7.40cm;
-height: 1.40cm;
-}
+    color: #333333;
+    font-family:"Liberation Sans";
+  }
+  #Entrar{
+      width: 2.1cm;
+      height: 1.50cm;
+      opacity: 0.5;  
+      background-position-y: 6.31cm;
+      background-position-x: 19.20cm ;
+      bottom: 16%;
+      margin-top: auto;
+  }
+  img{
+  background-color: white;
+  -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+    
+  }
+  input[name=login]{
+  width: 7.40cm;
+  height: 1.40cm;
+  }
+  
+  #esquerda-radio{
+    background-color: white;
+  }
+  #direita-raido{
+    background-color: white;
+  }
+  #esquerda-radio + #direita-raido{
+    margin-left: 25px;
+  }
+  .nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-#esquerda-radio{
-  background-color: white;
-}
-#direita-raido{
-  background-color: white;
-}
-#esquerda-radio + #direita-raido{
-  margin-left: 25px;
-}
-.nav{
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @media screen and (max-width: 700px)  {
+  button{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+   float: right;
+   margin-top: 20%;
+   width: 7.39cm;
+   height: 1.40cm;
+  }
+  label[name=nome]{
+    float: left;
+  }
+  input[name=usuário]{
+    float: left;
+    width: 5.39cm;
+    height: auto;
+  }
+
+  
 }

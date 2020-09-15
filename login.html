@@ -26,7 +26,7 @@
 </head>
 <body  ng-app="Desafio" ng-controller="Contra-IA" >
     <div class="container ">
-        <div class="col-md-12" style="text-align:center">
+        <div class="col-12" style="text-align:center">
                 <div class="row">
                         <div class="col" >
                         <h3 >Iniciando</h3>
@@ -38,23 +38,26 @@
                 </div>
                 
         </div>
-        <div class="col-md-12" style="text-align:center">
+        <div class="col-12" style="text-align:center">
                 <div class="row">
                         <div class="col" >
                                
-                              <label class="img-fluid" >Nome:</label>
-                              <input type="text" class="img-fluid" name="usuário" ng-model="texto" required />
-                              <button type="button" class="img-fluid" id="Entrar"  ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Entrar">Entrar</button>
+                              <label class="img-fluid"  name="nome" >Nome:</label>
+                              
+                              <input type="text" class="img-fluid" name="usuário" ng-model="texto" required /> <button type="submit" id="Entrar"  ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Entrar">Entrar
+                            
+                            </button>
+                             
                         
                         </div>
                 </div>
         </div>
-        <div class="col-md-12" style="text-align:center">
+        <div class="col-12" style="text-align:center">
                         
         <ul class="nav justify-content-center">
                         <ul class="nav">
                                         <li class="nav-item" id="esquerda-radio">
-                                                        <input type="radio"  value="feminino" name="sexo"/>
+                                                        <input class="img-fluid" type="radio"  value="feminino" name="sexo"/>
                                                         <img class="img-fluid" src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
                                         </li>
                                         <li class="nav-item" id="direita-raido">
