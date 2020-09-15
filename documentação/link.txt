@@ -27,3 +27,7 @@ http://www.plantuml.com/plantuml/uml/NOvDJWCn38NtEOML5J-QIjs2X8gu0OXrPH8tCZX9vMG
 
 //  diagrama de classe etapa díficil
 http://www.plantuml.com/plantuml/uml/NOzBIWGn48RtEKMHbGzwOBOACk8D5DT3sLKTIlCOAkbH4G_ZqeMdc8kPJcCZlVo_Bwc_QfSBQXc3DqMAPo11fnWGYA7tc7D525pmW32Sldhnvcx2O3MZ_J3GUOalLmz59Je3bySa127HwDFPURKI2wjZXH3w1kQNyAY-HVZt8UzRGnNNYq4jCaYFV_1M5T_XdftYH5R_m-cRf8erfzFF86so-JIctGKOtUXHd_DqH7JTawRNp3g7FYcb8zRGvXnPsnQwFtWiE2GDKykoJpNAhcf2IdbkqOnWjvlDXOMkkx5R2nA9typIM-rAxJZI6Fml 
+
+// Árvore de Decisão
+http://sites.poli.usp.br/d/pcs2215/2215_aula_decision_trees_2001.pdf
+
