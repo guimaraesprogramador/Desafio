@@ -8,6 +8,7 @@
     <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-cordova/0.1.27-alpha/ng-cordova.js"></script>
     <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="src/criptografia-rsa.js"></script>
     <script  src="./src/angular.js"></script>
     
@@ -22,6 +23,28 @@
     <link rel="stylesheet" href="css/estilo.css" />
 </head>
 <body ng-app="Desafio" ng-controller="Contra-IA" >
-        
+   <div class="container">
+     <!-- operador matemático -->
+    <div class="col-12">
+      <hr><div ng-model="operador" ></div>
+    </div>
+    
+
+     <!-- pontução da I.A -->
+     <div class="col-6">
+    <label for="" name="Vitoria_artificial">Vitoria:</label>
+    <span ng-model="Vitoria_artificial">{{Vitoria_artificial}}</span><br>
+    <label for="" name="Derrota_artificial">Derrota:</label>
+    <span ng-model="Derrota_artificial">{{Derrota_artificial}}</span>
+     </div>
+     <!-- pontução do jogador -->
+     <div class="col-6">
+      <label for="" name="Vitoria_jogador ">Vitoria:</label>
+      <span ng-model="Vitoria_jogador">{{Vitoria_jogador}}</span><br>
+      <label for="" name="Derrota_jogador ">Derrota:</label>
+      <span ng-model="Derrota_jogador">{{Derrota_jogador}}</span>
+    </div>
+
+   </div>
 </body>
 </html>

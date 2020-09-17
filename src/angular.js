@@ -7,14 +7,14 @@ window.onload = function(){
         document.body.style.visibility = "visible";
         if(window.location.pathname == "/login.html"){
             theads.push(new Worker("./src/rsa.js"));
-            theads[0].postMessage("começo");
+            theads[0].postMessage({tipo:"começo"});
             theads[0].onmessage = function(ev){
                 if(ev.data.criptografia.length == 0){
                     location.reload(true);
                 }
                 else{
                   ev.data.link =   window.location.href.replace("/login.html","/jogo.html");
-                 
+                 console.log(ev.data.criptografia);
                  valor.push(ev.data.criptografia[0].chave_publica,
                     ev.data.criptografia[0].chave_privada, 
                     ev.data.criptografia[0].mod,
@@ -32,7 +32,7 @@ window.onload = function(){
     {
      
 
-        window.location.replace(window.location.href.replace(window.location.pathname,"/404.html"));
+        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/404.html"));
     }
 
 }
@@ -96,13 +96,14 @@ else if(window.location.pathname == "/login.html"){
                     var criptografia_texto = [];
                     var criptografia_radio = [];
                     binario_texto.forEach((value,index,array)=>{
-                       var decimal = parseInt(value.toString(),2);
+                       var decimal = parseInt(value,2).toString(10);
                         criptografia_texto.push(PowerMod(decimal,valor[0],valor[2]));
                     })
                     binario_radio.forEach((value,index,array)=>{
-                        var decimal = parseInt(value.toString(),2);
+                        var decimal = parseInt(value,2).toString(10);
                         criptografia_radio.push(PowerMod(decimal,valor[0],valor[2]));
                     })
+                   
                 window.localStorage.setItem("letra_nome",criptografia_texto);
                 window.localStorage.setItem("letra_sexo",criptografia_radio);
                    window.localStorage.setItem("chave",valor[1]);
@@ -150,25 +151,32 @@ else if(window.location.pathname == "/jogo.html"){
 }
 
 }
+$scope.operador = "";
+$scope.Vitoria_jogador = 0;
+$scope.Derrota_jogador = 0;
+$scope.Vitoria_artificial = 0;
+$scope.Derrota_artificial = 0;
 if(window.location.pathname == "/jogo.html"){
     var permissão = $scope.verificar_plataforma();
-
     if(permissão != undefined){
- 
+       
         var token =  window.location.href.split("token=");
         var verificar = window.localStorage.getItem("chave");
         if(verificar == token[1].toString()){
             window.localStorage.removeItem("chave");
             var mod =  window.localStorage.getItem("mod");
             window.localStorage.removeItem("mod");
-            var i = 0;
             var letra_nomes = window.localStorage.getItem("letra_nome").split(",");
             var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
             window.localStorage.clear()
-        // theads.push(new Worker("./src/rsa.js"));
-        // theads[0].postMessage("fácil");
-        // theads[0].onmessage = function(ev){
-        // };
+        theads.push(new Worker("./src/rsa.js"));
+        theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:verificar,
+    mod:mod});
+        theads[0].onmessage = function(ev){
+            $scope.operador = ev.data.tipo;
+            modulos().descriptografar(ev.data.nome,ev.data.sexo,
+                ev.data.chave,ev.data.mod);
+        };
         }
         else{
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");

@@ -1,6 +1,9 @@
 class rsa{
     constructor(){
-         
+        this.nome;
+        this.sexo;
+        this.mod;
+        this.chave;
     }
     link = "";
     get link(){
@@ -53,9 +56,51 @@ class rsa{
         }
         return atual;
     }
+    descriptografar(nome,sexo,chave,mod){
+        var descriptografia_nome = [];
+    var  descriptografia_sexo = [];
+    nome.forEach((value,index,key)=>{
+        descriptografia_nome.push(PowerMod(value,chave,mod));
+    })
+    sexo.forEach((value,index,key)=>{
+        descriptografia_sexo.push(PowerMod(value,chave,mod));
+    })
+    console.log(descriptografia_nome);
+    console.log(descriptografia_sexo);
+    }
     Url(){
-       if(this.link == "fácil"){
-
+       this.num = 1;
+       if(this.link[0] == "fácil"){
+        this.n = 0; 
+        this.m = 0;
+        
+        
+        while(this.num >0){
+             this.n = Math.floor(Math.random() *10);
+             this.m = Math.floor(Math.random() *100);
+            this.link.push(this.n.toString());
+            this.link.push(this.m.toString());
+            this.num = this.num - 1;
+        }
+    
+        this.operador = Math.floor(Math.random() *4);
+        switch(this.operador){
+            case 0:
+            this.operador = "+";
+            break;
+            case 1:
+                this.operador = "-";
+                break;
+                case 2:
+                    this.operador = "*";
+                    break;
+            case 3:
+                this.operador = "/";
+                break;
+        }
+        return this.link[1].toString() + this.operador.toString() +
+        this.link[2].toString();
+        
        }
      
          
@@ -101,9 +146,14 @@ class rsa{
 
     }
     modulos_fácil(){
+    
     this.link = [];
     this.link.push("fácil");
-    console.log(this.link);
+    this.operação = this.Url();
+    this.link.pop();
+    this.link.pop();
+    this.link.pop();
+    
     }
 }
 function modulos(){
@@ -112,7 +162,7 @@ return r;
 }
 
 self.addEventListener("message",function(ev){
-var tipo = ev.data;
+var tipo = ev.data.tipo;
 var rsa = modulos();
 switch(tipo){
     case "começo":
@@ -121,7 +171,15 @@ switch(tipo){
     this.self.close();
     break;
     case "fácil":
+    rsa.nome = ev.data.nome;
+    rsa.sexo = ev.data.sexo;
+    rsa.chave = ev.data.verificar;
+    rsa.mod = ev.data.mod;
     rsa.modulos_fácil();
+    
+    this.postMessage({tipo:rsa.operação,
+        nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
+        mod:rsa.mod});
     this.self.close();
         break;
 }
