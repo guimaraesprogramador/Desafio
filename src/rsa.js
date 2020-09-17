@@ -1,9 +1,6 @@
 class rsa{
     constructor(){
-        this.nome;
-        this.sexo;
-        this.mod;
-        this.chave;
+       
     }
     link = "";
     get link(){
@@ -58,15 +55,31 @@ class rsa{
     }
     descriptografar(nome,sexo,chave,mod){
         var descriptografia_nome = [];
-    var  descriptografia_sexo = [];
-    nome.forEach((value,index,key)=>{
-        descriptografia_nome.push(PowerMod(value,chave,mod));
-    })
-    sexo.forEach((value,index,key)=>{
-        descriptografia_sexo.push(PowerMod(value,chave,mod));
-    })
-    console.log(descriptografia_nome);
-    console.log(descriptografia_sexo);
+        var  descriptografia_sexo = [];
+
+      nome.forEach((value,index,key)=>{
+            descriptografia_nome.push(PowerMod(value,chave,mod));
+         
+        })
+        
+        sexo.forEach((value,index,key)=>{
+            descriptografia_sexo.push(PowerMod(value,chave,mod));
+        })
+        var i = 0;
+        var nome = "";
+        var sexo = "";
+       while(i <descriptografia_nome.length){
+        nome = nome +  String.fromCharCode(descriptografia_nome[i]).toString(10); 
+       
+        i++;
+       }
+       i = 0;
+       while(i < descriptografia_sexo.length){
+           sexo = sexo + String.fromCharCode(descriptografia_sexo[i]).toString(10); 
+           i++;
+       }
+       console.log(sexo);
+       console.log(nome);
     }
     Url(){
        this.num = 1;
@@ -76,7 +89,7 @@ class rsa{
         
         
         while(this.num >0){
-             this.n = Math.floor(Math.random() *10);
+             this.n = Math.floor(Math.random() *100);
              this.m = Math.floor(Math.random() *100);
             this.link.push(this.n.toString());
             this.link.push(this.m.toString());
@@ -118,11 +131,15 @@ class rsa{
        var d,e = 0;
        var n;
        var z;
+       do{
+        this.p = this.primo();
+        this.q = this.primo();
+       }while(this.p == 0|| this.q== 0);
+       
+       n = this.p * this.q;
+       z = (this.p-1)*(this.q-1);
        do{  
-        this.p = Math.floor(Math.random() *100);
-        this.q = Math.floor(Math.random() *100);    
-        n = this.p * this.q;
-        z = (this.p-1)*(this.q-1);
+        
        // chave privada
        d = this.primo();
        // chave publica 
@@ -153,7 +170,10 @@ class rsa{
     this.link.pop();
     this.link.pop();
     this.link.pop();
-    
+    this.nome;
+    this.sexo;
+    this.mod;
+    this.chave;
     }
 }
 function modulos(){
@@ -173,7 +193,7 @@ switch(tipo){
     case "fácil":
     rsa.nome = ev.data.nome;
     rsa.sexo = ev.data.sexo;
-    rsa.chave = ev.data.verificar;
+    rsa.chave = ev.data.chave;
     rsa.mod = ev.data.mod;
     rsa.modulos_fácil();
     

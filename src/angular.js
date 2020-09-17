@@ -89,18 +89,20 @@ else if(window.location.pathname == "/login.html"){
             
             if(validar_radio.length != 0){
                 if(texto.value != ""){
-                 
+                    var normatizar_texto = texto.value.normalize("NFD").replace("/[^a-zA-Zs]/g", "").toLowerCase();
+                    var normatizar_radio = validar_radio[0].value.normalize("NFD").replace("/[^a-zA-Zs]/g", "").toLowerCase();
                     var conversor = new StringToBinary();  
-                   var  binario_texto = conversor.convert(texto.value);
-                    var binario_radio = conversor.convert(validar_radio[0].value);
+                   var  binario_texto = conversor.convert(normatizar_texto);
+                    var binario_radio = conversor.convert(normatizar_radio);
                     var criptografia_texto = [];
                     var criptografia_radio = [];
                     binario_texto.forEach((value,index,array)=>{
-                       var decimal = parseInt(value,2).toString(10);
+                       var decimal = parseInt(value,2);
                         criptografia_texto.push(PowerMod(decimal,valor[0],valor[2]));
                     })
                     binario_radio.forEach((value,index,array)=>{
-                        var decimal = parseInt(value,2).toString(10);
+                        var decimal = parseInt(value,2);
+                     
                         criptografia_radio.push(PowerMod(decimal,valor[0],valor[2]));
                     })
                    
@@ -129,11 +131,7 @@ else if(window.location.pathname == "/login.html"){
         }
     }
     catch(ev){
-        Swal.fire({
-            icon:"error",
-            title: 'Oops...',
-            text:"error em algum lugar no código do login"
-        })
+       window.location.reload(true);
     }
     
 }
@@ -173,7 +171,7 @@ if(window.location.pathname == "/jogo.html"){
         theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:verificar,
     mod:mod});
         theads[0].onmessage = function(ev){
-            $scope.operador = ev.data.tipo;
+            // $scope.operador = ev.data.tipo;
             modulos().descriptografar(ev.data.nome,ev.data.sexo,
                 ev.data.chave,ev.data.mod);
         };
