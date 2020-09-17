@@ -89,8 +89,9 @@ else if(window.location.pathname == "/login.html"){
             
             if(validar_radio.length != 0){
                 if(texto.value != ""){
-                    var normatizar_texto = texto.value.normalize("NFD").replace("/[^a-zA-Zs]/g", "").toLowerCase();
-                    var normatizar_radio = validar_radio[0].value.normalize("NFD").replace("/[^a-zA-Zs]/g", "").toLowerCase();
+                    var normatizar_texto = texto.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    var normatizar_radio = validar_radio[0].value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    console.log(normatizar_texto);
                     var conversor = new StringToBinary();  
                    var  binario_texto = conversor.convert(normatizar_texto);
                     var binario_radio = conversor.convert(normatizar_radio);
