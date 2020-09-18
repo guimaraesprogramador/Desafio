@@ -1,0 +1,58 @@
+.esquerda{
+    background-color: black;
+width: 45%;
+right: 60%;
+position: absolute;
+text-align: center;
+}   
+.direita{
+    width: 41%;
+left: 62%;
+    background-color: black;
+    text-align: center;
+    position: absolute;
+}
+.container{
+    position: relative;;
+}
+[name ="artificial"]{
+padding-bottom:20% ;
+position: relative;
+color: black;    
+}
+[name="jogador"]{
+    position: fixed;
+    color: black;
+    padding-top:2%;
+}
+[name="placar"]{
+    color: black;
+    margin-left: 12%;
+}
+.operação{
+    background-color: white;
+    text-align: center;
+    left: 39%;
+    position: relative;
+    padding-right: 20%;
+    padding-left: 20%;
+}
+.img_artificial{
+    left: 58%;
+    position: relative;
+    bottom: 180%;
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+@media screen and (max-width: 700px)  {
+    [name ="artificial"]{
+        padding-bottom:55% ;
+        color: black;    
+        }
+        [name="placar"]{
+            color: black;
+            margin-left:45%;
+            margin-top: 10%;
+        }
+}

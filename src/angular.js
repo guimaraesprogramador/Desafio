@@ -156,34 +156,34 @@ $scope.Derrota_jogador = 0;
 $scope.Vitoria_artificial = 0;
 $scope.Derrota_artificial = 0;
 if(window.location.pathname == "/jogo.html"){
-    var permissão = $scope.verificar_plataforma();
-    if(permissão != undefined){
+    // var permissão = $scope.verificar_plataforma();
+    // if(permissão != undefined){
        
-        var token =  window.location.href.split("token=");
-        var verificar = window.localStorage.getItem("chave");
-        if(verificar == token[1].toString()){
-            window.localStorage.removeItem("chave");
-            var mod =  window.localStorage.getItem("mod");
-            window.localStorage.removeItem("mod");
-            var letra_nomes = window.localStorage.getItem("letra_nome").split(",");
-            var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-            window.localStorage.clear()
-        theads.push(new Worker("./src/rsa.js"));
-        theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:verificar,
-    mod:mod});
-        theads[0].onmessage = function(ev){
-            // $scope.operador = ev.data.tipo;
-            modulos().descriptografar(ev.data.nome,ev.data.sexo,
-                ev.data.chave,ev.data.mod);
-        };
-        }
-        else{
-            var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
-            window.location.replace(caminho);
-        }
+    //     var token =  window.location.href.split("token=");
+    //     var verificar = window.localStorage.getItem("chave");
+    //     if(verificar == token[1].toString()){
+    //         window.localStorage.removeItem("chave");
+    //         var mod =  window.localStorage.getItem("mod");
+    //         window.localStorage.removeItem("mod");
+    //         var letra_nomes = window.localStorage.getItem("letra_nome").split(",");
+    //         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
+    //         window.localStorage.clear()
+    //     theads.push(new Worker("./src/rsa.js"));
+    //     theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:verificar,
+    // mod:mod});
+    //     theads[0].onmessage = function(ev){
+    //         // $scope.operador = ev.data.tipo;
+    //         modulos().descriptografar(ev.data.nome,ev.data.sexo,
+    //             ev.data.chave,ev.data.mod);
+    //     };
+    //     }
+    //     else{
+    //         var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
+    //         window.location.replace(caminho);
+    //     }
         
        
-    }
+    //}
 
 }
 
