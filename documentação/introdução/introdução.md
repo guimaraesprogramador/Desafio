@@ -83,7 +83,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 ##### Resultados:
 
-##### Pevisão até 18 de setembro de 2020.
+##### Pevisão até 26 de setembro de 2020.
 
 ### 1.6 Organização do Trabalho: 
 

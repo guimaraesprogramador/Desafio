@@ -78,6 +78,15 @@ class rsa{
            sexo = sexo + String.fromCharCode(descriptografia_sexo[i]).toString(10); 
            i++;
        }
+       switch(sexo){
+           case "feminino":
+            document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/women-age-group-5--v2.png");
+            break;
+            case "masculino":
+                document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
+             
+                break;
+       }
        console.log(sexo);
        console.log(nome);
     }
