@@ -140,24 +140,27 @@ class rsa{
        var d,e = 0;
        var n;
        var z;
-       do{
+       this.p = 0;
+       this.q = 0;
+       while(this.p == 0|| this.q== 0){
         this.p = this.primo();
         this.q = this.primo();
-       }while(this.p == 0|| this.q== 0);
+       }
        
        n = this.p * this.q;
        z = (this.p-1)*(this.q-1);
-       do{  
+       while(valor==false || d==e){
+            // chave privada
+            d = this.primo();
+            // chave publica 
+            e = this.Euler();
+            valor = (d * e)%z;
+            if(valor == 1)valor = true;
+            else valor = false;
+   
+       }  
         
-       // chave privada
-       d = this.primo();
-       // chave publica 
-       e = this.Euler();
-       valor = (d * e)%z;
-       if(valor == 1)valor = true;
-       else valor = false;
-       
-        }while( valor==false|| d==e);
+    
         valores.push({chave_publica:e,chave_privada:d, mod:n});
         return valores;
         

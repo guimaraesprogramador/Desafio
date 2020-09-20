@@ -73,11 +73,7 @@ if(window.location.pathname === "/" || window.location.pathname === "/index.html
             window.location.replace(caminho);
         }
         else {
-            Swal.fire({
-                icon:"warning",
-                title: 'Oops...',
-                text:"Estamos carregando"
-            })
+          window.location.reload();
         }
         
     }

@@ -1,6 +1,6 @@
 
 body{
-    opacity: 0.9;
+    opacity: 1;
     background-color: rgb(127,127,229)
    
 }
@@ -9,6 +9,7 @@ button{
   height: 1.40cm;
   margin-top: 10%;
   margin-left: 2%;
+  opacity: 0.5;
   font-family: Arial, Helvetica, sans-serif;
   }
    h3{
