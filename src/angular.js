@@ -97,27 +97,20 @@ else if(window.location.pathname == "/login.html"){
             
             if(validar_radio.length != 0){
                 if(texto.value != ""){
-                    var normatizar_texto = texto.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
                     var normatizar_radio = validar_radio[0].value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
                     valor = [window.localStorage.getItem("chave-publica"),
                 window.localStorage.getItem("mod")];
                     var conversor = new StringToBinary();  
-                   var  binario_texto = conversor.convert(normatizar_texto);
                     var binario_radio = conversor.convert(normatizar_radio);
-                    var criptografia_texto = [];
                     var criptografia_radio = [];
-                    binario_texto.forEach((value,index,array)=>{
-                       var decimal = parseInt(value,2);
-                       //                               numero, chave, mod
-                        criptografia_texto.push(PowerMod(decimal,valor[0],valor[1]));
-                    })
+                    
                     binario_radio.forEach((value,index,array)=>{
                         var decimal = parseInt(value,2)
                       //                               numero,  chave, mod
                         criptografia_radio.push(PowerMod(decimal,valor[0],valor[1]));
                     })
                    
-                window.localStorage.setItem("letra_nome",criptografia_texto);
+                window.localStorage.setItem("letra_nome",texto.value);
                 window.localStorage.setItem("letra_sexo",criptografia_radio);
                   
                    var caminho = window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html"
@@ -166,6 +159,7 @@ $scope.Vitoria_jogador = 0;
 $scope.Derrota_jogador = 0;
 $scope.Vitoria_artificial = 0;
 $scope.Derrota_artificial = 0;
+$scope.temporizador = "05:00";
 if(window.location.pathname == "/jogo.html"){
     var permissão = $scope.verificar_plataforma();
     if(permissão != undefined){
@@ -173,12 +167,12 @@ if(window.location.pathname == "/jogo.html"){
         var token =  window.location.href.split("token=");
         var verificar = window.localStorage.getItem("chave-publica");
         
-        if(verificar!= undefined){
+        if(verificar != undefined){
           
             window.localStorage.removeItem("chave-publica");
             var mod =  window.localStorage.getItem("mod");
             window.localStorage.removeItem("mod");
-            var letra_nomes = window.localStorage.getItem("letra_nome").split(",");
+            var letra_nomes = window.localStorage.getItem("letra_nome");
             var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
             window.localStorage.clear()
         theads.push(new Worker("./src/rsa.js"));
@@ -188,10 +182,12 @@ if(window.location.pathname == "/jogo.html"){
             // $scope.operador = ev.data.tipo;
             modulos().descriptografar(ev.data.nome,ev.data.sexo,
                 ev.data.chave,ev.data.mod);
+        
          };
      }
         else{
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
+            console.log(caminho);
             window.location.replace(caminho);
         }
         

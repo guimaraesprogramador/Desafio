@@ -31,3 +31,12 @@ http://www.plantuml.com/plantuml/uml/NOzBIWGn48RtEKMHbGzwOBOACk8D5DT3sLKTIlCOAkb
 // Árvore de Decisão
 http://sites.poli.usp.br/d/pcs2215/2215_aula_decision_trees_2001.pdf
 
+// musica de perdedor
+https://www.bensound.com/royalty-free-music/track/funny-song
+
+// musica de vencedor
+https://www.bensound.com/royalty-free-music/track/epic
+
+// musica de fundo
+https://www.bensound.com/royalty-free-music/track/ukulele
+

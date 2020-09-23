@@ -54,26 +54,12 @@ class rsa{
         return atual;
     }
     descriptografar(nome,sexo,chave,mod){
-        var descriptografia_nome = [];
-        var  descriptografia_sexo = [];
-
-      nome.forEach((value,index,key)=>{
-            descriptografia_nome.push(PowerMod(value,chave,mod));
-         
-        })
-        
+        var  descriptografia_sexo = [];        
         sexo.forEach((value,index,key)=>{
             descriptografia_sexo.push(PowerMod(value,chave,mod));
         })
         var i = 0;
-        var nome = "";
         var sexo = "";
-       while(i <descriptografia_nome.length){
-        nome = nome +  String.fromCharCode(descriptografia_nome[i]).toString(10); 
-       
-        i++;
-       }
-       i = 0;
        while(i < descriptografia_sexo.length){
            sexo = sexo + String.fromCharCode(descriptografia_sexo[i]).toString(10); 
            i++;
@@ -87,8 +73,7 @@ class rsa{
              
                 break;
        }
-       console.log(sexo);
-       console.log(nome);
+       document.getElementsByName("nome_jogador")[0].value = nome;
     }
     Url(){
        this.num = 1;
@@ -127,12 +112,34 @@ class rsa{
      
          
     }
-   async artificial(){ 
-        var resposta = await  navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
-                var r = "permitido";
-                return r;
-            })
-        return resposta;
+   artificial(){ 
+
+        if(this.link == ""){
+            this.fundo = document.createElement("audio");
+            this.fundo.src = "./musicas/bensound-ukulele.mp3";
+            this.fundo.play();
+            return "permitida";
+        }
+        else if(this.link != ""){
+            this.fundo.pause();
+            var efeito = document.createElement("audio");
+            switch(this.link){
+                case "vencedor":
+                    efeito.src = "./musicas/bensound-epic.mp3";
+                    efeito.play();
+                    break;
+                case "derrotar":
+                    efeito.src = "./musicas/bensound-funnysong.mp3";
+                    efeito.play();
+                break;
+            }
+            var tempo = window.setInterval(function(){
+                efeito.remove();
+                modulos().fundo.play();
+                clearInterval(tempo);
+            },2000);
+
+        }
     }
     Regras(){
        var valores = [];
