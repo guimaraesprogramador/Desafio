@@ -1,0 +1,166 @@
+
+@media screen and(max-width:300px){
+    .esquerda{
+            
+    }   
+    .direita{
+    }
+    [name ="artificial"]{
+    }
+    [name="jogador"]{
+    }
+    [name="placar"]{
+    }
+    .operação{
+    }
+    .img_artificial{
+    }
+    .img_jogador{
+    }
+    input[name="jogador_texto"]{
+    }
+    
+    [name="salvar"]{
+    }
+    
+    [name="Resposta"]{
+   
+    }
+    [name="Resposta_artificial"]{
+    }
+    .interrogação{
+        
+    }
+    [name="nome_jogador"]{
+    }
+    [name="nome_artificial"]{
+    }
+    .img_resultado1{
+    }
+    .img_resultado0{
+    }
+    .temporizador{
+
+    }     
+    [name="artificial_texto"]{
+        
+    }   
+
+}
+@media screen and (max-width: 600px) {
+    .esquerda{
+        border: 1px dotted black;
+        width: 51%;
+        }   
+        .direita
+        {
+            border: 1px dotted black;
+         width: 51%;
+        }
+        
+     [name ="artificial"]{
+        }
+        [name="jogador"]{
+            width: 53%;
+        }
+        [name="placar"]{
+        }
+        .operação{
+            width: 65%;
+        }
+        .img_artificial{
+            filter: grayscale(100%);
+            width: 31%;
+            float: left;
+        }
+        .img_jogador{
+            filter: grayscale(100%);
+            width: 31%;
+            margin-left: -15%;
+            margin-top: 25%;
+        }
+        input[name="jogador_texto"]{
+            width: 65%;
+            margin-left: -20%;
+        }
+        
+        [name="salvar"]{
+
+            margin-left: -60%;
+            margin-top: -5%;
+        }
+        
+        [name="Resposta"]{
+       margin-left: 80%;
+       margin-top: -20%;
+        }   
+        [name="Resposta_artificial"]{
+         margin-left: 34%;   
+        }
+        .interrogação{
+            margin-top: -280%;
+            margin-left: 100%;
+        }
+        [name="nome_jogador"]{
+        }
+        [name="nome_artificial"]{
+        }
+        .img_resultado1{
+        }
+        .img_resultado0{
+        }
+        .temporizador{
+        }        
+        [name="artificial_texto"]{
+            width: 65%;
+            margin-left: 20%;
+            margin-top: -20%;
+    }
+} 
+@media screen and (max-width:600px) and (orientation:landscape){
+    .esquerda{
+        
+    }   
+    .direita{
+    }
+ [name ="artificial"]{
+    }
+    [name="jogador"]{
+    }
+    [name="placar"]{
+    }
+    .operação{
+    }
+    .img_artificial{
+    }
+    .img_jogador{
+    }
+    input[name="jogador_texto"]{
+    }
+    
+    [name="salvar"]{
+       
+    }
+    
+    [name="Resposta"]{
+   
+    }
+    [name="Resposta_artificial"]{
+    }
+    .interrogação{
+        
+    }
+    [name="nome_jogador"]{
+    }
+    [name="nome_artificial"]{
+    }
+    .img_resultado1{
+    }
+    .img_resultado0{
+    }
+    .temporizador{
+    }        
+    [name="artificial_texto"]{
+        
+    }
+}
