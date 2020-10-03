@@ -1,11 +1,18 @@
 var theads  = []
 var valor = [];
 
+
 window.onload = function(){
     document.body.style.visibility ="hidden";
     if(navigator.onLine){
         document.body.style.visibility = "visible";
+        
         if(window.location.pathname == "/"|| window.location.pathname =="/index.html"){
+            Swal.fire({
+                icon:"warning",
+                title: 'Carregando',
+                html:' <div class="loader"></div>'
+            })
             theads.push(new Worker("./src/rsa.js"));
             theads[0].postMessage({tipo:"começo"});
             theads[0].onmessage = function(ev){
@@ -19,7 +26,7 @@ window.onload = function(){
                     ev.data.criptografia[0].mod,
                     ev.data.link);
                     theads.pop();
-        
+                    document.querySelector(".loader").remove();
                 }
                
                 
@@ -51,12 +58,19 @@ $scope.verificar_plataforma = function(){
     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
 
       permitido = modulos().artificial();
+      
       return permitido;
-     }else
-     {
-     permitido = "sem permissão";
-     return permitido;
      }
+     
+     else
+     {
+         navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
+
+        permitido = modulos().artificial();
+        
+      return permitido;
+         });
+    }
      
     
 };
@@ -65,17 +79,19 @@ $scope.carregar_dados = function(){
 if(window.location.pathname === "/" || window.location.pathname === "/index.html"){
     var iniciar = document.getElementsByTagName("button")[0];
   
-    iniciar.onclick = function(ev){
-        if(valor.length !=0){
-            var caminho = valor[3]+"?token="+valor[1];
-            window.localStorage.setItem("chave-publica",valor[0]);
-            window.localStorage.setItem("mod",valor[2]);
-            window.location.replace(caminho);
-        }
-        else {
-          window.location.reload();
-        }
-        
+iniciar.onclick = function(ev){
+    
+
+    if(valor.length !=0){
+        var caminho = valor[3]+"?token="+valor[1];
+        window.localStorage.setItem("chave-publica",valor[0]);
+        window.localStorage.setItem("mod",valor[2]);
+        window.location.replace(caminho);
+    }
+    else {
+      window.location.reload();
+    }
+    
     }
     var pontos = document.getElementsByTagName("button")[1];
     pontos.onclick = function(ev){
@@ -162,40 +178,38 @@ $scope.Derrota_artificial = 0;
 $scope.resposta_artificial = "";
 $scope.temporizador = "05:00";
 if(window.location.pathname == "/jogo.html"){
-    // var permissão = $scope.verificar_plataforma();
-    // if(permissão != undefined){
-       
-    //     var token =  window.location.href.split("token=");
-    //     var verificar = window.localStorage.getItem("chave-publica");
-        
-    //     if(verificar != undefined){
-          
-    //         window.localStorage.removeItem("chave-publica");
-    //         var mod =  window.localStorage.getItem("mod");
-    //         window.localStorage.removeItem("mod");
-    //         var letra_nomes = window.localStorage.getItem("letra_nome");
-    //         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-    //         window.localStorage.clear()
-    //     theads.push(new Worker("./src/rsa.js"));
-    //     theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-    // mod:mod});
-    //     theads[0].onmessage = function(ev){
-    //         // $scope.operador = ev.data.tipo;
-    //         modulos().descriptografar(ev.data.nome,ev.data.sexo,
-    //             ev.data.chave,ev.data.mod);
-        
-    //      };
-    //  }
-    //     else{
-    //         var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
-    //         console.log(caminho);
-    //         window.location.replace(caminho);
-    //     }
-        
-       
-    // }
+        var permissão = $scope.verificar_plataforma();
 
-}
+    
+        var token =  window.location.href.split("token=");
+        var verificar = window.localStorage.getItem("chave-publica");
+        
+        if(verificar != undefined){
+          
+            window.localStorage.removeItem("chave-publica");
+            var mod =  window.localStorage.getItem("mod");
+            window.localStorage.removeItem("mod");
+            var letra_nomes = window.localStorage.getItem("letra_nome");
+            var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
+            window.localStorage.clear()
+        theads.push(new Worker("./src/rsa.js"));
+        theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
+    mod:mod});
+        theads[0].onmessage = function(ev){
+            // $scope.operador = ev.data.tipo;
+            modulos().descriptografar(ev.data.nome,ev.data.sexo,
+                ev.data.chave,ev.data.mod);
+        
+         };
+     }
+        else{
+            var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
+            window.location.replace(caminho);
+        }
+        
+       
+    }
+
 
 
 }]);

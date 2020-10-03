@@ -30,11 +30,13 @@ class rsa{
         // 0 até 100
         c = Math.floor(Math.random() *101);
         b = this.fatorial_primo(c);
-                for(var i = 1;i<=b;i++){
-                    if(this.Divisaoexata(b,i)){
-                        x++;
-                    }
-                }
+        var i = 1;
+        while(i<=b){
+            if(this.Divisaoexata(b,i)){
+                x++;
+            }
+            i++;
+        }
         if(x ==2){
             return b;
         }
@@ -73,7 +75,7 @@ class rsa{
              
                 break;
        }
-       document.getElementsByName("nome_jogador")[0].value = nome;
+       document.getElementsByName("nome_jogador")[0].innerText = nome;
     }
     Url(){
        this.num = 1;
@@ -113,7 +115,8 @@ class rsa{
          
     }
    artificial(){ 
-
+    
+        
         if(this.link == ""){
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
