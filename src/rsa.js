@@ -1,6 +1,9 @@
 class rsa{
     constructor(){
-       
+        this.nome;
+        this.sexo;
+        this.mod;
+        this.chave;
     }
     link = "";
     get link(){
@@ -98,6 +101,7 @@ class rsa{
         this.link[2].toString();
         
        }
+    //    else if()
      
          
     }
@@ -123,8 +127,8 @@ class rsa{
         if(this.link == ""){
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
-            this.fundo.play();
             this.fundo.loop = true;
+            this.fundo.play();
             return "permitida";
         }
         else if(this.link != ""){
@@ -148,25 +152,100 @@ class rsa{
 
         }
     }
-    calculo_artificial(operador, operação){
-        var valoria  = operador;
-        var i = 0;
-        var calculo = 0;
-        
-        var divisor = valoria.split(operação);
-        while(i<divisor.length){
-            if(i == 0)calculo = Number.parseInt( divisor[i]);
-            else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
-            else if(operação == "-")calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
-            else if(operação == "*")calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
-            else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
-            i++;
-        }
-        if(calculo != 0)
-        {
-            document.querySelector("[name=artificial_texto]").textContent = calculo;
-            document.querySelector("[name=Resposta_artificial]").disabled = true; 
-        }
+    temporizador(){
+        var segundo = 60;
+        var minutos = 4;
+     var contagem =  window.setInterval(function(){
+          if(segundo > 0){
+              segundo = segundo - 1;
+              if(segundo <10){
+                document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
+              }
+              else if(document.querySelector("[name=artificial_texto]").textContent != ""
+              ||
+              document.querySelector("[name=jogador_texto]").textContent != ""){
+                segundo = 60;
+                minutos = 4;
+                document.querySelector("[name=artificial_texto]").textContent, 
+                document.querySelector("[name=artificial_texto]").textContent,
+                document.querySelector(".img_resultado0").src,
+                document.querySelector(".img_resultado1").src = "";
+                clearInterval(contagem);
+              }
+              else {
+                document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
+              }
+              
+          }
+          else if(minutos > 0 ){
+              segundo = 59;
+              minutos = minutos - 1;
+              document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
+          }
+          else if(minutos == 0 && segundo == 0)clearInterval(contagem);
+          
+
+      },1000);
+    }
+    calculo_artificial(operador, operação, tempo_temporizador){
+        var tempo_artificial = window.setInterval(function(){
+            var valoria  = operador;
+            var i = 0;
+            var calculo = 0;
+            
+            var divisor = valoria.split(operação);
+            while(i<divisor.length){
+                if(i == 0)calculo = Number.parseInt( divisor[i]);
+                else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
+                else if(operação == "-")calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
+                else if(operação == "*")calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
+                else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
+                i++;
+            }
+            if(calculo != 0)
+            {
+                document.querySelector("[name=artificial_texto]").textContent = calculo;
+                document.querySelector("[name=Resposta_artificial]").disabled = true;
+                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
+                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+                var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
+                pontos_atual = pontos_atual + 1;
+                document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
+                document.querySelector(".temporizador").textContent  = "05:00";
+                modulos().link = "derrotar";
+                modulos().artificial();
+               if(pontos_atual >3){
+                modulos().link = "medio"; 
+               }
+               else {
+                   modulos().link  = "fácil";
+               }
+               document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
+
+                    var I_a = document.querySelector("[name=Resposta_artificial]");
+                    I_a.disabled = false;
+                    var theads = [];
+                    switch(modulos().link){
+                        case "fácil":
+                            theads.push(new Worker("./src/rsa.js"));
+                            theads[0].postMessage({tipo:modulos().link});
+                            theads[0].onmessage = function(ev){
+                                
+                                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                                    theads.pop();
+                            }; 
+                            modulos().temporizador();
+                    
+                            break;
+           } 
+               }    
+               document.querySelector("[name=Resposta_artificial]").click();
+                clearInterval(tempo_artificial);
+            }
+            
+        },tempo_temporizador)
+       
     }
     Regras(){
        var valores = [];
@@ -216,10 +295,7 @@ class rsa{
     this.link.pop();
     this.link.pop();
     this.link.pop();
-    this.nome;
-    this.sexo;
-    this.mod;
-    this.chave;
+    
     }
 }
 function modulos(){
@@ -236,16 +312,20 @@ switch(tipo){
     this.postMessage({criptografia:array,link:rsa.link});
     this.self.close();
     break;
-    case "fácil":
+    case "descriptografia":
     rsa.nome = ev.data.nome;
     rsa.sexo = ev.data.sexo;
     rsa.chave = ev.data.chave;
     rsa.mod = ev.data.mod;
+    this.postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
+        mod:rsa.mod});
+        this.self.close();
+        break;
+    case "fácil":
+    
     rsa.modulos_fácil();
     
-    this.postMessage({tipo:[rsa.operação, rsa.operador],
-        nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
-        mod:rsa.mod});
+    this.postMessage({tipo:[rsa.operação, rsa.operador]});
     this.self.close();
         break;
 }

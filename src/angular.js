@@ -158,7 +158,13 @@ else if(window.location.pathname == "/login.html"){
 }
 else if(window.location.pathname == "/jogo.html"){
     try{
-      
+        var jogador = document.querySelector("[name=jogador_texto]");
+        // jogador
+        if(jogador.textContent != ""){
+            jogador.onclick = function(ev){
+
+            }
+        } 
    
     }catch(ev){
         Swal.fire({
@@ -193,46 +199,26 @@ if(window.location.pathname == "/jogo.html"){
             var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
             window.localStorage.clear()
         theads.push(new Worker("./src/rsa.js"));
-        theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
+        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
     mod:mod});
         theads[0].onmessage = function(ev){
             
             modulos().descriptografar(ev.data.nome,ev.data.sexo,
                 ev.data.chave,ev.data.mod);
-                
-                document.querySelector(".operação").textContent = ev.data.tipo[0];
-                var tempo = window.setInterval(function(){
-                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1]);
-                    clearInterval(tempo);
-                },5000)
-                
-                
                
-         }; 
-            var segundo = 60;
-            var minutos = 4;
-         var tempo =  window.setInterval(function(){
-              if(segundo > 00){
-                  segundo = segundo - 1;
-                  if(segundo <10){
-                    document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
-                  }
-                  else {
-                    document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
-                  }
-                  
-              }
-              else if(minutos > 0 ){
-                  segundo = 59;
-                  minutos = minutos - 1;
-                  document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
-              }
-              else if(minutos == 0 && segundo == 00)clearInterval(tempo);
+               
 
-          },1000);
-         
-       
-    
+         }; 
+        theads.push(new Worker("./src/rsa.js"));
+        theads[1].postMessage({tipo:"fácil"});
+        theads[1].onmessage = function(ev) {
+                document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                theads.pop();
+                theads.pop();
+        };
+           modulos().temporizador();
+
      }
         else{
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
