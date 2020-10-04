@@ -93,7 +93,16 @@ class rsa{
         }
     
         this.operador = Math.floor(Math.random() *4);
-        switch(this.operador){
+        this.divisores(this.operador);
+        return this.link[1].toString() + this.operador.toString() +
+        this.link[2].toString();
+        
+       }
+     
+         
+    }
+    divisores(tipo){
+        switch(tipo){
             case 0:
             this.operador = "+";
             break;
@@ -107,12 +116,6 @@ class rsa{
                 this.operador = "/";
                 break;
         }
-        return this.link[1].toString() + this.operador.toString() +
-        this.link[2].toString();
-        
-       }
-     
-         
     }
    artificial(){ 
     
@@ -121,6 +124,7 @@ class rsa{
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
             this.fundo.play();
+            this.fundo.loop = true;
             return "permitida";
         }
         else if(this.link != ""){
@@ -142,6 +146,26 @@ class rsa{
                 clearInterval(tempo);
             },2000);
 
+        }
+    }
+    calculo_artificial(operador, operação){
+        var valoria  = operador;
+        var i = 0;
+        var calculo = 0;
+        
+        var divisor = valoria.split(operação);
+        while(i<divisor.length){
+            if(i == 0)calculo = Number.parseInt( divisor[i]);
+            else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
+            else if(operação == "-")calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
+            else if(operação == "*")calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
+            else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
+            i++;
+        }
+        if(calculo != 0)
+        {
+            document.querySelector("[name=artificial_texto]").textContent = calculo;
+            document.querySelector("[name=Resposta_artificial]").disabled = true; 
         }
     }
     Regras(){
@@ -219,7 +243,7 @@ switch(tipo){
     rsa.mod = ev.data.mod;
     rsa.modulos_fácil();
     
-    this.postMessage({tipo:rsa.operação,
+    this.postMessage({tipo:[rsa.operação, rsa.operador],
         nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
         mod:rsa.mod});
     this.self.close();

@@ -86,7 +86,7 @@ iniciar.onclick = function(ev){
         var caminho = valor[3]+"?token="+valor[1];
         window.localStorage.setItem("chave-publica",valor[0]);
         window.localStorage.setItem("mod",valor[2]);
-        window.location.replace(caminho);
+        window.location.assign(caminho);
     }
     else {
       window.location.reload();
@@ -170,13 +170,13 @@ else if(window.location.pathname == "/jogo.html"){
 }
 
 }
-$scope.operador = "";
 $scope.Vitoria_jogador = 0;
 $scope.Derrota_jogador = 0;
 $scope.Vitoria_artificial = 0;
 $scope.Derrota_artificial = 0;
 $scope.resposta_artificial = "";
 $scope.temporizador = "05:00";
+
 if(window.location.pathname == "/jogo.html"){
         var permissão = $scope.verificar_plataforma();
 
@@ -196,11 +196,43 @@ if(window.location.pathname == "/jogo.html"){
         theads[0].postMessage({tipo:"fácil",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
     mod:mod});
         theads[0].onmessage = function(ev){
-            // $scope.operador = ev.data.tipo;
+            
             modulos().descriptografar(ev.data.nome,ev.data.sexo,
                 ev.data.chave,ev.data.mod);
-        
-         };
+                
+                document.querySelector(".operação").textContent = ev.data.tipo[0];
+                var tempo = window.setInterval(function(){
+                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1]);
+                    clearInterval(tempo);
+                },5000)
+                
+                
+               
+         }; 
+            var segundo = 60;
+            var minutos = 4;
+         var tempo =  window.setInterval(function(){
+              if(segundo > 00){
+                  segundo = segundo - 1;
+                  if(segundo <10){
+                    document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
+                  }
+                  else {
+                    document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
+                  }
+                  
+              }
+              else if(minutos > 0 ){
+                  segundo = 59;
+                  minutos = minutos - 1;
+                  document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
+              }
+              else if(minutos == 0 && segundo == 00)clearInterval(tempo);
+
+          },1000);
+         
+       
+    
      }
         else{
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");

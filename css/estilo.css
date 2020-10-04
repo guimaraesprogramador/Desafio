@@ -58,7 +58,7 @@ button{
     border-top: 16px solid #3498db;
     width: 120px;
     height: 120px;
-    margin-left: 30%;
+    margin-left: 32%;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }

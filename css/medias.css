@@ -51,11 +51,13 @@
     .esquerda{
         border: 1px dotted black;
         width: 51%;
+        position: absolute;
         }   
         .direita
         {
             border: 1px dotted black;
          width: 51%;
+         position: absolute;
         }
         
      [name ="artificial"]{
