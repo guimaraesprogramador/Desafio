@@ -57,7 +57,7 @@ $scope.verificar_plataforma = function(){
    
     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
 
-      permitido = modulos().artificial();
+      permitido = modulos().artificial(undefined);
       
       return permitido;
      }

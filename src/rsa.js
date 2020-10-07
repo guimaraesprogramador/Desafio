@@ -4,13 +4,13 @@ class rsa{
         this.sexo;
         this.mod;
         this.chave;
+        this._link;
     }
-    link = "";
     get link(){
-        return this.link;
+        return this._link;
     }
     set link(tipo){
-        this.link = tipo;
+        this._link = tipo;
     }
     fatorial_primo = function(z){
         var r = 1;
@@ -121,20 +121,22 @@ class rsa{
                 break;
         }
     }
-   artificial(){ 
+   artificial(musica){ 
     
         
-        if(this.link == ""){
+        if(musica == undefined){
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
             this.fundo.loop = true;
+            this.fundo.className ="fundo";
             this.fundo.play();
+            document.body.append(this.fundo);
             return "permitida";
         }
-        else if(this.link != ""){
-            this.fundo.pause();
+        else{
+             document.querySelector(".fundo").pause();
             var efeito = document.createElement("audio");
-            switch(this.link){
+            switch(musica){
                 case "vencedor":
                     efeito.src = "./musicas/bensound-epic.mp3";
                     efeito.play();
@@ -144,12 +146,22 @@ class rsa{
                     efeito.play();
                 break;
             }
+            efeito.id = "som"
+            var bool = false;
+            document.body.append(efeito);
             var tempo = window.setInterval(function(){
-                efeito.remove();
-                modulos().fundo.play();
+                document.getElementById("som").pause();
+                document.querySelector("[name=artificial_texto]").textContent = "";
+                document.querySelector("[name=jogador_texto]").textContent = "";
+                document.querySelector(".img_resultado0").src = "";
+                document.querySelector(".img_resultado1").src = "";
+                bool = true;
                 clearInterval(tempo);
-            },2000);
-
+                if(bool == true){
+                    modulos().artificial(undefined);
+                }
+            },5000);
+            
         }
     }
     temporizador(){
@@ -166,10 +178,6 @@ class rsa{
               document.querySelector("[name=jogador_texto]").textContent != ""){
                 segundo = 60;
                 minutos = 4;
-                document.querySelector("[name=artificial_texto]").textContent, 
-                document.querySelector("[name=artificial_texto]").textContent,
-                document.querySelector(".img_resultado0").src,
-                document.querySelector(".img_resultado1").src = "";
                 clearInterval(contagem);
               }
               else {
@@ -205,35 +213,35 @@ class rsa{
             if(calculo != 0)
             {
                 document.querySelector("[name=artificial_texto]").textContent = calculo;
-                document.querySelector("[name=Resposta_artificial]").disabled = true;
                 document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
                 document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
                 var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
                 pontos_atual = pontos_atual + 1;
                 document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
                 document.querySelector(".temporizador").textContent  = "05:00";
-                modulos().link = "derrotar";
-                modulos().artificial();
+               this.link = "derrotar";
+                modulos().artificial(this.link);
+                var tipo;
                if(pontos_atual >3){
-                modulos().link = "medio"; 
+                tipo = "medio"; 
                }
                else {
-                   modulos().link  = "fácil";
+                tipo  = "fácil";
                }
                document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
 
                     var I_a = document.querySelector("[name=Resposta_artificial]");
-                    I_a.disabled = false;
                     var theads = [];
-                    switch(modulos().link){
+                    this.link = tipo;
+                    switch(this.link){
                         case "fácil":
                             theads.push(new Worker("./src/rsa.js"));
-                            theads[0].postMessage({tipo:modulos().link});
+                            theads[0].postMessage({tipo:this.link});
                             theads[0].onmessage = function(ev){
-                                
+                                    console.log(ev.data.tipo);
                                     document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                     modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
-                                    theads.pop();
+                                    
                             }; 
                             modulos().temporizador();
                     
@@ -242,9 +250,10 @@ class rsa{
                }    
                document.querySelector("[name=Resposta_artificial]").click();
                 clearInterval(tempo_artificial);
+                theads.pop();
             }
             
-        },tempo_temporizador)
+        },tempo_temporizador);
        
     }
     Regras(){
