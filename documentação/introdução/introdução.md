@@ -77,13 +77,23 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 ##### Pevisão até 06 de setembro de 2020.
 
-#### ETAPA 4 
+#### ETAPA 4 Completo
 ##### Objetivos:
 1. Implementar a terceira parte do esboço para android e desktop.
 
 ##### Resultados:
+1° Foi possivel para desktop.
 
 ##### Pevisão até 26 de setembro de 2020.
+
+#### ETAPA 5 
+##### Objetivos:
+1. Implementar a terceira parte do esboço para android.
+
+##### Resultados:
+
+
+##### Pevisão até 10 de outubro de 2020.
 
 ### 1.6 Organização do Trabalho: 
 
