@@ -134,7 +134,7 @@ class rsa{
             return "permitida";
         }
         else{
-             document.querySelector(".fundo").pause();
+             document.querySelector(".fundo").remove();
             var efeito = document.createElement("audio");
             switch(musica){
                 case "vencedor":
@@ -146,20 +146,19 @@ class rsa{
                     efeito.play();
                 break;
             }
-            efeito.id = "som"
-            var bool = false;
+            efeito.className = "som";
             document.body.append(efeito);
             var tempo = window.setInterval(function(){
-                document.getElementById("som").pause();
+                document.querySelector(".som").remove();
                 document.querySelector("[name=artificial_texto]").textContent = "";
                 document.querySelector("[name=jogador_texto]").textContent = "";
                 document.querySelector(".img_resultado0").src = "";
                 document.querySelector(".img_resultado1").src = "";
-                bool = true;
+              
                 clearInterval(tempo);
-                if(bool == true){
-                    modulos().artificial(undefined);
-                }
+                
+                modulos().artificial(undefined);
+                
             },5000);
             
         }
@@ -169,7 +168,7 @@ class rsa{
         var minutos = 4;
      var contagem =  window.setInterval(function(){
           if(segundo > 0){
-              segundo = segundo - 1;
+              
               if(segundo <10){
                 document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
               }
@@ -181,9 +180,10 @@ class rsa{
                 clearInterval(contagem);
               }
               else {
+                
                 document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
               }
-              
+              segundo = segundo - 1;
           }
           else if(minutos > 0 ){
               segundo = 59;
