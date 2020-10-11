@@ -1,4 +1,4 @@
-class rsa{
+class rsa {
     constructor(){
         this.nome;
         this.sexo;
@@ -101,10 +101,28 @@ class rsa{
         this.link[2].toString();
         
        }
-    //    else if()
+    else if(this.link[0] == "média"){
+        this.n = 0; 
+        this.m = 0;
+        this.p = 0;
+        while(this.num >0){
+             this.n = Math.floor(Math.random() *100);
+             this.m = Math.floor(Math.random() *100);
+            this.p = Math.floor(Math.random() *100);
+            this.link.push(this.n.toString());
+            this.link.push(this.m.toString());
+            this.link.push(this.p.toString());
+            this.num = this.num - 1;
+        }
+        this.operador = [this.divisores(Math.floor(Math.random() *4)),this.divisores(Math.floor(Math.random() *4))];        
+            return this.link[1].toString() + this.operador[0] +
+        this.link[2].toString() + this.operador[1] + this.link[3].toString();
+        
+        }
+    
+    }
      
          
-    }
     divisores(tipo){
         switch(tipo){
             case 0:
@@ -150,11 +168,6 @@ class rsa{
             document.body.append(efeito);
             var tempo = window.setInterval(function(){
                 document.querySelector(".som").remove();
-                document.querySelector("[name=artificial_texto]").textContent = "";
-                document.querySelector("[name=jogador_texto]").textContent = "";
-                document.querySelector(".img_resultado0").src = "";
-                document.querySelector(".img_resultado1").src = "";
-              
                 clearInterval(tempo);
                 
                 modulos().artificial(undefined);
@@ -164,7 +177,7 @@ class rsa{
         }
     }
     temporizador(){
-        var segundo = 60;
+        var segundo = 59;
         var minutos = 4;
      var contagem =  window.setInterval(function(){
           if(segundo > 0){
@@ -177,13 +190,18 @@ class rsa{
               document.querySelector("[name=jogador_texto]").textContent != ""){
                 segundo = 60;
                 minutos = 4;
+                    document.querySelector("[name=artificial_texto]").textContent = "";
+                    document.querySelector("[name=jogador_texto]").textContent = "";
+                    document.querySelector(".img_resultado0").src = "";
+                    document.querySelector(".img_resultado1").src = "";
+
                 clearInterval(contagem);
               }
               else {
                 
                 document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
               }
-              segundo = segundo - 1;
+              
           }
           else if(minutos > 0 ){
               segundo = 59;
@@ -191,67 +209,61 @@ class rsa{
               document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
           }
           else if(minutos == 0 && segundo == 0)clearInterval(contagem);
-          
+          segundo = segundo - 1;
 
       },1000);
     }
     calculo_artificial(operador, operação, tempo_temporizador){
         var tempo_artificial = window.setInterval(function(){
             var valoria  = operador;
-            var i = 0;
             var calculo = 0;
-            
-            var divisor = valoria.split(operação);
-            while(i<divisor.length){
-                if(i == 0)calculo = Number.parseInt( divisor[i]);
-                else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
-                else if(operação == "-")calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
-                else if(operação == "*")calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
-                else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
-                i++;
-            }
-            if(calculo != 0)
-            {
+            var theads = [];
+            var tipo;
+                var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
+                pontos_atual = pontos_atual + 1;
+                document.querySelector(".temporizador").textContent  = "05:00";
+              this.link = "derrotar";
+                modulos().artificial(this.link);
+
+             document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
+                calculo = calculos.Escolhar([tipo,valoria,operação]);
                 document.querySelector("[name=artificial_texto]").textContent = calculo;
                 document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
                 document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
-                var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
-                pontos_atual = pontos_atual + 1;
-                document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
-                document.querySelector(".temporizador").textContent  = "05:00";
-               this.link = "derrotar";
-                modulos().artificial(this.link);
-                var tipo;
-               if(pontos_atual >3){
-                tipo = "medio"; 
-               }
-               else {
-                tipo  = "fácil";
-               }
-               document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
-
-                    var I_a = document.querySelector("[name=Resposta_artificial]");
-                    var theads = [];
-                    this.link = tipo;
-                    switch(this.link){
-                        case "fácil":
+              
+            }
+                
+               if(pontos_atual- 1 > 3){
+                tipo = "média"; 
+                   this.link = tipo;
+                  while(theads.length >0) theads.pop();
                             theads.push(new Worker("./src/rsa.js"));
                             theads[0].postMessage({tipo:this.link});
                             theads[0].onmessage = function(ev){
-                                    console.log(ev.data.tipo);
                                     document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                     modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
-                                    
-                            }; 
-                            modulos().temporizador();
-                    
-                            break;
-           } 
-               }    
-               document.querySelector("[name=Resposta_artificial]").click();
+                                    modulos().temporizador();
+                            };
+                   
+               }
+               else if(pontos_atual - 1 <= 3) {
+                tipo  = "fácil";
+                   this.link = tipo;
+                   theads.push(new Worker("./src/rsa.js"));
+                            theads[0].postMessage({tipo:this.link});
+                            theads[0].onmessage = function(ev){
+                                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                                    modulos().temporizador();
+                             };
+                   
+               }
+                
+              document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
+        
+            document.querySelector("[name=Resposta_artificial]").click();
                 clearInterval(tempo_artificial);
                 theads.pop();
-            }
             
         },tempo_temporizador);
        
@@ -291,7 +303,11 @@ class rsa{
         return (num % i) ==0;
     }
     modulos_média(){
-
+    this.link = [];
+    this.link.push("média");
+    this.operação = this.Url();
+    while(this.link.length > 0) this.link.pop();
+    
     }
     modulos_díficil(){
 
@@ -301,10 +317,7 @@ class rsa{
     this.link = [];
     this.link.push("fácil");
     this.operação = this.Url();
-    this.link.pop();
-    this.link.pop();
-    this.link.pop();
-    
+     while(this.link.length > 0) this.link.pop();
     }
 }
 function modulos(){
@@ -336,6 +349,13 @@ switch(tipo){
     
     this.postMessage({tipo:[rsa.operação, rsa.operador]});
     this.self.close();
+        break;
+    case "média":
+        rsa.modulos_média();
+    
+    this.postMessage({tipo:[rsa.operação,rsa.operador]});
+    this.self.close();
+    
         break;
 }
 })

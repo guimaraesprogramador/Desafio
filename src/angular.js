@@ -2,12 +2,12 @@ var theads  = []
 var valor = [];
 
 
-window.onload = function(){
+window.onload = function(ev){
     document.body.style.visibility ="hidden";
     if(navigator.onLine){
-        document.body.style.visibility = "visible";
         
-        if(window.location.pathname == "/"|| window.location.pathname =="/index.html"){
+        document.body.style.visibility = "visible";
+        if(window.location.pathname === "/" || window.location.pathname === "/index.html"){
             Swal.fire({
                 icon:"warning",
                 title: 'Carregando',
@@ -30,8 +30,9 @@ window.onload = function(){
                 }
                
                 
-            }
+            }    
         }
+        
         
     }
     else
@@ -176,8 +177,7 @@ else if(window.location.pathname == "/jogo.html"){
 }
 
 }
-$scope.Vitoria_jogador = 0;
-$scope.Derrota_jogador = 0;
+
 $scope.Vitoria_artificial = 0;
 $scope.Derrota_artificial = 0;
 $scope.resposta_artificial = "";
