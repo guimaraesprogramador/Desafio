@@ -93,7 +93,34 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ##### Resultados:
 
 
-##### Pevisão até 10 de outubro de 2020.
+##### Pevisão até 20 de outubro de 2020.
+
+#### ETAPA 6 
+##### Objetivos:
+1. Implementar a terceira parte do esboço funcionando.
+
+##### Resultados:
+
+
+##### Pevisão até 30  de outubro de 2020.
+
+#### ETAPA 7 
+##### Objetivos:
+1. Implementar a quatro parte do esboço para desktop.
+
+##### Resultados:
+
+
+##### Pevisão até 05   de novembro de 2020.
+
+#### ETAPA 8 
+##### Objetivos:
+1. Implementar a terceira parte do esboço para android.
+
+##### Resultados:
+
+
+##### Pevisão até 15  de novembro de 2020.
 
 ### 1.6 Organização do Trabalho: 
 
