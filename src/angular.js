@@ -184,7 +184,7 @@ $scope.resposta_artificial = "";
 $scope.temporizador = "05:00";
 
 if(window.location.pathname == "/jogo.html"){
-        var permissão = $scope.verificar_plataforma();
+        /* var permissão = $scope.verificar_plataforma();
 
     
         var token =  window.location.href.split("token=");
@@ -224,7 +224,7 @@ if(window.location.pathname == "/jogo.html"){
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
             window.location.replace(caminho);
         }
-        
+        */
        
     }
 
