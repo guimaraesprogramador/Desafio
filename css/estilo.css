@@ -27,7 +27,7 @@ button{
       margin-top: auto;
   }
  #esquerda-radio img,#direita-raido img {
-  background-color: white;
+     background-color: white;
   -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     filter: gray;

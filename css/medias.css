@@ -31,29 +31,40 @@
         
     }
     input[name="jogador_texto"]{
+         position: relative;
+        width: 63%;
+        top: 50%;
+        left:60%;
     }
     
     [name="salvar"]{
         position: relative;
+        top: 160%;
+        font-size: 30%;
+         background-color: #ff3333;
     }
     
     [name="Resposta"]{
         font-size: 20%;
         position: relative;
         float: right;
-        left: 60%;
+        left: 110%;
+         background-color: #ff3333;
         
     }
+    
     [name="Resposta_artificial"]{
+        background-color: #ff3333;
     }
     .interrogação{
         filter: grayscale(100%);
         width: 20%;
         position: relative;
         float: right;
-        left: 130%;
+        left: 180%;
     }
     [name="nome_jogador"]{
+       position: relative;
     }
     [name="nome_artificial"]{
     }
