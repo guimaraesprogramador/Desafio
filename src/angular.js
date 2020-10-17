@@ -2,8 +2,9 @@ var theads  = []
 var valor = [];
 
 
-window.onload = function(ev){
-    document.body.style.visibility ="hidden";
+var app = angular.module('Desafio',['ngBrowser'])
+app.run( function() {
+ document.body.style.visibility ="hidden";
     if(navigator.onLine){
         
         document.body.style.visibility = "visible";
@@ -13,9 +14,13 @@ window.onload = function(ev){
                 title: 'Carregando',
                 html:' <div class="loader"></div>'
             })
+            var t = window.setTimeout(function(){
+                window.location.reload(true);
+            },2000);
             theads.push(new Worker("./src/rsa.js"));
             theads[0].postMessage({tipo:"começo"});
             theads[0].onmessage = function(ev){
+                clearTimeout(t);
                 if(ev.data.criptografia.length == 0){
                     location.reload(true);
                 }
@@ -31,19 +36,17 @@ window.onload = function(ev){
                
                 
             }    
-        }
+                    }
         
-        
+       
     }
     else
     {
      
 
         window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/404.html"));
-    }
-
-}
-var app = angular.module('Desafio',['ngBrowser'])
+    }    
+});
 
 app.controller('Contra-IA',['$scope','appBrowser','$location',
 
@@ -184,7 +187,7 @@ $scope.resposta_artificial = "";
 $scope.temporizador = "05:00";
 
 if(window.location.pathname == "/jogo.html"){
-        /* var permissão = $scope.verificar_plataforma();
+        var permissão = $scope.verificar_plataforma();
 
     
         var token =  window.location.href.split("token=");
@@ -224,7 +227,7 @@ if(window.location.pathname == "/jogo.html"){
             var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
             window.location.replace(caminho);
         }
-        */
+        
        
     }
 

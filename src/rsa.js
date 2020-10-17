@@ -114,9 +114,13 @@ class rsa {
             this.link.push(this.p.toString());
             this.num = this.num - 1;
         }
-        this.operador = [this.divisores(Math.floor(Math.random() *4)),this.divisores(Math.floor(Math.random() *4))];        
-            return this.link[1].toString() + this.operador[0] +
-        this.link[2].toString() + this.operador[1] + this.link[3].toString();
+        this.divisores(Math.floor(Math.random() *4));
+        var n1 = this.operador;
+        this.divisores(Math.floor(Math.random() *4) )
+        var n2 = this.operador;
+        this.operador = [n1,n2];        
+            return this.link[1].toString() + this.operador[0].toString() +
+        this.link[2].toString() + this.operador[1].toString() + this.link[3].toString();
         
         }
     
@@ -253,7 +257,7 @@ class rsa {
                             theads[0].postMessage({tipo:this.link});
                             theads[0].onmessage = function(ev){
                                     document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                                    modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                                     modulos().temporizador();
                              };
                    
