@@ -1,4 +1,4 @@
-
+/* verticial*/
 @media screen and (min-width:300px) and (max-width:500px){
     
     body{
@@ -14,7 +14,7 @@
         
     }   
     .direita{
-             position: absolute;
+        position: absolute;
         border: 1px dotted black;
         width: 40%;
         right: 0%;
@@ -26,13 +26,25 @@
     }
     [name="placar"]{
         position: relative;
-        top: 100%;
     }
     .operação{
+    background-color: white;
+    font-style: normal;
+    align-content: center;
+    position: relative;
+    padding-right: 20%;
+    padding-left: 10%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+        left: 35%;
+        top: 100%;
     }
     .img_artificial{
         filter: grayscale(100%);
-            width: 31%;
+        width: 31%;
+        position: relative;
+        left: 70%;
+        bottom: 130%;
     }
     .img_jogador{
          filter: grayscale(100%);
@@ -68,6 +80,12 @@
     
     [name="Resposta_artificial"]{
         background-color: #ff3333;
+        font-size: 80%;
+        position: relative;
+        float: right;
+        left: 130%;
+        bottom: 180%;
+
     }
     .interrogação{
         filter: grayscale(100%);
@@ -84,32 +102,40 @@
     }
     [name="valor_jogador"]{
          position: relative;
-        top: 100%;
     }
     [name="Derrota_jogador"]{
         position: relative;
         
-        top: 100%;
     }
     [name="nome_artificial"]{
+        position: relative;
+        left: 45%;
     }
     .img_resultado1{
     }
     .img_resultado0{
     }
     .temporizador{
-
+        position: absolute;
+        left:45%;
+        bottom: 53%;
     }     
     [name="artificial_texto"]{
-        
+        position: relative;
+        left:110%;
+        bottom: 630%;
     }   
     [name="Vitoria_jogador"]{
         position: relative;
-        top: 100%;
     }
-    
 }
+/* horizontal*/
 @media screen and (min-width: 500px)  and (max-width:700px){
+    body{
+    opacity: 1;
+    background-color: rgb(127,127,229);
+   
+    }
     .esquerda{
         border: 1px dotted black;
         width: 51%;
@@ -131,6 +157,8 @@
         }
         .operação{
             width: 65%;
+            position: relative;
+            left: 20%;
         }
         .img_artificial{
             filter: grayscale(100%);
