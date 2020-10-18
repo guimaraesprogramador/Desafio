@@ -1,7 +1,8 @@
 
 var calculos = {
  média(valoria, operação){
-     var calculo = 0;
+     if(operação.length == 2){
+         var calculo = 0;
                     var i = 0;
                    var divisor1 = valoria.split(operação[0]);
                     while(i<2){
@@ -12,8 +13,8 @@ var calculos = {
                         else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor1[i]));
                         i++;
                     }
-                    while(divisor1.length >2) divisor.shift();
-                    divisor1 = valoria.split(operação[1]);
+                    operação.shift();
+                    divisor1 = valoria.split(operação[0]);
                     i  = 0;
                    var calculo2  = 0;
                    while(i<divisor1.length){
@@ -24,7 +25,11 @@ var calculos = {
                         else if(operação == "/")calculo2 = (Number.parseInt(calculo2) / Number.parseInt( divisor1[i]));
                         i++;
                     }
-                  return calculo = calculo + calculo2;
+                  calculo = calculo + calculo2;
+                    return calculo.toFixed(2);
+     }
+     else this.fácil(valoria,operação);
+     
     },
     fácil(valoria, operação){
         var calculo = 0;
@@ -38,8 +43,7 @@ var calculos = {
                         else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
                         i++;
                     }
-        return calculo;
-        return
+        return calculo.toFixed(2);
     },
     difícil(valoria, operação){
         
