@@ -41,7 +41,7 @@ var calculos = {
         return calculo;
         return
     },
-    difícil(){
+    difícil(valoria, operação){
         
     },
     Escolhar(tipo){
