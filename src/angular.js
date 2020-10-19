@@ -27,7 +27,7 @@ app.run( function() {
                     location.reload(true);
                 }
                 else{
-                  ev.data.link = window.location.protocol +"//"+  window.location.host.toString() +"/login.html";
+                  ev.data.link = window.location.protocol +"//"+  window.location.host.toString() +"/desafio-IA/login.html";
                  valor.push(ev.data.criptografia[0].chave_publica,
                     ev.data.criptografia[0].chave_privada, 
                     ev.data.criptografia[0].mod,
@@ -46,7 +46,7 @@ app.run( function() {
     {
      
 
-        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/404.html"));
+        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"//desafio-IA/404.html"));
     }    
 });
 
