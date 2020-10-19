@@ -8,7 +8,9 @@ app.run( function() {
     if(navigator.onLine){
         
         document.body.style.visibility = "visible";
-        if(window.location.pathname === "/" || window.location.pathname === "/index.html"){
+        if(window.location.pathname == "/" || window.location.pathname == "/index.html"
+  ||
+  window.location.pathname == "/desafio-IA/"){
             Swal.fire({
                 icon:"warning",
                 title: 'Carregando',
@@ -80,7 +82,9 @@ $scope.verificar_plataforma = function(){
 };
 $scope.carregar_dados = function(){
     // index.html
-if(window.location.pathname === "/" || window.location.pathname === "/index.html"){
+if(window.location.pathname == "/" || window.location.pathname == "/index.html"
+  ||
+  window.location.pathname == "/desafio-IA/"){
     var iniciar = document.getElementsByTagName("button")[0];
   
 iniciar.onclick = function(ev){
@@ -107,7 +111,9 @@ iniciar.onclick = function(ev){
     }
     
 }
-else if(window.location.pathname == "/login.html"){
+else if(window.location.pathname == "/login.html"  
+        ||
+       window.location.pathname == "/desafio-IA/login.html"){
     try{
         var entrar = document.getElementsByTagName("button")[0];
         
@@ -186,7 +192,9 @@ $scope.Derrota_artificial = 0;
 $scope.resposta_artificial = "";
 $scope.temporizador = "05:00";
 
-if(window.location.pathname == "/jogo.html"){
+if(window.location.pathname == "/jogo.html"
+  ||
+  window.location.pathname == "/desafio-IA/jogo.html"){
         var permissão = $scope.verificar_plataforma();
 
     
