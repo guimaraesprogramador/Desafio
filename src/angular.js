@@ -232,7 +232,7 @@ if(window.location.pathname == "/jogo.html"
 
      }
         else{
-            var caminho = window.location.href.replace("/desafio-IA/jogo.html?token="+token[1],"/index.html");
+            var caminho = window.location.href.replace("/desafio-IA/jogo.html?token="+token[1],"/desafio-IA/");
             window.location.replace(caminho);
         }
         
