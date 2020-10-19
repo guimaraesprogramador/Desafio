@@ -46,7 +46,7 @@ app.run( function() {
     {
      
 
-        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"//desafio-IA/404.html"));
+        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/desafio-IA/404.html"));
     }    
 });
 
@@ -139,7 +139,7 @@ else if(window.location.pathname == "/login.html"
                 window.localStorage.setItem("letra_nome",texto.value);
                 window.localStorage.setItem("letra_sexo",criptografia_radio);
                   
-                   var caminho = window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html"
+                   var caminho = window.location.protocol +"//"+  window.location.host.toString() +"/desafio-IA/jogo.html"
                    var novo_caminho = caminho + "?token="+window.location.href.split("token=")[1];
                    console.log(novo_caminho);
                  window.location.replace(novo_caminho);
@@ -232,7 +232,7 @@ if(window.location.pathname == "/jogo.html"
 
      }
         else{
-            var caminho = window.location.href.replace("/jogo.html?token="+token[1],"/index.html");
+            var caminho = window.location.href.replace("/desafio-IA/jogo.html?token="+token[1],"/index.html");
             window.location.replace(caminho);
         }
         
