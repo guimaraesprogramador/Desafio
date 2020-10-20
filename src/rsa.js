@@ -173,7 +173,10 @@ class rsa {
             var tempo = window.setInterval(function(){
                 document.querySelector(".som").remove();
                 clearInterval(tempo);
-                
+                 document.querySelector("[name=artificial_texto]").textContent = "";
+                    document.querySelector("[name=jogador_texto]").textContent = "";
+                    document.querySelector(".img_resultado0").src = "";
+                    document.querySelector(".img_resultado1").src = "";
                 modulos().artificial(undefined);
                 
             },5000);
@@ -194,10 +197,7 @@ class rsa {
               document.querySelector("[name=jogador_texto]").textContent != ""){
                 segundo = 60;
                 minutos = 4;
-                    document.querySelector("[name=artificial_texto]").textContent = "";
-                    document.querySelector("[name=jogador_texto]").textContent = "";
-                    document.querySelector(".img_resultado0").src = "";
-                    document.querySelector(".img_resultado1").src = "";
+                   
 
                 clearInterval(contagem);
               }

@@ -1,10 +1,9 @@
 /* verticial*/
-@media screen and (min-width:300px) and (max-width:500px){
+@media screen and (max-width:500px){
     
     body{
     opacity: 1;
     background-color: rgb(127,127,229);
-   
     }
     .esquerda{
             position: absolute;
@@ -112,8 +111,12 @@
         left: 45%;
     }
     .img_resultado1{
+          position: relative;
+        left: 30%;
     }
     .img_resultado0{
+        position: relative;
+        left: 110%;
     }
     .temporizador{
         position: absolute;
@@ -123,14 +126,18 @@
     [name="artificial_texto"]{
         position: relative;
         left:110%;
-        bottom: 630%;
+        bottom: 400%;
+        background-color: white;
+         padding-right: 15%;
+        padding-left: 13%;
+        padding-top: 0.5%;
     }   
     [name="Vitoria_jogador"]{
         position: relative;
     }
 }
 /* horizontal*/
-@media screen and (min-width: 500px)  and (max-width:700px){
+@media screen and (min-width: 501px)  and (max-width:700px){
     body{
     opacity: 1;
     background-color: rgb(127,127,229);

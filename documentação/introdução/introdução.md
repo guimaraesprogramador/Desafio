@@ -86,12 +86,12 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 ##### Pevisão até 26 de setembro de 2020.
 
-#### ETAPA 5 
+#### ETAPA 5 completo
 ##### Objetivos:
 1. Implementar a terceira parte do esboço para android.
 
 ##### Resultados:
-
+1° foi possivel para 320px.
 
 ##### Pevisão até 20 de outubro de 2020.
 

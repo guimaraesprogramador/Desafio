@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Desafío Matemático  </title>
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
-    <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-cordova/0.1.27-alpha/ng-cordova.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
     <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script  src="./src/string-binario.js" ></script>
@@ -40,7 +39,7 @@
         <br><label for="" name="Derrota_artificial">Derrota:</label>
         <span ng-model="Derrota_artificial" name="Derrota_artificial">{{Derrota_artificial}}</span>
         <span name="nome_artificial">I.A</span>
-        <img class="img_resultado0" /> 
+        <img class="img_resultado0"  /> 
          </div>
        
        </div>
@@ -83,13 +82,13 @@
       <span name="valor_jogador" >0</span><br>
       <label for="" name="Derrota_jogador">Derrota:</label>
       <span name="valor_jogador" >0</span>
-      <img class="img_resultado1" />
+      <img class="img_resultado1"  />
       
       </div>
     </div>
       <div class="row">
         <div class="col">
-          <img class="img_jogador"  src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png"/>
+          <img class="img_jogador" />
           <input type="submit" name="salvar" ng-click="carregar_dados()"   class="btn btn-light"  value="Salvar"/>  
         </div>
           
