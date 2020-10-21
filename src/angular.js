@@ -143,10 +143,8 @@ else if(window.location.pathname == "/login.html"
                 window.localStorage.setItem("letra_nome",texto.value);
                 window.localStorage.setItem("letra_sexo",criptografia_radio);
                   
-                   var caminho = window.location.pathname != "/" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
-                       console.log(caminho);
-                   var novo_caminho = caminho + "?token="+window.location.href.split("token=")[1];
-                   console.log(novo_caminho);
+                   var caminho = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/desafio-IA/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
+                   var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
                  window.location.replace(novo_caminho);
                 }
                 else {
