@@ -186,33 +186,8 @@ class rsa {
     temporizador(){
         var segundo = 59;
         var minutos = 4;
-      while( segundo > 0 && minutos >0){
-       if(segundo > 0){
-              
-              if(segundo <10){
-                document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
-              }
-              else if(document.querySelector("[name=artificial_texto]").textContent != ""
-              ||
-              document.querySelector("[name=jogador_texto]").textContent != ""){
-                break;
-
-                
-              }
-              else {
-                
-                document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
-              } 
-        }
-        else if(minutos > 0 ){
-              segundo = 59;
-              minutos = minutos - 1;
-              document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
-          }
-          else if(minutos == 0 && segundo == 0) break;
-          segundo = segundo - 1;
-      }
-    /* var contagem =  window.setInterval(function(){
+      
+    var contagem =  window.setInterval(function(){
           if(segundo > 0){
               
               if(segundo <10){
@@ -225,7 +200,7 @@ class rsa {
                 minutos = 4;
                    
 
-                clearInterval(contagem);
+                
               }
               else {
                 
@@ -241,7 +216,7 @@ class rsa {
           else if(minutos == 0 && segundo == 0)clearInterval(contagem);
           segundo = segundo - 1;
 
-      },1000);*/
+      },1000);
     }
     calculo_artificial(operador, operação, tempo_temporizador){
         var tempo_artificial = window.setInterval(function(){

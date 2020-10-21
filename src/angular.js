@@ -27,7 +27,11 @@ app.run( function() {
                     location.reload(true);
                 }
                 else{
-                  ev.data.link = window.location.protocol +"//"+  window.location.host.toString() +"/desafio-IA/login.html";
+                    
+                  ev.data.link = window.location.pathname != "/" ? window.location.protocol +"//"+  
+                      window.location.host.toString() + window.location.pathname +"login.html" :window.location.protocol +"//"+  
+                      window.location.host.toString() + window.location.pathname +"login.html"; 
+                  
                  valor.push(ev.data.criptografia[0].chave_publica,
                     ev.data.criptografia[0].chave_privada, 
                     ev.data.criptografia[0].mod,
@@ -139,7 +143,8 @@ else if(window.location.pathname == "/login.html"
                 window.localStorage.setItem("letra_nome",texto.value);
                 window.localStorage.setItem("letra_sexo",criptografia_radio);
                   
-                   var caminho = window.location.protocol +"//"+  window.location.host.toString() +"/desafio-IA/jogo.html"
+                   var caminho = window.location.pathname != "/" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
+                       console.log(caminho);
                    var novo_caminho = caminho + "?token="+window.location.href.split("token=")[1];
                    console.log(novo_caminho);
                  window.location.replace(novo_caminho);
@@ -232,7 +237,9 @@ if(window.location.pathname == "/jogo.html"
 
      }
         else{
-            var caminho = window.location.href.replace("/desafio-IA/jogo.html?token="+token[1],"/desafio-IA/");
+            var separar = window.location.pathname != "/" ? window.location.pathname : "/";
+            var anterior = "/";
+            var caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
             window.location.replace(caminho);
         }
         

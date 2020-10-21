@@ -26,7 +26,7 @@ var calculos = {
                         i++;
                     }
                   calculo = calculo + calculo2;
-                    return calculo.toFixed(2);
+                    return calculo.toFixed();
      }
      else this.fácil(valoria,operação);
      
@@ -43,7 +43,7 @@ var calculos = {
                         else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
                         i++;
                     }
-        return calculo.toFixed(2);
+        return calculo.toFixed();
     },
     difícil(valoria, operação){
         
