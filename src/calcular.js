@@ -1,5 +1,5 @@
 
-var calculos = {
+class calculos = {
  média(valoria, operação){
      if(operação.length == 2){
          var calculo = 0;
@@ -25,8 +25,14 @@ var calculos = {
                         else if(operação == "/")calculo2 = (Number.parseInt(calculo2) / Number.parseInt( divisor1[i]));
                         i++;
                     }
-                  calculo = calculo + calculo2;
-                    return calculo.toFixed();
+                  var total = calculo + calculo2;
+         if(total > 0 ){
+             return total;
+         }
+         if(total < 0){
+             return  "-" + total;
+         }
+                    
      }
      else this.fácil(valoria,operação);
      
@@ -43,7 +49,12 @@ var calculos = {
                         else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
                         i++;
                     }
-        return calculo.toFixed();
+        if(calculo > 0 ){
+             return calculo;
+         }
+         if(calculo < 0){
+             return  "-" + calculo;
+         }
     },
     difícil(valoria, operação){
         
@@ -61,3 +72,5 @@ var calculos = {
     }
 }
 }
+
+const calc = new calculos(); 

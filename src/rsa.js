@@ -229,15 +229,7 @@ class rsa {
                 document.querySelector(".temporizador").textContent  = "05:00";
               this.link = "derrotar";
                 modulos().artificial(this.link);
-
-             document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
-                calculo = calculos.Escolhar([tipo,valoria,operação]);
-                document.querySelector("[name=artificial_texto]").textContent = calculo;
-                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
-                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
-              
-            }
-                
+            
                if(pontos_atual- 1 > 3){
                 tipo = "média"; 
                    this.link = tipo;
@@ -266,7 +258,11 @@ class rsa {
                 
               document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
         
-            document.querySelector("[name=Resposta_artificial]").click();
+                calculo = calc.Escolhar([tipo,valoria,operação]);
+                document.querySelector("[name=artificial_texto]").textContent = calculo;
+                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
+                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+            
                 clearInterval(tempo_artificial);
                 theads.pop();
             
