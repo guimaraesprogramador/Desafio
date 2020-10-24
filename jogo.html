@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Desafío Matemático  </title>
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
-    <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script  src="./src/string-binario.js" ></script>
-    <script src="src/criptografia-rsa.js"></script>
-    <script  src="./src/angular.js"></script>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./src/calcular.js"></script>
-    <script src="./src/rsa.js"></script>
-    
-    <link rel="stylesheet" href="./css/jogo_estilo.css" />
-    <link rel="stylesheet" href="./css/medias.css"/>
-</head>
-<body ng-app="Desafio" ng-controller="Contra-IA" >
-   <div class="container" >
-    
-    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Desafío Matemático  </title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+        <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
+        <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script  src="./src/string-binario.js" ></script>
+        <script src="src/criptografia-rsa.js"></script>
+        <script  src="./src/angular.js"></script>
 
-     <!-- pontução da I.A -->
-     <div class="col-6" >
-       <div class="row">
-          <div class="col"name ="artificial">
-            <label name="placar">Placar</label><br>
-            <label  name="Vitoria_artificial">Vitoria:</label>
-        <span ng-model="Vitoria_artificial" name="Vitoria_artificial">{{Vitoria_artificial}}</span>
-        <br><label for="" name="Derrota_artificial">Derrota:</label>
-        <span ng-model="Derrota_artificial" name="Derrota_artificial">{{Derrota_artificial}}</span>
-        <span name="nome_artificial">I.A</span>
-        <img class="img_resultado0"  /> 
-         </div>
-       
-       </div>
-       <div class="row">
-        <div class="col">
-           
-          <img class="img_artificial" src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
-          <input type="submit"  name="Resposta_artificial" ng-click="carregar_dados()"   class="btn btn-light"  value="Resposta"/>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="./src/calcular.js"></script>
+        <script src="./src/rsa.js"></script>
+
+        <link rel="stylesheet" href="./css/jogo_estilo.css" />
+        <link rel="stylesheet" href="./css/medias.css"/>
+    </head>
+    <body ng-app="Desafio" ng-controller="Contra-IA" >
+        <div class="container" >
+
+
+
+            <!-- pontução da I.A -->
+            <div class="col-6" >
+                <div class="row">
+                    <div class="col"name ="artificial">
+                        <label name="placar">Placar</label><br>
+                        <label  name="Vitoria_artificial">Vitoria:</label>
+                        <span ng-model="Vitoria_artificial" name="Vitoria_artificial">{{Vitoria_artificial}}</span>
+                        <br><label for="" name="Derrota_artificial">Derrota:</label>
+                        <span ng-model="Derrota_artificial" name="Derrota_artificial">{{Derrota_artificial}}</span>
+                        <span name="nome_artificial">I.A</span>
+                        <img class="img_resultado0"  /> 
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+
+                        <img class="img_artificial" src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
+                        <input type="submit"  name="Resposta_artificial"  class="btn btn-light"  value="Resposta"/>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span name="artificial_texto" ng-model="resposta_artificial" ></span> 
+                    </div>
+                </div>
+            </div>
+
+            <!-- linhas -->
+            <hr class="esquerda" />
+            <hr class="direita"/>
+
+            <!-- operador matemático -->
+            <div class="col-12">
+                <span  class="operação"></span>
+
+            </div>
+
+            <!-- pontução do jogador -->
+            <div class="col-6" name="jogador">
+                <div class="row">
+                    <div class="col">
+
+                        <label name="placar">Placar</label><br>
+                        <label name="Vitoria_jogador">Vitoria:</label>
+                        <span name="valor_jogador" >0</span><br>
+                        <label for="" name="Derrota_jogador">Derrota:</label>
+                        <span name="valor_jogador" >0</span>
+                        <img class="img_resultado1"  />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img class="img_jogador" />
+                        <input type="submit" name="salvar" ng-click="carregar_dados()"   class="btn btn-light"  value="Salvar"/>  
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span name="nome_jogador">kevin</span>
+                        <input type="tel" name="jogador_texto" ng-model="resposta_jogador" required />
+                        <input type="submit" name="Resposta" ng-click="carregar_dados()"   class="btn btn-light"  value="Resposta"/> 
+                        <img src="https://img.icons8.com/nolan/48/question-mark.png" class="interrogação"/>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        
-        
-       </div>
-       <div class="row">
-         <div class="col">
-          <span name="artificial_texto" ng-model="resposta_artificial" ></span> 
-         </div>
-       </div>
-     </div>
-     
-      <!-- linhas -->
-      <hr class="esquerda" />
-      <hr class="direita"/>
-      
-      <!-- operador matemático -->
-     <div class="col-12">
-      <span  class="operação"></span>
-      
-    </div>
-    
-     <!-- pontução do jogador -->
-     <div class="col-6" name="jogador">
-       <div class="row">
-        <div class="col">
-          
-      <label name="placar">Placar</label><br>
-      <label name="Vitoria_jogador">Vitoria:</label>
-      <span name="valor_jogador" >0</span><br>
-      <label for="" name="Derrota_jogador">Derrota:</label>
-      <span name="valor_jogador" >0</span>
-      <img class="img_resultado1"  />
-      
-      </div>
-    </div>
-      <div class="row">
-        <div class="col">
-          <img class="img_jogador" />
-          <input type="submit" name="salvar" ng-click="carregar_dados()"   class="btn btn-light"  value="Salvar"/>  
-        </div>
-          
-      </div>
-       <div class="row">
-        <div class="col">
-          <span name="nome_jogador">kevin</span>
-          <input type="tel" name="jogador_texto" ng-model="resposta_jogador" required />
-          <input type="submit" name="Resposta" ng-click="carregar_dados()"   class="btn btn-light"  value="Resposta"/> 
-          <img src="https://img.icons8.com/nolan/48/question-mark.png" class="interrogação"/>
-        </div>
-       </div>
-    </div>
-    
-   </div>
-   <h5 ng-model="temporizador" class="temporizador">{{temporizador}}</h5>
-</body>
+        <h5 ng-model="temporizador" class="temporizador">{{temporizador}}</h5>
+    </body>
 </html>

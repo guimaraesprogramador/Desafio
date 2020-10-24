@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Desafío Matemático  </title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
-    <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-   <script  src="./src/string-binario.js" ></script>
-    <script src="./src/criptografia-rsa.js"></script>
-    <script  src="./src/angular.js"></script>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Desafío Matemático  </title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+        <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
+        <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script  src="./src/string-binario.js" ></script>
+        <script src="./src/criptografia-rsa.js"></script>
+        <script  src="./src/angular.js"></script>
 
-    <script src="./src/rsa.js"></script>
-    <link rel="stylesheet" href="css/estilo.css" />
-</head>
-<body  ng-app="Desafio" ng-controller="Contra-IA" >
-    <div class="container ">
-        <div class="col-12" style="text-align:center">
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script src="./src/rsa.js"></script>
+        <link rel="stylesheet" href="css/estilo.css" />
+    </head>
+    <body  ng-app="Desafio" ng-controller="Contra-IA" >
+        <div class="container ">
+            <div class="col-12" style="text-align:center">
                 <div class="row">
-                        <div class="col" >
+                    <div class="col" >
                         <h3 >Iniciando</h3>
-                        
-                        
+
+
                     </div>
-                    
-                   
+
+
                 </div>
-                
-        </div>
-        <div class="col-12" style="text-align:center">
+
+            </div>
+            <div class="col-12" style="text-align:center">
                 <div class="row">
-                        <div class="col" >
-                               
-                              <label class="img-fluid"  name="nome" >Nome:</label>
-                              
-                              <input type="text" class="img-fluid" name="usuário" ng-model="texto" required /> <button type="submit" id="Entrar"  ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Entrar">Entrar
-                            
-                            </button>
-                             
-                        
-                        </div>
+                    <div class="col" >
+
+                        <label class="img-fluid"  name="nome" >Nome:</label>
+
+                        <input type="text" class="img-fluid" name="usuário" ng-model="texto" required /> <button type="submit" id="Entrar"  ng-click="carregar_dados()"   class="btn btn-light" style="background-color: #ff3333;" value="Entrar">Entrar
+
+                        </button>
+
+
+                    </div>
                 </div>
+            </div>
+            <div class="col-12" style="text-align:center">
+
+                <ul class="nav justify-content-center">
+                    <ul class="nav">
+                        <li class="nav-item" id="esquerda-radio">
+                            <input class="img-fluid" type="radio"  value="feminino" name="sexo"/>
+                            <img class="img-fluid" src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
+                        </li>
+                        <li class="nav-item" id="direita-raido">
+                            <input type="radio" value="masculino" name="sexo"/>
+                            <img class="img-fluid" src="https://img.icons8.com/nolan/100/men-age-group-4--v2.png"/>
+
+                        </li>
+                    </ul>
+                </ul>
+            </div>
         </div>
-        <div class="col-12" style="text-align:center">
-                        
-        <ul class="nav justify-content-center">
-                        <ul class="nav">
-                                        <li class="nav-item" id="esquerda-radio">
-                                                        <input class="img-fluid" type="radio"  value="feminino" name="sexo"/>
-                                                        <img class="img-fluid" src="https://img.icons8.com/nolan/100/women-age-group-5--v2.png">
-                                        </li>
-                                        <li class="nav-item" id="direita-raido">
-                                                        <input type="radio" value="masculino" name="sexo"/>
-                                                        <img class="img-fluid" src="https://img.icons8.com/nolan/100/men-age-group-4--v2.png"/>
-                                                      
-                                        </li>
-                        </ul>
-        </ul>
-        </div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
