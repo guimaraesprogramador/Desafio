@@ -64,7 +64,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 **2.2 diagrama de sequência:**
 ![image](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20sequencia%20do%20jogo.png)
-##### Pevisão até 26 de agosto de 2020.
+##### Previsão até 26 de agosto de 2020.
 ***
 #### ETAPA 3 completo
 ##### Objetivos:
@@ -75,7 +75,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 2. Utilizado localStorage para guarda a chaves Criptografia e enviar para terceira parte.
 3. Utilizar bootstrap 4 em alguns elementos.
 
-##### Pevisão até 06 de setembro de 2020.
+##### Previsão até 06 de setembro de 2020.
 
 #### ETAPA 4 Completo
 ##### Objetivos:
@@ -84,7 +84,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ##### Resultados:
 1° Foi possivel para desktop.
 
-##### Pevisão até 26 de setembro de 2020.
+##### Previsão até 26 de setembro de 2020.
 
 #### ETAPA 5 completo
 ##### Objetivos:
@@ -93,7 +93,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ##### Resultados:
 1° foi possivel para 320px.
 
-##### Pevisão até 20 de outubro de 2020.
+##### Previsão até 20 de outubro de 2020.
 
 #### ETAPA 6 
 ##### Objetivos:
@@ -102,7 +102,7 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ##### Resultados:
 
 
-##### Pevisão até 30  de outubro de 2020.
+##### Previsão até 30  de outubro de 2020.
 
 #### ETAPA 7 
 ##### Objetivos:
@@ -111,16 +111,52 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 ##### Resultados:
 
 
-##### Pevisão até 05   de novembro de 2020.
+##### Previsão até 05 de novembro de 2020.
 
 #### ETAPA 8 
 ##### Objetivos:
-1. Implementar a terceira parte do esboço para android.
+1. Implementar a quarte parte do esboço para android.
 
 ##### Resultados:
 
 
-##### Pevisão até 15  de novembro de 2020.
+##### Previsão até 20  de novembro de 2020.
+
+#### ETAPA 9
+##### Objetivos:
+1. Implementar a quarte  parte do esboço funcionando.
+
+##### Resultados:
+
+
+##### Previsão até 30 de novembro de 2020.
+
+#### ETAPA 10
+##### Objetivos:
+1. Implementar a quinta parte do esboço para desktop.
+
+##### Resultados:
+
+
+##### Previsão até 05 de dezembro de 2020.
+
+#### ETAPA 11
+##### Objetivos:
+1. Implementar a quinta parte do esboço para android.
+
+##### Resultados:
+
+
+##### Previsão até 20  de  dezembro de 2020.
+
+#### ETAPA 12
+##### Objetivos:
+1. Implementar a quinta  parte do esboço funcionando.
+
+##### Resultados:
+
+
+##### Previsão até 30  de  dezembro de 2020.
 
 ### 1.6 Organização do Trabalho: 
 

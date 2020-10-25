@@ -1,60 +1,58 @@
-
-    
 body{
     opacity: 1;
     background-color: rgb(127,127,229)
-   
+
 }
 button{
-  width: 7.39cm;
-  height: 1.40cm;
-  margin-top: 10%;
-  margin-left: 2%;
-  opacity: 0.5;
-  font-family: Arial, Helvetica, sans-serif;
-  }
-   h3{
+    width: 7.39cm;
+    height: 1.40cm;
+    margin-top: 10%;
+    margin-left: 2%;
+    opacity: 0.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3{
     margin-top: 20%;
     color: #333333;
     font-family:"Liberation Sans";
-  }
-  #Entrar{
-      width: 2.1cm;
-      height: 1.50cm;
-      opacity: 0.5;  
-      background-position-y: 6.31cm;
-      background-position-x: 19.20cm ;
-      bottom: 16%;
-      margin-top: auto;
-     margin-bottom: 5%;
-  }
- #esquerda-radio img,#direita-raido img {
-     background-color: white;
-  -webkit-filter: grayscale(100%);
+}
+#Entrar{
+    width: 2.1cm;
+    height: 1.50cm;
+    opacity: 0.5;  
+    background-position-y: 6.31cm;
+    background-position-x: 19.20cm ;
+    bottom: 16%;
+    margin-top: auto;
+    margin-bottom: 5%;
+}
+#esquerda-radio img,#direita-raido img {
+    background-color: white;
+    -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     filter: gray;
-    
-  }
-  input[name=login]{
-  width: 7.40cm;
-  height: 1.40cm;
-  }
-  
-  #esquerda-radio{
+
+}
+input[name=login]{
+    width: 7.40cm;
+    height: 1.40cm;
+}
+
+#esquerda-radio{
     background-color: white;
-  }
-  #direita-raido{
+}
+#direita-raido{
     background-color: white;
-  }
-  #esquerda-radio + #direita-raido{
+}
+#esquerda-radio + #direita-raido{
     margin-left: 25px;
-  }
-  .nav{
+}
+.nav{
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-  .loader {
+}
+.loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
@@ -63,16 +61,15 @@ button{
     margin-left: 32%;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
+}
+
+/* Safari */
+@-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
-  
+}
