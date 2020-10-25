@@ -26,12 +26,7 @@ class calculos{
                 i++;
             }
             var total = calculo + calculo2;
-            if(total > 0 ){
-                return total;
-            }
-            if(total < 0){
-                return  "-" + total;
-            }
+            return total;
 
         }
         else this.fácil(valoria,operação);
@@ -49,12 +44,7 @@ class calculos{
             else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
             i++;
         }
-        if(calculo > 0 ){
-            return calculo;
-        }
-        if(calculo < 0){
-            return  "-" + calculo;
-        }
+        return calculo;
     }
     difícil(valoria, operação){
 
