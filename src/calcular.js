@@ -25,7 +25,7 @@ class calculos{
                 else if(operação == "/")calculo2 = (Number.parseInt(calculo2) / Number.parseInt( divisor1[i]));
                 i++;
             }
-            var total = calculo + calculo2;
+            var total = Number.parseInt(calculo) + Number.parseInt(calculo2);
             return total;
 
         }

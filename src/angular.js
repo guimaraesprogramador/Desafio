@@ -227,7 +227,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         theads[1].postMessage({tipo:"fácil"});
                                         theads[1].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                            modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                                            modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                                             theads.pop();
                                             theads.pop();
                                         };

@@ -224,30 +224,45 @@ calculo_artificial(operador, operação, tempo_temporizador){
         var calculo = 0;
         var theads = [];
         var tipo;
+        var ponto_jogador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
+        var Derrota_jogador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[1].textContent);
         var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
-        pontos_atual = pontos_atual + 1;
         document.querySelector(".temporizador").textContent  = "05:00";
         this.link = "derrotar";
         modulos().artificial(this.link);
         document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
+
             calculo = calc.Escolhar([tipo,valoria,operação]);
-            document.querySelector("[name=artificial_texto]").textContent = calculo;
-            document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
-            document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+            if(calculo == calc.Escolhar([tipo,valoria,operação])){
+                document.querySelector("[name=artificial_texto]").textContent = calculo;
+                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
+                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+                pontos_atual = pontos_atual + 1;
+                Derrota_jogador = Derrota_jogador - 1;
+                document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
+                document.querySelectorAll("[name=valor_jogador]")[1].textContent = Derrota_jogador;
+            }
+            else {
+                document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
+                document.querySelector(".img_resultado0").src  =  "./imagens/check-green-24dp.svg";
+                ponto_jogador = ponto_jogador +1; 
+                document.querySelectorAll("[name=valor_jogador]")[0].textContent = ponto_jogador;
+            }
+
         }
         document.querySelector("[name=Resposta_artificial]").onmouseenter = function(){
             document.querySelector("[name=Resposta_artificial]").onclick = null;
         }
-        if(pontos_atual- 1 > 3){
+        if(pontos_atual - 1 > 3){
             tipo = "média"; 
             this.link = tipo;
-            while(theads.length >0) theads.pop();
             theads.push(new Worker("./src/rsa.js"));
             theads[0].postMessage({tipo:this.link});
             theads[0].onmessage = function(ev){
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
                 modulos().temporizador();
+                theads.pop();
             };
 
         }
@@ -260,17 +275,13 @@ calculo_artificial(operador, operação, tempo_temporizador){
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                 modulos().temporizador();
+                theads.pop();
             };
 
         }
-
-        document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
-
         document.querySelector("[name=Resposta_artificial]").click();
 
-
         clearInterval(tempo_artificial);
-        theads.pop();
 
     },tempo_temporizador);
 
