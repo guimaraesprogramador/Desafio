@@ -20,7 +20,7 @@ app.run( function() {
                 window.location.reload(true);
             },2000);
             theads.push(new Worker("./src/rsa.js"));
-            theads[0].postMessage({tipo:"começo"});
+          
             theads[0].onmessage = function(ev){
                 clearTimeout(t);
                 if(ev.data.criptografia.length == 0){
@@ -36,12 +36,14 @@ app.run( function() {
                                ev.data.criptografia[0].chave_privada, 
                                ev.data.criptografia[0].mod,
                                ev.data.link);
-                    theads.pop();
+                    theads[0].terminate();
+                    theads[0] = undefined;
                     document.querySelector(".loader").remove();
                 }
 
 
-            }    
+            }
+              theads[0].postMessage({tipo:"começo"});
         }
 
 
@@ -213,8 +215,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         window.localStorage.clear()
                                         theads.push(new Worker("./src/rsa.js"));
-                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-                                                               mod:mod});
+                                        
                                         theads[0].onmessage = function(ev){
 
                                             modulos().descriptografar(ev.data.nome,ev.data.sexo,
@@ -223,14 +224,20 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                         }; 
+                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
+                                                               mod:mod});
                                         theads.push(new Worker("./src/rsa.js"));
-                                        theads[1].postMessage({tipo:"fácil"});
+                                       
                                         theads[1].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                             modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
-                                            theads.pop();
-                                            theads.pop();
+                                            theads[0].terminate();
+                                            theads[0] = undefined;
+                                            theads[1].terminate();
+                                            theads[1] = undefined;
+                                            console.log(theads);
                                         };
+                                         theads[1].postMessage({tipo:"fácil"});
                                         modulos().temporizador();
 
                                     }

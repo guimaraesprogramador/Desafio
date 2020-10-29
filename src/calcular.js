@@ -35,7 +35,7 @@ class calculos{
     fácil(valoria, operação){
         var calculo = 0;
         var  i = 0;
-        var divisor = valoria.split(operação);
+        var divisor = valoria.split(operação.toString());
         while(i<divisor.length){
             if(i == 0)calculo = Number.parseInt( divisor[i]);
             else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);

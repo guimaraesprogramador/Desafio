@@ -10,6 +10,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script  src="./src/string-binario.js" ></script>
         <script src="src/criptografia-rsa.js"></script>
+        <script src="./src/calcular.js"></script>
+        <script src="./src/rsa.js"></script>
         <script  src="./src/angular.js"></script>
 
         <!-- Optional JavaScript -->
@@ -18,13 +20,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="./src/calcular.js"></script>
-        <script src="./src/rsa.js"></script>
+
 
         <link rel="stylesheet" href="./css/jogo_estilo.css" />
         <link rel="stylesheet" href="./css/medias.css"/>
     </head>
-    <body ng-app="Desafio" ng-controller="Contra-IA" >
+    <body ng-app="Desafio" ng-controller="Contra-IA" ng-init="carregar_dados()">
         <div class="container" >
 
 
@@ -92,9 +93,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span name="nome_jogador">kevin</span>
+                        <span name="nome_jogador"></span>
                         <input type="tel" name="jogador_texto" ng-model="resposta_jogador" required />
-                        <input type="submit" name="Resposta" ng-click="carregar_dados()"   class="btn btn-light"  value="Resposta"/> 
+                        <input type="submit" name="Resposta"  class="btn btn-light"  value="Resposta"/> 
                         <img src="https://img.icons8.com/nolan/48/question-mark.png" class="interrogação"/>
                     </div>
                 </div>

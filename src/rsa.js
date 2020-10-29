@@ -200,7 +200,7 @@ temporizador(){
                 minutos = 4;
 
 
-
+               
             }
             else {
 
@@ -257,26 +257,30 @@ calculo_artificial(operador, operação, tempo_temporizador){
             tipo = "média"; 
             this.link = tipo;
             theads.push(new Worker("./src/rsa.js"));
-            theads[0].postMessage({tipo:this.link});
+           
             theads[0].onmessage = function(ev){
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
                 modulos().temporizador();
-                theads.pop();
+                theads[0].terminate();
+                theads[0] = undefined;
+                  console.log(theads);
             };
-
+            theads[0].postMessage({tipo:this.link});
         }
         else if(pontos_atual - 1 <= 3) {
             tipo  = "fácil";
             this.link = tipo;
             theads.push(new Worker("./src/rsa.js"));
-            theads[0].postMessage({tipo:this.link});
             theads[0].onmessage = function(ev){
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                 modulos().temporizador();
-                theads.pop();
+                theads[0].terminate();
+                theads[0] = undefined;
+                  console.log(theads);
             };
+             theads[0].postMessage({tipo:this.link});
 
         }
         document.querySelector("[name=Resposta_artificial]").click();
@@ -350,7 +354,6 @@ self.addEventListener("message",function(ev){
         case "começo":
             var array =  rsa.Regras();
             this.postMessage({criptografia:array,link:rsa.link});
-            this.self.close();
             break;
         case "descriptografia":
             rsa.nome = ev.data.nome;
@@ -359,21 +362,17 @@ self.addEventListener("message",function(ev){
             rsa.mod = ev.data.mod;
             this.postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
                               mod:rsa.mod});
-            this.self.close();
             break;
         case "fácil":
 
             rsa.modulos_fácil();
 
             this.postMessage({tipo:[rsa.operação, rsa.operador]});
-            this.self.close();
             break;
         case "média":
             rsa.modulos_média();
 
             this.postMessage({tipo:[rsa.operação,rsa.operador]});
-            this.self.close();
-
             break;
     }
-})
+},false)
