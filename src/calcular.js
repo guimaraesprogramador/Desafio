@@ -3,34 +3,63 @@ class calculos{
     média(valoria, operação){
         if(operação.length == 2){
             var calculo = 0;
-            var i = 0;
-            var divisor1 = valoria.split(operação[0]);
-            while(i<2){
-                if(i == 0)calculo = Number.parseInt( divisor1[i]);
-                else if(operação == "+")calculo = Number.parseInt(calculo) + Number.parseInt( divisor1[i]);
-                else if(operação == "-")calculo = Number.parseInt(calculo) - Number.parseInt( divisor1[i]);
-                else if(operação == "*")calculo = (Number.parseInt(calculo) * Number.parseInt( divisor1[i]));
-                else if(operação == "/")calculo = (Number.parseInt(calculo) / Number.parseInt( divisor1[i]));
-                i++;
-            }
-            operação.shift();
-            divisor1 = valoria.split(operação[0]);
-            i  = 0;
             var calculo2  = 0;
-            while(i<divisor1.length){
-                if(i == 0)calculo2 = Number.parseInt( divisor1[i])
-                else if(operação == "+")calculo2 = Number.parseInt(calculo2) + Number.parseInt( divisor1[i]);
-                else if(operação == "-")calculo2 = Number.parseInt(calculo2) - Number.parseInt( divisor1[i]);
-                else if(operação == "*")calculo2 = (Number.parseInt(calculo2) * Number.parseInt( divisor1[i]));
-                else if(operação == "/")calculo2 = (Number.parseInt(calculo2) / Number.parseInt( divisor1[i]));
+            var calculo3 = 0;
+            var i = 0;
+            var n = valoria.split(operação[0]);
+            var m = valoria.split(operação[1]);
+            if(n.length == 3 && m.length == 3){
+                m = undefined
+                calculo = n[0];
+                calculo2 = n[1];
+                calculo3 = n[2];
+            }
+            else {
+                calculo = n[0];
+                var divisor = n[1];
+                m.shift();
+                calculo3 = m[0];
+                var o = divisor.split(operação[1]);
+                calculo2 = o[0];
+
+            }
+
+            var total = 0;
+            while(i < operação.length){
+                if(i == 0){
+                    if(operação[i] == "+"){
+                        total = Number.parseInt(calculo) + Number.parseInt(calculo2);
+                    }
+                    else if(operação[i] == "-"){
+                        total = Number.parseInt(calculo) - Number.parseInt(calculo2);
+                    }
+                    else if(operação[i] == "*"){
+                        total = Number.parseInt(calculo) * Number.parseInt(calculo2);
+                    }
+                    else if(operação[i] == "/"){
+                        total = Number.parseInt(calculo) / Number.parseInt(calculo2);
+                    }
+                }
+                else{
+                    if(operação[i] == "+"){
+                        total = total + Number.parseInt(calculo3);
+                    }
+                    else if(operação[i] == "-"){
+                        total = total - Number.parseInt(calculo3);
+                    }
+                    else if(operação[i] == "*"){
+                        total = total * Number.parseInt(calculo3);
+                    }
+                    else if(operação[i] == "/"){
+                        total = total / Number.parseInt(calculo3);
+                    }
+                }
                 i++;
             }
-            var total = Number.parseInt(calculo) + Number.parseInt(calculo2);
-            return total;
 
+            return total;
         }
         else this.fácil(valoria,operação);
-
     }
     fácil(valoria, operação){
         var calculo = 0;

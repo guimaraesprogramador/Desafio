@@ -95,18 +95,20 @@ Juntamente com a metodologia ágil o **Kanban** feito a manuscrito para ajustar 
 
 ##### Previsão até 20 de outubro de 2020.
 
-#### ETAPA 6 
+#### ETAPA 6 incompleto
 ##### Objetivos:
 1. Implementar a terceira parte do esboço funcionando.
 
 ##### Resultados:
-
+Não foi possivel entragar no dia 30 de outubro de 2020.
+Vai ser passado para a etapa 7.
 
 ##### Previsão até 30  de outubro de 2020.
 
 #### ETAPA 7 
 ##### Objetivos:
 1. Implementar a quatro parte do esboço para desktop.
+2. terminar de implementar a terceira parte do esboço funcionando.
 
 ##### Resultados:
 

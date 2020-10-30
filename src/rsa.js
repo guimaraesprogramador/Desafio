@@ -220,6 +220,7 @@ temporizador(){
 }
 calculo_artificial(operador, operação, tempo_temporizador){
     var tempo_artificial = window.setInterval(function(){
+        clearInterval(tempo_artificial);
         var valoria  = operador;
         var calculo = 0;
         var theads = [];
@@ -233,7 +234,7 @@ calculo_artificial(operador, operação, tempo_temporizador){
         document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
 
             calculo = calc.Escolhar([tipo,valoria,operação]);
-            if(calculo == calc.Escolhar([tipo,valoria,operação])){
+            if(calculo == calc.Escolhar([tipo,valoria,operação]) && calculo != NaN){
                 document.querySelector("[name=artificial_texto]").textContent = calculo;
                 document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
                 document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
@@ -257,35 +258,41 @@ calculo_artificial(operador, operação, tempo_temporizador){
             tipo = "média"; 
             this.link = tipo;
             theads.push(new Worker("./src/rsa.js"));
-           
+            console.log(theads);
             theads[0].onmessage = function(ev){
+                 clearInterval(tempo_artificial);
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
                 modulos().temporizador();
                 theads[0].terminate();
                 theads[0] = undefined;
                   console.log(theads);
+               
             };
             theads[0].postMessage({tipo:this.link});
         }
         else if(pontos_atual - 1 <= 3) {
             tipo  = "fácil";
             this.link = tipo;
+             
             theads.push(new Worker("./src/rsa.js"));
+            console.log(theads);
             theads[0].onmessage = function(ev){
+                 clearInterval(tempo_artificial);
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                 modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                 modulos().temporizador();
                 theads[0].terminate();
                 theads[0] = undefined;
                   console.log(theads);
+               
             };
              theads[0].postMessage({tipo:this.link});
 
         }
         document.querySelector("[name=Resposta_artificial]").click();
 
-        clearInterval(tempo_artificial);
+       
 
     },tempo_temporizador);
 
