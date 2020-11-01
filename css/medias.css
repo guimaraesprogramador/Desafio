@@ -1,4 +1,4 @@
-/* verticial*/
+/* verticial até 500px*/
 @media screen and (max-width:500px){
 
     body{
@@ -25,6 +25,7 @@
     }
     [name="placar"]{
         position: relative;
+        left: 20%;
     }
     .operação{
         background-color: white;
@@ -46,24 +47,28 @@
         bottom: 130%;
     }
     .img_jogador{
+        position: relative;
         filter: grayscale(100%);
         width:35%;
-        position: relative;
-        top: 420%;
-        left: 65%;
+        float:inherit;
+        top: 250%;
+        right: 10%;
     }
     input[name="jogador_texto"]{
         position: relative;
+        float: right;
         width: 63%;
-        top: 230%;
-        left:60%;
+        top: 110%;
+        left:40%;
     }
 
     [name="salvar"]{
-        font-size: 80%;
+
         position: relative;
-        top: 450%;
-        right: 20%;
+        font-size: 80%;
+        float: left;
+        top: 270%;
+        left:0%;
         background-color: #ff3333;
     }
 
@@ -71,8 +76,8 @@
         font-size: 80%;
         position: relative;
         float: right;
-        left: 130%;
-        top: 180%;
+        left: 120%;
+        top: 60%;
         background-color: #ff3333;
 
     }
@@ -87,12 +92,12 @@
 
     }
     .interrogação{
+        position: relative;
         filter: grayscale(100%);
         width: 20%;
-        position: relative;
         float: right;
-        left: 220%;
-        top: 180%;
+        left: 210%;
+        top: 60%;
     }
     [name="nome_jogador"]{
         position: relative;
@@ -125,8 +130,9 @@
     }     
     [name="artificial_texto"]{
         position: relative;
+        float: inherit;
         left:110%;
-        bottom: 400%;
+        bottom: 600%;
         background-color: white;
         padding-right: 15%;
         padding-left: 13%;
@@ -137,8 +143,8 @@
     }
 }
 
-/* horizontal*/
-@media screen and (min-width: 501px)  and (max-width:700px){
+/* verticial de 500px até 700px */
+@media screen and (min-width: 500px)  and (max-width:700px){
     body{
         opacity: 1;
         background-color: rgb(127,127,229);

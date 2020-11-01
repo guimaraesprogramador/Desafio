@@ -1,4 +1,147 @@
-@media screen and (min-width: 700px){
+/* verticial de 1024px até máximo possivel */
+
+@media screen and (min-width: 1024px){
+
+    body{
+        opacity: 1;
+        background-color: rgb(127,127,229)
+
+    }
+    .esquerda{
+        width: 50%;
+        left: -10%;
+        position: absolute;
+        text-align: center;
+        border: 1px dotted black;
+    }   
+    .direita{
+        width: 58%;
+        right: -7%;
+        border: 1px dotted black;
+        text-align: center;
+        position: absolute;
+    }
+    .container{
+        position: relative;;
+    }
+    [name ="artificial"]{
+        padding-bottom:20% ;
+        position: relative;
+        color: black;    
+    }
+    [name="jogador"]{
+        position: fixed;
+        color: black;
+        padding-top:2%;
+    }
+    [name="placar"]{
+        color: black;
+        margin-left: 12%;
+    }
+    .operação{
+        background-color: white;
+        text-align: center;
+        left: 35%;
+        position: relative;
+        padding-right: 15%;
+        padding-left: 5%;
+        padding-top: 0.5%;
+    }
+    .img_artificial{
+
+        position: relative;
+        left: 55%;
+        bottom: 180%;
+        filter: grayscale(100%);
+        filter: gray;
+    }
+    .img_jogador{
+
+        position: relative;
+        left:45%;
+        top: 30%;
+        filter: grayscale(100%);
+        filter: gray;
+    }
+    input[name="jogador_texto"]{
+
+        position: relative;
+        left: 65%;
+        bottom: 30%;
+    }
+    [name="artificial_texto"]{
+        position: relative;
+        left:80%;
+        bottom: 900%;
+        background-color: white;
+        text-align: center;
+        padding-right: 15%;
+        padding-left: 13%;
+        padding-top: 0.5%;
+    }
+    [name="salvar"]{
+        position: relative;
+        top: 55%;
+        background-color: #ff3333;
+        opacity: 0.9;
+        left: 10%;
+        color: black;
+    }
+
+    [name="Resposta"]{
+        background-color: #ff3333;
+        opacity: 0.9;
+        color: black;
+        position: relative;
+        bottom:40%;
+        left: 70%;
+
+    }
+    [name="Resposta_artificial"]{
+        background-color: #ff3333;
+        opacity: 0.9;
+        color: black;
+        position: relative;
+        left: 95%;
+        bottom:160%;
+    }
+    .interrogação{
+        position: relative;
+        left:70%;
+        filter: grayscale(100%);
+        filter: gray;
+        bottom: 35%;;
+        cursor: pointer;
+    }
+    [name="nome_jogador"]{
+        position: relative;
+        left: 75%;
+        bottom: 100%
+    }
+    [name="nome_artificial"]{
+        position: relative;
+        left: 76%;
+        top: 30%;
+
+    }
+    .img_resultado1{
+        position: relative;
+        left: 63%;
+    }
+    .img_resultado0{
+        position: relative;
+        top: 60%;
+        left: 72%;
+    }
+    .temporizador{
+        color: black;
+        left: 45%;
+        position: absolute;
+    }
+}
+
+/* verticial de  700px até 1024px */
+@media screen and (min-width: 700px) and (max-width:1024px){
 
     body{
         opacity: 1;
@@ -53,7 +196,7 @@
         filter: gray;
     }
     .img_jogador{
-        left: 48%;
+        left:45%;
         position: relative;
         top: 30%;
         filter: grayscale(100%);
@@ -62,7 +205,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 55%;
+        left: 65%;
         bottom: 30%;
     }
     [name="artificial_texto"]{
@@ -80,7 +223,7 @@
         top: 55%;
         background-color: #ff3333;
         opacity: 0.9;
-        left: 21%;
+        left: 10%;
         color: black;
     }
 
@@ -90,7 +233,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left: 60%;
+        left: 66%;
 
     }
     [name="Resposta_artificial"]{
@@ -103,7 +246,7 @@
     }
     .interrogação{
         position: relative;
-        left:60%;
+        left:70%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 35%;;
