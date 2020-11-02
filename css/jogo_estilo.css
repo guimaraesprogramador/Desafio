@@ -66,7 +66,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 65%;
+        left: 55%;
         bottom: 30%;
     }
     [name="artificial_texto"]{
@@ -94,7 +94,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left: 70%;
+        left: 60%;
 
     }
     [name="Resposta_artificial"]{
@@ -107,7 +107,7 @@
     }
     .interrogação{
         position: relative;
-        left:70%;
+        left:60%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 35%;;
@@ -189,24 +189,26 @@
         padding-top: 0.5%;
     }
     .img_artificial{
-        left: 60%;
+       
         position: relative;
+         left: 50%;
         bottom: 180%;
         filter: grayscale(100%);
         filter: gray;
     }
     .img_jogador{
-        left:45%;
+        
         position: relative;
-        top: 30%;
+        left:20%;
+        top: 10%;
         filter: grayscale(100%);
         filter: gray;
     }
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 65%;
-        bottom: 30%;
+        left: 50%;
+        bottom: 50%;
     }
     [name="artificial_texto"]{
         position: relative;
@@ -223,8 +225,9 @@
         top: 55%;
         background-color: #ff3333;
         opacity: 0.9;
-        left: 10%;
         color: black;
+        float: left;
+        left:20%;
     }
 
     [name="Resposta"]{
@@ -232,8 +235,8 @@
         opacity: 0.9;
         color: black;
         position: relative;
-        bottom:40%;
-        left: 66%;
+        bottom:50%;
+        left: 55%;
 
     }
     [name="Resposta_artificial"]{
@@ -246,10 +249,11 @@
     }
     .interrogação{
         position: relative;
-        left:70%;
+        float: left;
+        left:150%;
         filter: grayscale(100%);
         filter: gray;
-        bottom: 35%;;
+        bottom: 100%;;
     }
     [name="nome_jogador"]{
         position: relative;
@@ -258,22 +262,22 @@
     }
     [name="nome_artificial"]{
         position: relative;
-        left: 76%;
+        left: 65%;
         top: 30%;
 
     }
     .img_resultado1{
         position: relative;
-        left: 63%;
+        left: 55%;
     }
     .img_resultado0{
         position: relative;
         top: 60%;
-        left: 72%;
+        left: 55%;
     }
     .temporizador{
         color: black;
-        left: 45%;
+        left: 40%;
         position: absolute;
     }
 }
