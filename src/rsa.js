@@ -177,7 +177,7 @@ artificial(musica){
             document.querySelector("[name=jogador_texto]").textContent = "";
             document.querySelector(".img_resultado0").src = "";
             document.querySelector(".img_resultado1").src = "";
-            modulos().artificial(undefined);
+            rsa_class.artificial(undefined);
 
         },5000);
 
@@ -200,7 +200,7 @@ temporizador(){
                 minutos = 4;
 
 
-               
+
             }
             else {
 
@@ -219,8 +219,8 @@ temporizador(){
     },1000);
 }
 calculo_artificial(operador, operação, tempo_temporizador){
-    var tempo_artificial = window.setInterval(function(){
-        clearInterval(tempo_artificial);
+    this.tempo_artificial = window.setInterval(function(){
+        clearInterval(this.tempo_artificial);
         var valoria  = operador;
         var calculo = 0;
         var theads = [];
@@ -230,18 +230,26 @@ calculo_artificial(operador, operação, tempo_temporizador){
         var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
         document.querySelector(".temporizador").textContent  = "05:00";
         this.link = "derrotar";
-        modulos().artificial(this.link);
+        rsa_class.artificial(this.link);
         document.querySelector("[name=Resposta_artificial]").onclick = function(ev){
 
             calculo = calc.Escolhar([tipo,valoria,operação]);
             if(calculo == calc.Escolhar([tipo,valoria,operação]) && calculo != NaN){
-                document.querySelector("[name=artificial_texto]").textContent = calculo;
-                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
-                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
-                pontos_atual = pontos_atual + 1;
-                Derrota_jogador = Derrota_jogador - 1;
-                document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
-                document.querySelectorAll("[name=valor_jogador]")[1].textContent = Derrota_jogador;
+                document.querySelector("[name=Resposta]").disabled = false;
+                var responsta_jogador = Number.parseInt(document.querySelector("[name=jogador_texto]").value);
+                if(calculo == responsta_jogador)
+                {
+                    rsa_class.artificial("vencedor");    
+                }
+                else{
+                    document.querySelector("[name=artificial_texto]").textContent = calculo;
+                    document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
+                    document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+                    pontos_atual = pontos_atual + 1;
+                    Derrota_jogador = Derrota_jogador - 1;
+                    document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
+                    document.querySelectorAll("[name=valor_jogador]")[1].textContent = Derrota_jogador;
+                }
             }
             else {
                 document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
@@ -260,39 +268,39 @@ calculo_artificial(operador, operação, tempo_temporizador){
             theads.push(new Worker("./src/rsa.js"));
             console.log(theads);
             theads[0].onmessage = function(ev){
-                 clearInterval(tempo_artificial);
+                document.querySelector("[name=Resposta]").disabled = false;
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
-                modulos().temporizador();
+                rsa_class.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
+                rsa_class.temporizador();
                 theads[0].terminate();
                 theads[0] = undefined;
-                  console.log(theads);
-               
+                console.log(theads);
+
             };
             theads[0].postMessage({tipo:this.link});
         }
         else if(pontos_atual - 1 <= 3) {
             tipo  = "fácil";
             this.link = tipo;
-             
+
             theads.push(new Worker("./src/rsa.js"));
             console.log(theads);
             theads[0].onmessage = function(ev){
-                 clearInterval(tempo_artificial);
+                document.querySelector("[name=Resposta]").disabled = false;
                 document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
-                modulos().temporizador();
+                rsa_class.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
+                rsa_class.temporizador();
                 theads[0].terminate();
                 theads[0] = undefined;
-                  console.log(theads);
-               
+                console.log(theads);
+
             };
-             theads[0].postMessage({tipo:this.link});
+            theads[0].postMessage({tipo:this.link});
 
         }
         document.querySelector("[name=Resposta_artificial]").click();
 
-       
+
 
     },tempo_temporizador);
 
@@ -349,18 +357,16 @@ modulos_fácil(){
     while(this.link.length > 0) this.link.pop();
 }
 }
-function modulos(){
-    const r = new rsa();
-    return r;
-}
 
+const rsa_class = new rsa();
 self.addEventListener("message",function(ev){
     var tipo = ev.data.tipo;
-    var rsa = modulos();
+    var rsa = rsa_class;
     switch(tipo){
         case "começo":
             var array =  rsa.Regras();
             this.postMessage({criptografia:array,link:rsa.link});
+            self.close();
             break;
         case "descriptografia":
             rsa.nome = ev.data.nome;
@@ -369,6 +375,7 @@ self.addEventListener("message",function(ev){
             rsa.mod = ev.data.mod;
             this.postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
                               mod:rsa.mod});
+            self.close();
             break;
         case "fácil":
 
@@ -380,6 +387,7 @@ self.addEventListener("message",function(ev){
             rsa.modulos_média();
 
             this.postMessage({tipo:[rsa.operação,rsa.operador]});
+            self.close();
             break;
     }
 },false)

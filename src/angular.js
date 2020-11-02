@@ -20,7 +20,7 @@ app.run( function() {
                 window.location.reload(true);
             },2000);
             theads.push(new Worker("./src/rsa.js"));
-          
+
             theads[0].onmessage = function(ev){
                 clearTimeout(t);
                 if(ev.data.criptografia.length == 0){
@@ -43,7 +43,7 @@ app.run( function() {
 
 
             }
-              theads[0].postMessage({tipo:"começo"});
+            theads[0].postMessage({tipo:"começo"});
         }
 
 
@@ -69,7 +69,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
 
-                                        permitido = modulos().artificial(undefined);
+                                        permitido = rsa_class.artificial(undefined);
 
                                         return permitido;
                                     }
@@ -78,7 +78,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     {
                                         navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
 
-                                            permitido = modulos().artificial();
+                                            permitido = rsa_class.artificial();
 
                                             return permitido;
                                         });
@@ -171,17 +171,81 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
 
                                     }
-                                    else if(window.location.pathname == "/jogo.html"){
+                                    else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/desafio-IA/jogo.html"){
                                         try{
                                             var jogador = document.querySelector("[name=jogador_texto]");
                                             // jogador
-                                            if(jogador.textContent != ""){
-                                                jogador.onclick = function(ev){
+                                            document.querySelector("[name=jogador_texto]").maxlength = 3;
+                                            document.querySelector("[name=artificial_texto]").maxlength = 3;
+                                            var resposta = document.querySelector("[name=Resposta]");
+                                            resposta.onclick = function(ev){
+                                                var resposta_jogador =0;
+                                                if(jogador.value != undefined){
+                                                    resposta_jogador = Number.parseInt(jogador.value);
+                                                    if(Number.isInteger(resposta_jogador)){
+                                                        var operação = document.querySelector(".operação").textContent;
+                                                        var separador = operação.split("");
+                                                        separador.pop();
+                                                        separador.pop();
+                                                        separador.pop();
+                                                        var placar_ia = Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
+                                                        var tipo;
+                                                        var i = 0;
+                                                        var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
+                                                        var calculo = 0;
+                                                        var temporizador = 0;
+                                                        var Derrotar_ia = Number.parseInt(document.querySelectorAll("[name=Derrota_artificial]")[1].textContent)
+                                                        if(placar_ia >3){
+                                                            tipo = "média"; 
+                                                            temporizador = 40000;
+                                                        }
+                                                        else if(placar_ia <= 3){
+                                                            tipo ="fácil";
+                                                            temporizador = 30000;
+                                                        }
+                                                        if(tipo == "média"){
+                                                            var operador = [separador[2],separador[5]];
+                                                            operação = "";
+                                                            while(i<separador.length){
+                                                                operação = operação + separador[i];
+                                                                i++;
+                                                            }
+                                                            calculo = calc.Escolhar([tipo,operação,operador]);
+                                                        }
+                                                        else if(tipo == "fácil"){
+                                                            var operador = separador[2];
+                                                            operação = "";
+                                                            while(i<separador.length){
+                                                                operação = operação + separador[i];
+                                                                i++;
+                                                            }
+                                                            console.log(operação.trim());
+                                                            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
+
+                                                        }
+                                                        else 
+                                                        {
+                                                            // DIFICIL
+                                                        }
+
+                                                        if(calculo == resposta_jogador & calculo != NaN){
+
+                                                            pontos_joagador++;
+                                                            document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
+                                                            document.querySelector(".img_resultado0").src ="./imagens/cancel-red-48dp.svg";
+                                                            document.querySelectorAll("[name=valor_jogador]")[0].textContent = pontos_joagador;
+                                                            Derrotar_ia++;
+                                                            document.querySelectorAll("[name=Derrota_artificial]")[1].textContent = Derrotar_ia;
+                                                            resposta.disabled = true;
+                                                        }
+
+                                                    }
 
                                                 }
-                                            } 
+                                            }
 
-                                        }catch(ev){
+                                        }
+                                        catch(ev){
                                             Swal.fire({
                                                 icon:"error",
                                                 title: 'Oops...',
@@ -215,10 +279,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         window.localStorage.clear()
                                         theads.push(new Worker("./src/rsa.js"));
-                                        
+
                                         theads[0].onmessage = function(ev){
 
-                                            modulos().descriptografar(ev.data.nome,ev.data.sexo,
+                                            rsa_class.descriptografar(ev.data.nome,ev.data.sexo,
                                                                       ev.data.chave,ev.data.mod);
 
 
@@ -227,18 +291,18 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
                                                                mod:mod});
                                         theads.push(new Worker("./src/rsa.js"));
-                                       
+
                                         theads[1].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                            modulos().calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
+                                            rsa_class.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                                             theads[0].terminate();
                                             theads[0] = undefined;
                                             theads[1].terminate();
                                             theads[1] = undefined;
-                                            console.log(theads);
+
                                         };
-                                         theads[1].postMessage({tipo:"fácil"});
-                                        modulos().temporizador();
+                                        theads[1].postMessage({tipo:"fácil"});
+                                        rsa_class.temporizador();
 
                                     }
                                     else{
