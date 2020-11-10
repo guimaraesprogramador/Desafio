@@ -68,27 +68,20 @@ class calculos{
         while(i<divisor.length){
             if(i == 0)calculo = Number.parseInt( divisor[i]);
             else if(operação == "+"){
-                document.querySelector("[name=jogador_texto]").maxlength = 3;
-                document.querySelector("[name=artificial_texto]").maxlength = 3;
+              
                 calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
 
             }
             else if(operação == "-"){
-                document.querySelector("[name=jogador_texto]").maxlength = 3;
-                document.querySelector("[name=artificial_texto]").maxlength = 3;
                 calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
 
             }
             else if(operação == "*"){
-                document.querySelector("[name=jogador_texto]").maxlength = 3;
-                document.querySelector("[name=artificial_texto]").maxlength = 3;
                 calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
 
             }
             else if(operação == "/"){
-                document.querySelector("[name=jogador_texto]").maxlength = 4;
-                document.querySelector("[name=artificial_texto]").maxlength = 4;
-                calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i])).toFixed();
+                calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
 
             }
             i++;

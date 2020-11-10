@@ -1,7 +1,6 @@
 var theads  = []
 var valor = [];
 
-
 var app = angular.module('Desafio',['ngBrowser'])
 app.run( function() {
     document.body.style.visibility ="hidden";
@@ -17,14 +16,14 @@ app.run( function() {
                 html:' <div class="loader"></div>'
             })
             var t = window.setTimeout(function(){
-                window.location.reload(true);
+                window.location.reload();
             },2000);
             theads.push(new Worker("./src/rsa.js"));
 
             theads[0].onmessage = function(ev){
                 clearTimeout(t);
                 if(ev.data.criptografia.length == 0){
-                    location.reload(true);
+                    location.reload();
                 }
                 else{
 
@@ -69,7 +68,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
 
-                                        permitido = rsa_class.artificial(undefined);
+                                        permitido = modulo.artificial(undefined);
 
                                         return permitido;
                                     }
@@ -78,7 +77,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     {
                                         navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
 
-                                            permitido = rsa_class.artificial();
+                                            permitido = modulo.artificial();
 
                                             return permitido;
                                         });
@@ -167,7 +166,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             }
                                         }
                                         catch(ev){
-                                            window.location.reload(true);
+                                            window.location.reload();
                                         }
 
                                     }
@@ -182,63 +181,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 var resposta_jogador =0;
                                                 if(jogador.value != undefined){
                                                     resposta_jogador = Number.parseInt(jogador.value);
-                                                    if(Number.isInteger(resposta_jogador)){
-                                                        var operação = document.querySelector(".operação").textContent;
-                                                        var separador = operação.split("");
-                                                        separador.pop();
-                                                        separador.pop();
-                                                        separador.pop();
-                                                        var placar_ia = Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
-                                                        var tipo;
-                                                        var i = 0;
-                                                        var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
-                                                        var calculo = 0;
-                                                        var temporizador = 0;
-                                                        var Derrotar_ia = Number.parseInt(document.querySelectorAll("[name=Derrota_artificial]")[1].textContent)
-                                                        if(placar_ia >3){
-                                                            tipo = "média"; 
-                                                            temporizador = 40000;
-                                                        }
-                                                        else if(placar_ia <= 3){
-                                                            tipo ="fácil";
-                                                            temporizador = 30000;
-                                                        }
-                                                        if(tipo == "média"){
-                                                            var operador = [separador[2],separador[5]];
-                                                            operação = "";
-                                                            while(i<separador.length){
-                                                                operação = operação + separador[i];
-                                                                i++;
-                                                            }
-                                                            calculo = calc.Escolhar([tipo,operação,operador]);
-                                                        }
-                                                        else if(tipo == "fácil"){
-                                                            var operador = separador[2];
-                                                            operação = "";
-                                                            while(i<separador.length){
-                                                                operação = operação + separador[i];
-                                                                i++;
-                                                            }
-                                                            console.log(operação.trim());
-                                                            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
-
-                                                        }
-                                                        else 
-                                                        {
-                                                            // DIFICIL
-                                                        }
-
-                                                        if(calculo == resposta_jogador & calculo != NaN){
-
-                                                            pontos_joagador++;
-                                                            document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
-                                                            document.querySelector(".img_resultado0").src ="./imagens/cancel-red-48dp.svg";
-                                                            document.querySelectorAll("[name=valor_jogador]")[0].textContent = pontos_joagador;
-                                                            Derrotar_ia++;
-                                                            document.querySelectorAll("[name=Derrota_artificial]")[1].textContent = Derrotar_ia;
-                                                            resposta.disabled = true;
-                                                        }
-
+                                                    if(resposta_jogador != NaN){
+                                                        regras_gerais.jogador(resposta_jogador);
                                                     }
 
                                                 }
@@ -279,31 +223,31 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         window.localStorage.clear()
                                         theads.push(new Worker("./src/rsa.js"));
-
+                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
+                                        mod:mod});
                                         theads[0].onmessage = function(ev){
 
-                                            rsa_class.descriptografar(ev.data.nome,ev.data.sexo,
+                                            modulo.descriptografar(ev.data.nome,ev.data.sexo,
                                                                       ev.data.chave,ev.data.mod);
 
 
 
                                         }; 
-                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-                                                               mod:mod});
-                                        theads.push(new Worker("./src/rsa.js"));
-
+                                       
+                                        theads.push(new Worker("./src/modulos.js"));
+                                        theads[1].postMessage({tipo:"fácil"});
                                         theads[1].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                            rsa_class.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
+                                            modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
+                                            modulo.temporizador();
                                             theads[0].terminate();
                                             theads[0] = undefined;
                                             theads[1].terminate();
                                             theads[1] = undefined;
-
+                                            theads.pop();
+                                            theads.pop();
+                                            
                                         };
-                                        theads[1].postMessage({tipo:"fácil"});
-                                        rsa_class.temporizador();
-
                                     }
                                     else{
                                         var separar = window.location.pathname != "/" ? window.location.pathname : "/";
@@ -314,7 +258,4 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                 }
-
-
-
                             }]);
