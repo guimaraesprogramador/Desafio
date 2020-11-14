@@ -27,7 +27,7 @@
     [name ="artificial"]{
         padding-bottom:20% ;
         position: relative;
-        color: black;    
+        color: black;
     }
     [name="jogador"]{
         position: fixed;
@@ -66,8 +66,8 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 55%;
-        bottom: 30%;
+        left: 65%;
+        bottom: 35%;
     }
     [name="artificial_texto"]{
         position: relative;
@@ -84,7 +84,7 @@
         top: 55%;
         background-color: #ff3333;
         opacity: 0.9;
-        left: 10%;
+        left: 35%;
         color: black;
     }
 
@@ -94,7 +94,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left: 60%;
+        left: 65%;
 
     }
     [name="Resposta_artificial"]{
@@ -107,7 +107,7 @@
     }
     .interrogação{
         position: relative;
-        left:60%;
+        left:70%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 35%;;
@@ -121,7 +121,7 @@
     [name="nome_artificial"]{
         position: relative;
         left: 76%;
-        top: 30%;
+        top: 50%;
 
     }
     .img_resultado1{
@@ -130,7 +130,7 @@
     }
     .img_resultado0{
         position: relative;
-        top: 60%;
+        top: 80%;
         left: 72%;
     }
     .temporizador{
@@ -189,15 +189,15 @@
         padding-top: 0.5%;
     }
     .img_artificial{
-       
+
         position: relative;
-         left: 50%;
+        left: 50%;
         bottom: 180%;
         filter: grayscale(100%);
         filter: gray;
     }
     .img_jogador{
-        
+
         position: relative;
         left:20%;
         top: 10%;

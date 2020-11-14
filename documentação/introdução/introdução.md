@@ -113,7 +113,7 @@ Vai ser passado para a etapa 7.
 ##### Resultados:
 
 
-##### Previsão até 05 de novembro de 2020.
+##### Previsão até 20 de novembro de 2020.
 
 #### ETAPA 8 
 ##### Objetivos:
