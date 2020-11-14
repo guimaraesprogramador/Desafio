@@ -224,18 +224,18 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         window.localStorage.clear()
                                         theads.push(new Worker("./src/rsa.js"));
                                         theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-                                        mod:mod});
+                                                               mod:mod});
                                         theads[0].onmessage = function(ev){
 
                                             modulo.descriptografar(ev.data.nome,ev.data.sexo,
-                                                                      ev.data.chave,ev.data.mod);
+                                                                   ev.data.chave,ev.data.mod);
 
 
 
                                         }; 
-                                       
+
                                         theads.push(new Worker("./src/modulos.js"));
-                                        theads[1].postMessage({tipo:"fácil"});
+
                                         theads[1].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                             modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
@@ -246,12 +246,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             theads[1] = undefined;
                                             theads.pop();
                                             theads.pop();
-                                            
+
                                         };
+                                        theads[1].postMessage({tipo:"fácil"});
                                     }
                                     else{
-                                        var separar = window.location.pathname != "/" ? window.location.pathname : "/";
-                                        var anterior = "/";
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? window.location.pathname : "/jogo.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA" : "/";
                                         var caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                         window.location.replace(caminho);
                                     }

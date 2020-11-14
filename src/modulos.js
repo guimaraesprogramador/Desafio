@@ -1,7 +1,7 @@
 
 class modulos {
     constructor(){
-        
+
     }
     Url(){
         this.num = 1;
@@ -16,12 +16,12 @@ class modulos {
                 this.link.push(this.m.toString());
                 this.num = this.num - 1;
             }
-    
+
             this.operador = Math.floor(Math.random() *4);
             this.divisores(this.operador);
             return this.link[1].toString() + this.operador.toString() +
                 this.link[2].toString();
-    
+
         }
         else if(this.link[0] == "média"){
             this.n = 0; 
@@ -43,12 +43,12 @@ class modulos {
             this.operador = [n1,n2];        
             return this.link[1].toString() + this.operador[0].toString() +
                 this.link[2].toString() + this.operador[1].toString() + this.link[3].toString();
-    
+
         }
-    
+
     }
     artificial(musica){ 
-   
+
         if(musica == undefined){
             if(document.querySelector(".som") != undefined)document.querySelector(".som").remove();
             this.fundo = document.createElement("audio");
@@ -60,6 +60,19 @@ class modulos {
             return "permitida";
         }
         else{
+            var i = document.querySelectorAll(".fundo").length;
+            if(i >1){
+                var n = 0;
+                while(n <i ){
+                    document.querySelectorAll(".fundo")[n].remove();
+                    n = n + 1;
+                }
+            }
+            else {
+                if(document.querySelector(".fundo") != undefined){
+                    document.querySelector(".fundo").remove();
+                }
+            }
             var efeito = document.createElement("audio");
             switch(musica){
                 case "vencedor":
@@ -74,12 +87,27 @@ class modulos {
             efeito.className = "som";
             document.body.append(efeito);
             var tempo = window.setTimeout(function(){
-                document.querySelector(".som").remove();
+                var i = document.querySelectorAll(".som").length;
+                if(i >1){
+                    var n = 0;
+                    while(n <i ){
+                        document.querySelectorAll(".som")[n].remove();
+                        n = n + 1;
+                    }
+                }
+                else {
+                    if(document.querySelector(".som") != undefined){
+                        document.querySelector(".som").remove();
+                    }
+                }
+                clearTimeout(tempo);
+                document.querySelector(".temporizador").textContent = "05:00";
                 document.querySelector("[name=artificial_texto]").textContent = "";
                 document.querySelector("[name=jogador_texto]").value = "";
                 document.querySelector(".img_resultado0").src = "";
                 document.querySelector(".img_resultado1").src = "";
-               modulo.artificial(undefined);
+                modulo.artificial(undefined);
+                modulo.temporizador();
             },5000);
             console.log(tempo);
         }
@@ -87,10 +115,10 @@ class modulos {
     temporizador(){
         var segundo = 59;
         var minutos = 4;
-    
-        var contagem =  window.setInterval(function(){
+
+        this.contagem =  window.setInterval(function(){
             if(segundo > 0){
-                
+
                 if(segundo < 10){
                     document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
                 }
@@ -99,80 +127,58 @@ class modulos {
                         document.querySelector("[name=jogador_texto]").value != ""){
                     segundo = 60;
                     minutos = 4;
-                    document.querySelector(".temporizador").textContent = "05:00";
+
                 }
                 else {
-    
+
                     document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
                 }
-                
+
             }
             else if(minutos > 0){
                 segundo = 59;
                 minutos = minutos - 1;
                 document.querySelector(".temporizador").textContent  = "0"+minutos+ ":"+segundo;
             }
-            else if(minutos == 0 && segundo == 0)clearInterval(contagem);
+            else if(minutos == 0 && segundo == 0)clearInterval(this.contagem);
             segundo = segundo - 1;
-    
+
         },1000);
     }
+
     calculo_artificial(operador, operação, tempo_temporizador){
         this.tempo_artificial = window.setInterval(function(){
-            clearInterval(this.tempo_artificial);
-            var theads = [];
-            var tipo;
             var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
-    
+
+            regras_gerais.so(pontos_atual);
+
+
+            var tipo;
+
             if(pontos_atual - 1 > 3){
                 tipo = "média"; 
-                this.link = tipo;
-                theads.push(new Worker("./src/rsa.js"));
-                theads[0].postMessage({tipo:this.link});
-                console.log(theads);
-                theads[0].onmessage = function(ev){
-                    document.querySelector("[name=Resposta]").disabled = false;
-                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                    modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],40000);   
-                    theads[0].terminate();
-                    theads[0] = undefined;
-                };
-                
+                document.querySelector("[name=Resposta]").disabled = false;
+                modulo.juiz(tipo);
             }
             else if(pontos_atual - 1 <= 3) {
                 tipo  = "fácil";
-                this.link = tipo;
-    
-                theads.push(new Worker("./src/rsa.js"));
-                theads[0].postMessage({tipo:this.link});
-                console.log(theads);
-    
-                theads[0].onmessage = function(ev){
-                    document.querySelector("[name=Resposta]").disabled = false;
-                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                    modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
-                    theads[0].terminate();
-                    theads[0] = undefined;
-                };
-                
-    
+                document.querySelector("[name=Resposta]").disabled = false;
+                modulo.juiz(tipo); 
+
             }
-    
-            regras_gerais.so(tipo);
-    
-    
+
         },tempo_temporizador);
-    
+
     }
     modulos_média(){
         this.link = [];
         this.link.push("média");
         this.operação = this.Url();
         while(this.link.length > 0) this.link.pop();
-    
+
     }
     modulos_díficil(){
-    
+
     }
     divisores(tipo){
         switch(tipo){
@@ -191,7 +197,7 @@ class modulos {
         }
     }
     modulos_fácil(){
-    
+
         this.link = [];
         this.link.push("fácil");
         this.operação = this.Url();
@@ -214,29 +220,40 @@ class modulos {
                 break;
             case "masculino":
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
-    
+
                 break;
         }
         document.getElementsByName("nome_jogador")[0].innerText = nome;
-    }    
+    }  
+    juiz(nivel){
+        clearInterval(this.tempo_artificial);
+        var novooperação = new Worker('./src/rsa.js');
+        novooperação.onmessage = function(ev){
+            document.querySelector(".operação").textContent  = ev.data.tipo[0] + "= ?";
+            novooperação.terminate();
+            novooperação = undefined;
+            modulo.calculo_artificial( ev.data.tipo[0], ev.data.tipo[1],30000); 
+        }
+        novooperação.postMessage({tipo:nivel})
+    }
 }
 const modulo = new modulos();
 
 self.addEventListener("message",function(ev){
     var tipo = ev.data.tipo;
-   
+
     switch(tipo){
         case "fácil":
 
             modulo.modulos_fácil();
 
-            this.postMessage({tipo:[modulo.operação, modulo.operador]});
+            postMessage({tipo:[modulo.operação, modulo.operador]});
             self.close();
             break;
         case "média":
             modulo.modulos_média();
 
-            this.postMessage({tipo:[modulo.operação,modulo.operador]});
+            postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
     }

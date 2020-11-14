@@ -58,7 +58,7 @@ class regras{
         }
 
     }
-    so(tipo){
+    so(pontos_atual){
         document.querySelector("[name=Resposta_artificial]").disabled = true;
         var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
 
@@ -68,10 +68,12 @@ class regras{
         separador.pop();
         separador.pop();
         var i = 0;
+        var tipo;
         var calculo = 0;
         var Derrota_jogador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[1].textContent);
        
-            if(tipo == "média"){
+            if(pontos_atual - 1 > 3){
+               tipo == "média"
                 var operador = [separador[2],separador[5]];
                 operação = "";
                 while(i<separador.length){
@@ -80,7 +82,8 @@ class regras{
                 }
                 calculo = calc.Escolhar([tipo,operação.trim(),operador]);
             }
-            else if(tipo == "fácil"){
+            else if(pontos_atual - 1 <= 3){
+                tipo == "fácil"
                 var operador = separador[2];
                 operação = "";
                 while(i<separador.length){
@@ -101,10 +104,13 @@ class regras{
                 var responsta_jogador = Number.parseInt(document.querySelector("[name=jogador_texto]").value);
                 if(calculo == responsta_jogador)
                 {
+                clearInterval(modulo.contagem);
                     document.querySelector("[name=Resposta_artificial]").disabled = false;
-                    modulo.artificial("vencedor");    
+                    modulo.artificial("vencedor");
+                    return false;
                 }
                 else{
+                    clearInterval(modulo.contagem);
                     document.querySelector("[name=Resposta_artificial]").disabled = false;
                     document.querySelector("[name=artificial_texto]").textContent = calculo;
                     document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
@@ -117,6 +123,7 @@ class regras{
                     
                     this.link = "derrotar";
                     modulo.artificial(this.link);
+                    return true;
                 }
             }
            

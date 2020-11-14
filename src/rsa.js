@@ -126,7 +126,7 @@ self.addEventListener("message",function(ev){
             case "média":
                 modulo.modulos_média();
     
-                this.postMessage({tipo:[modulo.operação,modulo.operador]});
+                postMessage({tipo:[modulo.operação,modulo.operador]});
                 self.close();
                 break;
     }
