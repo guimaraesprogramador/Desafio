@@ -66,8 +66,9 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 65%;
+        left: 60%;
         bottom: 35%;
+        padding-right: 20%;
     }
     [name="artificial_texto"]{
         position: relative;
@@ -84,7 +85,7 @@
         top: 55%;
         background-color: #ff3333;
         opacity: 0.9;
-        left: 35%;
+        left: 18%;
         color: black;
     }
 
@@ -94,7 +95,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left: 65%;
+        left: 68%;
 
     }
     [name="Resposta_artificial"]{

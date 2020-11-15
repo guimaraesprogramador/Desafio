@@ -173,18 +173,48 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/desafio-IA/jogo.html"){
                                         try{
                                             var jogador = document.querySelector("[name=jogador_texto]");
+
+                                            var verificar_cincodigitos = false;
                                             // jogador
-                                            document.querySelector("[name=jogador_texto]").maxlength = 3;
-                                            document.querySelector("[name=artificial_texto]").maxlength = 3;
+                                            jogador.onblur = function(event){
+                                                var digitos = event.target.value.length;
+                                                if(digitos <= 5){
+                                                    verificar_cincodigitos = true;
+                                                    console.log(verificar_cincodigitos);
+                                                }
+                                            }
                                             var resposta = document.querySelector("[name=Resposta]");
                                             resposta.onclick = function(ev){
                                                 var resposta_jogador =0;
-                                                if(jogador.value != undefined){
+                                                console.log(verificar_cincodigitos);
+                                                if(jogador.value != undefined && verificar_cincodigitos == true)
+                                                {
                                                     resposta_jogador = Number.parseInt(jogador.value);
-                                                    if(resposta_jogador != NaN){
+                                                    if(resposta_jogador != NaN && jogador.value.indexOf(",") == -1){
                                                         regras_gerais.jogador(resposta_jogador);
                                                     }
+                                                    else {
+                                                        Swal.fire({
+                                                            icon:"warning",
+                                                            title: 'Oops...',
+                                                            text:"não é possivel com vírgula somente ponto."
+                                                        })
+                                                    }
 
+                                                }
+                                                else if( verificar_cincodigitos == false){
+                                                    Swal.fire({
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"maximo 5 digitos"
+                                                    })
+                                                }
+                                                else {
+                                                    Swal.fire({
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"não é permite sem nenhuma valor."
+                                                    })
                                                 }
                                             }
 
@@ -193,7 +223,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             Swal.fire({
                                                 icon:"error",
                                                 title: 'Oops...',
-                                                text:"error em algum lugar no código do jogo"
+                                                text:"error em algum lugar no código do jogo."
                                             })
                                         }
                                     }
@@ -223,8 +253,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         window.localStorage.clear()
                                         theads.push(new Worker("./src/rsa.js"));
-                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-                                                               mod:mod});
+
                                         theads[0].onmessage = function(ev){
 
                                             modulo.descriptografar(ev.data.nome,ev.data.sexo,
@@ -233,7 +262,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                         }; 
-
+                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
+                                                               mod:mod});
                                         theads.push(new Worker("./src/modulos.js"));
 
                                         theads[1].onmessage = function(ev) {

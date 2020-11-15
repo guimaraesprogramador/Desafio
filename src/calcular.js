@@ -28,30 +28,40 @@ class calculos{
             while(i < operação.length){
                 if(i == 0){
                     if(operação[i] == "+"){
-                        total = Number.parseInt(calculo) + Number.parseInt(calculo2);
+                        total = Number.parseInt(calculo) + Number.parseInt(calculo2).toPrecision(5);
                     }
                     else if(operação[i] == "-"){
-                        total = Number.parseInt(calculo) - Number.parseInt(calculo2);
+                        total = Number.parseInt(calculo) - Number.parseInt(calculo2).toPrecision(5);
                     }
                     else if(operação[i] == "*"){
-                        total = Number.parseInt(calculo) * Number.parseInt(calculo2);
+                        total = Number.parseInt(calculo) * Number.parseInt(calculo2).toPrecision(5);
                     }
                     else if(operação[i] == "/"){
-                        total = Number.parseInt(calculo) / Number.parseInt(calculo2);
+                        total = Number.parseInt(calculo) / Number.parseInt(calculo2).toPrecision(5);
+                        var removervirgura = total.indexOf(",");
+                        if(removervirgura != -1){
+                            removervirgura = calculo.replace(",",".");
+                            total = removervirgura.toPrecision(5);
+                        }
                     }
                 }
                 else{
                     if(operação[i] == "+"){
-                        total = total + Number.parseInt(calculo3);
+                        total = total + Number.parseInt(calculo3).toString(5);
                     }
                     else if(operação[i] == "-"){
-                        total = total - Number.parseInt(calculo3);
+                        total = total - Number.parseInt(calculo3).toString(5);
                     }
                     else if(operação[i] == "*"){
-                        total = total * Number.parseInt(calculo3);
+                        total = total * Number.parseInt(calculo3).toString(5);
                     }
                     else if(operação[i] == "/"){
-                        total = total / Number.parseInt(calculo3);
+                        total = total / Number.parseInt(calculo3).toString(5);
+                        var removervirgura = total.indexOf(",");
+                        if(removervirgura != -1){
+                            removervirgura = calculo.replace(",",".");
+                            total = removervirgura.toPrecision(5);
+                        }
                     }
                 }
                 i++;
@@ -68,20 +78,26 @@ class calculos{
         while(i<divisor.length){
             if(i == 0)calculo = Number.parseInt( divisor[i]);
             else if(operação == "+"){
-              
-                calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]);
+
+                calculo = Number.parseInt(calculo) + Number.parseInt( divisor[i]).toString(5);
 
             }
             else if(operação == "-"){
-                calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]);
+                calculo = Number.parseInt(calculo) - Number.parseInt( divisor[i]).toString(5);
 
             }
             else if(operação == "*"){
-                calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]));
+                calculo = (Number.parseInt(calculo) * Number.parseInt( divisor[i]))
 
             }
             else if(operação == "/"){
                 calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i]));
+                var removervirgura = calculo.indexOf(",");
+                if(removervirgura != -1){
+                    removervirgura = calculo.replace(",",".");
+                    calculo = removervirgura.toPrecision(5);
+                }
+
 
             }
             i++;
