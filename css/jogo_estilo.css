@@ -66,9 +66,8 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 60%;
+        left: 65%;
         bottom: 35%;
-        padding-right: 20%;
     }
     [name="artificial_texto"]{
         position: relative;

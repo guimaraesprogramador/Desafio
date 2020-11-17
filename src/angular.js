@@ -178,27 +178,28 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             // jogador
                                             jogador.onblur = function(event){
                                                 var digitos = event.target.value.length;
-                                                if(digitos <= 5){
+                                                if(digitos < 6){
                                                     verificar_cincodigitos = true;
                                                     console.log(verificar_cincodigitos);
                                                 }
+                                                else verificar_cincodigitos = false;
                                             }
                                             var resposta = document.querySelector("[name=Resposta]");
                                             resposta.onclick = function(ev){
-                                                var resposta_jogador =0;
+                                                var resposta_jogador = 0;
                                                 console.log(verificar_cincodigitos);
                                                 if(jogador.value != undefined && verificar_cincodigitos == true)
                                                 {
                                                     resposta_jogador = Number.parseInt(jogador.value);
-                                                    if(resposta_jogador != NaN && jogador.value.indexOf(",") == -1){
+                                                    if(resposta_jogador != NaN){
                                                         regras_gerais.jogador(resposta_jogador);
                                                     }
                                                     else {
                                                         Swal.fire({
-                                                            icon:"warning",
-                                                            title: 'Oops...',
-                                                            text:"não é possivel com vírgula somente ponto."
-                                                        })
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"não é permite sem nenhuma valor."
+                                                    })
                                                     }
 
                                                 }
@@ -207,13 +208,6 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         icon:"warning",
                                                         title: 'Oops...',
                                                         text:"maximo 5 digitos"
-                                                    })
-                                                }
-                                                else {
-                                                    Swal.fire({
-                                                        icon:"warning",
-                                                        title: 'Oops...',
-                                                        text:"não é permite sem nenhuma valor."
                                                     })
                                                 }
                                             }
@@ -244,45 +238,30 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     var token =  window.location.href.split("token=");
                                     var verificar = window.localStorage.getItem("chave-publica");
 
-                                    if(verificar != undefined){
+                                    if(verificar != null){
 
                                         window.localStorage.removeItem("chave-publica");
                                         var mod =  window.localStorage.getItem("mod");
                                         window.localStorage.removeItem("mod");
                                         var letra_nomes = window.localStorage.getItem("letra_nome");
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-                                        window.localStorage.clear()
-                                        theads.push(new Worker("./src/rsa.js"));
-
-                                        theads[0].onmessage = function(ev){
-
-                                            modulo.descriptografar(ev.data.nome,ev.data.sexo,
-                                                                   ev.data.chave,ev.data.mod);
-
-
-
-                                        }; 
-                                        theads[0].postMessage({tipo:"descriptografia",nome:letra_nomes,sexo:letra_sexo,chave:token[1],
-                                                               mod:mod});
+                                            modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
                                         theads.push(new Worker("./src/modulos.js"));
 
-                                        theads[1].onmessage = function(ev) {
+                                        theads[0].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                             modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
                                             modulo.temporizador();
                                             theads[0].terminate();
                                             theads[0] = undefined;
-                                            theads[1].terminate();
-                                            theads[1] = undefined;
-                                            theads.pop();
-                                            theads.pop();
+ 
 
                                         };
-                                        theads[1].postMessage({tipo:"fácil"});
+                                        theads[0].postMessage({tipo:"fácil"});
                                     }
                                     else{
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? window.location.pathname : "/jogo.html";
-                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA" : "/";
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA/login.html"  : "/jogo.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA/" : "/";
                                         var caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                         window.location.replace(caminho);
                                     }

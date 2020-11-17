@@ -13,11 +13,11 @@ class regras{
         var calculo = 0;
         var temporizador = 0;
         var Derrotar_ia = Number.parseInt(document.querySelectorAll("[name=Derrota_artificial]")[1].textContent)
-        if(placar_ia >3){
+        if(pontos_joagador - 1 >3){
             tipo = "média"; 
             temporizador = 40000;
         }
-        else if(placar_ia <= 3){
+        else if(pontos_joagador - 1 <= 3){
             tipo ="fácil";
             temporizador = 30000;
         }
@@ -90,7 +90,7 @@ class regras{
                 operação = operação + separador[i];
                 i++;
             }
-            console.log(operação.trim());
+
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
 
         }

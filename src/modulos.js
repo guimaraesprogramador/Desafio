@@ -109,7 +109,7 @@ class modulos {
                 modulo.artificial(undefined);
                 modulo.temporizador();
             },5000);
-            console.log(tempo);
+            
         }
     }
     temporizador(){
@@ -148,19 +148,18 @@ class modulos {
 
     calculo_artificial(operador, operação, tempo_temporizador){
         this.tempo_artificial = window.setInterval(function(){
-            var pontos_atual =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
-
-            regras_gerais.so(pontos_atual);
+            var pontos_atual_artifical =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
+            regras_gerais.so(pontos_atual_artifical);
 
 
             var tipo;
 
-            if(pontos_atual - 1 > 3){
+            if(pontos_atual_artifical - 1 > 3){
                 tipo = "média"; 
                 document.querySelector("[name=Resposta]").disabled = false;
                 modulo.juiz(tipo);
             }
-            else if(pontos_atual - 1 <= 3) {
+            else if(pontos_atual_artifical - 1 <= 3) {
                 tipo  = "fácil";
                 document.querySelector("[name=Resposta]").disabled = false;
                 modulo.juiz(tipo); 
@@ -223,6 +222,7 @@ class modulos {
 
                 break;
         }
+        console.log(sexo);
         document.getElementsByName("nome_jogador")[0].innerText = nome;
     }  
     juiz(nivel){
