@@ -180,28 +180,19 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 var digitos = event.target.value.length;
                                                 if(digitos < 6){
                                                     verificar_cincodigitos = true;
-                                                    console.log(verificar_cincodigitos);
+                                                  
                                                 }
                                                 else verificar_cincodigitos = false;
                                             }
                                             var resposta = document.querySelector("[name=Resposta]");
                                             resposta.onclick = function(ev){
-                                                var resposta_jogador = 0;
-                                                console.log(verificar_cincodigitos);
-                                                if(jogador.value != undefined && verificar_cincodigitos == true)
+                                                  
+                                                if(jogador.value != undefined && verificar_cincodigitos == true &&
+                                                    jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
                                                 {
-                                                    resposta_jogador = Number.parseInt(jogador.value);
-                                                    if(resposta_jogador != NaN){
-                                                        regras_gerais.jogador(resposta_jogador);
-                                                    }
-                                                    else {
-                                                        Swal.fire({
-                                                        icon:"warning",
-                                                        title: 'Oops...',
-                                                        text:"não é permite sem nenhuma valor."
-                                                    })
-                                                    }
+                                                    
 
+                                                        regras_gerais.jogador(jogador.value);
                                                 }
                                                 else if( verificar_cincodigitos == false){
                                                     Swal.fire({
@@ -210,6 +201,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         text:"maximo 5 digitos"
                                                     })
                                                 }
+                                                else {
+                                                    Swal.fire({
+                                                    icon:"warning",
+                                                    title: 'Oops...',
+                                                    text:"não é permite com vírgura ou ponto os numeros."
+                                                })
+                                            }
                                             }
 
                                         }
@@ -250,7 +248,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                         theads[0].onmessage = function(ev) {
                                             document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                            modulo.calculo_artificial(ev.data.tipo[0],ev.data.tipo[1],30000);   
+                                            modulo.calculo_artificial(30000);   
                                             modulo.temporizador();
                                             theads[0].terminate();
                                             theads[0] = undefined;

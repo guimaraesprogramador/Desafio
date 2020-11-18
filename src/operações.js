@@ -37,7 +37,6 @@ class regras{
                 operação = operação + separador[i];
                 i++;
             }
-            console.log(operação.trim());
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
 
         }
@@ -52,7 +51,7 @@ class regras{
             document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
             document.querySelector(".img_resultado0").src ="./imagens/cancel-red-48dp.svg";
             document.querySelectorAll("[name=valor_jogador]")[0].textContent = pontos_joagador;
-            Derrotar_ia++;
+            Derrotar_ia--;
             document.querySelectorAll("[name=Derrota_artificial]")[1].textContent = Derrotar_ia;
             resposta.disabled = true;
         }
@@ -73,7 +72,7 @@ class regras{
         var Derrota_jogador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[1].textContent);
 
         if(pontos_atual - 1 > 3){
-            tipo == "média"
+            tipo = "média"
             var operador = [separador[2],separador[5]];
             operação = "";
             while(i<separador.length){
@@ -83,7 +82,7 @@ class regras{
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
         }
         else if(pontos_atual - 1 <= 3){
-            tipo == "fácil"
+            tipo = "fácil"
             var operador = separador[2];
             operação = "";
             while(i<separador.length){
@@ -98,33 +97,39 @@ class regras{
         {
             // DIFICIL
         }
-        if(calculo == calc.Escolhar([tipo,operação.trim(),operador]) && calculo != NaN){
+        var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
+        var stringcalculo = calculo.toString();
+        if(stringcalculo == responsta_jogador){
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
-            var responsta_jogador = Number.parseInt(document.querySelector("[name=jogador_texto]").value);
-            if(calculo == responsta_jogador)
-            {
+           
+           
+            
+  
                 clearInterval(modulo.contagem);
                 document.querySelector("[name=Resposta_artificial]").disabled = false;
                 modulo.artificial("vencedor");
-            }
-            else{
-                clearInterval(modulo.contagem);
-                document.querySelector("[name=Resposta_artificial]").disabled = false;
-                document.querySelector("[name=artificial_texto]").textContent = calculo;
-                document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
-                document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
-                pontos_atual = pontos_atual + 1;
-                Derrota_jogador = Derrota_jogador - 1;
-                document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
-                document.querySelectorAll("[name=valor_jogador]")[1].textContent = Derrota_jogador;
-
-
-                this.link = "derrotar";
-                modulo.artificial(this.link);
-            }
+           
+            
         }
+        else{
+          
+            clearInterval(modulo.contagem);
+            document.querySelector("[name=Resposta]").disabled = false;
+            document.querySelector('[name=jogador_texto]').disabled = false;
+            document.querySelector("[name=Resposta_artificial]").disabled = false;
+            document.querySelector("[name=artificial_texto]").textContent = calculo;
+            document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
+            document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
+            pontos_atual = pontos_atual + 1;
+            Derrota_jogador = Derrota_jogador - 1;
+            document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent = pontos_atual;
+            document.querySelectorAll("[name=valor_jogador]")[1].textContent = Derrota_jogador;
 
+
+            this.link = "derrotar";
+            modulo.artificial(this.link);
+        }
 
 
         document.querySelector("[name=Resposta_artificial]").onmouseenter = function(){

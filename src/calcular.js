@@ -37,11 +37,11 @@ class calculos{
                         total = Number.parseInt(calculo) * Number.parseInt(calculo2);
                     }
                     else if(operação[i] == "/"){
-                        total = Number.parseInt(calculo) / Number.parseInt(calculo2).toPrecision(5);
-                        removervirgura = total.indexOf(",");
+                        total = (Number.parseInt(calculo) / Number.parseInt(calculo2)).toString();
+                        removervirgura = total.indexOf(".");
                         if(removervirgura != -1){
-                            removervirgura = calculo.replace(",",".");
-                            total =  Number.parseFloat(removervirgura).toPrecision(5);
+                            removervirgura = calculo.replace(".",",");
+                            total =  Number.parseFloat(removervirgura).toPrecision(1);
                         }
                     }
                 }
@@ -57,10 +57,10 @@ class calculos{
                     }
                     else if(operação[i] == "/"){
                         total = (total / Number.parseInt(calculo3)).toString();
-                        removervirgura = total.indexOf(",");
+                        removervirgura = total.indexOf(".");
                         if(removervirgura != -1){
-                            removervirgura = calculo.replace(",",".");
-                            total =  Number.parseFloat(removervirgura).toPrecision(5);
+                            removervirgura = calculo.replace(".",",");
+                            total =  Number.parseFloat(removervirgura).toPrecision(1);
                         }
                     }
                 }
@@ -92,10 +92,11 @@ class calculos{
             }
             else if(operação == "/"){
                 calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i])).toString();
-                removervirgura = calculo.indexOf(",");
+                removervirgura = calculo.indexOf(".");
                 if(removervirgura != -1){
-                    removervirgura = calculo.replace(",",".");
-                    calculo = Number.parseFloat(removervirgura).toPrecision(5);
+                    removervirgura = calculo.replace(".",",");
+                    calculo = Number.parseInt(removervirgura).toPrecision(1);
+
                 }
 
 

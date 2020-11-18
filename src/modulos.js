@@ -146,20 +146,20 @@ class modulos {
         },1000);
     }
 
-    calculo_artificial(operador, operação, tempo_temporizador){
+    calculo_artificial(tempo_temporizador){
         this.tempo_artificial = window.setInterval(function(){
             var pontos_atual_artifical =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
+            var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
             regras_gerais.so(pontos_atual_artifical);
-
-
+            
             var tipo;
 
-            if(pontos_atual_artifical - 1 > 3){
+            if(pontos_atual_artifical - 1 > 3|| pontos_joagador -1 > 3){
                 tipo = "média"; 
                 document.querySelector("[name=Resposta]").disabled = false;
                 modulo.juiz(tipo);
             }
-            else if(pontos_atual_artifical - 1 <= 3) {
+            else if(pontos_atual_artifical - 1 <= 3 || pontos_joagador -1 <= 3 ) {
                 tipo  = "fácil";
                 document.querySelector("[name=Resposta]").disabled = false;
                 modulo.juiz(tipo); 
@@ -221,8 +221,8 @@ class modulos {
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
 
                 break;
+           
         }
-        console.log(sexo);
         document.getElementsByName("nome_jogador")[0].innerText = nome;
     }  
     juiz(nivel){
@@ -232,7 +232,7 @@ class modulos {
             document.querySelector(".operação").textContent  = ev.data.tipo[0] + "= ?";
             novooperação.terminate();
             novooperação = undefined;
-            modulo.calculo_artificial( ev.data.tipo[0], ev.data.tipo[1],30000); 
+            modulo.calculo_artificial(30000); 
         }
         novooperação.postMessage({tipo:nivel})
     }
@@ -247,13 +247,13 @@ self.addEventListener("message",function(ev){
 
             modulo.modulos_fácil();
 
-            postMessage({tipo:[modulo.operação, modulo.operador]});
+            postMessage({tipo:[modulo.operação]});
             self.close();
             break;
         case "média":
             modulo.modulos_média();
 
-            postMessage({tipo:[modulo.operação,modulo.operador]});
+            postMessage({tipo:[modulo.operação]});
             self.close();
             break;
     }
