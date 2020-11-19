@@ -85,13 +85,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                 };
-                                $scope.carregar_dados = function(){
+    $scope.carregar_dados = function(){
                                     // index.html
                                     if(window.location.pathname == "/" || window.location.pathname == "/index.html"
                                        ||
                                        window.location.pathname == "/desafio-IA/"){
                                         var iniciar = document.getElementsByTagName("button")[0];
-
+                                        
                                         iniciar.onclick = function(ev){
 
 
@@ -190,8 +190,6 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 if(jogador.value != undefined && verificar_cincodigitos == true &&
                                                     jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
                                                 {
-                                                    
-
                                                         regras_gerais.jogador(jogador.value);
                                                 }
                                                 else if( verificar_cincodigitos == false){
@@ -238,12 +236,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                     if(verificar != null){
 
-                                        window.localStorage.removeItem("chave-publica");
+                                        
                                         var mod =  window.localStorage.getItem("mod");
-                                        window.localStorage.removeItem("mod");
+
                                         var letra_nomes = window.localStorage.getItem("letra_nome");
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                             modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
+                                           
                                         theads.push(new Worker("./src/modulos.js"));
 
                                         theads[0].onmessage = function(ev) {
@@ -252,7 +251,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             modulo.temporizador();
                                             theads[0].terminate();
                                             theads[0] = undefined;
- 
+                                            theads.pop();
 
                                         };
                                         theads[0].postMessage({tipo:"fácil"});

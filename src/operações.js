@@ -6,20 +6,16 @@ class regras{
         separador.pop();
         separador.pop();
         var resposta = document.querySelector("[name=Resposta]");
-        var placar_ia = Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
         var tipo;
         var i = 0;
         var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
         var calculo = 0;
-        var temporizador = 0;
         var Derrotar_ia = Number.parseInt(document.querySelectorAll("[name=Derrota_artificial]")[1].textContent)
         if(pontos_joagador - 1 >3){
             tipo = "média"; 
-            temporizador = 40000;
         }
         else if(pontos_joagador - 1 <= 3){
             tipo ="fácil";
-            temporizador = 30000;
         }
         if(tipo == "média"){
             var operador = [separador[2],separador[5]];
@@ -44,7 +40,6 @@ class regras{
         {
             // DIFICIL
         }
-
         if(calculo == usuario & calculo != NaN){
             document.querySelector('[name=jogador_texto]').disabled = true;
             pontos_joagador++;
@@ -95,7 +90,16 @@ class regras{
         }
         else 
         {
-            // DIFICIL
+             // DIFICIL
+             // futuramente.
+            /*tipo = "díficil";
+           var operador = [separador[2],separador[5], separador[8]];
+            operação = "";
+            while(i<separador.length){
+                operação = operação + separador[i];
+                i++;
+            }
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);*/
         }
         var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
         var stringcalculo = calculo.toString();
