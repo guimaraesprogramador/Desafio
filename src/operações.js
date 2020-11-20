@@ -122,7 +122,7 @@ class regras{
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
             document.querySelector("[name=Resposta_artificial]").disabled = false;
-            document.querySelector("[name=artificial_texto]").textContent = calculo;
+            document.querySelector("[name=artificial_texto]").textContent = calculo  +"\n";
             document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
             document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
             pontos_atual = pontos_atual + 1;

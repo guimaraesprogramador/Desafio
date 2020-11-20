@@ -19,6 +19,7 @@
         right: 0%;
     }
     [name ="artificial"]{
+        position: relative;
     }
     [name="jogador"]{
         position: relative;
@@ -67,8 +68,8 @@
         position: relative;
         font-size: 80%;
         float: left;
-        top: 300%;
-        left:0%;
+        top: 265%;
+        right:20%;
         background-color: #ff3333;
     }
 
@@ -137,7 +138,7 @@
         background-color: white;
         padding-right: 15%;
         padding-left: 5%;
-        padding-top: 8%;
+        padding-top: 8%;    
     }   
     [name="Vitoria_jogador"]{
         position: relative;
