@@ -10,9 +10,9 @@ app.run( function() {
         if(window.location.pathname == "/" || window.location.pathname == "/index.html"
            ||
            window.location.pathname == "/desafio-IA/"){
-            Swal.fire({
+            var modal = Swal.fire({
                 icon:"warning",
-                title: 'Carregando',
+                title:"Carregando...",
                 html:' <div class="loader"></div>'
             })
             var t = window.setTimeout(function(){
@@ -22,6 +22,8 @@ app.run( function() {
 
             theads[0].onmessage = function(ev){
                 clearTimeout(t);
+                document.querySelector(".loader").remove();
+                modal.close();
                 if(ev.data.criptografia.length == 0){
                     location.reload();
                 }
@@ -37,7 +39,7 @@ app.run( function() {
                                ev.data.link);
                     theads[0].terminate();
                     theads[0] = undefined;
-                    document.querySelector(".loader").remove();
+                    
                 }
 
 
@@ -85,13 +87,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                 };
-    $scope.carregar_dados = function(){
+                                $scope.carregar_dados = function(){
                                     // index.html
                                     if(window.location.pathname == "/" || window.location.pathname == "/index.html"
                                        ||
                                        window.location.pathname == "/desafio-IA/"){
                                         var iniciar = document.getElementsByTagName("button")[0];
-                                        
+
                                         iniciar.onclick = function(ev){
 
 
@@ -180,17 +182,17 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 var digitos = event.target.value.length;
                                                 if(digitos < 6){
                                                     verificar_cincodigitos = true;
-                                                  
+
                                                 }
                                                 else verificar_cincodigitos = false;
                                             }
                                             var resposta = document.querySelector("[name=Resposta]");
                                             resposta.onclick = function(ev){
-                                                  
+
                                                 if(jogador.value != undefined && verificar_cincodigitos == true &&
-                                                    jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
+                                                   jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
                                                 {
-                                                        regras_gerais.jogador(jogador.value);
+                                                    regras_gerais.jogador(jogador.value);
                                                 }
                                                 else if( verificar_cincodigitos == false){
                                                     Swal.fire({
@@ -201,11 +203,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 }
                                                 else {
                                                     Swal.fire({
-                                                    icon:"warning",
-                                                    title: 'Oops...',
-                                                    text:"não é permite com vírgura ou ponto os numeros."
-                                                })
-                                            }
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"não é permite com vírgura ou ponto os numeros."
+                                                    })
+                                                }
                                             }
 
                                         }
@@ -228,6 +230,9 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                 if(window.location.pathname == "/jogo.html"
                                    ||
                                    window.location.pathname == "/desafio-IA/jogo.html"){
+                                    try{
+
+                                     
                                     var permissão = $scope.verificar_plataforma();
 
 
@@ -236,16 +241,16 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                     if(verificar != null){
 
-                                        
+
                                         var mod =  window.localStorage.getItem("mod");
 
                                         var letra_nomes = window.localStorage.getItem("letra_nome");
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-                                            modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
-                                            window.localStorage.removeItem("chave-publica");
-                                            window.localStorage.removeItem("mod");
-                                            window.localStorage.removeItem("letra_nome");
-                                            window.localStorage.removeItem("letra_sexo");
+                                        modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
+                                        window.localStorage.removeItem("chave-publica");
+                                        window.localStorage.removeItem("mod");
+                                        window.localStorage.removeItem("letra_nome");
+                                        window.localStorage.removeItem("letra_sexo");
                                         theads.push(new Worker("./src/modulos.js"));
 
                                         theads[0].onmessage = function(ev) {
@@ -265,7 +270,12 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                         window.location.replace(caminho);
                                     }
-
-
+                                }
+                                    catch(erro){
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA/login.html"  : "/jogo.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html"  ? "/desafio-IA/" : "/";
+                                        var caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
+                                        window.location.replace(caminho);
+                                    }
                                 }
                             }]);

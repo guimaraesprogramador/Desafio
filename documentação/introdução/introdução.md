@@ -105,24 +105,26 @@ Vai ser passado para a etapa 7.
 
 ##### Previsão até 30  de outubro de 2020.
 
-#### ETAPA 7 
+#### ETAPA 7 Completa.
 ##### Objetivos:
 1. Implementar a quatro parte do esboço para desktop.
 2. terminar de implementar a terceira parte do esboço funcionando.
 
 ##### Resultados:
-
+Foi realizado somente a responsividade de todo site feito até a terceira parte.
 
 ##### Previsão até 20 de novembro de 2020.
 
 #### ETAPA 8 
 ##### Objetivos:
 1. Implementar a quarte parte do esboço para android.
+2. Implementar a quatro parte do esboço para desktop.
+3. Salvar os dados importantes como: nome, chave, número de vitórias, número de derrotas e data atual do computador.
 
 ##### Resultados:
 
 
-##### Previsão até 20  de novembro de 2020.
+##### Previsão até 26  de novembro de 2020.
 
 #### ETAPA 9
 ##### Objetivos:

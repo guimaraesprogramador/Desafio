@@ -41,10 +41,10 @@
     }
     .img_artificial{
         filter: grayscale(100%);
-        width: 31%;
-        position: relative;
-        left: 70%;
-        bottom: 130%;
+        position: fixed;
+        width: 11%;
+        left: 30%;
+        top: 7%;
     }
     .img_jogador{
         position: relative;
@@ -67,7 +67,7 @@
         position: relative;
         font-size: 80%;
         float: left;
-        top: 270%;
+        top: 300%;
         left:0%;
         background-color: #ff3333;
     }
@@ -128,17 +128,16 @@
     .temporizador{
         position: absolute;
         left:43%;
-        bottom: 48%;
+        bottom: 65%;
     }     
     [name="artificial_texto"]{
-        position: relative;
-        float: inherit;
-        left:110%;
-        bottom: 600%;
+        position: fixed;
+        left:45%;
+        top: 7.5%;
         background-color: white;
         padding-right: 15%;
-        padding-left: 13%;
-        padding-top: 0.5%;
+        padding-left: 5%;
+        padding-top: 8%;
     }   
     [name="Vitoria_jogador"]{
         position: relative;
