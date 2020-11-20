@@ -97,7 +97,7 @@ class calculos{
                 removervirgura = calculo.indexOf(".");
                 if(removervirgura != -1){
                     removervirgura = calculo.replace(".",",");
-                    calculo = Number.parseInt(removervirgura).toPrecision(1);
+                    calculo = Number.parseFloat(removervirgura).toPrecision(1);
 
                 }
 
