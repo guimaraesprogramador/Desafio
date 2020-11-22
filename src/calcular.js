@@ -93,7 +93,7 @@ class calculos{
 
             }
             else if(operação == "/"){
-                calculo = (Number.parseInt(calculo) / Number.parseInt( divisor[i])).toString();
+                calculo = (Number.parseFloat(calculo) / Number.parseFloat( divisor[i])).toString();
                 removervirgura = calculo.indexOf(".");
                 if(removervirgura != -1){
                     removervirgura = calculo.replace(".",",");
