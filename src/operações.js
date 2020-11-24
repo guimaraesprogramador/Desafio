@@ -40,7 +40,7 @@ class regras{
         {
             // DIFICIL
         }
-        if(calculo == usuario & calculo != NaN){
+        if(calculo == usuario && calculo != NaN && calculo != "erro"){
             document.querySelector('[name=jogador_texto]').disabled = true;
             pontos_joagador++;
             document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
@@ -103,18 +103,12 @@ class regras{
         }
         var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
         var stringcalculo = calculo.toString();
-        if(stringcalculo == responsta_jogador){
+        if(stringcalculo == responsta_jogador || stringcalculo == "erro"){
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
-           
-           
-            
-  
-                clearInterval(modulo.contagem);
-                document.querySelector("[name=Resposta_artificial]").disabled = false;
-                modulo.artificial("vencedor");
-           
-            
+            clearInterval(modulo.contagem);
+            document.querySelector("[name=Resposta_artificial]").disabled = false;
+            modulo.artificial("vencedor");
         }
         else{
           
@@ -122,7 +116,7 @@ class regras{
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
             document.querySelector("[name=Resposta_artificial]").disabled = false;
-            document.querySelector("[name=artificial_texto]").textContent = calculo  +"\n";
+            document.querySelector("[name=artificial_texto]").textContent = calculo;
             document.querySelector(".img_resultado0").src = "./imagens/check-green-24dp.svg";
             document.querySelector(".img_resultado1").src ="./imagens/cancel-red-48dp.svg";
             pontos_atual = pontos_atual + 1;

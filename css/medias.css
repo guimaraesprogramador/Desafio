@@ -128,8 +128,8 @@
     }
     .temporizador{
         position: absolute;
-        left:43%;
-        bottom: 65%;
+        left:45%;
+        bottom: 55%;
     }     
     [name="artificial_texto"]{
         position: fixed;
