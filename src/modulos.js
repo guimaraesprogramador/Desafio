@@ -122,13 +122,6 @@ class modulos {
                 if(segundo < 10){
                     document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+"0"+segundo;
                 }
-                else if(document.querySelector("[name=artificial_texto]").textContent != ""
-                        ||
-                        document.querySelector("[name=jogador_texto]").value != ""){
-                    segundo = 60;
-                    minutos = 4;
-
-                }
                 else {
 
                     document.querySelector(".temporizador").textContent = "0"+minutos+ ":"+segundo;
