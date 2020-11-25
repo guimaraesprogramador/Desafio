@@ -247,7 +247,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_nomes = window.localStorage.getItem("letra_nome");
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
-                                        
+                                        window.localStorage.removeItem("chave-publica");
+                                        window.localStorage.removeItem("mod");
+                                       window.localStorage.removeItem("letra_nome");
+                                       window.localStorage.removeItem("letra_sexo");
                                        
                                         theads.push(new Worker("./src/modulos.js"));
 
@@ -270,9 +273,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                           caminho =   window.location.href.replace(separar,anterior);  
                                         }
                                         else {
+                                             
                                             caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                         }
-                                        window.location.assign(caminho);
+                                      window.location.assign(caminho);
                                     }
                                 }
                                     catch(erro){
@@ -280,7 +284,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
                                         var caminho;
                                         if(token[1] == undefined){
-                                            caminho =   window.location.href.replace(separar,anterior);  
+                                            caminho =   window.location.href.replace(separar,anterior);
                                           }
                                           else {
                                               caminho = window.location.href.replace(separar+"?token="+token[1],anterior);

@@ -127,10 +127,7 @@ class salvar{
         ])
           window.localStorage.setItem("usuário",this.index[0]);
           while(this.index.length > 0)this.index.pop();
-          window.localStorage.removeItem("chave-publica");
-             window.localStorage.removeItem("mod");
-            window.localStorage.removeItem("letra_nome");
-            window.localStorage.removeItem("letra_sexo");
+         
         }
     }
 }
