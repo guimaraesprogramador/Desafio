@@ -120,13 +120,17 @@ class salvar{
                 horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
                 + date.getHours() + " : " + date.getMinutes();
             }
-        //     this.index = [index[0],index[1],
-        //             pontos_joagador,
-        //         Derrota_jogador,
-        //         horario
-        // ]
-        //     console.log(this.index);
-          // window.localStorage.setItem("token",this.index);
+            this.index.push([index[0],token[1],
+                    pontos_joagador,
+                Derrota_jogador,
+                horario
+        ])
+          window.localStorage.setItem("usuário",this.index[0]);
+          while(this.index.length > 0)this.index.pop();
+          window.localStorage.removeItem("chave-publica");
+             window.localStorage.removeItem("mod");
+            window.localStorage.removeItem("letra_nome");
+            window.localStorage.removeItem("letra_sexo");
         }
     }
 }

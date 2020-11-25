@@ -247,11 +247,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var letra_nomes = window.localStorage.getItem("letra_nome");
                                         var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
                                         modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
-                                        window.localStorage.removeItem("chave-publica");
-                                        window.localStorage.removeItem("mod");
-                                        window.localStorage.removeItem("letra_nome");
-                                        window.localStorage.removeItem("letra_sexo");
-                                        salvando.inserir([document.getElementsByName("nome_jogador")[0].innerText ,verificar])
+                                        
+                                       
                                         theads.push(new Worker("./src/modulos.js"));
 
                                         theads[0].onmessage = function(ev) {
@@ -261,7 +258,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             theads[0].terminate();
                                             theads[0] = undefined;
                                             theads.pop();
-
+                                            
                                         };
                                         theads[0].postMessage({tipo:"fácil"});
                                     }

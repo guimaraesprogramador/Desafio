@@ -143,8 +143,9 @@ class modulos {
         this.tempo_artificial = window.setInterval(function(){
             var pontos_atual_artifical =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
             var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
+           
             regras_gerais.so(pontos_atual_artifical);
-            
+            salvando.inserir([document.getElementsByName("nome_jogador")[0].innerText])
             var tipo;
 
             if(pontos_atual_artifical - 1 > 3|| pontos_joagador -1 > 3){
