@@ -263,7 +263,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         theads[0].postMessage({tipo:"fácil"});
                                     }
                                     else{
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/"  : "/jogo.html";
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
                                         var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
                                         var caminho;
                                         if(token[1] == undefined){
@@ -276,7 +276,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     }
                                 }
                                     catch(erro){
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/"  : "/jogo.html";
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
                                         var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
                                         var caminho;
                                         if(token[1] == undefined){
