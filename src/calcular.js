@@ -1,4 +1,4 @@
- var removervirgura = "";
+var removervirgura = "";
 class calculos{
     média(valoria, operação){
         if(operação.length == 2){
@@ -25,88 +25,39 @@ class calculos{
             }
 
             var total = 0;
-           while(i <operação.length){
-                  // multiplicação
-                  if(operação[i] == "*"){
-                      if(i == 0){
+            while(i <operação.length){
+                // multiplicação
+                if(operação[i] == "*"){
+                    if(i == 0){
                         total = (Number.parseInt(calculo) * Number.parseInt(calculo2));
-                      }
-                      else {
+                    }
+                    else {
                         total = (Number.parseInt(total) * Number.parseInt(calculo3));
-                      }
-                    
-                  }
-                  // divisão
-                  else if(operação[i] == "/"){
+                    }
+
+                }
+                // divisão
+                else if(operação[i] == "/"){
                     if(i == 0){
                         total = (Number.parseFloat(calculo) / Number.parseFloat(calculo2)).toString();
-                                removervirgura = total.indexOf(".");
-                                if(removervirgura != -1){
-                                    removervirgura = total.replace(".",",");
-                                    total =  Number.parseFloat(removervirgura).toPrecision(1);
-                                }
+                        removervirgura = total.indexOf(".");
+                        if(removervirgura != -1){
+                            removervirgura = total.replace(".",",");
+                            total =  Number.parseFloat(removervirgura).toPrecision(1);
+                        }
                     }
                     else {
                         total = (Number.parseFloat(total) / Number.parseFloat(calculo3)).toString();
-                                removervirgura = total.indexOf(".");
-                                if(removervirgura != -1){
-                                    removervirgura = total.replace(".",",");
-                                    total =  Number.parseFloat(removervirgura).toPrecision(1);
-                                }
+                        removervirgura = total.indexOf(".");
+                        if(removervirgura != -1){
+                            removervirgura = total.replace(".",",");
+                            total =  Number.parseFloat(removervirgura).toPrecision(1);
+                        }
                     }
-                    
-                  }
-                  // soma
-                  else if(operação[i] == "+"){
-                      if(operação[1] == "*"){
-                        if(i == 0){
-                            total = (Number.parseInt(calculo) * Number.parseInt(calculo2)) 
-                        }
-                        else {
-                            total = (Number.parseInt(total) * Number.parseInt(calculo3)) 
-                        }
-                        delete operação[1];
-                      }
-                      else if(operação[1] == "/"){
-                        if(i == 0){
-                            total = (Number.parseFloat(calculo) / Number.parseFloat(calculo2)).toString();
-                                    removervirgura = total.indexOf(".");
-                                    if(removervirgura != -1){
-                                        removervirgura = total.replace(".",",");
-                                        total =  Number.parseFloat(removervirgura).toPrecision(1);
-                                    }
-                        }
-                        else {
-                            total = (Number.parseFloat(total) / Number.parseFloat(calculo3)).toString();
-                                    removervirgura = total.indexOf(".");
-                                    if(removervirgura != -1){
-                                        removervirgura = total.replace(".",",");
-                                        total =  Number.parseFloat(removervirgura).toPrecision(1);
-                                    }
-                        }
-                        delete operação[1];
-                      }
-                      else if(operação[1] == "-"){
-                        if(i == 0){
-                            total = (Number.parseInt(calculo) - Number.parseInt(calculo2));
-                        }
-                        else {
-                            total = (Number.parseInt(total) - Number.parseInt(calculo3));
-                        }
-                        delete operação[1];
-                      }
-                      else {
-                        if(i == 0){
-                            total = (Number.parseInt(calculo) + Number.parseInt(calculo2));
-                        }
-                        else {
-                            total = (Number.parseInt(total) + Number.parseInt(calculo3));
-                        }
-                      }
-                     
-                  }
-                  // subtração
-                  else if(operação[i] == "-"){
+
+                }
+                // soma
+                else if(operação[i] == "+"){
                     if(operação[1] == "*"){
                         if(i == 0){
                             total = (Number.parseInt(calculo) * Number.parseInt(calculo2)) 
@@ -115,60 +66,109 @@ class calculos{
                             total = (Number.parseInt(total) * Number.parseInt(calculo3)) 
                         }
                         delete operação[1];
-                      }
-                      else if(operação[1]=="/"){
-                          if(i == 0){
+                    }
+                    else if(operação[1] == "/"){
+                        if(i == 0){
                             total = (Number.parseFloat(calculo) / Number.parseFloat(calculo2)).toString();
                             removervirgura = total.indexOf(".");
                             if(removervirgura != -1){
                                 removervirgura = total.replace(".",",");
                                 total =  Number.parseFloat(removervirgura).toPrecision(1);
                             }
-                          }
-                          else {
+                        }
+                        else {
                             total = (Number.parseFloat(total) / Number.parseFloat(calculo3)).toString();
                             removervirgura = total.indexOf(".");
                             if(removervirgura != -1){
                                 removervirgura = total.replace(".",",");
                                 total =  Number.parseFloat(removervirgura).toPrecision(1);
                             }
-                          }
+                        }
                         delete operação[1];
-                      }
-                      else if(operação[1] == "+"){
-                       if(i == 0){
-                        total =  (Number.parseInt(calculo) + Number.parseInt(calculo2));
-                       }
-                       else {
-                        total =  (Number.parseInt(total) + Number.parseInt(calculo3));
-                       }
-                       delete operação[1];
-                      }
-                      else {
-                      if(i == 0){
-                        total =  (Number.parseInt(calculo) - Number.parseInt(calculo2));
-                      }
-                      else {
-                        total =  (Number.parseInt(total) - Number.parseInt(calculo3));
-                      }
-                      
-                      }
-                    
-                  }
-              
-              i++;
-           }
-           // true and true se não for número
-           if(!(Number.isInteger(Number.parseInt(operação[0])))
-           && !(Number.isInteger(Number.parseInt(operação[1]))
-           && total != "Infinity")
-           ){
-            return total;
-           }
-           else {
-               return "erro";
-           }
-            
+                    }
+                    else if(operação[1] == "-"){
+                        if(i == 0){
+                            total = (Number.parseInt(calculo) - Number.parseInt(calculo2));
+                        }
+                        else {
+                            total = (Number.parseInt(total) - Number.parseInt(calculo3));
+                        }
+                        delete operação[1];
+                    }
+                    else {
+                        if(i == 0){
+                            total = (Number.parseInt(calculo) + Number.parseInt(calculo2));
+                        }
+                        else {
+                            total = (Number.parseInt(total) + Number.parseInt(calculo3));
+                        }
+                    }
+
+                }
+                // subtração
+                else if(operação[i] == "-"){
+                    if(operação[1] == "*"){
+                        if(i == 0){
+                            total = (Number.parseInt(calculo) * Number.parseInt(calculo2)) 
+                        }
+                        else {
+                            total = (Number.parseInt(total) * Number.parseInt(calculo3)) 
+                        }
+                        delete operação[1];
+                    }
+                    else if(operação[1]=="/"){
+                        if(i == 0){
+                            total = (Number.parseFloat(calculo) / Number.parseFloat(calculo2)).toString();
+                            removervirgura = total.indexOf(".");
+                            if(removervirgura != -1){
+                                removervirgura = total.replace(".",",");
+                                total =  Number.parseFloat(removervirgura).toPrecision(1);
+                            }
+                        }
+                        else {
+                            total = (Number.parseFloat(total) / Number.parseFloat(calculo3)).toString();
+                            removervirgura = total.indexOf(".");
+                            if(removervirgura != -1){
+                                removervirgura = total.replace(".",",");
+                                total =  Number.parseFloat(removervirgura).toPrecision(1);
+                            }
+                        }
+                        delete operação[1];
+                    }
+                    else if(operação[1] == "+"){
+                        if(i == 0){
+                            total =  (Number.parseInt(calculo) + Number.parseInt(calculo2));
+                        }
+                        else {
+                            total =  (Number.parseInt(total) + Number.parseInt(calculo3));
+                        }
+                        delete operação[1];
+                    }
+                    else {
+                        if(i == 0){
+                            total =  (Number.parseInt(calculo) - Number.parseInt(calculo2));
+                        }
+                        else {
+                            total =  (Number.parseInt(total) - Number.parseInt(calculo3));
+                        }
+
+                    }
+
+                }
+
+                i++;
+            }
+            // true and true se não for número
+            if(!(Number.isInteger(Number.parseInt(operação[0])))
+               && !(Number.isInteger(Number.parseInt(operação[1]))
+                    && total != "Infinity")
+              ){
+                return total;
+            }
+            else {
+                return "erro";
+            }
+
         }
         else this.fácil(valoria,operação);
     }
@@ -205,14 +205,14 @@ class calculos{
             i++;
         }
         if(!(Number.isInteger(Number.parseInt(operação)))
-        && calculo != "Infinity")
-           {
+           && calculo != "Infinity")
+        {
             return calculo;
-           }
+        }
         else {
             return "erro";
         }
-        
+
     }
     difícil(valoria, operação){
 

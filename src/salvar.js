@@ -9,7 +9,7 @@ class salvar{
         tipo = this._indexs;
     }
     update(index){
-        
+
     }
     inserir(index){
         this.random = window.localStorage.getItem("token");
@@ -19,7 +19,7 @@ class salvar{
         if(this.random == token[1]){
             this.random = this.random + 1; 
         }
-        
+
         if (window.XMLHttpRequest != undefined)
         {
             var xml = new XMLHttpRequest();
@@ -32,10 +32,10 @@ class salvar{
             if(xml.status == 200){
                 var data =  JSON.parse(xml.responseText);
                 var date = new Date(data.datetime);
-              
+
                 switch(date.getMonth()){
                     case 0:
-                    mes = "janeiro";
+                        mes = "janeiro";
                         break;
                     case 1:
                         mes = "feveiro";
@@ -53,34 +53,34 @@ class salvar{
                     case 5:
                         mes = "junho";
                         break;
-                        case 6:
-                            mes = "julho";
-                            break;
-                        case 7:
-                            mes = "agosto";
-                            break;
-                        case 8:
-                            mes = "setembro";
-                            break;
-                        case 9:
-                            mes = "outubro";
-                            break;
-                            case 10:
-                                mes ="novembro";
-                                break;
-                                case 11:
-                                    mes = "dezembro";
-                                    break;
+                    case 6:
+                        mes = "julho";
+                        break;
+                    case 7:
+                        mes = "agosto";
+                        break;
+                    case 8:
+                        mes = "setembro";
+                        break;
+                    case 9:
+                        mes = "outubro";
+                        break;
+                    case 10:
+                        mes ="novembro";
+                        break;
+                    case 11:
+                        mes = "dezembro";
+                        break;
                 }
                 horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
-                + date.getHours() + " : " + date.getMinutes();
+                    + date.getHours() + " : " + date.getMinutes();
             }
             else
             {
                 var date = new Date();
                 switch(date.getMonth()){
                     case 0:
-                    mes = "janeiro";
+                        mes = "janeiro";
                         break;
                     case 1:
                         mes = "feveiro";
@@ -98,36 +98,36 @@ class salvar{
                     case 5:
                         mes = "junho";
                         break;
-                        case 6:
-                            mes = "julho";
-                            break;
-                        case 7:
-                            mes = "agosto";
-                            break;
-                        case 8:
-                            mes = "setembro";
-                            break;
-                        case 9:
-                            mes = "outubro";
-                            break;
-                            case 10:
-                                mes ="novembro";
-                                break;
-                                case 11:
-                                    mes = "dezembro";
-                                    break;
+                    case 6:
+                        mes = "julho";
+                        break;
+                    case 7:
+                        mes = "agosto";
+                        break;
+                    case 8:
+                        mes = "setembro";
+                        break;
+                    case 9:
+                        mes = "outubro";
+                        break;
+                    case 10:
+                        mes ="novembro";
+                        break;
+                    case 11:
+                        mes = "dezembro";
+                        break;
                 }
                 horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
-                + date.getHours() + " : " + date.getMinutes();
+                    + date.getHours() + " : " + date.getMinutes();
             }
             this.index.push([index[0],token[1],
-                    pontos_joagador,
-                Derrota_jogador,
-                horario
-        ])
-          window.localStorage.setItem("usuário",this.index[0]);
-          while(this.index.length > 0)this.index.pop();
-         
+                             pontos_joagador,
+                             Derrota_jogador,
+                             horario
+                            ])
+            window.localStorage.setItem("usuário",this.index[0]);
+            while(this.index.length > 0)this.index.pop();
+            alertify.success('Salvado...');
         }
     }
 }

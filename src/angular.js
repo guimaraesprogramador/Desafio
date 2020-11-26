@@ -39,7 +39,7 @@ app.run( function() {
                                ev.data.link);
                     theads[0].terminate();
                     theads[0] = undefined;
-                    
+
                 }
 
 
@@ -166,6 +166,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     })
                                                 }
                                             }
+
                                         }
                                         catch(ev){
                                             window.location.reload();
@@ -176,30 +177,14 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         try{
                                             var jogador = document.querySelector("[name=jogador_texto]");
 
-                                            var verificar_cincodigitos = false;
-                                            // jogador
-                                            jogador.onblur = function(event){
-                                                var digitos = event.target.value.length;
-                                                if(digitos < 6){
-                                                    verificar_cincodigitos = true;
 
-                                                }
-                                                else verificar_cincodigitos = false;
-                                            }
                                             var resposta = document.querySelector("[name=Resposta]");
                                             resposta.onclick = function(ev){
 
-                                                if(jogador.value != undefined && verificar_cincodigitos == true &&
+                                                if(jogador.value != undefined &&
                                                    jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
                                                 {
                                                     regras_gerais.jogador(jogador.value);
-                                                }
-                                                else if( verificar_cincodigitos == false){
-                                                    Swal.fire({
-                                                        icon:"warning",
-                                                        title: 'Oops...',
-                                                        text:"maximo 5 digitos"
-                                                    })
                                                 }
                                                 else {
                                                     Swal.fire({
@@ -209,7 +194,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     })
                                                 }
                                             }
-
+                                            var input_salvar = document.querySelector("[name=salvar]");
+                                            input_salvar.onclick = function(ev)
+                                            {
+                                                salvando.inserir([document.getElementsByName("nome_jogador")[0].innerText])
+                                            }
                                         }
                                         catch(ev){
                                             Swal.fire({
@@ -232,64 +221,64 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                    window.location.pathname == "/desafio-IA/jogo.html"){
                                     try{
 
-                                     
-                                    var permissão = $scope.verificar_plataforma();
+
+                                        var permissão = $scope.verificar_plataforma();
 
 
-                                    var token =  window.location.href.split("token=");
-                                    var verificar = window.localStorage.getItem("chave-publica");
+                                        var token =  window.location.href.split("token=");
+                                        var verificar = window.localStorage.getItem("chave-publica");
 
-                                    if(verificar != null){
+                                        if(verificar != null){
 
 
-                                        var mod =  window.localStorage.getItem("mod");
+                                            var mod =  window.localStorage.getItem("mod");
 
-                                        var letra_nomes = window.localStorage.getItem("letra_nome");
-                                        var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-                                        modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
-                                        window.localStorage.removeItem("chave-publica");
-                                        window.localStorage.removeItem("mod");
-                                       window.localStorage.removeItem("letra_nome");
-                                       window.localStorage.removeItem("letra_sexo");
-                                       
-                                        theads.push(new Worker("./src/modulos.js"));
+                                            var letra_nomes = window.localStorage.getItem("letra_nome");
+                                            var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
+                                            modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
+                                            window.localStorage.removeItem("chave-publica");
+                                            window.localStorage.removeItem("mod");
+                                            window.localStorage.removeItem("letra_nome");
+                                            window.localStorage.removeItem("letra_sexo");
 
-                                        theads[0].onmessage = function(ev) {
-                                            document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                            modulo.calculo_artificial(30000);   
-                                            modulo.temporizador();
-                                            theads[0].terminate();
-                                            theads[0] = undefined;
-                                            theads.pop();
-                                            
-                                        };
-                                        theads[0].postMessage({tipo:"fácil"});
-                                    }
-                                    else{
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
-                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
-                                        var caminho;
-                                        if(token[1] == undefined){
-                                          caminho =   window.location.href.replace(separar,anterior);  
+                                            theads.push(new Worker("./src/modulos.js"));
+
+                                            theads[0].onmessage = function(ev) {
+                                                document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                                                modulo.calculo_artificial(30000);   
+                                                modulo.temporizador();
+                                                theads[0].terminate();
+                                                theads[0] = undefined;
+                                                theads.pop();
+
+                                            };
+                                            theads[0].postMessage({tipo:"fácil"});
                                         }
-                                        else {
-                                             
-                                            caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
+                                        else{
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
+                                            var caminho;
+                                            if(token[1] == undefined){
+                                                caminho =   window.location.href.replace(separar,anterior);  
+                                            }
+                                            else {
+
+                                                caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
+                                            }
+                                            window.location.assign(caminho);
                                         }
-                                      window.location.assign(caminho);
                                     }
-                                }
                                     catch(erro){
                                         var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
                                         var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
                                         var caminho;
                                         if(token[1] == undefined){
                                             caminho =   window.location.href.replace(separar,anterior);
-                                          }
-                                          else {
-                                              caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
-                                          }
-                                          window.location.assign(caminho);
+                                        }
+                                        else {
+                                            caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
+                                        }
+                                        window.location.assign(caminho);
                                     }
                                 }
                             }]);

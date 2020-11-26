@@ -113,21 +113,21 @@ self.addEventListener("message",function(ev){
             rsa.chave = ev.data.chave;
             rsa.mod = ev.data.mod;
             postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
-                              mod:rsa.mod});
+                         mod:rsa.mod});
             self.close();
             break;
-            case "fácil":
+        case "fácil":
 
             modulo.modulos_fácil();
 
             postMessage({tipo:[modulo.operação, modulo.operador]});
             self.close();
             break;
-            case "média":
-                modulo.modulos_média();
-    
-                postMessage({tipo:[modulo.operação,modulo.operador]});
-                self.close();
-                break;
+        case "média":
+            modulo.modulos_média();
+
+            postMessage({tipo:[modulo.operação,modulo.operador]});
+            self.close();
+            break;
     }
 },false);

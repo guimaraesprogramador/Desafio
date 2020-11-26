@@ -90,8 +90,8 @@ class regras{
         }
         else 
         {
-             // DIFICIL
-             // futuramente.
+            // DIFICIL
+            // futuramente.
             /*tipo = "díficil";
            var operador = [separador[2],separador[5], separador[8]];
             operação = "";
@@ -111,7 +111,7 @@ class regras{
             modulo.artificial("vencedor");
         }
         else{
-          
+
             clearInterval(modulo.contagem);
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
