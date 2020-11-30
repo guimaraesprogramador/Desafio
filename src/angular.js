@@ -24,6 +24,7 @@ app.run( function() {
                 clearTimeout(t);
                 document.querySelector(".loader").remove();
                 modal.close();
+                
                 if(ev.data.criptografia.length == 0){
                     location.reload();
                 }
@@ -197,7 +198,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var input_salvar = document.querySelector("[name=salvar]");
                                             input_salvar.onclick = function(ev)
                                             {
-                                                salvando.inserir([document.getElementsByName("nome_jogador")[0].innerText])
+                                                salvando.local([document.getElementsByName("nome_jogador")[0].innerText]);
                                             }
                                         }
                                         catch(ev){
@@ -220,17 +221,26 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                    ||
                                    window.location.pathname == "/desafio-IA/jogo.html"){
                                     try{
-
-
+                                        
+                                      
                                         var permissão = $scope.verificar_plataforma();
-
+                                        var db  = window.indexedDB.open('dbdesafio',2);
+                                        db.onupgradeneeded = function(e){
+                                            var minhaconnect = e.target.result;
+                                            minhaconnect.createObjectStore('usuario',{keyPath: 'nome'});
+                                            minhaconnect.createObjectStore('IA',{keyPath: 'nome'})
+                                            
+                                        }
+                                        db.onerror = function(ev){
+                                            console.log("erro");
+                                        }
 
                                         var token =  window.location.href.split("token=");
                                         var verificar = window.localStorage.getItem("chave-publica");
 
                                         if(verificar != null){
 
-
+                                            
                                             var mod =  window.localStorage.getItem("mod");
 
                                             var letra_nomes = window.localStorage.getItem("letra_nome");
@@ -255,6 +265,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             theads[0].postMessage({tipo:"fácil"});
                                         }
                                         else{
+                                          
                                             var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
                                             var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/jogo.html"  ? "/desafio-IA/" : "/";
                                             var caminho;
@@ -265,7 +276,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                                 caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                             }
+                                            db.onsuccess= function(ev){
+                                                salvando.indexedDB(ev.target.result);
                                             window.location.assign(caminho);
+                                            }
                                         }
                                     }
                                     catch(erro){
@@ -278,6 +292,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         else {
                                             caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                         }
+                                        
                                         window.location.assign(caminho);
                                     }
                                 }

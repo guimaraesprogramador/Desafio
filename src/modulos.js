@@ -145,7 +145,7 @@ class modulos {
             var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
            
             regras_gerais.so(pontos_atual_artifical);
-            salvando.inserir([document.getElementsByName("nome_jogador")[0].innerText])
+            salvando.local([document.getElementsByName("nome_jogador")[0].innerText]);
             var tipo;
 
             if(pontos_atual_artifical - 1 > 3|| pontos_joagador -1 > 3){
