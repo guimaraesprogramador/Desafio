@@ -109,13 +109,21 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             }
 
                                         }
-                                        var pontos = document.getElementsByTagName("button")[1];
-                                        pontos.onclick = function(ev){
-                                            console.log(pontos.value);
+                                        var continuar = document.getElementsByTagName("button")[1];
+                                        continuar.onclick = function(ev){
+                                            var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
+                                            window.location.host.toString() + window.location.pathname +"continuar.html" :
+                                            window.location.protocol +"//"+  window.location.host.toString() 
+                                            + window.location.pathname +"continuar.html";
+                                            window.location.replace(caminho);
                                         }
                                         var quem_somos = document.getElementsByTagName("button")[2];
                                         quem_somos.onclick = function(ev){
-                                            console.log(quem_somos.value)
+                                            var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
+                                            window.location.host.toString() + window.location.pathname +"quem_somos.html" :
+                                            window.location.protocol +"//"+  window.location.host.toString() 
+                                            + window.location.pathname +"quem_somos.html";
+                                            window.location.replace(caminho);
                                         }
 
                                     }
@@ -227,8 +235,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var db  = window.indexedDB.open('dbdesafio',2);
                                         db.onupgradeneeded = function(e){
                                             var minhaconnect = e.target.result;
-                                            minhaconnect.createObjectStore('usuario',{keyPath: 'nome'});
-                                            minhaconnect.createObjectStore('IA',{keyPath: 'nome'})
+                                            minhaconnect.createObjectStore('usuario',{autoIncrement:true});
+                                            minhaconnect.createObjectStore('IA',{autoIncrement:true})
                                             
                                         }
                                         db.onerror = function(ev){

@@ -21,25 +21,23 @@ class salvar{
                    var object_usuário =  banco.objectStoreNames[1];
                    var transaction = banco.transaction(object_usuário,'readwrite');
                    console.log(transaction.objectStore(object_usuário))
-                   var usuario = {
+                   var usuario = [{
                     nome:ultimodado_jogador[0],
                     chave: ultimodado_jogador[1],
                     positivo: Number.parseInt(ultimodado_jogador[2]),
                     negativo:Number.parseInt(ultimodado_jogador[3]),
                     data: ultimodado_jogador[4]
-                   }
-                   transaction.objectStore(object_usuário).add({"nome":usuario.nome,"chave":usuario.chave,
-                "positivo":usuario.positivo,"negativo":usuario.negativo,"data":usuario.data});
+                   }];
+                   transaction.objectStore(object_usuário).add(usuario[0]);
                     // criar e E INSERIR table IA 
                     var objectia = banco.objectStoreNames[0];
                     var transactionia = banco.transaction(objectia,'readwrite');
-                    var ia = {
+                    var ia = [{
                         nome:ultimodado_IA[0],
                         positivo:Number.parseInt(ultimodado_IA[1]),
                         negativo:Number.parseInt(ultimodado_IA[2])
-                    }
-                   transactionia.objectStore(objectia).add({"nome":ia.nome,
-                "positivo":ia.positivo,"negativo": ia.negativo});
+                    }]
+                  transactionia.objectStore(objectia).add(ia[0]);
                 
                     window.localStorage.removeItem("usuário");
                     window.localStorage.removeItem("IA");

@@ -5,6 +5,49 @@
         opacity: 1;
         background-color: rgb(127,127,229);
     }
+    h4{
+        position: fixed;
+       float: left;
+       left: 2.5%; 
+       opacity: 0.5;
+       
+    }
+    table{
+        position: fixed;
+        left: 2.5%;
+        top: 25%;
+        text-align: justify;
+        opacity: 0.5;
+    }
+    table tr{
+        position: fixed;
+        background-color: #ff3333;
+        padding-bottom: 20%;
+    }
+     h4 span{
+         position: fixed;
+        background-color: #ff3333;
+        top: 20%;
+       
+    }
+    .sair{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 45%;
+        left: 2.5%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .selecionar{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 45%;
+        left: 30.5%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
     .esquerda{
         position: absolute;
         border: 1px dotted black;
@@ -71,6 +114,7 @@
         top: 265%;
         right:20%;
         background-color: #ff3333;
+        opacity: 0.5;
     }
 
     [name="Resposta"]{
@@ -80,7 +124,7 @@
         left: 120%;
         top: 60%;
         background-color: #ff3333;
-
+        opacity: 0.5;
     }
 
     [name="Resposta_artificial"]{
@@ -90,7 +134,7 @@
         float: right;
         left: 130%;
         bottom: 180%;
-
+        opacity: 0.5;
     }
     .interrogação{
         position: relative;
@@ -151,6 +195,50 @@
         opacity: 1;
         background-color: rgb(127,127,229);
 
+    }
+    h4{
+        position: fixed;
+       float: left;
+       left: 2.5%; 
+       opacity: 0.5;
+       
+    }
+    table{
+        position: fixed;
+        left: 2.5%;
+        top: 25%;
+        text-align: justify;
+        opacity: 0.5;
+    }
+    table tr{
+        position: fixed;
+        background-color: #ff3333;
+        padding-right: 40%;
+        padding-bottom: 20%;
+    }
+     h4 span{
+         position: fixed;
+        background-color: #ff3333;
+        top: 20%;
+       
+    }
+    .sair{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 53%;
+        left: 2.5%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .selecionar{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 53%;
+        left: 15.5%;
+        padding-left: 3%;
+        padding-right: 3%;
     }
     .esquerda{
         position: absolute;
@@ -220,6 +308,7 @@
         right: 20%;
         top:90%;
         background-color: #ff3333;
+        opacity: 0.5;
     }
 
     [name="Resposta"]{
@@ -228,6 +317,7 @@
         left: 90%;
         bottom: 45%;
         background-color: #ff3333;
+        opacity: 0.5;
     }   
     [name="Resposta_artificial"]{
         position: relative;
@@ -235,6 +325,7 @@
         left: 90%;
         bottom: 80%;
         background-color: #ff3333;
+        opacity: 0.5;
     }
     .interrogação{
         position: relative;

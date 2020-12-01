@@ -245,16 +245,16 @@ Foi realizado somente a responsividade de todo site feito até a terceira parte.
 
 
 ##### Resultados:
-
+Foi possivel implentar todos os tópicos.
 
 
 
 
 ##### Previsão até 26  de novembro de 2020.
-Foi poassivel implentar todos os tópicos.
 
 
-#### ETAPA 9
+
+#### ETAPA 9 Incompleto
 
 ##### Objetivos:
 
@@ -263,7 +263,7 @@ Foi poassivel implentar todos os tópicos.
 
 
 ##### Resultados:
-
+Foi feito uma modificação no banco de dados para funciona direito.
 
 
 
@@ -277,6 +277,7 @@ Foi poassivel implentar todos os tópicos.
 ##### Objetivos:
 
 1. Implementar a quinta parte do esboço para desktop.
+2. Implementar a quinta parte do esboço para android.
 
 
 
@@ -293,8 +294,8 @@ Foi poassivel implentar todos os tópicos.
 #### ETAPA 11
 
 ##### Objetivos:
+1. Implementar a quarte  parte do esboço funcionando.
 
-1. Implementar a quinta parte do esboço para android.
 
 
 
@@ -312,7 +313,7 @@ Foi poassivel implentar todos os tópicos.
 
 ##### Objetivos:
 
-1. Implementar a quinta  parte do esboço funcionando.
+1. Implementar a quinta  parte do esboço  para desktop e android.
 
 
 
