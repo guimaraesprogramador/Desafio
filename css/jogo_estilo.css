@@ -9,10 +9,10 @@
     }
     h4{
         position: fixed;
-       float: left;
-       left: 20.5%; 
-       opacity: 0.5;
-       
+        float: left;
+        left: 20.5%; 
+        opacity: 0.5;
+
     }
     table{
         position: fixed;
@@ -24,15 +24,15 @@
     table tr{
         position: fixed;
         background-color: #ff3333;
-       
+
         padding-right: 40%;
         padding-bottom: 20%;
     }
-     h4 span{
-         position: fixed;
+    h4 span{
+        position: fixed;
         background-color: #ff3333;
         top: 20%;
-       
+
     }
     .sair{
         position: fixed;
@@ -51,6 +51,17 @@
         left: 30.5%;
         padding-left: 3%;
         padding-right: 3%;
+    }
+    .coluna_nova{
+        position: fixed;
+        top: 28%;
+        left: 22.5%;
+        width: auto;
+    }
+    [name="item"]{
+        position: fixed;
+        left: 20.5%;
+        top: 29%;
     }
     .esquerda{
         width: 50%;
@@ -197,14 +208,14 @@
     }
     h4{
         position: fixed;
-       float: left;
-       left: 20.5%; 
-       opacity: 0.5;
-       
+        float: left;
+        left: 10.5%; 
+        opacity: 0.5;
+
     }
     table{
         position: fixed;
-        left: 20.5%;
+        left: 10.5%;
         top: 25%;
         text-align: justify;
         opacity: 0.5;
@@ -212,22 +223,22 @@
     table tr{
         position: fixed;
         background-color: #ff3333;
-       
+
         padding-right: 10%;
         padding-bottom: 20%;
     }
-     h4 span{
-         position: fixed;
+    h4 span{
+        position: fixed;
         background-color: #ff3333;
         top: 20%;
-       
+
     }
     .sair{
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 50%;
-        left: 20.5%;
+        top: 53.5%;
+        left: 10.5%;
         padding-left: 3%;
         padding-right: 3%;
     }
@@ -235,10 +246,21 @@
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 50%;
-        left: 32.5%;
+        top: 53.5%;
+        left: 22.5%;
         padding-left: 3%;
         padding-right: 3%;
+    }
+    .coluna_nova{
+        position: fixed;
+        top: 28%;
+        left: 12%;
+        width: auto;
+    }
+    [name="item"]{
+        position: fixed;
+        left: 10%;
+        top: 29%;
     }
     .esquerda{
         width: 50%;
