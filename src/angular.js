@@ -275,6 +275,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                                 caminho = window.location.href.replace(separar+"?token="+token[1],anterior);
                                             }
+
                                             salvando.indexedDB(salvando.banco, caminho);
                                         }
                                     }
@@ -296,44 +297,47 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         ||
                                         window.location.pathname == "/desafio-IA/continuar.html")
                                 {
-                                    var banco = salvando.banco;
-                                    var usuario = banco.objectStoreNames[1];
-                                    var transaction = banco.transaction(usuario,'readwrite');
-                                    var getall = transaction.objectStore(usuario).getAll();
-                                    getall.onsuccess = function(ev){
-                                        var dados = ev.target.result;
-                                        var table = document.querySelector("tbody");
-                                        var  i = 0;
-                                        var nome,chave,vitoria,derrota,data;
-                                        while(i < dados.length){
-                                            var radio = document.createElement("input");
-                                            radio.type = "radio";
-                                            radio.name = "item";
-                                            radio.value = i;
-                                            nome = document.createElement("td");
-                                            nome.textContent = "|"+dados[i].nome;
-                                            chave = document.createElement("td");
-                                            chave.textContent = "|"+dados[i].chave+"|";
-                                            vitoria = document.createElement("td");
-                                            vitoria.textContent = dados[i].positivo+"|";
-                                            derrota = document.createElement("td");
-                                            derrota.textContent = dados[i].negativo+"|";
-                                            data = document.createElement("td");
-                                            data.textContent = dados[i].data+ "|";
-                                            var tr = document.createElement("tr");
-                                            tr.className = "coluna_nova";
-                                            tr.append(radio);
-                                            tr.append(nome);
-                                            tr.append(chave);
-                                            tr.append(vitoria);
-                                            tr.append(derrota);
-                                            tr.append(data);
-                                            console.log(tr);
-                                            table.append(tr);
-                                            i =  i + 1;
+                                    try{
+                                        var banco = salvando.banco;
+                                        var usuario = banco.objectStoreNames[1];
+                                        var transaction = banco.transaction(usuario,'readwrite');
+                                        var getall = transaction.objectStore(usuario).getAll();
+                                        getall.onsuccess = function(ev){
+                                            var dados = ev.target.result;
+                                            var table = document.querySelector("tbody");
+                                            var  i = 0;
+                                            var nome,chave,vitoria,derrota,data,tr;
+                                            while(i < dados.length){
+                                                var radio = document.createElement("input");
+                                                radio.type = "radio";
+                                                radio.name = "item";
+                                                radio.value = i;
+                                                nome = document.createElement("td");
+                                                nome.textContent = "|"+dados[i].nome;
+                                                chave = document.createElement("td");
+                                                chave.textContent = "|"+dados[i].chave+"|";
+                                                vitoria = document.createElement("td");
+                                                vitoria.textContent = dados[i].positivo+"|"
+                                                derrota = document.createElement("td");
+                                                derrota.textContent = dados[i].negativo+"|";
+                                                data = document.createElement("td");
+                                                data.textContent = dados[i].data+ "|";
+                                                tr = document.querySelector("tr");
+                                                tr.className = "coluna_nova";
+                                                tr.innerHTML = tr.innerHTML + "<br>" + "<input type='" +radio.type +"' name='"+
+                                                    + radio.name + "'" + "value = '" +
+                                                    radio.value + "'>" +
+                                                    nome.innerHTML + chave.innerHTML +
+                                                    vitoria.innerHTML + derrota.innerHTML +
+                                                    data.innerHTML;
+                                                i =  i + 1;
+                                            }
+
                                         }
-
-
+                                    }catch(ev){
+                                        window.location.reload();
                                     }
+
+
                                 }
                             }]);

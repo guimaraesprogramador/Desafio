@@ -188,13 +188,11 @@ class salvar{
                 Derrotar_ia
             ];
             window.localStorage.setItem("usuário",this.index);
-            window.localStorage.setItem("IA",i_a);
-           while(this.index.length > 0){
-                this.index.pop();
-           }
-           while(i_a.length > 0){
-               i_a.pop();
-           }
+            window.localStorage.setItem("IA",i_a); 
+            this.index.pop();
+            while(i_a.length > 0){
+                i_a.pop();
+            }
             alertify.success('Salvado...');
 
         }
