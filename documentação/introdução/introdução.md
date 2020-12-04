@@ -240,7 +240,7 @@ Foi realizado somente a responsividade de todo site feito até a terceira parte.
 
 2. Implementar a quatro parte do esboço para desktop.
 
-3. Salvar os dados importantes como: nome, chave, número de vitórias, número de derrotas e data atual do computador.
+3. Salvar os dados importantes como: nome, sexo ,chave, número de vitórias, número de derrotas e data atual do computador.
 
 
 

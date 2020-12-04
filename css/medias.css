@@ -14,7 +14,7 @@
     }
     table{
         position: fixed;
-        left: 2.5%;
+        left:-1%;
         top: 25%;
         text-align: justify;
         opacity: 0.5;
@@ -22,19 +22,19 @@
     table tr{
         position: fixed;
         background-color: #ff3333;
-        padding-bottom: 20%;
     }
     h4 span{
         position: fixed;
         background-color: #ff3333;
-        top: 20%;
+        top: 23%;
+        left: 0%;
 
     }
     .sair{
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 45%;
+        top: 5%;
         left: 2.5%;
         padding-left: 3%;
         padding-right: 3%;
@@ -43,10 +43,18 @@
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 45%;
+        top: 5%;
         left: 30.5%;
         padding-left: 3%;
         padding-right: 3%;
+    }
+    .coluna_nova{
+        position: fixed;
+        top: 28%;
+    }
+    [name="item"]{
+        position: fixed;
+        top: 29%;
     }
     .esquerda{
         position: absolute;
@@ -226,7 +234,7 @@
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 53%;
+        top: 5%;
         left: 2.5%;
         padding-left: 3%;
         padding-right: 3%;
@@ -235,10 +243,18 @@
         position: fixed;
         background-color: #ff3333;
         opacity: 0.5;
-        top: 53%;
+        top: 5%;
         left: 15.5%;
         padding-left: 3%;
         padding-right: 3%;
+    }
+    .coluna_nova{
+        position: fixed;
+        top: 28%;
+    }
+    [name="item"]{
+        position: fixed;
+        top: 29%;
     }
     .esquerda{
         position: absolute;

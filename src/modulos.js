@@ -12,9 +12,14 @@ class modulos {
             while(this.num >0){
                 this.n = Math.floor(Math.random() *100);
                 this.m = Math.floor(Math.random() *100);
-                this.link.push(this.n.toString());
-                this.link.push(this.m.toString());
-                this.num = this.num - 1;
+                if(this.n == 0 || this.m == 0){
+                    this.n = 1; 
+                }
+                else {
+                    this.link.push(this.n.toString());
+                    this.link.push(this.m.toString());
+                    this.num = this.num - 1;
+                }
             }
 
             this.operador = Math.floor(Math.random() *4);
@@ -31,10 +36,16 @@ class modulos {
                 this.n = Math.floor(Math.random() *100);
                 this.m = Math.floor(Math.random() *100);
                 this.p = Math.floor(Math.random() *100);
+               if(this.n == 0 || this.m == 0 || this.p == 0){
+                this.n = 1;
+               }
+               else {
                 this.link.push(this.n.toString());
                 this.link.push(this.m.toString());
                 this.link.push(this.p.toString());
                 this.num = this.num - 1;
+               }
+                
             }
             this.divisores(Math.floor(Math.random() *4));
             var n1 = this.operador;

@@ -2,19 +2,22 @@ class salvar{
     constructor(){
         this._index = [];
         window.indexedDB.open('dbdesafio',1);
-        this.db  = window.indexedDB.open('dbdesafio',2);
-        this.db.onupgradeneeded = function(e){
+       const db  = window.indexedDB.open('dbdesafio',2);
+        db.onupgradeneeded = function(e){
             var minhaconnect = e.target.result;
             minhaconnect.createObjectStore('usuario',{autoIncrement:true});
             minhaconnect.createObjectStore('IA',{autoIncrement:true})
-
         }
-        this.db.onerror = function(ev){
-            console.log("erro");
+         
+        
+    }
+   get banco(){
+    return new Promise((res,respo)=>{
+        var  db  = window.indexedDB.open('dbdesafio',2);
+        db.onsuccess = function(ev){
+            res(ev.target.result);
         }
-        this.db.onsuccess = function(ev){
-            salvando.banco = ev.target.result;
-        }
+    })
     }
     get index(){
         return this._index;
@@ -22,14 +25,15 @@ class salvar{
     set index(tipo){
         tipo = this._index;
     }
-    indexedDB(banco,caminho){
+    indexedDB(caminho){
         try{
             var alasql_jogador =  window.localStorage.getItem("usuário");
             var alasql_ia =  window.localStorage.getItem("IA");
-            if(alasql_jogador != null && alasql_ia != null &&  banco != undefined){
+            if(alasql_jogador != null && alasql_ia != null ){
                 var ultimodado_jogador = alasql_jogador.split(",");
                 var ultimodado_IA = alasql_ia.split(",");
-                // criar e E INSERIR table usuário
+                salvando.banco.then(banco=>{
+                    // criar e E INSERIR table usuário
                 var object_usuário =  banco.objectStoreNames[1];
                 var transaction = banco.transaction(object_usuário,'readwrite');
 
@@ -55,6 +59,9 @@ class salvar{
                 window.localStorage.removeItem("IA");
                 banco.close();
                 window.location.replace(caminho);
+            
+                })
+                
             }
         }
         catch(ev){
