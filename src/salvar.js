@@ -40,9 +40,10 @@ class salvar{
                 var usuario = [{
                     nome:ultimodado_jogador[0],
                     chave: ultimodado_jogador[1],
-                    positivo: Number.parseInt(ultimodado_jogador[2]),
-                    negativo:Number.parseInt(ultimodado_jogador[3]),
-                    data: ultimodado_jogador[4]
+                    sexo:ultimodado_jogador[2],
+                    positivo: Number.parseInt(ultimodado_jogador[3]),
+                    negativo:Number.parseInt(ultimodado_jogador[4]),
+                    data: ultimodado_jogador[5]
                 }];
                 transaction.objectStore(object_usuário).add(usuario[0]);
                 // criar e E INSERIR table IA 
@@ -57,12 +58,15 @@ class salvar{
 
                 window.localStorage.removeItem("usuário");
                 window.localStorage.removeItem("IA");
+                window.localStorage.removeItem("lantitude");
+                window.localStorage.removeItem("longitude");
                 banco.close();
                 window.location.replace(caminho);
             
                 })
                 
             }
+            else window.location.replace(caminho);
         }
         catch(ev){
             console.log(ev);
@@ -184,7 +188,7 @@ class salvar{
 
         }
         finally{
-            this.index.push([index[0],token[1],
+            this.index.push([index[0],token[1],document.querySelector(".img_jogador").name,
                              pontos_jogador,
                              Derrota_jogador,
                              horario

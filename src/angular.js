@@ -134,46 +134,55 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var entrar = document.getElementsByTagName("button")[0];
 
                                             entrar.onclick = function(ev){
-                                                var texto = document.querySelectorAll("input[name=usuário]")[0];
-                                                var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
+                                                modulo.pontos_geometricos().then(pontos=>{
+                                                    var texto = document.querySelectorAll("input[name=usuário]")[0];
+                                                    var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
 
-                                                if(validar_radio.length != 0){
-                                                    if(texto.value != ""){
-                                                        var normatizar_radio = validar_radio[0].value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-                                                        valor = [window.localStorage.getItem("chave-publica"),
-                                                                 window.localStorage.getItem("mod")];
-                                                        var conversor = new StringToBinary();  
-                                                        var binario_radio = conversor.convert(normatizar_radio);
-                                                        var criptografia_radio = [];
-
-                                                        binario_radio.forEach((value,index,array)=>{
-                                                            var decimal = parseInt(value,2)
-                                                            //                               numero,  chave, mod
-                                                            criptografia_radio.push(PowerMod(decimal,valor[0],valor[1]));
-                                                        })
-
-                                                        window.localStorage.setItem("letra_nome",texto.value);
-                                                        window.localStorage.setItem("letra_sexo",criptografia_radio);
-
-                                                        var caminho = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/desafio-IA/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
-                                                        var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
-                                                        window.location.replace(novo_caminho);
+                                                    if(validar_radio.length != 0){
+                                                        if(texto.value != ""){
+                                                            
+                                                            valor = [window.localStorage.getItem("chave-publica"),
+                                                                     window.localStorage.getItem("mod")];
+                                                            var conversor = new StringToBinary();  
+                                                            var binario_lantuide = conversor.convert(pontos[0].toString());
+                                                            var binario_longitude = conversor.convert(pontos[1].toString());
+                                                            var criptografia_lantitude = [];
+                                                            var criptografia_longitude = [];
+                                                            binario_lantuide.forEach((value,index,array)=>{
+                                                                var decimal = parseInt(value,2)
+                                                                //                               numero,  chave, mod
+                                                                criptografia_lantitude.push(PowerMod(decimal,valor[0],valor[1]));
+                                                            })
+                                                            binario_longitude.forEach((value,index,array)=>{
+                                                                var decimal = parseInt(value,2)
+                                                                //                               numero,  chave, mod
+                                                                criptografia_longitude.push(PowerMod(decimal,valor[0],valor[1]));
+                                                            })
+                                                            window.localStorage.setItem("letra_nome",texto.value);
+                                                            window.localStorage.setItem("letra_sexo",validar_radio[0].value);
+                                                            window.localStorage.setItem("lantitude",criptografia_lantitude);
+                                                            window.localStorage.setItem("longitude", criptografia_lantitude);
+                                                            var caminho = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/desafio-IA/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
+                                                            var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
+                                                            window.location.replace(novo_caminho);
+                                                        }
+                                                        else {
+                                                            Swal.fire({
+                                                                icon:"warning",
+                                                                title: 'Oops...',
+                                                                text:"campo nome não foi preenchido!"
+                                                            })
+                                                        }
                                                     }
-                                                    else {
+                                                    else{
                                                         Swal.fire({
                                                             icon:"warning",
                                                             title: 'Oops...',
-                                                            text:"campo nome não foi preenchido!"
+                                                            text:"campo sexo não foi preenchido!"
                                                         })
                                                     }
-                                                }
-                                                else{
-                                                    Swal.fire({
-                                                        icon:"warning",
-                                                        title: 'Oops...',
-                                                        text:"campo sexo não foi preenchido!"
-                                                    })
-                                                }
+                                                })
+                                                
                                             }
 
                                         }
@@ -243,8 +252,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var mod =  window.localStorage.getItem("mod");
 
                                             var letra_nomes = window.localStorage.getItem("letra_nome");
-                                            var letra_sexo = window.localStorage.getItem("letra_sexo").split(",");
-                                            modulo.descriptografar(letra_nomes,letra_sexo,token[1],mod);
+                                            var letra_sexo = window.localStorage.getItem("letra_sexo");
+                                            var lantitude_array = window.localStorage.getItem("lantitude").split(",");
+                                            var longitude_array = window.localStorage.getItem("longitude").split(",");
+                                            modulo.descriptografar(letra_nomes,[letra_sexo,lantitude_array,longitude_array],token[1],mod);
                                             window.localStorage.removeItem("chave-publica");
                                             window.localStorage.removeItem("mod");
                                             window.localStorage.removeItem("letra_nome");

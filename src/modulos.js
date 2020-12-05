@@ -58,6 +58,21 @@ class modulos {
         }
 
     }
+    pontos_geometricos(){
+    return new Promise((resp,res)=>{
+        var lantitude,longitude;
+        navigator.geolocation.getCurrentPosition(function(pontos){
+            lantitude = pontos.coords.latitude;
+            longitude = pontos.coords.longitude;
+            resp([lantitude,longitude]);
+        }, function(err){
+            lantitude = 0;
+            longitude = 0;
+            resp([lantitude,longitude]);
+        });
+    })
+       
+    }
     artificial(musica){ 
 
         if(musica == undefined){
@@ -208,25 +223,39 @@ class modulos {
         while(this.link.length > 0) this.link.pop();
     }
     descriptografar(nome,sexo,chave,mod){
-        var  descriptografia_sexo = [];        
-        sexo.forEach((value,index,key)=>{
-            descriptografia_sexo.push(PowerMod(value,chave,mod));
+        var  descriptografia_lantitude = []; 
+        var  descriptografia_longitude  = [];        
+        sexo[1].forEach((value,index,key)=>{
+            descriptografia_lantitude.push(PowerMod(value,chave,mod));
         })
+        
         var i = 0;
-        var sexo = "";
-        while(i < descriptografia_sexo.length){
-            sexo = sexo + String.fromCharCode(descriptografia_sexo[i]).toString(10); 
+        var gênero = "";
+        while(i < descriptografia_lantitude.length){
+            gênero = gênero + String.fromCharCode(descriptografia_lantitude[i]).toString(10); 
             i++;
         }
-        switch(sexo){
+       
+        switch(sexo[0]){
             case "feminino":
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/women-age-group-5--v2.png");
+                document.querySelector(".img_jogador").name = sexo[0];
                 break;
             case "masculino":
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
-
+                document.querySelector(".img_jogador").name = sexo[0];
                 break;
            
+        }
+        i = 0;
+        gênero = "";
+        sexo[2].forEach((value,index,key)=>{
+            descriptografia_longitude.push(PowerMod(value,chave,mod));
+        })
+
+        while(i < descriptografia_longitude.length){
+            gênero = gênero + String.fromCharCode(descriptografia_longitude[i]).toString(10); 
+            i++;
         }
         document.getElementsByName("nome_jogador")[0].innerText = nome;
     }  
