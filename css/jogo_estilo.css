@@ -63,6 +63,12 @@
         left: 20.5%;
         top: 29%;
     }
+    .LI-profile-badge {
+        position: fixed;
+        left: 78%;
+        top: 60%;
+        background-color: white;
+     }
     .esquerda{
         width: 50%;
         left: -10%;
@@ -262,6 +268,11 @@
         left: 10%;
         top: 29%;
     }
+    .LI-profile-badge {
+        position: fixed;
+        left: 73%;
+        background-color: white;
+     }
     .esquerda{
         width: 50%;
         left: -10%;

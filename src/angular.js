@@ -354,4 +354,15 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                 }
+                                else if(window.location.pathname == "/quem_somos.html"
+                                ||
+                                window.location.pathname == "/desafio-IA/quem_somos.html"){
+                                    var sair = document.querySelector("[name=sair]");
+                                    sair.onclick = function(ev){
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/quem_somos.html"  : "/quem_somos.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/" : "/";
+                                        var caminho = window.location.href.replace(separar,anterior);
+                                        window.location.replace(caminho);
+                                    }
+                                }
                             }]);

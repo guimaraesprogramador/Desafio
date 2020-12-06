@@ -56,6 +56,9 @@
         position: fixed;
         top: 29%;
     }
+    .LI-profile-badge {
+        visibility: hidden;
+     }
     .esquerda{
         position: absolute;
         border: 1px dotted black;
@@ -256,6 +259,12 @@
         position: fixed;
         top: 29%;
     }
+    .LI-profile-badge {
+        position: fixed;
+        left: 58%;
+        bottom: 17%;
+        background-color: white;
+     }
     .esquerda{
         position: absolute;
         border: 1px dotted black;
