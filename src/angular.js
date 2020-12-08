@@ -92,7 +92,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     // index.html
                                     if(window.location.pathname == "/" || window.location.pathname == "/index.html"
                                        ||
-                                       window.location.pathname == "/desafio-IA/"){
+                                       window.location.pathname == "/desafio-IA/")
+                                       {
                                         var iniciar = document.getElementsByTagName("button")[0];
 
                                         iniciar.onclick = function(ev){
@@ -191,7 +192,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
 
                                     }
-                                    else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/desafio-IA/jogo.html"){
+                                    else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/desafio-IA/jogo.html")
+                                    {
                                         try{
                                             var jogador = document.querySelector("[name=jogador_texto]");
 
@@ -226,7 +228,67 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             })
                                         }
                                     }
-
+                                    else if(window.location.pathname == "/continuar.html"
+                                    ||
+                                    window.location.pathname == "/desafio-IA/continuar.html")
+                                    {
+                                        try{
+                                            var sair = document.querySelector("[name=sair]");
+                                            sair.onclick = function(ev){
+                                                var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/continuar.html"  : "/continuar.html";
+                                                var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
+                                                var caminho = window.location.href.replace(separar,anterior);
+                                                window.location.replace(caminho);
+                                            }
+                                            var selecionar = document.querySelector("[name=selecionar]");
+                                           
+                                            selecionar.onclick = function(ev){
+                                                var radio = document.querySelector("input[name=item]:checked");
+                                            if(radio.checked){
+                                                salvando.banco.then(banco=>{
+                                                    var key = Number.parseInt(radio.value) + 1;
+                                                    var ia = banco.objectStoreNames[0];
+                                                    var usuario = banco.objectStoreNames[1];
+                                                    var transactionusuario = banco.transaction(usuario,'readwrite');
+                                                    var transactionia = banco.transaction(ia,'readwrite');
+                                                    var getia = transactionia.objectStore(ia).get(key);
+                                                    var getusuario = transactionusuario.objectStore(usuario).get(key);
+                                                    getia.onsuccess = function(event){
+                                                        var dadosia = event.target.result;
+                                                       
+                                                        getusuario.onsuccess = function(event2){
+                                                            var dados_usuario = event2.target.result;
+                                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
+                                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
+                                                             var caminho =  window.location.origin.toString() +separar+"?token="+dados_usuario.chave;
+                                                             window.localStorage.setItem("nome-usuário",dados_usuario.nome);
+                                                             window.localStorage.setItem("chave-publica",dados_usuario.chave);
+                                                             window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
+                                                             window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
+                                                             window.localStorage.setItem("sexo",dados_usuario.sexo);
+                                                             window.localStorage.setItem("positivo_ia",dadosia.positivo);
+                                                             window.localStorage.setItem("negativo_ai",dadosia.negativo);
+                                                        }
+                                                    }
+                                                })
+                                                
+                                            }
+                                            }
+                                        }catch(ev){
+                                            console.error(ev);
+                                        }
+                                    }
+                                    else if(window.location.pathname == "/quem_somos.html"
+                                ||
+                                window.location.pathname == "/desafio-IA/quem_somos.html"){
+                                    var sair = document.querySelector("[name=sair]");
+                                    sair.onclick = function(ev){
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/quem_somos.html"  : "/quem_somos.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/" : "/";
+                                        var caminho = window.location.href.replace(separar,anterior);
+                                        window.location.replace(caminho);
+                                    }
+                                }
                                 }
 
                                 $scope.Vitoria_artificial = 0;
@@ -255,24 +317,44 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var letra_sexo = window.localStorage.getItem("letra_sexo");
                                             var lantitude_array = window.localStorage.getItem("lantitude").split(",");
                                             var longitude_array = window.localStorage.getItem("longitude").split(",");
-                                            modulo.descriptografar(letra_nomes,[letra_sexo,lantitude_array,longitude_array],token[1],mod);
-                                            window.localStorage.removeItem("chave-publica");
-                                            window.localStorage.removeItem("mod");
-                                            window.localStorage.removeItem("letra_nome");
-                                            window.localStorage.removeItem("letra_sexo");
-
-                                            theads.push(new Worker("./src/modulos.js"));
-
-                                            theads[0].onmessage = function(ev) {
-                                                document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                                modulo.calculo_artificial(30000);   
-                                                modulo.temporizador();
-                                                theads[0].terminate();
-                                                theads[0] = undefined;
-                                                theads.pop();
-
-                                            };
-                                            theads[0].postMessage({tipo:"fácil"});
+                                            if(letra_nomes != null && letra_sexo != null){
+                                                modulo.descriptografar(letra_nomes,[letra_sexo,lantitude_array,longitude_array],token[1],mod);
+                                                window.localStorage.removeItem("chave-publica");
+                                                window.localStorage.removeItem("mod");
+                                                window.localStorage.removeItem("letra_nome");
+                                                window.localStorage.removeItem("letra_sexo");
+    
+                                                theads.push(new Worker("./src/modulos.js"));
+    
+                                                theads[0].onmessage = function(ev) {
+                                                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                                                    modulo.calculo_artificial(30000);   
+                                                    modulo.temporizador();
+                                                    theads[0].terminate();
+                                                    theads[0] = undefined;
+                                                    theads.pop();
+    
+                                                };
+                                                theads[0].postMessage({tipo:"fácil"});
+                                            }
+                                            else
+                                            {
+                                                var dados_usuario = [window.localStorage.getItem("nome-usuário"),
+                                                window.localStorage.getItem("chave-publica"),
+                                                window.localStorage.getItem("positivo"),
+                                                window.localStorage.getItem("negativo"),
+                                                window.localStorage.removeItem("sexo")]
+                                                var dadosia = [window.localStorage.getItem("positivo_ia"),
+                                                window.localStorage.getItem("negativo_ai")];
+                                                window.localStorage.removeItem("nome-usuário");
+                                                window.localStorage.removeItem("chave-publica");
+                                                window.localStorage.removeItem("positivo");
+                                                window.localStorage.removeItem("negativo");
+                                                window.localStorage.removeItem("sexo");
+                                                window.localStorage.removeItem("positivo_ia");
+                                                window.localStorage.removeItem("negativo_ai");
+                                            }
+                                            
                                         }
                                         else{
 
@@ -310,7 +392,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                 {
                                     try{
                                         salvando.banco.then(banco=>{
-
+                                         
                                         
                                         var usuario = banco.objectStoreNames[1];
                                         var transaction = banco.transaction(usuario,'readwrite');
@@ -336,7 +418,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 data.textContent = dados[i].data + "|";
                                                 tr = document.querySelector("tr");
                                                 tr.className = "coluna_nova";
-                                                tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"+
+                                                tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"
                                                     + radio.name + "'" + "value = '" +
                                                     radio.value + "'>" +
                                                     nome.innerHTML + chave.innerHTML +
@@ -350,19 +432,6 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     })
                                     }catch(ev){
                                         console.error(ev);
-                                    }
-
-
-                                }
-                                else if(window.location.pathname == "/quem_somos.html"
-                                ||
-                                window.location.pathname == "/desafio-IA/quem_somos.html"){
-                                    var sair = document.querySelector("[name=sair]");
-                                    sair.onclick = function(ev){
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/quem_somos.html"  : "/quem_somos.html";
-                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/" : "/";
-                                        var caminho = window.location.href.replace(separar,anterior);
-                                        window.location.replace(caminho);
                                     }
                                 }
                             }]);

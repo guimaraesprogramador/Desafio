@@ -58,11 +58,6 @@
         left: 22.5%;
         width: auto;
     }
-    [name="item"]{
-        position: fixed;
-        left: 20.5%;
-        top: 29%;
-    }
     .LI-profile-badge {
         position: fixed;
         left: 78%;
@@ -262,11 +257,6 @@
         top: 28%;
         left: 12%;
         width: auto;
-    }
-    [name="item"]{
-        position: fixed;
-        left: 10%;
-        top: 29%;
     }
     .LI-profile-badge {
         position: fixed;

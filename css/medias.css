@@ -14,7 +14,7 @@
     }
     table{
         position: fixed;
-        left:-1%;
+        left:0%;
         top: 25%;
         text-align: justify;
         opacity: 0.5;
@@ -26,7 +26,7 @@
     h4 span{
         position: fixed;
         background-color: #ff3333;
-        top: 23%;
+        top: 20%;
         left: 0%;
 
     }
@@ -52,10 +52,7 @@
         position: fixed;
         top: 28%;
     }
-    [name="item"]{
-        position: fixed;
-        top: 29%;
-    }
+
     .LI-profile-badge {
         visibility: hidden;
      }
@@ -255,10 +252,7 @@
         position: fixed;
         top: 28%;
     }
-    [name="item"]{
-        position: fixed;
-        top: 29%;
-    }
+    
     .LI-profile-badge {
         position: fixed;
         left: 58%;
@@ -393,3 +387,53 @@
         padding-top: 2%;
     }
 } 
+
+@media screen and (min-width: 500px)  and (max-width:700px) and (orientation:landscape) {
+    table{
+        position: fixed;
+        left:0%;
+        top: 25%;
+        text-align: justify;
+        opacity: 0.5;
+    }
+    table tr{
+        position: fixed;
+        background-color: #ff3333;
+    }
+    h4 span{
+        position: fixed;
+        background-color: #ff3333;
+        top: 15%;
+        left: 0%;
+
+    }
+    .sair{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 5%;
+        left: 2.5%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .selecionar{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        top: 5%;
+        left: 30.5%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .coluna_nova{
+        position: fixed;
+        top: 28%;
+    }
+    [name="item"]{
+        position: fixed;
+        top: 29%;
+    }
+    .LI-profile-badge {
+       visibility: hidden;
+     }
+}
