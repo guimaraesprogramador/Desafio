@@ -58,8 +58,6 @@ class salvar{
 
                 window.localStorage.removeItem("usuário");
                 window.localStorage.removeItem("IA");
-                window.localStorage.removeItem("lantitude");
-                window.localStorage.removeItem("longitude");
                 banco.close();
                 window.location.replace(caminho);
             
@@ -196,7 +194,7 @@ class salvar{
             var i_a = [
                 "IA",
                 pontos_atual_artifical,
-                Derrotar_ia
+                Derrotar_ia 
             ];
             window.localStorage.setItem("usuário",this.index);
             window.localStorage.setItem("IA",i_a); 

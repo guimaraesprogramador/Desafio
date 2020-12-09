@@ -266,8 +266,9 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                              window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
                                                              window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
                                                              window.localStorage.setItem("sexo",dados_usuario.sexo);
-                                                             window.localStorage.setItem("positivo_ia",dadosia.positivo);
-                                                             window.localStorage.setItem("negativo_ai",dadosia.negativo);
+                                                             window.localStorage.setItem("positivo_ia",parseInt(dadosia.positivo));
+                                                             window.localStorage.setItem("negativo_ai",parseInt(dadosia.negativo));
+                                                             window.location.replace(caminho);
                                                         }
                                                     }
                                                 })
@@ -291,8 +292,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                 }
                                 }
 
-                                $scope.Vitoria_artificial = 0;
-                                $scope.Derrota_artificial = 0;
+                                
                                 $scope.resposta_artificial = "";
                                 $scope.temporizador = "05:00";
 
@@ -308,22 +308,24 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         var token =  window.location.href.split("token=");
                                         var verificar = window.localStorage.getItem("chave-publica");
 
-                                        if(verificar != null){
-
-
+                                        if(verificar != null)
+                                        {
                                             var mod =  window.localStorage.getItem("mod");
-
                                             var letra_nomes = window.localStorage.getItem("letra_nome");
                                             var letra_sexo = window.localStorage.getItem("letra_sexo");
-                                            var lantitude_array = window.localStorage.getItem("lantitude").split(",");
-                                            var longitude_array = window.localStorage.getItem("longitude").split(",");
-                                            if(letra_nomes != null && letra_sexo != null){
+                                            if(letra_nomes != null && letra_sexo != null)
+                                            {
+                                                $scope.Vitoria_artificial = 0;
+                                                $scope.Derrota_artificial = 0;
+                                                var lantitude_array = window.localStorage.getItem("lantitude").split(",");
+                                                var longitude_array = window.localStorage.getItem("longitude").split(",");
                                                 modulo.descriptografar(letra_nomes,[letra_sexo,lantitude_array,longitude_array],token[1],mod);
                                                 window.localStorage.removeItem("chave-publica");
                                                 window.localStorage.removeItem("mod");
                                                 window.localStorage.removeItem("letra_nome");
                                                 window.localStorage.removeItem("letra_sexo");
-    
+                                                window.localStorage.removeItem("lantitude");
+                                                window.localStorage.removeItem("longitude");
                                                 theads.push(new Worker("./src/modulos.js"));
     
                                                 theads[0].onmessage = function(ev) {
@@ -339,13 +341,49 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             }
                                             else
                                             {
+                                                //usuário
                                                 var dados_usuario = [window.localStorage.getItem("nome-usuário"),
                                                 window.localStorage.getItem("chave-publica"),
-                                                window.localStorage.getItem("positivo"),
-                                                window.localStorage.getItem("negativo"),
-                                                window.localStorage.removeItem("sexo")]
-                                                var dadosia = [window.localStorage.getItem("positivo_ia"),
-                                                window.localStorage.getItem("negativo_ai")];
+                                               Number.parseInt(window.localStorage.getItem("positivo")),
+                                               Number.parseInt( window.localStorage.getItem("negativo")),
+                                                window.localStorage.getItem("sexo")]
+                                                // ia
+                                                var dadosia = [
+                                                Number.parseInt(window.localStorage.getItem("positivo_ia")),
+                                                Number.parseInt(window.localStorage.getItem("negativo_ai"))
+                                            ];
+                                                
+                                                
+                                                document.getElementsByName("nome_jogador")[0].innerText = dados_usuario[0];
+                                                // usuário vitoria
+                                                document.querySelectorAll("[name=valor_jogador]")[0].textContent = dados_usuario[2];
+                                                // usuário derrota 
+                                                document.querySelectorAll("[name=valor_jogador]")[1].textContent = dados_usuario[3];
+                                              
+                                                
+                                                // ia derrota 
+                                                $scope.Derrota_artificial = dadosia[1];
+
+                                                // ia vitoria
+                                                $scope.Vitoria_artificial  = dadosia[0];
+
+                                                // gênero usuario
+                                                switch(dados_usuario[5]){
+                                                    case "feminino":
+                                                        document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/women-age-group-5--v2.png");
+                                                        document.querySelector(".img_jogador").name = dados_usuario[5];
+                                                        break;
+                                                    case "masculino":
+                                                        document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
+                                                        document.querySelector(".img_jogador").name = dados_usuario[5];
+                                                        break;
+
+                                                }
+                                                var tipo;
+                                                if(dados_usuario[2] - 1 > 3 || dadosia[0] - 1 > 3) tipo = "média";
+                                                else if(dados_usuario[2] - 1 <= 3 || dadosia[0] - 1 <= 3) tipo = "fácil";
+                                                modulo.temporizador();
+                                                modulo.juiz(tipo);
                                                 window.localStorage.removeItem("nome-usuário");
                                                 window.localStorage.removeItem("chave-publica");
                                                 window.localStorage.removeItem("positivo");
