@@ -123,7 +123,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 65%;
+        left: 55%;
         bottom: 35%;
     }
     [name="artificial_texto"]{

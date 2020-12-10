@@ -375,7 +375,7 @@
     .temporizador{
         position: absolute;
         left: 45%;
-        top: 30%;
+        top: 40%;
     }        
     [name="artificial_texto"]{
         position: relative;

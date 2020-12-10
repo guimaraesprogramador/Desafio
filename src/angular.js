@@ -1,6 +1,6 @@
 var theads  = []
 var valor = [];
-
+var banco;
 var app = angular.module('Desafio',['ngBrowser'])
 app.run( function() {
     document.body.style.visibility ="hidden";
@@ -46,9 +46,18 @@ app.run( function() {
 
             }
             theads[0].postMessage({tipo:"começo"});
+            
         }
-
-
+        else if (window.location.pathname == "/continuar.html"
+    ||
+    window.location.pathname == "/desafio-IA/continuar.html")
+    {
+        salvando.banco.then(dados=>{
+            banco = dados;
+        },error=>{
+            banco = "erro";
+        })
+    }
     }
     else
     {
@@ -232,7 +241,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     ||
                                     window.location.pathname == "/desafio-IA/continuar.html")
                                     {
-                                        try{
+                                       
                                             var sair = document.querySelector("[name=sair]");
                                             sair.onclick = function(ev){
                                                 var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/continuar.html"  : "/continuar.html";
@@ -243,9 +252,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var selecionar = document.querySelector("[name=selecionar]");
                                            
                                             selecionar.onclick = function(ev){
+                                                try{
                                                 var radio = document.querySelector("input[name=item]:checked");
-                                            if(radio.checked){
-                                                salvando.banco.then(banco=>{
+                                                if(radio.checked){
+                                                    if(banco != "erro" )
+                                                    {
                                                     var key = Number.parseInt(radio.value) + 1;
                                                     var ia = banco.objectStoreNames[0];
                                                     var usuario = banco.objectStoreNames[1];
@@ -271,13 +282,14 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                              window.location.replace(caminho);
                                                         }
                                                     }
-                                                })
+                                                }
                                                 
                                             }
-                                            }
-                                        }catch(ev){
-                                            console.error(ev);
                                         }
+                                        catch(ev){
+                                            
+                                        }
+                                    }
                                     }
                                     else if(window.location.pathname == "/quem_somos.html"
                                 ||
@@ -368,14 +380,14 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 $scope.Vitoria_artificial  = dadosia[0];
 
                                                 // gênero usuario
-                                                switch(dados_usuario[5]){
+                                                switch(dados_usuario[4]){
                                                     case "feminino":
                                                         document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/women-age-group-5--v2.png");
-                                                        document.querySelector(".img_jogador").name = dados_usuario[5];
+                                                        document.querySelector(".img_jogador").name = dados_usuario[4];
                                                         break;
                                                     case "masculino":
                                                         document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
-                                                        document.querySelector(".img_jogador").name = dados_usuario[5];
+                                                        document.querySelector(".img_jogador").name = dados_usuario[4];
                                                         break;
 
                                                 }

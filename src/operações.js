@@ -24,7 +24,7 @@ class regras{
                 operação = operação + separador[i];
                 i++;
             }
-            calculo = calc.Escolhar([tipo,operação,operador]);
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
         }
         else if(tipo == "fácil"){
             var operador = separador[2];
@@ -33,7 +33,7 @@ class regras{
                 operação = operação + separador[i];
                 i++;
             }
-            calculo = calc.Escolhar([tipo,operação,operador]);
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
 
         }
         else 
@@ -74,7 +74,7 @@ class regras{
                 operação = operação + separador[i];
                 i++;
             }
-            calculo = calc.Escolhar([tipo,operação,operador]);
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
         }
         else if(pontos_atual - 1 <= 3){
             tipo = "fácil"
@@ -85,7 +85,7 @@ class regras{
                 i++;
             }
 
-            calculo = calc.Escolhar([tipo,operação,operador]);
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
 
         }
         else 
