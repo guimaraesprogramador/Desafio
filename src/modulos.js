@@ -197,7 +197,7 @@ class modulos {
 
     }
     modulos_díficil(){
-
+        // futuramente
     }
     divisores(tipo){
         switch(tipo){
@@ -230,9 +230,9 @@ class modulos {
         })
         
         var i = 0;
-        var gênero = "";
+        var lantitude = "";
         while(i < descriptografia_lantitude.length){
-            gênero = gênero + String.fromCharCode(descriptografia_lantitude[i]).toString(10); 
+            lantitude = lantitude + String.fromCharCode(descriptografia_lantitude[i]).toString(10); 
             i++;
         }
        
@@ -248,13 +248,13 @@ class modulos {
            
         }
         i = 0;
-        gênero = "";
+        var longitude = "";
         sexo[2].forEach((value,index,key)=>{
             descriptografia_longitude.push(PowerMod(value,chave,mod));
         })
 
         while(i < descriptografia_longitude.length){
-            gênero = gênero + String.fromCharCode(descriptografia_longitude[i]).toString(10); 
+            longitude = longitude + String.fromCharCode(descriptografia_longitude[i]).toString(10); 
             i++;
         }
         document.getElementsByName("nome_jogador")[0].innerText = nome;
