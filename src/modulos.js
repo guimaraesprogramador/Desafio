@@ -266,6 +266,7 @@ class modulos {
             document.querySelector(".operação").textContent  = ev.data.tipo[0] + "= ?";
             novooperação.terminate();
             novooperação = undefined;
+            modulo.operador = ev.data.tipo[1];
             modulo.calculo_artificial(30000); 
         }
         novooperação.postMessage({tipo:nivel})
@@ -280,14 +281,14 @@ self.addEventListener("message",function(ev){
         case "fácil":
 
             modulo.modulos_fácil();
-
-            postMessage({tipo:[modulo.operação]});
+            
+            postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
         case "média":
             modulo.modulos_média();
 
-            postMessage({tipo:[modulo.operação]});
+            postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
     }

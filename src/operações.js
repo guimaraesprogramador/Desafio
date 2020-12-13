@@ -18,7 +18,7 @@ class regras{
             tipo ="fácil";
         }
         if(tipo == "média"){
-            var operador = [separador[2],separador[5]];
+            var operador = modulo.operador;
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
@@ -27,7 +27,7 @@ class regras{
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
         }
         else if(tipo == "fácil"){
-            var operador = separador[2];
+            var operador = modulo.operador;
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
@@ -68,7 +68,7 @@ class regras{
 
         if(pontos_atual - 1 > 3){
             tipo = "média"
-            var operador = [separador[2],separador[5]];
+            var operador = modulo.operador;
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
@@ -78,7 +78,7 @@ class regras{
         }
         else if(pontos_atual - 1 <= 3){
             tipo = "fácil"
-            var operador = separador[2];
+            var operador = modulo.operador;
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
