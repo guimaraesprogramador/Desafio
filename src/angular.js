@@ -46,18 +46,18 @@ app.run( function() {
 
             }
             theads[0].postMessage({tipo:"começo"});
-            
+
         }
         else if (window.location.pathname == "/continuar.html"
-    ||
-    window.location.pathname == "/desafio-IA/continuar.html")
-    {
-        salvando.banco.then(dados=>{
-            banco = dados;
-        },error=>{
-            banco = "erro";
-        })
-    }
+                 ||
+                 window.location.pathname == "/desafio-IA/continuar.html")
+        {
+            salvando.banco.then(dados=>{
+                banco = dados;
+            },error=>{
+                banco = "erro";
+            })
+        }
     }
     else
     {
@@ -102,7 +102,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     if(window.location.pathname == "/" || window.location.pathname == "/index.html"
                                        ||
                                        window.location.pathname == "/desafio-IA/")
-                                       {
+                                    {
                                         var iniciar = document.getElementsByTagName("button")[0];
 
                                         iniciar.onclick = function(ev){
@@ -150,7 +150,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                                     if(validar_radio.length != 0){
                                                         if(texto.value != ""){
-                                                            
+
                                                             valor = [window.localStorage.getItem("chave-publica"),
                                                                      window.localStorage.getItem("mod")];
                                                             var conversor = new StringToBinary();  
@@ -192,7 +192,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         })
                                                     }
                                                 })
-                                                
+
                                             }
 
                                         }
@@ -228,6 +228,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             {
                                                 salvando.local([document.getElementsByName("nome_jogador")[0].innerText]);
                                             }
+                                            
+                                            var Exceção = document.querySelector(".interrogação");
+                                            Exceção.onclick = function(ev){
+                                                alertify.success('Na divisão considere somente a parte inteira. ');
+                                            }
                                         }
                                         catch(ev){
                                             Swal.fire({
@@ -238,73 +243,73 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
                                     }
                                     else if(window.location.pathname == "/continuar.html"
-                                    ||
-                                    window.location.pathname == "/desafio-IA/continuar.html")
+                                            ||
+                                            window.location.pathname == "/desafio-IA/continuar.html")
                                     {
-                                       
-                                            var sair = document.querySelector("[name=sair]");
-                                            sair.onclick = function(ev){
-                                                var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/continuar.html"  : "/continuar.html";
-                                                var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
-                                                var caminho = window.location.href.replace(separar,anterior);
-                                                window.location.replace(caminho);
-                                            }
-                                            var selecionar = document.querySelector("[name=selecionar]");
-                                           
-                                            selecionar.onclick = function(ev){
-                                                try{
+
+                                        var sair = document.querySelector("[name=sair]");
+                                        sair.onclick = function(ev){
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/continuar.html"  : "/continuar.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
+                                            var caminho = window.location.href.replace(separar,anterior);
+                                            window.location.replace(caminho);
+                                        }
+                                        var selecionar = document.querySelector("[name=selecionar]");
+
+                                        selecionar.onclick = function(ev){
+                                            try{
                                                 var radio = document.querySelector("input[name=item]:checked");
                                                 if(radio.checked){
                                                     if(banco != "erro" )
                                                     {
-                                                    var key = Number.parseInt(radio.value) + 1;
-                                                    var ia = banco.objectStoreNames[0];
-                                                    var usuario = banco.objectStoreNames[1];
-                                                    var transactionusuario = banco.transaction(usuario,'readwrite');
-                                                    var transactionia = banco.transaction(ia,'readwrite');
-                                                    var getia = transactionia.objectStore(ia).get(key);
-                                                    var getusuario = transactionusuario.objectStore(usuario).get(key);
-                                                    getia.onsuccess = function(event){
-                                                        var dadosia = event.target.result;
-                                                       
-                                                        getusuario.onsuccess = function(event2){
-                                                            var dados_usuario = event2.target.result;
-                                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
-                                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
-                                                             var caminho =  window.location.origin.toString() +separar+"?token="+dados_usuario.chave;
-                                                             window.localStorage.setItem("nome-usuário",dados_usuario.nome);
-                                                             window.localStorage.setItem("chave-publica",dados_usuario.chave);
-                                                             window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
-                                                             window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
-                                                             window.localStorage.setItem("sexo",dados_usuario.sexo);
-                                                             window.localStorage.setItem("positivo_ia",parseInt(dadosia.positivo));
-                                                             window.localStorage.setItem("negativo_ai",parseInt(dadosia.negativo));
-                                                             window.location.replace(caminho);
+                                                        var key = Number.parseInt(radio.value) + 1;
+                                                        var ia = banco.objectStoreNames[0];
+                                                        var usuario = banco.objectStoreNames[1];
+                                                        var transactionusuario = banco.transaction(usuario,'readwrite');
+                                                        var transactionia = banco.transaction(ia,'readwrite');
+                                                        var getia = transactionia.objectStore(ia).get(key);
+                                                        var getusuario = transactionusuario.objectStore(usuario).get(key);
+                                                        getia.onsuccess = function(event){
+                                                            var dadosia = event.target.result;
+
+                                                            getusuario.onsuccess = function(event2){
+                                                                var dados_usuario = event2.target.result;
+                                                                var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/jogo.html"  : "/jogo.html";
+                                                                var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/continuar.html"  ? "/desafio-IA/" : "/";
+                                                                var caminho =  window.location.origin.toString() +separar+"?token="+dados_usuario.chave;
+                                                                window.localStorage.setItem("nome-usuário",dados_usuario.nome);
+                                                                window.localStorage.setItem("chave-publica",dados_usuario.chave);
+                                                                window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
+                                                                window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
+                                                                window.localStorage.setItem("sexo",dados_usuario.sexo);
+                                                                window.localStorage.setItem("positivo_ia",parseInt(dadosia.positivo));
+                                                                window.localStorage.setItem("negativo_ai",parseInt(dadosia.negativo));
+                                                                window.location.replace(caminho);
+                                                            }
                                                         }
                                                     }
+
                                                 }
-                                                
+                                            }
+                                            catch(ev){
+
                                             }
                                         }
-                                        catch(ev){
-                                            
-                                        }
-                                    }
                                     }
                                     else if(window.location.pathname == "/quem_somos.html"
-                                ||
-                                window.location.pathname == "/desafio-IA/quem_somos.html"){
-                                    var sair = document.querySelector("[name=sair]");
-                                    sair.onclick = function(ev){
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/quem_somos.html"  : "/quem_somos.html";
-                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/" : "/";
-                                        var caminho = window.location.href.replace(separar,anterior);
-                                        window.location.replace(caminho);
+                                            ||
+                                            window.location.pathname == "/desafio-IA/quem_somos.html"){
+                                        var sair = document.querySelector("[name=sair]");
+                                        sair.onclick = function(ev){
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/quem_somos.html"  : "/quem_somos.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/quem_somos.html"  ? "/desafio-IA/" : "/";
+                                            var caminho = window.location.href.replace(separar,anterior);
+                                            window.location.replace(caminho);
+                                        }
                                     }
                                 }
-                                }
 
-                                
+
                                 $scope.resposta_artificial = "";
                                 $scope.temporizador = "05:00";
 
@@ -339,7 +344,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 window.localStorage.removeItem("lantitude");
                                                 window.localStorage.removeItem("longitude");
                                                 theads.push(new Worker("./src/modulos.js"));
-    
+
                                                 theads[0].onmessage = function(ev) {
                                                     document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
                                                     modulo.operador = ev.data.tipo[1];
@@ -348,7 +353,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     theads[0].terminate();
                                                     theads[0] = undefined;
                                                     theads.pop();
-    
+
                                                 };
                                                 theads[0].postMessage({tipo:"fácil"});
                                             }
@@ -356,24 +361,24 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             {
                                                 //usuário
                                                 var dados_usuario = [window.localStorage.getItem("nome-usuário"),
-                                                window.localStorage.getItem("chave-publica"),
-                                               Number.parseInt(window.localStorage.getItem("positivo")),
-                                               Number.parseInt( window.localStorage.getItem("negativo")),
-                                                window.localStorage.getItem("sexo")]
+                                                                     window.localStorage.getItem("chave-publica"),
+                                                                     Number.parseInt(window.localStorage.getItem("positivo")),
+                                                                     Number.parseInt( window.localStorage.getItem("negativo")),
+                                                                     window.localStorage.getItem("sexo")]
                                                 // ia
                                                 var dadosia = [
-                                                Number.parseInt(window.localStorage.getItem("positivo_ia")),
-                                                Number.parseInt(window.localStorage.getItem("negativo_ai"))
-                                            ];
-                                                
-                                                
+                                                    Number.parseInt(window.localStorage.getItem("positivo_ia")),
+                                                    Number.parseInt(window.localStorage.getItem("negativo_ai"))
+                                                ];
+
+
                                                 document.getElementsByName("nome_jogador")[0].innerText = dados_usuario[0];
                                                 // usuário vitoria
                                                 document.querySelectorAll("[name=valor_jogador]")[0].textContent = dados_usuario[2];
                                                 // usuário derrota 
                                                 document.querySelectorAll("[name=valor_jogador]")[1].textContent = dados_usuario[3];
-                                              
-                                                
+
+
                                                 // ia derrota 
                                                 $scope.Derrota_artificial = dadosia[1];
 
@@ -405,7 +410,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 window.localStorage.removeItem("positivo_ia");
                                                 window.localStorage.removeItem("negativo_ai");
                                             }
-                                            
+
                                         }
                                         else{
 
@@ -443,44 +448,44 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                 {
                                     try{
                                         salvando.banco.then(banco=>{
-                                         
-                                        
-                                        var usuario = banco.objectStoreNames[1];
-                                        var transaction = banco.transaction(usuario,'readwrite');
-                                        var getall = transaction.objectStore(usuario).getAll();
-                                        getall.onsuccess = function(ev){
-                                            var dados = ev.target.result;
-                                            var  i = 0;
-                                            var nome,chave,vitoria,derrota,data,tr;
-                                            while(i < dados.length){
-                                                var radio = document.createElement("input");
-                                                radio.type = "radio";
-                                                radio.name = "item";
-                                                radio.value = i;
-                                                nome = document.createElement("td");
-                                                nome.textContent = "|"+dados[i].nome;
-                                                chave = document.createElement("td");
-                                                chave.textContent = "|"+dados[i].chave+"| ";
-                                                vitoria = document.createElement("td");
-                                                vitoria.textContent = dados[i].positivo+"| "
-                                                derrota = document.createElement("td");
-                                                derrota.textContent = dados[i].negativo+"| ";
-                                                data = document.createElement("td");
-                                                data.textContent = dados[i].data + "|";
-                                                tr = document.querySelector("tr");
-                                                tr.className = "coluna_nova";
-                                                tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"
-                                                    + radio.name + "'" + "value = '" +
-                                                    radio.value + "'>" +
-                                                    nome.innerHTML + chave.innerHTML +
-                                                    vitoria.innerHTML + derrota.innerHTML +
-                                                    data.innerHTML + "<br>";
-                                                    
-                                                i =  i + 1;
-                                            }
 
-                                        }
-                                    })
+
+                                            var usuario = banco.objectStoreNames[1];
+                                            var transaction = banco.transaction(usuario,'readwrite');
+                                            var getall = transaction.objectStore(usuario).getAll();
+                                            getall.onsuccess = function(ev){
+                                                var dados = ev.target.result;
+                                                var  i = 0;
+                                                var nome,chave,vitoria,derrota,data,tr;
+                                                while(i < dados.length){
+                                                    var radio = document.createElement("input");
+                                                    radio.type = "radio";
+                                                    radio.name = "item";
+                                                    radio.value = i;
+                                                    nome = document.createElement("td");
+                                                    nome.textContent = "|"+dados[i].nome;
+                                                    chave = document.createElement("td");
+                                                    chave.textContent = "|"+dados[i].chave+"| ";
+                                                    vitoria = document.createElement("td");
+                                                    vitoria.textContent = dados[i].positivo+"| "
+                                                    derrota = document.createElement("td");
+                                                    derrota.textContent = dados[i].negativo+"| ";
+                                                    data = document.createElement("td");
+                                                    data.textContent = dados[i].data + "|";
+                                                    tr = document.querySelector("tr");
+                                                    tr.className = "coluna_nova";
+                                                    tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"
+                                                        + radio.name + "'" + "value = '" +
+                                                        radio.value + "'>" +
+                                                        nome.innerHTML + chave.innerHTML +
+                                                        vitoria.innerHTML + derrota.innerHTML +
+                                                        data.innerHTML + "<br>";
+
+                                                    i =  i + 1;
+                                                }
+
+                                            }
+                                        })
                                     }catch(ev){
                                         console.error(ev);
                                     }
