@@ -2,22 +2,22 @@ class salvar{
     constructor(){
         this._index = [];
         window.indexedDB.open('dbdesafio',1);
-       const db  = window.indexedDB.open('dbdesafio',2);
+        const db  = window.indexedDB.open('dbdesafio',2);
         db.onupgradeneeded = function(e){
             var minhaconnect = e.target.result;
             minhaconnect.createObjectStore('usuario',{autoIncrement:true});
             minhaconnect.createObjectStore('IA',{autoIncrement:true})
         }
-         
-        
+
+
     }
-   get banco(){
-    return new Promise((res,respo)=>{
-        var  db  = window.indexedDB.open('dbdesafio',2);
-        db.onsuccess = function(ev){
-            res(ev.target.result);
-        }
-    })
+    get banco(){
+        return new Promise((res,respo)=>{
+            var  db  = window.indexedDB.open('dbdesafio',2);
+            db.onsuccess = function(ev){
+                res(ev.target.result);
+            }
+        })
     }
     get index(){
         return this._index;
@@ -34,35 +34,35 @@ class salvar{
                 var ultimodado_IA = alasql_ia.split(",");
                 salvando.banco.then(banco=>{
                     // criar e E INSERIR table usuário
-                var object_usuário =  banco.objectStoreNames[1];
-                var transaction = banco.transaction(object_usuário,'readwrite');
+                    var object_usuário =  banco.objectStoreNames[1];
+                    var transaction = banco.transaction(object_usuário,'readwrite');
 
-                var usuario = [{
-                    nome:ultimodado_jogador[0],
-                    chave: ultimodado_jogador[1],
-                    sexo:ultimodado_jogador[2],
-                    positivo: Number.parseInt(ultimodado_jogador[3]),
-                    negativo:Number.parseInt(ultimodado_jogador[4]),
-                    data: ultimodado_jogador[5]
-                }];
-                transaction.objectStore(object_usuário).add(usuario[0]);
-                // criar e E INSERIR table IA 
-                var objectia = banco.objectStoreNames[0];
-                var transactionia = banco.transaction(objectia,'readwrite');
-                var ia = [{
-                    nome:ultimodado_IA[0],
-                    positivo:Number.parseInt(ultimodado_IA[1]),
-                    negativo:Number.parseInt(ultimodado_IA[2])
-                }]
-                transactionia.objectStore(objectia).add(ia[0]);
+                    var usuario = [{
+                        nome:ultimodado_jogador[0],
+                        chave: ultimodado_jogador[1],
+                        sexo:ultimodado_jogador[2],
+                        positivo: Number.parseInt(ultimodado_jogador[3]),
+                        negativo:Number.parseInt(ultimodado_jogador[4]),
+                        data: ultimodado_jogador[5]
+                    }];
+                    transaction.objectStore(object_usuário).add(usuario[0]);
+                    // criar e E INSERIR table IA 
+                    var objectia = banco.objectStoreNames[0];
+                    var transactionia = banco.transaction(objectia,'readwrite');
+                    var ia = [{
+                        nome:ultimodado_IA[0],
+                        positivo:Number.parseInt(ultimodado_IA[1]),
+                        negativo:Number.parseInt(ultimodado_IA[2])
+                    }]
+                    transactionia.objectStore(objectia).add(ia[0]);
 
-                window.localStorage.removeItem("usuário");
-                window.localStorage.removeItem("IA");
-                banco.close();
-                window.location.replace(caminho);
-            
+                    window.localStorage.removeItem("usuário");
+                    window.localStorage.removeItem("IA");
+                    banco.close();
+                    window.location.replace(caminho);
+
                 })
-                
+
             }
             else window.location.replace(caminho);
         }

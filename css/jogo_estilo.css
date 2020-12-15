@@ -123,7 +123,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 55%;
+        left: 65%;
         bottom: 35%;
     }
     [name="artificial_texto"]{
@@ -151,7 +151,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left:60%;
+        left:70%;
         opacity: 0.5;
     }
     [name="Resposta_artificial"]{
@@ -165,7 +165,7 @@
     }
     .interrogação{
         position: relative;
-        left:65%;
+        left:75%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 35%;;
@@ -366,7 +366,7 @@
     .interrogação{
         position: relative;
         float: left;
-        left:130%;
+        left:150%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 80%;;

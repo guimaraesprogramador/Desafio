@@ -36,16 +36,16 @@ class modulos {
                 this.n = Math.floor(Math.random() *100);
                 this.m = Math.floor(Math.random() *100);
                 this.p = Math.floor(Math.random() *100);
-               if(this.n == 0 || this.m == 0 || this.p == 0){
-                this.n = 1;
-               }
-               else {
-                this.link.push(this.n.toString());
-                this.link.push(this.m.toString());
-                this.link.push(this.p.toString());
-                this.num = this.num - 1;
-               }
-                
+                if(this.n == 0 || this.m == 0 || this.p == 0){
+                    this.n = 1;
+                }
+                else {
+                    this.link.push(this.n.toString());
+                    this.link.push(this.m.toString());
+                    this.link.push(this.p.toString());
+                    this.num = this.num - 1;
+                }
+
             }
             this.divisores(Math.floor(Math.random() *4));
             var n1 = this.operador;
@@ -59,19 +59,19 @@ class modulos {
 
     }
     pontos_geometricos(){
-    return new Promise((resp,res)=>{
-        var lantitude,longitude;
-        navigator.geolocation.getCurrentPosition(function(pontos){
-            lantitude = pontos.coords.latitude;
-            longitude = pontos.coords.longitude;
-            resp([lantitude,longitude]);
-        }, function(err){
-            lantitude = 0;
-            longitude = 0;
-            resp([lantitude,longitude]);
-        });
-    })
-       
+        return new Promise((resp,res)=>{
+            var lantitude,longitude;
+            navigator.geolocation.getCurrentPosition(function(pontos){
+                lantitude = pontos.coords.latitude;
+                longitude = pontos.coords.longitude;
+                resp([lantitude,longitude]);
+            }, function(err){
+                lantitude = 0;
+                longitude = 0;
+                resp([lantitude,longitude]);
+            });
+        })
+
     }
     artificial(musica){ 
 
@@ -135,7 +135,7 @@ class modulos {
                 modulo.artificial(undefined);
                 modulo.temporizador();
             },5000);
-            
+
         }
     }
     temporizador(){
@@ -169,7 +169,7 @@ class modulos {
         this.tempo_artificial = window.setInterval(function(){
             var pontos_atual_artifical =  Number.parseInt(document.querySelectorAll("[name=Vitoria_artificial]")[1].textContent);
             var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
-           
+
             regras_gerais.so(pontos_atual_artifical);
             salvando.local([document.getElementsByName("nome_jogador")[0].innerText]);
             var tipo;
@@ -228,14 +228,14 @@ class modulos {
         sexo[1].forEach((value,index,key)=>{
             descriptografia_lantitude.push(PowerMod(value,chave,mod));
         })
-        
+
         var i = 0;
         var lantitude = "";
         while(i < descriptografia_lantitude.length){
             lantitude = lantitude + String.fromCharCode(descriptografia_lantitude[i]).toString(10); 
             i++;
         }
-       
+
         switch(sexo[0]){
             case "feminino":
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/women-age-group-5--v2.png");
@@ -245,7 +245,7 @@ class modulos {
                 document.querySelector(".img_jogador").setAttribute("src","https://img.icons8.com/nolan/100/men-age-group-4--v2.png");
                 document.querySelector(".img_jogador").name = sexo[0];
                 break;
-           
+
         }
         i = 0;
         var longitude = "";
@@ -281,7 +281,7 @@ self.addEventListener("message",function(ev){
         case "fácil":
 
             modulo.modulos_fácil();
-            
+
             postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;

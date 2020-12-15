@@ -50,14 +50,14 @@ class calculos{
                 // soma
                 else if(operação[i] == "+"){
                     if(operação[1] == "*"){
-                            total = (Number.parseInt(calculo2) * Number.parseInt(calculo3)) 
+                        total = (Number.parseInt(calculo2) * Number.parseInt(calculo3)) 
                     }
                     else if(operação[1] == "/"){
                         total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
                         total =  Math.trunc(total);
                     }
                     else if(operação[1] == "-"){
-                            total = (Number.parseInt(calculo2) - Number.parseInt(calculo3));
+                        total = (Number.parseInt(calculo2) - Number.parseInt(calculo3));
                     }
                     else {
                         if(i == 0){
@@ -72,14 +72,14 @@ class calculos{
                 // subtração
                 else if(operação[i] == "-"){
                     if(operação[1] == "*"){
-                            total = (Number.parseInt(calculo2) * Number.parseInt(calculo2))                         
+                        total = (Number.parseInt(calculo2) * Number.parseInt(calculo2))                         
                     }
                     else if(operação[1]=="/"){
-                            total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
-                            total =  Math.trunc(total);
+                        total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
+                        total =  Math.trunc(total);
                     }
                     else if(operação[1] == "+"){
-                            total =  (Number.parseInt(calculo2) + Number.parseInt(calculo3));
+                        total =  (Number.parseInt(calculo2) + Number.parseInt(calculo3));
                     }
                     else {
                         if(i == 0){

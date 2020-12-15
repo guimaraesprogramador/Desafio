@@ -1,6 +1,6 @@
 var theads  = []
 var valor = [];
-var banco;
+var banco,pontos;
 var app = angular.module('Desafio',['ngBrowser'])
 app.run( function() {
     document.body.style.visibility ="hidden";
@@ -47,6 +47,14 @@ app.run( function() {
             }
             theads[0].postMessage({tipo:"começo"});
 
+        }
+        else if(window.location.pathname == "/login.html"  
+                ||
+                window.location.pathname == "/desafio-IA/login.html")
+        {
+            modulo.pontos_geometricos().then(geo=>{
+                pontos = geo;
+            })
         }
         else if (window.location.pathname == "/continuar.html"
                  ||
@@ -144,55 +152,52 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var entrar = document.getElementsByTagName("button")[0];
 
                                             entrar.onclick = function(ev){
-                                                modulo.pontos_geometricos().then(pontos=>{
-                                                    var texto = document.querySelectorAll("input[name=usuário]")[0];
-                                                    var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
+                                                var texto = document.querySelectorAll("input[name=usuário]")[0];
+                                                var validar_radio = document.querySelectorAll("input[name=sexo]:checked");
 
-                                                    if(validar_radio.length != 0){
-                                                        if(texto.value != ""){
+                                                if(validar_radio.length != 0){
+                                                    if(texto.value != ""){
 
-                                                            valor = [window.localStorage.getItem("chave-publica"),
-                                                                     window.localStorage.getItem("mod")];
-                                                            var conversor = new StringToBinary();  
-                                                            var binario_lantuide = conversor.convert(pontos[0].toString());
-                                                            var binario_longitude = conversor.convert(pontos[1].toString());
-                                                            var criptografia_lantitude = [];
-                                                            var criptografia_longitude = [];
-                                                            binario_lantuide.forEach((value,index,array)=>{
-                                                                var decimal = parseInt(value,2)
-                                                                //                               numero,  chave, mod
-                                                                criptografia_lantitude.push(PowerMod(decimal,valor[0],valor[1]));
-                                                            })
-                                                            binario_longitude.forEach((value,index,array)=>{
-                                                                var decimal = parseInt(value,2)
-                                                                //                               numero,  chave, mod
-                                                                criptografia_longitude.push(PowerMod(decimal,valor[0],valor[1]));
-                                                            })
-                                                            window.localStorage.setItem("letra_nome",texto.value);
-                                                            window.localStorage.setItem("letra_sexo",validar_radio[0].value);
-                                                            window.localStorage.setItem("lantitude",criptografia_lantitude);
-                                                            window.localStorage.setItem("longitude", criptografia_lantitude);
-                                                            var caminho = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/desafio-IA/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
-                                                            var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
-                                                            window.location.replace(novo_caminho);
-                                                        }
-                                                        else {
-                                                            Swal.fire({
-                                                                icon:"warning",
-                                                                title: 'Oops...',
-                                                                text:"campo nome não foi preenchido!"
-                                                            })
-                                                        }
+                                                        valor = [window.localStorage.getItem("chave-publica"),
+                                                                 window.localStorage.getItem("mod")];
+                                                        var conversor = new StringToBinary();  
+                                                        var binario_lantuide = conversor.convert(pontos[0].toString());
+                                                        var binario_longitude = conversor.convert(pontos[1].toString());
+                                                        var criptografia_lantitude = [];
+                                                        var criptografia_longitude = [];
+                                                        binario_lantuide.forEach((value,index,array)=>{
+                                                            var decimal = parseInt(value,2)
+                                                            //                               numero,  chave, mod
+                                                            criptografia_lantitude.push(PowerMod(decimal,valor[0],valor[1]));
+                                                        })
+                                                        binario_longitude.forEach((value,index,array)=>{
+                                                            var decimal = parseInt(value,2)
+                                                            //                               numero,  chave, mod
+                                                            criptografia_longitude.push(PowerMod(decimal,valor[0],valor[1]));
+                                                        })
+                                                        window.localStorage.setItem("letra_nome",texto.value);
+                                                        window.localStorage.setItem("letra_sexo",validar_radio[0].value);
+                                                        window.localStorage.setItem("lantitude",criptografia_lantitude);
+                                                        window.localStorage.setItem("longitude", criptografia_lantitude);
+                                                        var caminho = window.location.pathname != "/"  && window.location.pathname == "/desafio-IA/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/desafio-IA/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
+                                                        var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
+                                                        window.location.replace(novo_caminho);
                                                     }
-                                                    else{
+                                                    else {
                                                         Swal.fire({
                                                             icon:"warning",
                                                             title: 'Oops...',
-                                                            text:"campo sexo não foi preenchido!"
+                                                            text:"campo nome não foi preenchido!"
                                                         })
                                                     }
-                                                })
-
+                                                }
+                                                else{
+                                                    Swal.fire({
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"campo sexo não foi preenchido!"
+                                                    })
+                                                }
                                             }
 
                                         }
@@ -228,7 +233,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             {
                                                 salvando.local([document.getElementsByName("nome_jogador")[0].innerText]);
                                             }
-                                            
+
                                             var Exceção = document.querySelector(".interrogação");
                                             Exceção.onclick = function(ev){
                                                 alertify.success('Na divisão considere somente a parte inteira. ');
