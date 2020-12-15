@@ -352,7 +352,6 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                                 theads[0].onmessage = function(ev) {
                                                     document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
-                                                    modulo.operador = ev.data.tipo[1];
                                                     modulo.calculo_artificial(30000);   
                                                     modulo.temporizador();
                                                     theads[0].terminate();

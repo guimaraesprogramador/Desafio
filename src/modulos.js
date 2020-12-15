@@ -266,7 +266,6 @@ class modulos {
             document.querySelector(".operação").textContent  = ev.data.tipo[0] + "= ?";
             novooperação.terminate();
             novooperação = undefined;
-            modulo.operador = ev.data.tipo[1];
             modulo.calculo_artificial(30000); 
         }
         novooperação.postMessage({tipo:nivel})

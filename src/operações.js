@@ -1,5 +1,6 @@
 class regras{
     jogador(usuario){
+
         var operação = document.querySelector(".operação").textContent;
         var separador = operação.split("");
         separador.pop();
@@ -8,6 +9,7 @@ class regras{
         var resposta = document.querySelector("[name=Resposta]");
         var tipo;
         var i = 0;
+        var operador = [];
         var pontos_joagador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[0].textContent);
         var calculo = 0;
         var Derrotar_ia = Number.parseInt(document.querySelectorAll("[name=Derrota_artificial]")[1].textContent)
@@ -18,23 +20,28 @@ class regras{
             tipo ="fácil";
         }
         if(tipo == "média"){
-            var operador = modulo.operador;
+            separador.forEach((value,index,array)=>{
+                if(!Number.isInteger(parseInt(value))){
+                    operador.push(value);
+                }
+            })
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
                 i++;
             }
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
+            operador.pop(); 
+            operador.pop();
         }
         else if(tipo == "fácil"){
-            var operador = modulo.operador;
+            operador = separador[2];
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
                 i++;
             }
-            calculo = calc.Escolhar([tipo,operação.trim(),operador]);
-
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);   
         }
         else 
         {
@@ -63,22 +70,29 @@ class regras{
         separador.pop();
         var i = 0;
         var tipo;
+        var operador = [];
         var calculo = 0;
         var Derrota_jogador = Number.parseInt(document.querySelectorAll("[name=valor_jogador]")[1].textContent);
 
         if(pontos_atual - 1 > 3){
             tipo = "média"
-            var operador = modulo.operador;
+            separador.forEach((value,index,array)=>{
+                if(!Number.isInteger(parseInt(value))){
+                    operador.push(value);
+                }
+            })
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
                 i++;
             }
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
+            operador.pop(); 
+            operador.pop();
         }
         else if(pontos_atual - 1 <= 3){
             tipo = "fácil"
-            var operador = modulo.operador;
+            operador = separador[2];
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];

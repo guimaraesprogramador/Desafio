@@ -43,21 +43,21 @@ class calculos{
                         total =  Math.trunc(total);
                     }
                     else {
-                        total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
+                        total = (Number.parseFloat(total) / Number.parseFloat(calculo3));
                         total =  Math.trunc(total);
                     }
                 }
+                
                 // soma
                 else if(operação[i] == "+"){
+                    // multiplicação
                     if(operação[1] == "*"){
                         total = (Number.parseInt(calculo2) * Number.parseInt(calculo3)) 
                     }
+                    // divisão
                     else if(operação[1] == "/"){
                         total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
                         total =  Math.trunc(total);
-                    }
-                    else if(operação[1] == "-"){
-                        total = (Number.parseInt(calculo2) - Number.parseInt(calculo3));
                     }
                     else {
                         if(i == 0){
@@ -71,6 +71,7 @@ class calculos{
                 }
                 // subtração
                 else if(operação[i] == "-"){
+                    
                     if(operação[1] == "*"){
                         total = (Number.parseInt(calculo2) * Number.parseInt(calculo2))                         
                     }
