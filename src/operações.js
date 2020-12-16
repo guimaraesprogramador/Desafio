@@ -35,13 +35,18 @@ class regras{
             operador.pop();
         }
         else if(tipo == "fácil"){
-            operador = separador[2];
+            separador.forEach((value,index,array)=>{
+                if(!Number.isInteger(parseInt(value))){
+                    operador.push(value);
+                }
+            })
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
                 i++;
             }
-            calculo = calc.Escolhar([tipo,operação.trim(),operador]);   
+            calculo = calc.Escolhar([tipo,operação.trim(),operador]);  
+            operador.pop();
         }
         else 
         {
@@ -92,7 +97,11 @@ class regras{
         }
         else if(pontos_atual - 1 <= 3){
             tipo = "fácil"
-            operador = separador[2];
+            separador.forEach((value,index,array)=>{
+                if(!Number.isInteger(parseInt(value))){
+                    operador.push(value);
+                }
+            })
             operação = "";
             while(i<separador.length){
                 operação = operação + separador[i];
@@ -100,7 +109,7 @@ class regras{
             }
 
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);
-
+            operador.pop();
         }
         else 
         {
