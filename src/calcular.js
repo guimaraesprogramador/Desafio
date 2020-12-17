@@ -23,75 +23,84 @@ class calculos{
                 calculo2 = o[0];
 
             }
+            var total;
+            if(operação[0] == "*")
+            {
+                total = parseInt(calculo) *  parseInt(calculo2);
+            }
+            if(operação[1] == "*")
+            {
+                if(total != undefined)
+                {
+                    var começo = valoria.lastIndexOf(operação[1]);
+                    if(começo != -1){
+                        total = parseInt(total) * parseInt(calculo3);
+                    }
+                }
+                else {
+                    total = parseInt(calculo2) * parseInt(calculo3)    
+                }  
+            }
+            if(operação[0] == "/")
+            {
+                total = Math.trunc(parseFloat(calculo) / parseFloat(calculo2));
+            }
+            if(operação[1] == "/")
+            {
+                if(total != undefined)
+                {
+                    var começo = valoria.lastIndexOf(operação[1]);
+                    if(começo != -1){
+                        total = Math.trunc(parseFloat(total) / parseFloat(calculo3)) 
+                    }
+                }
+                else {
+                    total = Math.trunc(parseFloat(calculo2) / parseFloat(calculo3))     
+                }    
 
-            var total = 0;
-            while(i <operação.length){
-                // multiplicação
-                if(operação[i] == "*"){
-                    if(i == 0){
-                        total = (Number.parseInt(calculo) * Number.parseInt(calculo2));
-                    }
-                    else {
-                        total = (Number.parseInt(total) * Number.parseInt(calculo3));
+            }
+            if(operação[0] == "+")
+            {
+                total = parseInt(calculo) + parseInt(calculo2)  
+            }
+            if(operação[1] == "+")
+            {
+                if(total != undefined)
+                {
+                    total = parseInt(total) + parseInt(calculo3)
+                }
+                else 
+                {
+                    total = parseInt(calculo2) + parseInt(calculo3)
+                }
+            }
+            if(operação[0] == "-")
+            {
+                if(total != undefined)
+                {
+                    var começo = valoria.indexOf(operação[0]);
+                    if(começo != -1){
+                        total = parseInt(calculo) - parseInt(total); 
                     }
 
-                }
-                // divisão
-                else if(operação[i] == "/"){
-                    if(i == 0){
-                        total = (Number.parseFloat(calculo) / Number.parseFloat(calculo2));
-                        total =  Math.trunc(total);
-                    }
-                    else {
-                        total = (Number.parseFloat(total) / Number.parseFloat(calculo3));
-                        total =  Math.trunc(total);
-                    }
-                }
-                
-                // soma
-                else if(operação[i] == "+"){
-                    // multiplicação
-                    if(operação[1] == "*"){
-                        total = (Number.parseInt(calculo2) * Number.parseInt(calculo3)) 
-                    }
-                    // divisão
-                    else if(operação[1] == "/"){
-                        total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
-                        total =  Math.trunc(total);
-                    }
-                    else {
-                        if(i == 0){
-                            total = (Number.parseInt(calculo) + Number.parseInt(calculo2));
-                        }
-                        else {
-                            total = (Number.parseInt(total) + Number.parseInt(calculo3));
-                        }
-                    }
 
                 }
-                // subtração
-                else if(operação[i] == "-"){
-                    
-                    if(operação[1] == "*"){
-                        total = (Number.parseInt(calculo2) * Number.parseInt(calculo2))                         
-                    }
-                    else if(operação[1]=="/"){
-                        total = (Number.parseFloat(calculo2) / Number.parseFloat(calculo3));
-                        total =  Math.trunc(total);
-                    }
-                    else if(operação[1] == "+"){
-                        total =  (Number.parseInt(calculo2) + Number.parseInt(calculo3));
-                    }
-                    else {
-                        if(i == 0){
-                            total =  (Number.parseInt(calculo) - Number.parseInt(calculo2));
-                        }
-                        else {
-                            total =  ( Number.parseInt(total) - Number.parseInt(calculo3) )
-                        }
+                else {
+                    total = parseInt(calculo) - parseInt(calculo2)   
+                }  
+            }
+            if(operação[1] == "-")
+            {
+                if(total != undefined)
+                {
+                    var começo = valoria.lastIndexOf(operação[1]);
+                    if(começo != -1){
+                        total = parseInt(total) - parseInt(calculo3);
                     }
                 }
-                i++;
+                else {
+                    total = parseInt(calculo2) - parseInt(calculo3)  
+                }
             }
             // true and true se não for número
             if(!(Number.isInteger(Number.parseInt(operação[0])))
