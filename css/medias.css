@@ -44,7 +44,7 @@
         background-color: #ff3333;
         opacity: 0.5;
         top: 5%;
-        left: 30.5%;
+        left: 20%;
         padding-left: 3%;
         padding-right: 3%;
     }
@@ -52,7 +52,21 @@
         position: fixed;
         top: 28%;
     }
-
+    .deletar 
+    {
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 50%;
+        top: 5%;
+    }
+    .deletar_tudo{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 70%;
+        top: 5%;
+    }
     .LI-profile-badge {
         visibility: hidden;
      }
@@ -198,7 +212,7 @@
 }
 
 /* verticial de 500px até 700px */
-@media screen and (min-width: 500px)  and (max-width:700px){
+@media screen and (min-width: 500px)  and (max-width:701px){
     body{
         opacity: 1;
         background-color: rgb(127,127,229);
@@ -252,7 +266,21 @@
         position: fixed;
         top: 28%;
     }
-    
+    .deletar 
+    {
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 50%;
+        top: 5%;
+    }
+    .deletar_tudo{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 65%;
+        top: 5%;
+    }
     .LI-profile-badge {
         position: fixed;
         left: 58%;

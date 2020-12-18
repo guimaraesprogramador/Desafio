@@ -58,6 +58,21 @@
         left: 22.5%;
         width: auto;
     }
+    .deletar 
+    {
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 28%;
+        top: 5%;
+    }
+    .deletar_tudo{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 35%;
+        top: 5%;
+    }
     .LI-profile-badge {
         position: fixed;
         left: 78%;
@@ -199,7 +214,7 @@
 }
 
 /* verticial de  700px até 1024px */
-@media screen and (min-width: 700px) and (max-width:1024px){
+@media screen and (min-width: 701px) and (max-width:1024px){
 
     body{
         opacity: 1;
@@ -247,15 +262,31 @@
         background-color: #ff3333;
         opacity: 0.5;
         top: 5.5%;
-        left: 12.5%;
+        left: 15.5%;
         padding-left: 3%;
         padding-right: 3%;
     }
+   
     .coluna_nova{
         position: fixed;
         top: 28%;
         left: 12%;
         width: auto;
+    }
+    .deletar 
+    {
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 35%;
+        top: 5.5%;
+    }
+    .deletar_tudo{
+        position: fixed;
+        background-color: #ff3333;
+        opacity: 0.5;
+        left: 48%;
+        top: 5.5%;
     }
     .LI-profile-badge {
         position: fixed;

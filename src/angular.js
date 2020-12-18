@@ -267,7 +267,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 if(radio.checked){
                                                     if(banco != "erro" )
                                                     {
-                                                        var key = Number.parseInt(radio.value) + 1;
+                                                        var key = Number.parseInt(radio.value);
                                                         var ia = banco.objectStoreNames[0];
                                                         var usuario = banco.objectStoreNames[1];
                                                         var transactionusuario = banco.transaction(usuario,'readwrite');
@@ -299,6 +299,46 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             catch(ev){
 
                                             }
+                                        }
+                                        var deletar = document.querySelector("[name=deletar]");
+                                        deletar.onclick = function(ev){
+                                            var radio = document.querySelector("input[name=item]:checked");
+                                            try{
+                                                if(radio.checked)
+                                                {
+                                                    var key = Number.parseInt(radio.value);
+                                                    var usuario = banco.objectStoreNames[1];
+                                                    var transactionusuario = banco.transaction(usuario,'readwrite');
+                                                    var deletesuario = transactionusuario.objectStore(usuario).delete(key);
+                                                    deletesuario.onsuccess = function(event){
+                                                       var ia = banco.objectStoreNames[0];
+                                                       var transactionia = banco.transaction(ia,'readwrite');
+                                                       var deletesia = transactionusuario.objectStore(ia).delete(key);
+                                                       deletesia.onsuccess = function(event){
+                                                        alertify.success('deletar com sucesso... ');
+                                                       }
+                                                      
+                                                    }
+                                                }
+                                            }catch(ev){
+
+                                            }
+                                        }
+                                        var deletar_tudo = document.querySelector("[name=deletar_tudo]");
+                                        deletar_tudo.onclick = function(ev){
+                                            try{
+                                                if(banco.name != undefined){
+                                                    var deletar_banco = window.indexedDB.deleteDatabase(banco.name);
+                                                    alertify.success('deletado tudo com sucesso... ');
+                                                   
+                                                }
+                                                
+                                            }
+                                            catch(ev)
+                                            {
+                                                console.log(ev);
+                                            }
+                                           
                                         }
                                     }
                                     else if(window.location.pathname == "/quem_somos.html"
@@ -456,26 +496,28 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                             var usuario = banco.objectStoreNames[1];
                                             var transaction = banco.transaction(usuario,'readwrite');
-                                            var getall = transaction.objectStore(usuario).getAll();
-                                            getall.onsuccess = function(ev){
-                                                var dados = ev.target.result;
-                                                var  i = 0;
+                                            var curso = transaction.objectStore(usuario).openCursor()
+                                            
+                                            curso.onsuccess = function(ev){
+                                               
+                                               var dados = ev.target.result;
                                                 var nome,chave,vitoria,derrota,data,tr;
-                                                while(i < dados.length){
+                                              if(dados)
+                                              {
                                                     var radio = document.createElement("input");
                                                     radio.type = "radio";
                                                     radio.name = "item";
-                                                    radio.value = i;
+                                                    radio.value = dados.key;
                                                     nome = document.createElement("td");
-                                                    nome.textContent = "|"+dados[i].nome;
+                                                    nome.textContent = "|"+dados.value.nome;
                                                     chave = document.createElement("td");
-                                                    chave.textContent = "|"+dados[i].chave+"| ";
+                                                    chave.textContent = "|"+dados.value.chave+"| ";
                                                     vitoria = document.createElement("td");
-                                                    vitoria.textContent = dados[i].positivo+"| "
+                                                    vitoria.textContent = dados.value.positivo+"| "
                                                     derrota = document.createElement("td");
-                                                    derrota.textContent = dados[i].negativo+"| ";
+                                                    derrota.textContent = dados.negativo+"| ";
                                                     data = document.createElement("td");
-                                                    data.textContent = dados[i].data + "|";
+                                                    data.textContent = dados.value.data + "|";
                                                     tr = document.querySelector("tr");
                                                     tr.className = "coluna_nova";
                                                     tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"
@@ -485,9 +527,9 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         vitoria.innerHTML + derrota.innerHTML +
                                                         data.innerHTML + "<br>";
 
-                                                    i =  i + 1;
-                                                }
-
+                                                    dados.continue();                                                   
+                                            
+                                              }
                                             }
                                         })
                                     }catch(ev){
