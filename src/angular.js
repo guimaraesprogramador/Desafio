@@ -315,7 +315,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                        var transactionia = banco.transaction(ia,'readwrite');
                                                        var deletesia = transactionusuario.objectStore(ia).delete(key);
                                                        deletesia.onsuccess = function(event){
-                                                        alertify.success('deletar com sucesso... ');
+                                                        window.location.reload();
                                                        }
                                                       
                                                     }
@@ -329,7 +329,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             try{
                                                 if(banco.name != undefined){
                                                     var deletar_banco = window.indexedDB.deleteDatabase(banco.name);
-                                                    alertify.success('deletado tudo com sucesso... ');
+                                                    window.location.reload();
                                                    
                                                 }
                                                 

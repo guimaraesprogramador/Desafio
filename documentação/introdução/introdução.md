@@ -272,7 +272,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 
-#### ETAPA 10 Completo
+#### ETAPA 10 Completo Completo
 
 ##### Objetivos:
 
@@ -291,7 +291,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 
-#### ETAPA 11
+#### ETAPA 11 Completo
 
 ##### Objetivos:
 1. Implementar a quarte  parte do esboço funcionando.
