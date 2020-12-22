@@ -26,7 +26,12 @@ class calculos{
             var total;
             if(operação[0] == "*")
             {
-                total = parseInt(calculo) *  parseInt(calculo2);
+                if(total == undefined){
+                    total = parseInt(calculo) *  parseInt(calculo2);
+                }
+                else if(total != undefined){
+                    total = parseInt(total) + parseInt(calculo) 
+                }
             }
             if(operação[1] == "*")
             {
@@ -43,16 +48,19 @@ class calculos{
             }
             if(operação[0] == "/")
             {
-                total = Math.trunc(parseFloat(calculo) / parseFloat(calculo2));
+                if(total == undefined){
+                    total = Math.trunc(parseFloat(calculo) / parseFloat(calculo2));
+                }
+                else if(total != undefined){
+                    total = Math.trunc(parseFloat(calculo) / parseFloat(total));
+                }
+                
             }
             if(operação[1] == "/")
             {
                 if(total != undefined)
                 {
-                    var começo = valoria.lastIndexOf(operação[1]);
-                    if(começo != -1){
                         total = Math.trunc(parseFloat(total) / parseFloat(calculo3)) 
-                    }
                 }
                 else {
                     total = Math.trunc(parseFloat(calculo2) / parseFloat(calculo3))     
@@ -61,7 +69,12 @@ class calculos{
             }
             if(operação[0] == "+")
             {
-                total = parseInt(calculo) + parseInt(calculo2)  
+                if(total == undefined){
+                    total = parseInt(calculo) + parseInt(calculo2)  
+                }
+                else if(total != undefined){
+                    total = parseInt(total) + parseInt(calculo) 
+                }
             }
             if(operação[1] == "+")
             {

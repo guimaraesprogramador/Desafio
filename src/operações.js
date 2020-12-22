@@ -124,9 +124,8 @@ class regras{
             }
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);*/
         }
-        var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
-        var stringcalculo = calculo.toString();
-        if(stringcalculo == responsta_jogador || stringcalculo == "erro"){
+        var responsta_jogador = Number.parseInt(document.querySelector("[name=jogador_texto]").value);
+        if(calculo == responsta_jogador || calculo == "erro"){
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
             clearInterval(modulo.contagem);

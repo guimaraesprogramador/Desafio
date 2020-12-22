@@ -313,7 +313,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     deletesuario.onsuccess = function(event){
                                                        var ia = banco.objectStoreNames[0];
                                                        var transactionia = banco.transaction(ia,'readwrite');
-                                                       var deletesia = transactionusuario.objectStore(ia).delete(key);
+                                                       var deletesia = transactionia.objectStore(ia).delete(key);
                                                        deletesia.onsuccess = function(event){
                                                         window.location.reload();
                                                        }
@@ -515,7 +515,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     vitoria = document.createElement("td");
                                                     vitoria.textContent = dados.value.positivo+"| "
                                                     derrota = document.createElement("td");
-                                                    derrota.textContent = dados.negativo+"| ";
+                                                    derrota.textContent = dados.value.negativo+"| ";
                                                     data = document.createElement("td");
                                                     data.textContent = dados.value.data + "|";
                                                     tr = document.querySelector("tr");
