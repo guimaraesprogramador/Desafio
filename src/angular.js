@@ -80,7 +80,6 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                             function($scope,appBrowser,$location){
 
                                 $scope.verificar_plataforma = function(){
-                                    var permitido = "";
                                     var elementos_navagador ={
                                         platform:appBrowser.getBrowserInfo().platform,
                                         name:appBrowser.getBrowserInfo().name
@@ -88,18 +87,18 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                     if(elementos_navagador.platform == "Android"  || elementos_navagador.name == "Google Chrome"  ){
 
-                                        permitido = modulo.artificial(undefined);
+                                        modulo.artificial(undefined);
 
-                                        return permitido;
+                                        
                                     }
 
                                     else
                                     {
                                         navigator.mediaDevices.getUserMedia({audio:true}).then(r=>{
 
-                                            permitido = modulo.artificial();
+                                            modulo.artificial(undefined);
 
-                                            return permitido;
+                                            
                                         });
                                     }
 
@@ -364,7 +363,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     try{
 
 
-                                        var permissão = $scope.verificar_plataforma();
+                                        $scope.verificar_plataforma();
 
 
                                         var token =  window.location.href.split("token=");
