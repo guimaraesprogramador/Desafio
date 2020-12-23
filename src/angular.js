@@ -89,7 +89,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                         modulo.artificial(undefined);
 
-                                        
+
                                     }
 
                                     else
@@ -98,7 +98,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                             modulo.artificial(undefined);
 
-                                            
+
                                         });
                                     }
 
@@ -310,13 +310,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     var transactionusuario = banco.transaction(usuario,'readwrite');
                                                     var deletesuario = transactionusuario.objectStore(usuario).delete(key);
                                                     deletesuario.onsuccess = function(event){
-                                                       var ia = banco.objectStoreNames[0];
-                                                       var transactionia = banco.transaction(ia,'readwrite');
-                                                       var deletesia = transactionia.objectStore(ia).delete(key);
-                                                       deletesia.onsuccess = function(event){
-                                                        window.location.reload();
-                                                       }
-                                                      
+                                                        var ia = banco.objectStoreNames[0];
+                                                        var transactionia = banco.transaction(ia,'readwrite');
+                                                        var deletesia = transactionia.objectStore(ia).delete(key);
+                                                        deletesia.onsuccess = function(event){
+                                                            window.location.reload();
+                                                        }
+
                                                     }
                                                 }
                                             }catch(ev){
@@ -329,15 +329,15 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 if(banco.name != undefined){
                                                     var deletar_banco = window.indexedDB.deleteDatabase(banco.name);
                                                     window.location.reload();
-                                                   
+
                                                 }
-                                                
+
                                             }
                                             catch(ev)
                                             {
                                                 console.log(ev);
                                             }
-                                           
+
                                         }
                                     }
                                     else if(window.location.pathname == "/quem_somos.html"
@@ -496,13 +496,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             var usuario = banco.objectStoreNames[1];
                                             var transaction = banco.transaction(usuario,'readwrite');
                                             var curso = transaction.objectStore(usuario).openCursor()
-                                            
+
                                             curso.onsuccess = function(ev){
-                                               
-                                               var dados = ev.target.result;
+
+                                                var dados = ev.target.result;
                                                 var nome,chave,vitoria,derrota,data,tr;
-                                              if(dados)
-                                              {
+                                                if(dados)
+                                                {
                                                     var radio = document.createElement("input");
                                                     radio.type = "radio";
                                                     radio.name = "item";
@@ -527,8 +527,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         data.innerHTML + "<br>";
 
                                                     dados.continue();                                                   
-                                            
-                                              }
+
+                                                }
                                             }
                                         })
                                     }catch(ev){

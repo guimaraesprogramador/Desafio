@@ -30,8 +30,8 @@ class rsa {
         var c = 0;
         var x = 0;
         var b = 0;
-        // 0 até 100
-        c = Math.floor(Math.random() *101);
+        // 0 até 1000
+        c = Math.floor(Math.random() *1001);
         b = this.fatorial_primo(c);
         var i = 1;
         while(i<=b){

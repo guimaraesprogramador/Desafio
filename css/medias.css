@@ -4,6 +4,9 @@
     body{
         opacity: 1;
         background-color: rgb(127,127,229);
+        width: auto;
+        height: auto;
+        position: fixed;
     }
     h4{
         position: fixed;
@@ -69,18 +72,18 @@
     }
     .LI-profile-badge {
         visibility: hidden;
-     }
+    }
     .esquerda{
         position: absolute;
         border: 1px dotted black;
-        width: 40%;
+        width: 36.5%;
         left: 0%;
 
     }   
     .direita{
         position: absolute;
         border: 1px dotted black;
-        width: 40%;
+        width: 36.5%;
         right: 0%;
     }
     [name ="artificial"]{
@@ -107,10 +110,10 @@
     }
     .img_artificial{
         filter: grayscale(100%);
-        position: fixed;
-        width: 11%;
-        left: 30%;
-        top: 7%;
+        position: relative;
+        width: 35%;
+        left: 50%;
+        bottom: 130%;
     }
     .img_jogador{
         position: relative;
@@ -193,18 +196,19 @@
         top: 30%;
     }
     .temporizador{
-        position: absolute;
-        left:45%;
-        bottom: 63%;
+        position: relative;
+        left:40%;
+        transform: translateY(-800%)
     }     
     [name="artificial_texto"]{
-        position: fixed;
-        left:45%;
-        top: 7.5%;
+        position: relative;
+        left:80%;
+        bottom: 620%;
         background-color: white;
         padding-right: 15%;
-        padding-left: 5%;
-        padding-top: 8%;    
+        padding-left: 42%;
+        padding-top: 8%;
+        text-align: center;
     }   
     [name="Vitoria_jogador"]{
         position: relative;
@@ -286,7 +290,7 @@
         left: 58%;
         bottom: 17%;
         background-color: white;
-     }
+    }
     .esquerda{
         position: absolute;
         border: 1px dotted black;
@@ -462,6 +466,6 @@
         top: 29%;
     }
     .LI-profile-badge {
-       visibility: hidden;
-     }
+        visibility: hidden;
+    }
 }

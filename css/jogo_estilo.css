@@ -138,7 +138,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 65%;
+        left: 58%;
         bottom: 35%;
     }
     [name="artificial_texto"]{
