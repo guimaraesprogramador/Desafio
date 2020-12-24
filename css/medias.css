@@ -112,6 +112,7 @@
         filter: grayscale(100%);
         position: relative;
         width: 35%;
+        float: left;
         left: 50%;
         bottom: 130%;
     }
@@ -165,8 +166,8 @@
         position: relative;
         filter: grayscale(100%);
         width: 20%;
-        float: right;
-        left: 210%;
+        float: left;
+        left: 217%;
         top: 100%;
     }
     [name="nome_jogador"]{
@@ -201,13 +202,13 @@
         transform: translateY(-800%)
     }     
     [name="artificial_texto"]{
-        position: relative;
-        left:80%;
-        bottom: 620%;
+        position: fixed;
+        left: 37%;
+        bottom: 92%;
         background-color: white;
         padding-right: 15%;
-        padding-left: 42%;
-        padding-top: 8%;
+        padding-left: 10%;
+        padding-top: 6%;
         text-align: center;
     }   
     [name="Vitoria_jogador"]{
