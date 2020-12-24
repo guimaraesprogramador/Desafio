@@ -20,13 +20,11 @@ class regras{
             tipo ="fácil";
         }
         if(tipo == "média"){
-            separador.forEach((value,index,array)=>{
-                if(!Number.isInteger(parseInt(value))){
-                    operador.push(value);
-                }
-            })
             operação = "";
             while(i<separador.length){
+                if(!Number.isInteger(parseInt(separador[i]))){
+                    operador.push(separador[i]);
+                }
                 operação = operação + separador[i];
                 i++;
             }
@@ -35,13 +33,11 @@ class regras{
             operador.pop();
         }
         else if(tipo == "fácil"){
-            separador.forEach((value,index,array)=>{
-                if(!Number.isInteger(parseInt(value))){
-                    operador.push(value);
-                }
-            })
             operação = "";
             while(i<separador.length){
+                if(!Number.isInteger(parseInt(separador[i]))){
+                    operador.push(separador[i]);
+                }
                 operação = operação + separador[i];
                 i++;
             }
@@ -81,13 +77,11 @@ class regras{
 
         if(pontos_atual - 1 > 3){
             tipo = "média"
-            separador.forEach((value,index,array)=>{
-                if(!Number.isInteger(parseInt(value))){
-                    operador.push(value);
-                }
-            })
             operação = "";
             while(i<separador.length){
+                if(!Number.isInteger(parseInt(separador[i]))){
+                    operador.push(separador[i]);
+                }
                 operação = operação + separador[i];
                 i++;
             }
@@ -97,13 +91,11 @@ class regras{
         }
         else if(pontos_atual - 1 <= 3){
             tipo = "fácil"
-            separador.forEach((value,index,array)=>{
-                if(!Number.isInteger(parseInt(value))){
-                    operador.push(value);
-                }
-            })
             operação = "";
             while(i<separador.length){
+                if(!Number.isInteger(parseInt(separador[i]))){
+                    operador.push(separador[i]);
+                }
                 operação = operação + separador[i];
                 i++;
             }
@@ -124,8 +116,8 @@ class regras{
             }
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);*/
         }
-        var responsta_jogador = Number.parseInt(document.querySelector("[name=jogador_texto]").value);
-        if(calculo == responsta_jogador || calculo == "erro"){
+        var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
+        if(calculo.toString() == responsta_jogador || calculo == "erro"){
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
             clearInterval(modulo.contagem);
