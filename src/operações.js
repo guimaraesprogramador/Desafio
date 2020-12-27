@@ -48,7 +48,7 @@ class regras{
         {
             // DIFICIL
         }
-        if(calculo == usuario && calculo != NaN && calculo != "erro"){
+        if(calculo.toString() == usuario && calculo != NaN && calculo != "erro"){
             document.querySelector('[name=jogador_texto]').disabled = true;
             pontos_joagador++;
             document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";

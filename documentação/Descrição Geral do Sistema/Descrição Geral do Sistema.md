@@ -1,7 +1,7 @@
 # 2. Descrição Geral do Sistema
 ***
 ## 2.1. Descrição do Problema
-O Programa composto tando para desktop e para aplicativos é afetado pelo usuário que compõem uma participação de um jogo competitivo com seu adversário uma inteligência artificial que compota para se mais produtiva na operação de soma, subtração, divisão e multiplicação.
+O Programa composto tando para desktop e para aplicativos é afetado pelo usuário que compõem uma participação de um jogo competitivo com seu adversário que é compotar para se mais produtiva na operação de soma, subtração, divisão e multiplicação.
 
 Existem soluções parecidas com sudoku, calculadora quadrada e outras variações.
 
@@ -16,9 +16,9 @@ Diretamente está envolvido Kévin Vieira Gomes Guimarães, e indiretamente bibl
 
 ## 2.3 Regras de Negócio
 ### volume de informação
-As informações são salvas sendo controlado no intervalo de tempo de 2 segundo depois do início do jogo, mas guarda em cache o último salvamento para não sobrecarregar as informações.
+As informações são salvas sendo controlado no intervalo de cada partida depois do início do jogo, mas são guarda no banco Nosql no último salvamento para não sobrecarregar as informações.
 
 ### restrições do negocio
-O programa funciona somente um acesso contra uma inteligência artificial.
+O programa funciona somente um acesso contra o dispositivo.
 
 ***
