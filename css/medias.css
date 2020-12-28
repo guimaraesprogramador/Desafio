@@ -110,11 +110,11 @@
     }
     .img_artificial{
         filter: grayscale(100%);
-        position: relative;
-        width: 35%;
+        position: absolute;
         float: left;
-        left: 50%;
-        bottom: 130%;
+        width: 35%;
+        left: 40%;
+        bottom: 200%;
     }
     .img_jogador{
         position: relative;
@@ -137,7 +137,7 @@
         position: relative;
         font-size: 80%;
         float: left;
-        top: 325%;
+        top: 380%;
         right:20%;
         background-color: #ff3333;
         opacity: 0.5;
@@ -158,8 +158,8 @@
         font-size: 80%;
         position: relative;
         float: right;
-        left: 130%;
-        bottom: 180%;
+        left: 125%;
+        bottom: 270%;
         opacity: 0.5;
     }
     .interrogação{
@@ -183,8 +183,8 @@
 
     }
     [name="nome_artificial"]{
-        position: relative;
-        left: 45%;
+        position: fixed;
+        left: 38%;
         top: 10%;
     }
     .img_resultado1{
@@ -204,12 +204,11 @@
     [name="artificial_texto"]{
         position: fixed;
         left: 37%;
-        bottom: 92%;
+        bottom: 94%;
         background-color: white;
         padding-right: 15%;
         padding-left: 10%;
         padding-top: 6%;
-        text-align: center;
     }   
     [name="Vitoria_jogador"]{
         position: relative;
@@ -469,4 +468,9 @@
     .LI-profile-badge {
         visibility: hidden;
     }
+    .temporizador{
+        position: relative;
+        left:40%;
+        transform: translateY(-800%)
+    }  
 }

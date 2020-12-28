@@ -337,7 +337,7 @@
 
         position: relative;
         left: 50%;
-        bottom: 180%;
+        bottom: 150%;
         filter: grayscale(100%);
         filter: gray;
     }
@@ -408,9 +408,9 @@
         bottom: 100%
     }
     [name="nome_artificial"]{
-        position: relative;
-        left: 75%;
-        top: 30%;
+        position: fixed;
+        left: 40%;
+        top: 15%;
 
     }
     .img_resultado1{
