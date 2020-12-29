@@ -4,7 +4,7 @@
 ***
 >2 [Descrição Geral](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/Descri%C3%A7%C3%A3o%20Geral%20do%20Sistema/Descri%C3%A7%C3%A3o%20Geral%20do%20Sistema.md)
 ***
->3 [Requsitos do Sistema]()
+>3 [Requsitos do Sistema](https://github.com/guimaraesprogramador/desafio-IA/blob/master/documenta%C3%A7%C3%A3o/Requisito%20do%20Sistema/Requisito%20do%20Sistema.md)
 ***
 >4 [Análise e design]()
 ***
