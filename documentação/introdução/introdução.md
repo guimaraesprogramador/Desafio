@@ -325,6 +325,36 @@ Foi possivel implentar todos os tópicos.
 
 ##### Previsão até 30  de  dezembro de 2020.
 
+#### ETAPA 13
+
+##### Objetivos:
+
+1. Implementar a documentação da 2, 3, 4 ,5.
+
+
+##### Resultados:
+
+
+
+
+
+##### Previsão até 05  de  janeiro de 2021.
+
+#### ETAPA 14
+
+##### Objetivos:
+
+1. Implementar a documentação da 6, 7 ,8, 9.
+
+
+
+##### Resultados:
+
+
+
+
+
+##### Previsão até 15  de  janeiro de 2021.
 
 
 ### 1.6 Organização do Trabalho: 
