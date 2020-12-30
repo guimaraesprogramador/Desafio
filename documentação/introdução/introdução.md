@@ -282,7 +282,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 ##### Resultados:
-
+Foi possivel implentar todos os tópicos.
 
 
 
@@ -300,7 +300,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 ##### Resultados:
-
+Foi possivel implentar todos os tópicos.
 
 
 
@@ -309,7 +309,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 
-#### ETAPA 12
+#### ETAPA 12 Completo
 
 ##### Objetivos:
 
@@ -318,7 +318,7 @@ Foi feito uma modificação no banco de dados para funciona direito.
 
 
 ##### Resultados:
-
+Foi possivel implentar todos os tópicos.
 
 
 
