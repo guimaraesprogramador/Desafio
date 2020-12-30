@@ -235,7 +235,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                             var Exceção = document.querySelector(".interrogação");
                                             Exceção.onclick = function(ev){
-                                                alertify.success('Na divisão considere somente a parte inteira. ');
+                                                var messagem = "<h2> Dica </h2> </br> 1º Na divisão considere somente a parte inteira." + "</br>"+ "2º Ordem das operações: * , / , + , - ." + "</br>" + "3º Para fechar só atualizar a tela.";
+                                                alertify.success(messagem);
                                             }
                                         }
                                         catch(ev){
@@ -296,7 +297,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 }
                                             }
                                             catch(ev){
-
+                                                Swal.fire({
+                                                    icon:"warning",
+                                                    title: 'Oops...',
+                                                    text:"não tem opções na tela."
+                                                })
                                             }
                                         }
                                         var deletar = document.querySelector("[name=deletar]");
@@ -320,7 +325,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     }
                                                 }
                                             }catch(ev){
-
+                                                Swal.fire({
+                                                    icon:"warning",
+                                                    title: 'Oops...',
+                                                    text:"não tem opções na tela."
+                                                })
                                             }
                                         }
                                         var deletar_tudo = document.querySelector("[name=deletar_tudo]");
