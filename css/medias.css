@@ -6,7 +6,7 @@
         background-color: rgb(127,127,229);
         width: auto;
         height: auto;
-        position: absolute;
+        position: fixed;
     }
     h4{
         position: fixed;
