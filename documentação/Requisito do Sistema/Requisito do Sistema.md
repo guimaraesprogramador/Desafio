@@ -7,4 +7,14 @@
 Desafio de operaçãoes básicas
 ### Breve Descrição:
 
+### Actores envolvidos:
+### Pré-condições:
+### Fluxo Principal de Eventos:
+### Pós-condições:
+### Excepções:
+### Observaçoes:
+
+***
+## 3.2 Requsitos Não-funcionais
+![Imagem]()
 ***

@@ -184,9 +184,9 @@
 
     }
     [name="nome_artificial"]{
-        position: fixed;
-        left: 38%;
-        top: 10%;
+        position: absolute;
+        left: 75%;
+        top: 50%;
     }
     .img_resultado1{
         position: relative;
