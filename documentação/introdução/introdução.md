@@ -325,7 +325,7 @@ Foi possivel implentar todos os tópicos.
 
 ##### Previsão até 30  de  dezembro de 2020.
 
-#### ETAPA 13
+#### ETAPA 13 Incompleto
 
 ##### Objetivos:
 
@@ -333,7 +333,7 @@ Foi possivel implentar todos os tópicos.
 
 
 ##### Resultados:
-
+Feito somenteo o tópico 2 .
 
 
 
@@ -345,7 +345,7 @@ Foi possivel implentar todos os tópicos.
 ##### Objetivos:
 
 1. Implementar a documentação da 6, 7 ,8, 9.
-
+2. Implementar a documentação da 3, 4 ,5.
 
 
 ##### Resultados:
