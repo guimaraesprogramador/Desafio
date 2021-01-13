@@ -13,22 +13,20 @@
 Desafio de operaçãoes básicas
 
 ### Breve Descrição:
-
-
-
+Sofwate que pode ser usado para Desktop ou mobile.
 ### Actores envolvidos:
-
+Um ou mais usuários.
 ### Pré-condições:
-
+Necessário pelo menos 1 mega de internet.
 ### Fluxo Principal de Eventos:
 
 ### Pós-condições:
-
+Jogo com criptografia Rsa e sistema fechado.
 ### Excepções:
 
+Precisa de nome no login e sexo ao entrar no jogo.
+
 ### Observaçoes:
-
-
 
 ***
 
