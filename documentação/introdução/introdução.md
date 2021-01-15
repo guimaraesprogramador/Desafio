@@ -340,7 +340,7 @@ Feito somenteo o tópico 2 .
 
 ##### Previsão até 05  de  janeiro de 2021.
 
-#### ETAPA 14
+#### ETAPA 14 incompleto
 
 ##### Objetivos:
 
@@ -349,13 +349,28 @@ Feito somenteo o tópico 2 .
 
 
 ##### Resultados:
-
+Feito somenteo o tópico 3 .
 
 
 
 
 ##### Previsão até 15  de  janeiro de 2021.
 
+#### ETAPA 15 incompleto
+
+##### Objetivos:
+
+1. Implementar a documentação da 6, 7 ,8, 9.
+2. Implementar a documentação da  4 ,5.
+
+
+##### Resultados:
+
+
+
+
+
+##### Previsão até 20  de  janeiro de 2021.
 
 ### 1.6 Organização do Trabalho: 
 
