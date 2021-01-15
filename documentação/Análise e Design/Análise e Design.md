@@ -9,8 +9,13 @@
 ***
 
 ## 4.3 Modelo Lógico da Base de Dados
+### Modelagen do banco de dados no modo díficil
+![Base de dados](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20f%C3%A1cil.png)
 
-![Base de dados]()
+***
+
+### Modelagen do banco de dados no modo fácil
+![Base de dados](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/diagrama%20de%20classe%20da%20etapa%20m%C3%A9dia.png)
 
 ***
 
