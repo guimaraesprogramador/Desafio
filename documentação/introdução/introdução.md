@@ -333,7 +333,7 @@ Foi possivel implentar todos os tópicos.
 
 
 ##### Resultados:
-Feito somenteo o tópico 2 .
+Feito somente o tópico 2 .
 
 
 
@@ -356,13 +356,27 @@ Feito somenteo o tópico 3 .
 
 ##### Previsão até 15  de  janeiro de 2021.
 
-#### ETAPA 15 incompleto
+#### ETAPA 15 Incompleto
 
 ##### Objetivos:
 
-1. Implementar a documentação da 6, 7 ,8, 9.
+1. Implementar a documentação da 6, 7 , 9,10.
 2. Implementar a documentação da  4 ,5.
 
+
+##### Resultados:
+Feito somente o tópico 4 e 5 .
+
+
+
+
+##### Previsão até 20  de  janeiro de 2021.
+
+#### ETAPA 16 Incompleto
+
+##### Objetivos:
+
+1. Implementar a documentação da 6, 7 ,9,10.
 
 ##### Resultados:
 
@@ -370,8 +384,7 @@ Feito somenteo o tópico 3 .
 
 
 
-##### Previsão até 20  de  janeiro de 2021.
-
+##### Previsão até 30  de  janeiro de 2021.
 ### 1.6 Organização do Trabalho: 
 
 
