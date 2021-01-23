@@ -42,16 +42,20 @@ Um resultado bom de segurança.
 ## 6.2 Execução do Plano de Testes
 ### Teste de performasse em Desktop:
 #### Resultado Obtido:
-![Desktop]()
+![Desktop](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/teste%20de%20perfomasse/Desktop%20de%20performasse.png)
 ***
 ### Teste de performasse em Mobile:
 #### Resultado Obtido:
-![Mobile]()
+![Mobile](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/teste%20de%20perfomasse/mobile%20de%20performasse.png)
 ***
 ### Teste de desempenho :
 ####  Washington D.C:
-![Washington D.C]()
+![Washington D.C](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/teste%20de%20velocidade/EUA.png)
 ***
 #### São paulo:
-![São paulo]()
+![São paulo](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/teste%20de%20velocidade/S%C3%A3o%20paulo.png)
+***
+### Teste de Segurança:
+#### Resultado Obtido:
+![relatório](https://github.com/guimaraesprogramador/desafio-IA/blob/master/imagens/teste%20de%20seguran%C3%A7a/scan_report.pdf)
 ***
