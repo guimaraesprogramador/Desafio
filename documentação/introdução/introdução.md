@@ -1,4 +1,4 @@
-## 1 introdução
+## 1. introdução
 
 
 
@@ -372,7 +372,7 @@ Feito somente o tópico 4 e 5 .
 
 ##### Previsão até 20  de  janeiro de 2021.
 
-#### ETAPA 16 Incompleto
+#### ETAPA 16
 
 ##### Objetivos:
 

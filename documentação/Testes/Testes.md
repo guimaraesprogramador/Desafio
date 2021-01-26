@@ -1,4 +1,4 @@
-# 6 Testes
+# 6. Testes
 ## 6.1 Plano de Testes
 ### Teste de performasse em Desktop:
 #### Descrição do Teste:
