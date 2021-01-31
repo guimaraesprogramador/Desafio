@@ -360,7 +360,7 @@ Feito somenteo o tópico 3 .
 
 ##### Objetivos:
 
-1. Implementar a documentação da 6, 7 , 9,10.
+1. Implementar a documentação da 6, 7 ,8,9.
 2. Implementar a documentação da  4 ,5.
 
 
@@ -372,16 +372,16 @@ Feito somente o tópico 4 e 5 .
 
 ##### Previsão até 20  de  janeiro de 2021.
 
-#### ETAPA 16
+#### ETAPA 16 Incompleto
 
 ##### Objetivos:
 
-1. Implementar a documentação da 6, 7 ,9,10.
+1. Implementar a documentação da 6, 7 ,8,9.
 
 ##### Resultados:
 
 
-Feito somente o tópico 6,7,9 e mas o 10 foi no dia 31.
+Feito somente o tópico 6,7,8 e mas o 9 foi no dia 31.
 
 
 ##### Previsão até 30  de  janeiro de 2021.
