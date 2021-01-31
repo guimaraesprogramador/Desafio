@@ -381,7 +381,7 @@ Feito somente o tópico 4 e 5 .
 ##### Resultados:
 
 
-
+Feito somente o tópico 6,7,9 e mas o 10 foi no dia 31.
 
 
 ##### Previsão até 30  de  janeiro de 2021.
