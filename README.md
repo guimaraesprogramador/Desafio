@@ -14,7 +14,7 @@
 ***
 >7 [Implatação](https://github.com/guimaraesprogramador/desafio/blob/master/documenta%C3%A7%C3%A3o/Implanta%C3%A7%C3%A3o/Implanta%C3%A7%C3%A3o.md)
 ***
->8 [Considerações Finais e Recomendações](https://github.com/guimaraesprogramador/desafio/blob/master/documenta%C3%A7%C3%A3o/Implanta%C3%A7%C3%A3o/Implanta%C3%A7%C3%A3o.md)
+>8 [Considerações Finais e Recomendações](https://github.com/guimaraesprogramador/desafio/blob/master/documenta%C3%A7%C3%A3o/Considera%C3%A7%C3%B5es%20Finais%20e%20Recomenta%C3%A7%C3%B5es/Considera%C3%A7%C3%B5es%20Finais%20e%20Recomenta%C3%A7%C3%B5es.md)
 ***
 >9 [Referência](https://github.com/guimaraesprogramador/desafio/blob/master/documenta%C3%A7%C3%A3o/Refer%C3%AAncia/Refer%C3%AAncia.md)
 ***
