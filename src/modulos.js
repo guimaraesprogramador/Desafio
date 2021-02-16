@@ -281,13 +281,13 @@ self.addEventListener("message",function(ev){
 
             modulo.modulos_fácil();
 
-            postMessage({tipo:[modulo.operação,modulo.operador]});
+            self.postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
         case "média":
             modulo.modulos_média();
 
-            postMessage({tipo:[modulo.operação,modulo.operador]});
+            self.postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
     }

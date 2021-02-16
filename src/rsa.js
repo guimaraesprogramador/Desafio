@@ -104,7 +104,7 @@ self.addEventListener("message",function(ev){
     switch(tipo){
         case "começo":
             var array =  rsa.Regras();
-            postMessage({criptografia:array,link:rsa.link});
+            self.postMessage({criptografia:array,link:rsa.link});
             self.close();
             break;
         case "descriptografia":
@@ -112,7 +112,7 @@ self.addEventListener("message",function(ev){
             rsa.sexo = ev.data.sexo;
             rsa.chave = ev.data.chave;
             rsa.mod = ev.data.mod;
-            postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
+            self.postMessage({nome:rsa.nome,sexo:rsa.sexo,chave:rsa.chave,
                          mod:rsa.mod});
             self.close();
             break;
@@ -120,13 +120,13 @@ self.addEventListener("message",function(ev){
 
             modulo.modulos_fácil();
 
-            postMessage({tipo:[modulo.operação, modulo.operador]});
+            self.postMessage({tipo:[modulo.operação, modulo.operador]});
             self.close();
             break;
         case "média":
             modulo.modulos_média();
 
-            postMessage({tipo:[modulo.operação,modulo.operador]});
+            self.postMessage({tipo:[modulo.operação,modulo.operador]});
             self.close();
             break;
     }
