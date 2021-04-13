@@ -13,7 +13,7 @@ http://cin.ufpe.br/~sbgames/proceedings/aprovados/23657.pdf
 https://material.io/resources/icons/?icon=check&style=baseline
 
 //icon de cancel
-https://material.io/resources/icons/?icon=cancel&style=baseline
+https://fonts.google.com/icons?selected=Material+Icons:cancel&icon.query=cancel
 
 // diagrama de sequencia do jogo Desafio -IA.
 
@@ -43,5 +43,9 @@ https://www.bensound.com/royalty-free-music/track/ukulele
 // Diagrama de caso de uso
 http://www.plantuml.com/plantuml/uml/RLHBRXGn4DttAKgzH0GfaDKiKEx05cbKiIkDYUrgocKf8k8qt89jBeR7RKtrJB9plO_zx7azzqLHjAOuHNfKK0O9omy57uIS1iuJEcM1kPQA4dW6B53BjA9xmeKWvE02myjK2pai1BD34LfGRgHWLuViwVdM19jbXZFtUMVch25N57D-CVPNfGI54nUZxwO_vp0_URcAabO6Jo1KLiv54IX1VlsNIBQRTABXnsP5psBU1zRNlsO-UJt3a7NlfZWxBKRa9UIMmpRBdAXxic65dhbZnR0MKhaS5sfwbT30hcYpQIYheC3SyBxSdtn-FdW1SnGCM-BJOXyWaWkSSIDjD8blcAA0GuyGybeLDAmCWdvKOIZUMfGz0yC3PjTVqQFdihSSjNesd-83HGJ7wVs3-cftrLCNZhqBy7BvqE0PiEhubVhA19Gmn4j5XqpXADQ8Ofec6PY9OiXFbFtbHWDi8PiGRcw-Rkq-m2eXKH04fOY36-K-GA6bPlyETtTec3WpRjjrGTuFPJVqhkI-6kqekm6cHk_90JUaVppJrVVGcQkY7-Pl18-DSYJAK1FqriAAWi0mL1-_PoYRZaGQ0WsurdARA2jzcgVjDKx7MOatyEu4sgyz5GmzrlZhcNOr_Z2VYFbstjfoW22xM3nrr2uxYWXlVQWLO_ZTkF7qzvHzJV4_
 
+// fonte do adição
+https://fonts.google.com/icons?selected=Material+Icons:arrow_back&icon.query=add
+// fonte de susbituição
 
+https://fonts.google.com/icons?selected=Material+Icons:arrow_back&icon.query=remove
 
