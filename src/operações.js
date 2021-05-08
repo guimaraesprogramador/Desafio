@@ -22,7 +22,7 @@ class regras{
         if(tipo == "média"){
             operação = "";
             while(i<separador.length){
-                if(!Number.isInteger(parseInt(separador[i]))){
+                if(!Number.isInteger(parseInt(separador[i])) && separador[i] != " "){
                     operador.push(separador[i]);
                 }
                 operação = operação + separador[i];
@@ -35,7 +35,7 @@ class regras{
         else if(tipo == "fácil"){
             operação = "";
             while(i<separador.length){
-                if(!Number.isInteger(parseInt(separador[i]))){
+                if(!Number.isInteger(parseInt(separador[i]))&& separador[i] != " "){
                     operador.push(separador[i]);
                 }
                 operação = operação + separador[i];
