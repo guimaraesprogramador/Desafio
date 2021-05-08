@@ -79,7 +79,7 @@ class regras{
             tipo = "média"
             operação = "";
             while(i<separador.length){
-                if(!Number.isInteger(parseInt(separador[i]))){
+                if(!Number.isInteger(parseInt(separador[i])) && separador[i] != " " ){
                     operador.push(separador[i]);
                 }
                 operação = operação + separador[i];
@@ -93,7 +93,7 @@ class regras{
             tipo = "fácil"
             operação = "";
             while(i<separador.length){
-                if(!Number.isInteger(parseInt(separador[i]))){
+                if(!Number.isInteger(parseInt(separador[i])) && separador[i] != " " ){
                     operador.push(separador[i]);
                 }
                 operação = operação + separador[i];
