@@ -79,26 +79,18 @@ class modulos {
             if(document.querySelector(".som") != undefined)document.querySelector(".som").remove();
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
-            this.fundo.loop = true;
+            this.fundo.loop = "true";
             this.fundo.className ="fundo";
             this.fundo.play();
             document.body.append(this.fundo);
             return "permitida";
         }
         else{
-            var i = document.querySelectorAll(".fundo").length;
-            if(i >1){
-                var n = 0;
-                while(n <i ){
-                    document.querySelectorAll(".fundo")[n].remove();
-                    n = n + 1;
-                }
-            }
-            else {
-                if(document.querySelector(".fundo") != undefined){
+                if(this.fundo != undefined || document.querySelector(".fundo") != undefined){
                     document.querySelector(".fundo").remove();
+                    this.fundo.remove();
                 }
-            }
+
             var efeito = document.createElement("audio");
             switch(musica){
                 case "vencedor":
@@ -113,19 +105,10 @@ class modulos {
             efeito.className = "som";
             document.body.append(efeito);
             var tempo = window.setTimeout(function(){
-                var i = document.querySelectorAll(".som").length;
-                if(i >1){
-                    var n = 0;
-                    while(n <i ){
-                        document.querySelectorAll(".som")[n].remove();
-                        n = n + 1;
-                    }
-                }
-                else {
-                    if(document.querySelector(".som") != undefined){
+                if(document.querySelector(".som") != undefined || efeito != undefined){
                         document.querySelector(".som").remove();
+                        efeito.remove();
                     }
-                }
                 clearTimeout(tempo);
                 document.querySelector(".temporizador").textContent = "05:00";
                 document.querySelector("[name=artificial_texto]").textContent = "";
