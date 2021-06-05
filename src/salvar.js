@@ -86,13 +86,13 @@ class salvar{
             if (window.XMLHttpRequest != undefined)
             {
                 var xml = new XMLHttpRequest();
-                xml.open("GET","https://worldtimeapi.org/api/timezone/America/Sao_Paulo", false);
+                xml.open("GET","http://worldclockapi.com/api/json/est/now", false);
 
                 xml.send(null);
                 console.clear();
 
                 var data =  JSON.parse(xml.responseText);
-                var date = new Date(data.datetime);
+                var date = new Date(data.currentDateTime);
 
                 switch(date.getMonth()){
                     case 0:
