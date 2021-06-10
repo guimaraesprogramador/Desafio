@@ -290,7 +290,7 @@
         position: fixed;
         left: 58%;
         bottom: 17%;
-        background-color: white;
+         background-color: rgb(127,127,229);
     }
     .esquerda{
         position: absolute;
