@@ -71,7 +71,7 @@
         top: 5%;
     }
     .LI-profile-badge {
-        visibility: hidden;
+        display: none;
     }
     .esquerda{
         position: absolute;
@@ -290,8 +290,6 @@
         position: fixed;
         left: 58%;
         bottom: 17%;
-         background-color: white;
-        visibility: visible;
     }
     .esquerda{
         position: absolute;
@@ -476,7 +474,7 @@
         top: 29%;
     }
     .LI-profile-badge {
-        visibility: hidden;
+        display: none;
     }
     .temporizador{
         position: relative;

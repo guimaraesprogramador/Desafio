@@ -77,8 +77,6 @@
         position: fixed;
         left: 78%;
         top: 60%;
-        background-color: white;
-        visibility: visible;
      }
     .esquerda{
         width: 50%;
@@ -292,8 +290,6 @@
     .LI-profile-badge {
         position: fixed;
         left: 73%;
-        background-color: white;
-        visibility: visible;
      }
     .esquerda{
         width: 50%;
