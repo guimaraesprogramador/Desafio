@@ -276,8 +276,10 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         var getusuario = transactionusuario.objectStore(usuario).get(key);
                                                         getia.onsuccess = function(event){
                                                             var dadosia = event.target.result;
-
-                                                            getusuario.onsuccess = function(event2){
+                                                            window.localStorage.setItem("positivo_ia",parseInt(dadosia.positivo));
+                                                            window.localStorage.setItem("negativo_ai",parseInt(dadosia.negativo));
+                                                        }
+                                                        getusuario.onsuccess = function(event2){
                                                                 var dados_usuario = event2.target.result;
                                                                 var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/jogo.html"  : "/jogo.html";
                                                                 var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/" : "/";
@@ -287,11 +289,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                                 window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
                                                                 window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
                                                                 window.localStorage.setItem("sexo",dados_usuario.sexo);
-                                                                window.localStorage.setItem("positivo_ia",parseInt(dadosia.positivo));
-                                                                window.localStorage.setItem("negativo_ai",parseInt(dadosia.negativo));
                                                                 window.location.replace(caminho);
-                                                            }
-                                                        }
+                                                      }
                                                     }
 
                                                 }
