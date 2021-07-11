@@ -67,9 +67,7 @@ class salvar{
             else window.location.replace(caminho);
         }
         catch(ev){
-            console.log(ev);
-            // salvando.banco.deleteObjectStore('usuário');
-            // salvando.banco.deleteObjectStore("IA")
+             window.location.replace(caminho);
         }
     }
     local(index){
@@ -82,6 +80,7 @@ class salvar{
 
         var mes = "";
         var horario = "";
+        var minutos = "";
         try{
             if (window.XMLHttpRequest != undefined)
             {
@@ -133,8 +132,9 @@ class salvar{
                         mes = "dezembro";
                         break;
                 }
+                minutos = date.getMinutes() <10 ? "0"+date.getMinutes().toString():date.getMinutes().toString();
                 horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
-                    + date.getHours() + " : " + date.getMinutes();
+                    + date.getHours() + " : " + minutos;
             }
         }
         catch(ev){
@@ -181,8 +181,9 @@ class salvar{
                     mes = "dezembro";
                     break;
             }
+            minutos = date.getMinutes() <10 ? "0"+date.getMinutes().toString():date.getMinutes().toString();
             horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
-                + date.getHours() + " : " + date.getMinutes();
+                + date.getHours() + " : " + minutos;
 
         }
         finally{
