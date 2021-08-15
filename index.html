@@ -24,9 +24,39 @@
 
 
         <link rel="stylesheet" href="css/estilo.css" />
+        <script type="text/javascript">
+            function dados_svg(imagem){
+                 var xml = new XMLHttpRequest();
+                xml.open("GET",imagem.src, false);
+
+                xml.send();
+                console.clear();
+                var svg = document.createElement("svg");
+                svg.innerHTML = xml.response;
+
+                const svg_frase = svg.getElementsByTagName("svg")[0];
+                imagem.parentNode.replaceChild(svg_frase,imagem);
+                var g = document.getElementById('surface1');
+                var a = document.getElementsByTagName("path");
+                a[0].style.fill = 'red';
+
+            }
+
+        </script>
+        <style >
+            svg {
+                position: relative;
+                left: 20%;
+                margin-top: 1%;
+
+            }
+            svg #surface1{
+                fill :red;
+            }
+        </style>
     </head>
     <body ng-app="Desafio" ng-controller="Contra-IA" >
-
+        <img src="imagens/desenho_da_palavra/frase.svg"  onload='dados_svg(this)'/>
         <div class="container ">
             <div class="col-12" style="text-align:center">
                 <div class="row">
