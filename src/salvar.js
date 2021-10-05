@@ -64,9 +64,22 @@ class salvar{
                 })
 
             }
-            else window.location.replace(caminho);
+            else{
+                Swal.fire({
+                                                    icon:"warning",
+                                                    title: 'Oops...',
+                                                    text:"Espere pelo menos 1 minuto."
+                                                });
+                window.location.replace(caminho);
+            } 
         }
         catch(ev){
+              Swal.fire({
+                                                    icon:"warning",
+                                                    title: 'Oops...',
+                                                    text:"Espere pelo menos 1 minuto."
+                                                });
+              
              window.location.replace(caminho);
         }
     }
