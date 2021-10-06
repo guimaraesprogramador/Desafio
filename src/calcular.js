@@ -27,10 +27,10 @@ class calculos{
             if(operação[0] == "*")
             {
                 if(total == undefined){
-                    total = parseInt(calculo) *  parseInt(calculo2);
+                    total = parseFloat(calculo) *  parseFloat(calculo2);
                 }
                 else if(total != undefined){
-                    total = parseInt(total) + parseInt(calculo) 
+                    total = parseFloat(total) + parseFloat(calculo) 
                 }
             }
             if(operação[1] == "*")
@@ -39,11 +39,11 @@ class calculos{
                 {
                     var começo = valoria.lastIndexOf(operação[1]);
                     if(começo != -1){
-                        total = parseInt(total) * parseInt(calculo3);
+                        total = parseFloat(total) * parseFloat(calculo3);
                     }
                 }
                 else {
-                    total = parseInt(calculo2) * parseInt(calculo3)    
+                    total = parseFloat(calculo2) * parseFloat(calculo3)    
                 }  
             }
             if(operação[0] == "/")

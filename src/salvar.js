@@ -94,6 +94,7 @@ class salvar{
         var mes = "";
         var horario = "";
         var minutos = "";
+        var dia = "";
         try{
             if (window.XMLHttpRequest != undefined)
             {
@@ -145,8 +146,9 @@ class salvar{
                         mes = "dezembro";
                         break;
                 }
+               dia = date.getDate() < 10 ? "0"+date.getDate().toString():date.getDate().toString();
                 minutos = date.getMinutes() <10 ? "0"+date.getMinutes().toString():date.getMinutes().toString();
-                horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
+                horario = dia + " de " +mes + " de " + date.getFullYear() + " as " 
                     + date.getHours() + " : " + minutos;
             }
         }
@@ -194,8 +196,9 @@ class salvar{
                     mes = "dezembro";
                     break;
             }
+              dia = date.getDate() < 10 ? "0"+date.getDate().toString():date.getDate().toString();
             minutos = date.getMinutes() <10 ? "0"+date.getMinutes().toString():date.getMinutes().toString();
-            horario = date.getDate() + " de " +mes + " de " + date.getFullYear() + " as " 
+            horario = dia + " de " +mes + " de " + date.getFullYear() + " as " 
                 + date.getHours() + " : " + minutos;
 
         }
