@@ -65,7 +65,6 @@ class calculos{
                 else {
                     total = Math.trunc(parseFloat(calculo2) / parseFloat(calculo3))     
                 }    
-
             }
             if(operação[0] == "+")
             {

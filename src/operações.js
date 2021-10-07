@@ -49,14 +49,19 @@ class regras{
             // DIFICIL
         }
         if(calculo.toString() == usuario && calculo != NaN && calculo != "erro"){
-            document.querySelector('[name=jogador_texto]').disabled = true;
             pontos_joagador++;
             document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
             document.querySelector(".img_resultado0").src ="./imagens/cancel-red-48dp.svg";
             document.querySelectorAll("[name=valor_jogador]")[0].textContent = pontos_joagador;
-            Derrotar_ia--;
+            Derrotar_ia++;
             document.querySelectorAll("[name=Derrota_artificial]")[1].textContent = Derrotar_ia;
             resposta.disabled = true;
+            document.querySelector("[name=Resposta]").disabled = true;
+             document.querySelector('[name=jogador_texto]').disabled = true;
+            clearInterval(modulo.contagem);
+            document.querySelector("[name=Resposta_artificial]").disabled = true;
+            
+            modulo.artificial("vencedor");
         }
 
     }
@@ -116,16 +121,10 @@ class regras{
             }
             calculo = calc.Escolhar([tipo,operação.trim(),operador]);*/
         }
-        var responsta_jogador = document.querySelector("[name=jogador_texto]").value;
-        if(calculo.toString() == responsta_jogador || calculo == "erro"){
-            document.querySelector("[name=Resposta]").disabled = false;
-            document.querySelector('[name=jogador_texto]').disabled = false;
-            clearInterval(modulo.contagem);
-            document.querySelector("[name=Resposta_artificial]").disabled = false;
-            modulo.artificial("vencedor");
-        }
-        else{
-
+        if(calculo != NaN && calculo != "erro" &&
+            document.querySelector('[name=jogador_texto]').disabled == false)
+        {
+           
             clearInterval(modulo.contagem);
             document.querySelector("[name=Resposta]").disabled = false;
             document.querySelector('[name=jogador_texto]').disabled = false;
@@ -142,8 +141,9 @@ class regras{
             this.link = "derrotar";
             modulo.artificial(this.link);
         }
-
-
+        else {
+            document.querySelector('[name=jogador_texto]').disabled = false;
+        }
         document.querySelector("[name=Resposta_artificial]").onmouseenter = function(){
             document.querySelector("[name=Resposta_artificial]").onclick = null;
         }

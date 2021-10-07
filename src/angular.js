@@ -223,7 +223,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     Swal.fire({
                                                         icon:"warning",
                                                         title: 'Oops...',
-                                                        text:"não é permite com vírgura ou ponto os numeros."
+                                                        text:"não é permite com vírgura ou ponto nos numeros."
                                                     })
                                                 }
                                             }
@@ -398,13 +398,12 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 theads.push(new Worker("./src/modulos.js"));
 
                                                 theads[0].onmessage = function(ev) {
-                                                    document.querySelector(".operação").textContent = ev.data.tipo[0] + "= ?";
+                                                    document.querySelector(".operação").textContent = ev.data.tipo[0]+ "= ?";
                                                     modulo.calculo_artificial(30000);   
                                                     modulo.temporizador();
                                                     theads[0].terminate();
                                                     theads[0] = undefined;
                                                     theads.pop();
-
                                                 };
                                                 theads[0].postMessage({tipo:"fácil"});
                                             }
