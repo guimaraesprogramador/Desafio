@@ -53,15 +53,14 @@ class regras{
             document.querySelector(".img_resultado1").src = "./imagens/check-green-24dp.svg";
             document.querySelector(".img_resultado0").src ="./imagens/cancel-red-48dp.svg";
             document.querySelectorAll("[name=valor_jogador]")[0].textContent = pontos_joagador;
-            Derrotar_ia++;
+            Derrotar_ia--;
             document.querySelectorAll("[name=Derrota_artificial]")[1].textContent = Derrotar_ia;
             resposta.disabled = true;
             document.querySelector("[name=Resposta]").disabled = true;
              document.querySelector('[name=jogador_texto]').disabled = true;
-            clearInterval(modulo.contagem);
             document.querySelector("[name=Resposta_artificial]").disabled = true;
             
-            modulo.artificial("vencedor");
+            
         }
 
     }
@@ -143,6 +142,8 @@ class regras{
         }
         else {
             document.querySelector('[name=jogador_texto]').disabled = false;
+            clearInterval(modulo.contagem);
+            modulo.artificial("vencedor");
         }
         document.querySelector("[name=Resposta_artificial]").onmouseenter = function(){
             document.querySelector("[name=Resposta_artificial]").onclick = null;
