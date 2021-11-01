@@ -215,7 +215,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             resposta.onclick = function(ev){
 
                                                 if(jogador.value != undefined &&
-                                                   jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1)
+                                                   jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1 && Number.isInteger(Number.parseInt(jogador.value)))
                                                 {
                                                     regras_gerais.jogador(jogador.value);
                                                 }
@@ -223,10 +223,28 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     Swal.fire({
                                                         icon:"warning",
                                                         title: 'Oops...',
-                                                        text:"não é permite com vírgura ou ponto nos numeros."
+                                                        text:"Só é permitido numeros."
                                                     })
                                                 }
                                             }
+                                            document.querySelector('[name=jogador_texto]').addEventListener('keyup', function(e){
+                                              var key = e.which || e.keyCode;
+                                              if (key == 13) { // codigo da tecla enter
+                                                // colocas aqui a tua função a rodar
+                                               if(jogador.value != undefined &&
+                                                   jogador.value.indexOf(".") == -1 && jogador.value.indexOf(",") == -1&& Number.isInteger(Number.parseInt(jogador.value)))
+                                                {
+                                                    regras_gerais.jogador(jogador.value);
+                                                }
+                                                else {
+                                                    Swal.fire({
+                                                        icon:"warning",
+                                                        title: 'Oops...',
+                                                        text:"Só é permitido numeros."
+                                                    })
+                                                }
+                                              }
+                                            });
                                             var input_salvar = document.querySelector("[name=salvar]");
                                             input_salvar.onclick = function(ev)
                                             {
@@ -507,7 +525,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             curso.onsuccess = function(ev){
 
                                                 var dados = ev.target.result;
-                                                var nome,chave,vitoria,derrota,data,tr;
+                                                var nome,vitoria,derrota,data,tr;
                                                 if(dados)
                                                 {
                                                     var radio = document.createElement("input");
@@ -515,9 +533,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     radio.name = "item";
                                                     radio.value = dados.key;
                                                     nome = document.createElement("td");
-                                                    nome.textContent = "|"+dados.value.nome;
-                                                    chave = document.createElement("td");
-                                                    chave.textContent = "|"+dados.value.chave+"| ";
+                                                    nome.textContent = "|"+dados.value.nome+"| ";
                                                     vitoria = document.createElement("td");
                                                     vitoria.textContent = dados.value.positivo+"| "
                                                     derrota = document.createElement("td");
@@ -529,8 +545,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     tr.innerHTML = tr.innerHTML + "&nbsp;&nbsp;" + "<input type='" +radio.type +"' name='"
                                                         + radio.name + "'" + "value = '" +
                                                         radio.value + "'>" +
-                                                        nome.innerHTML + chave.innerHTML +
-                                                        vitoria.innerHTML + derrota.innerHTML +
+                                                        nome.innerHTML +vitoria.innerHTML + derrota.innerHTML +
                                                         data.innerHTML + "<br>";
 
                                                     dados.continue();                                                   
