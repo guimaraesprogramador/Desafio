@@ -115,7 +115,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         iniciar.onclick = function(ev){
 
 
-                                            if(valor.length !=0){
+                                            if(valor.length != 0){
                                                 var caminho = valor[3]+"?token="+valor[1];
                                                 window.localStorage.setItem("chave-publica",valor[0]);
                                                 window.localStorage.setItem("mod",valor[2]);
@@ -126,6 +126,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                             }
 
                                         }
+
                                         var continuar = document.getElementsByTagName("button")[1];
                                         continuar.onclick = function(ev){
                                             var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
@@ -198,7 +199,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                     })
                                                 }
                                             }
-
+                                            entrar.click();
                                         }
                                         catch(ev){
                                             window.location.reload();
