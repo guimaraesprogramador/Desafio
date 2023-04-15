@@ -1,7 +1,7 @@
 var theads  = []
 var valor = [];
 var banco,pontos;
-var app = angular.module('Desafio',['ngBrowser'])
+var app = angular.module('Regras_Operador',['ngBrowser'])
 app.run( function() {
     document.body.style.visibility ="hidden";
     if(navigator.onLine){
@@ -9,7 +9,7 @@ app.run( function() {
         document.body.style.visibility = "visible";
         if(window.location.pathname == "/" || window.location.pathname == "/index.html"
            ||
-           window.location.pathname == "/Desafio/"){
+           window.location.pathname == "/Regras_Operador/"){
             var modal = Swal.fire({
                 icon:"warning",
                 title:"Carregando...",
@@ -50,7 +50,7 @@ app.run( function() {
         }
         else if(window.location.pathname == "/login.html"  
                 ||
-                window.location.pathname == "/Desafio/login.html")
+                window.location.pathname == "/Regras_Operador/login.html")
         {
             modulo.pontos_geometricos().then(geo=>{
                 pontos = geo;
@@ -58,7 +58,7 @@ app.run( function() {
         }
         else if (window.location.pathname == "/continuar.html"
                  ||
-                 window.location.pathname == "/Desafio/continuar.html")
+                 window.location.pathname == "/Regras_Operador/continuar.html")
         {
             salvando.banco.then(dados=>{
                 banco = dados;
@@ -71,7 +71,7 @@ app.run( function() {
     {
 
 
-        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/Desafio/404.html"));
+        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/Regras_Operador/404.html"));
     }    
 });
 
@@ -108,7 +108,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     // index.html
                                     if(window.location.pathname == "/" || window.location.pathname == "/index.html"
                                        ||
-                                       window.location.pathname == "/Desafio/")
+                                       window.location.pathname == "/Regras_Operador/")
                                     {
                                         var iniciar = document.getElementsByTagName("button")[0];
 
@@ -147,7 +147,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     }
                                     else if(window.location.pathname == "/login.html"  
                                             ||
-                                            window.location.pathname == "/Desafio/login.html"){
+                                            window.location.pathname == "/Regras_Operador/login.html"){
                                         try{
                                             var entrar = document.getElementsByTagName("button")[0];
 
@@ -179,7 +179,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         window.localStorage.setItem("letra_sexo",validar_radio[0].value);
                                                         window.localStorage.setItem("lantitude",criptografia_lantitude);
                                                         window.localStorage.setItem("longitude", criptografia_lantitude);
-                                                        var caminho = window.location.pathname != "/"  && window.location.pathname == "/Desafio/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/Desafio/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
+                                                        var caminho = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/login.html" ?  window.location.protocol +"//"+  window.location.host.toString()+ "/Regras_Operador/jogo.html" : window.location.protocol +"//"+  window.location.host.toString() +"/jogo.html";
                                                         var novo_caminho = caminho + "?token="+ window.location.href.split("token=")[1];
                                                         window.location.replace(novo_caminho);
                                                     }
@@ -206,7 +206,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
 
                                     }
-                                    else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/Desafio/jogo.html")
+                                    else if(window.location.pathname == "/jogo.html" || window.location.pathname == "/Regras_Operador/jogo.html")
                                     {
                                         try{
                                             var jogador = document.querySelector("[name=jogador_texto]");
@@ -268,13 +268,13 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     }
                                     else if(window.location.pathname == "/continuar.html"
                                             ||
-                                            window.location.pathname == "/Desafio/continuar.html")
+                                            window.location.pathname == "/Regras_Operador/continuar.html")
                                     {
 
                                         var sair = document.querySelector("[name=sair]");
                                         sair.onclick = function(ev){
-                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/continuar.html"  : "/continuar.html";
-                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/" : "/";
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/continuar.html"  : "/continuar.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/" : "/";
                                             var caminho = window.location.href.replace(separar,anterior);
                                             window.location.replace(caminho);
                                         }
@@ -300,8 +300,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                         }
                                                         getusuario.onsuccess = function(event2){
                                                                 var dados_usuario = event2.target.result;
-                                                                var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/jogo.html"  : "/jogo.html";
-                                                                var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/continuar.html"  ? "/Desafio/" : "/";
+                                                                var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/jogo.html"  : "/jogo.html";
+                                                                var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/" : "/";
                                                                 var caminho =  window.location.origin.toString() +separar+"?token="+dados_usuario.chave;
                                                                 window.localStorage.setItem("nome-usuário",dados_usuario.nome);
                                                                 window.localStorage.setItem("chave-publica",dados_usuario.chave);
@@ -369,11 +369,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                     }
                                     else if(window.location.pathname == "/quem_somos.html"
                                             ||
-                                            window.location.pathname == "/Desafio/quem_somos.html"){
+                                            window.location.pathname == "/Regras_Operador/quem_somos.html"){
                                         var sair = document.querySelector("[name=sair]");
                                         sair.onclick = function(ev){
-                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/quem_somos.html"  ? "/Desafio/quem_somos.html"  : "/quem_somos.html";
-                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/quem_somos.html"  ? "/Desafio/" : "/";
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/quem_somos.html"  ? "/Regras_Operador/quem_somos.html"  : "/quem_somos.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/quem_somos.html"  ? "/Regras_Operador/" : "/";
                                             var caminho = window.location.href.replace(separar,anterior);
                                             window.location.replace(caminho);
                                         }
@@ -386,7 +386,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                 if(window.location.pathname == "/jogo.html"
                                    ||
-                                   window.location.pathname == "/Desafio/jogo.html"){
+                                   window.location.pathname == "/Regras_Operador/jogo.html"){
                                     try{
 
 
@@ -483,8 +483,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
                                         else{
 
-                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/jogo.html"  ? "/Desafio/jogo.html"  : "/jogo.html";
-                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/jogo.html"  ? "/Desafio/" : "/";
+                                            var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/jogo.html"  ? "/Regras_Operador/jogo.html"  : "/jogo.html";
+                                            var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/jogo.html"  ? "/Regras_Operador/" : "/";
                                             var caminho;
                                             if(token[1] == undefined){
                                                 caminho =   window.location.href.replace(separar,anterior);  
@@ -498,8 +498,8 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
                                     }
                                     catch(erro){
-                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/Desafio/jogo.html"  ? "/Desafio/jogo.html"  : "/jogo.html";
-                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/Desafio/jogo.html"  ? "/Desafio/" : "/";
+                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/jogo.html"  ? "/Regras_Operador/jogo.html"  : "/jogo.html";
+                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/jogo.html"  ? "/Regras_Operador/" : "/";
                                         var caminho;
                                         if(token[1] == undefined){
                                             caminho =   window.location.href.replace(separar,anterior);
@@ -513,7 +513,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                 }
                                 else if(window.location.pathname == "/continuar.html"
                                         ||
-                                        window.location.pathname == "/Desafio/continuar.html")
+                                        window.location.pathname == "/Regras_Operador/continuar.html")
                                 {
                                     try{
                                         salvando.banco.then(banco=>{
