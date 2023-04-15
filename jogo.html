@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Desafío Matemático  </title>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+       <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.min.js"></script> 
         <script   src="https://cdn.jsdelivr.net/npm/ng-browser-detector@latest/ng-browser-detector.min.js"></script>
-        <script   src="https://cdn.jsdelivr.net/npm/browser-dtector@latest/browser-dtector.umd.js"></script> 
         <!-- JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
         <!-- CSS -->
@@ -39,6 +39,7 @@
 
         <link rel="stylesheet" href="./css/jogo_estilo.css" />
         <link rel="stylesheet" href="./css/medias.css"/>
+         
     </head>
     <body ng-app="Desafio" ng-controller="Contra-IA" ng-init="carregar_dados()">
         <div class="container" >
@@ -86,6 +87,8 @@
             </div>
 
             <!-- pontução do jogador -->
+            <nav>
+
             <div class="col-6" name="jogador">
                 <div class="row">
                     <div class="col">
@@ -99,6 +102,7 @@
 
                     </div>
                 </div>
+            </nav>
                 <div class="row">
                     <div class="col">
                         <img class="img_jogador" />

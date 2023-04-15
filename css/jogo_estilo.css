@@ -7,6 +7,7 @@
         background-color: rgb(127,127,229)
 
     }
+      /* continuar.html*/
     h4{
         position: fixed;
         float: left;
@@ -78,6 +79,7 @@
         left: 78%;
         top: 60%;
      }
+       /* jogo.html*/
     .esquerda{
         width: 50%;
         left: -10%;
@@ -220,6 +222,7 @@
         background-color: rgb(127,127,229)
 
     }
+    /* continuar.html*/
     h4{
         position: fixed;
         float: left;
@@ -291,6 +294,7 @@
         position: fixed;
         left: 73%;
      }
+     /* jogo.html*/
     .esquerda{
         width: 50%;
         left: -10%;
@@ -423,6 +427,7 @@
     .temporizador{
         color: black;
         left: 40%;
-        position: absolute;
+        position: absolute; 
     }
 }
+

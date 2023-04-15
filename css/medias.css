@@ -8,6 +8,7 @@
         height: auto;
         position: fixed;
     }
+      /* continuar.html*/
     h4{
         position: fixed;
         float: left;
@@ -73,6 +74,7 @@
     .LI-profile-badge {
         display: none;
     }
+      /* jogo.html*/
     .esquerda{
         position: absolute;
         border: 1px dotted black;
@@ -127,18 +129,19 @@
     input[name="jogador_texto"]{
         position: relative;
         float: right;
-        width: 63%;
-        top: 150%;
+        width: 100%;
+        top: 475%;
         left:40%;
+        display: block;
+        padding-right: 20%;
     }
 
     [name="salvar"]{
 
         position: relative;
-        
         font-size: 80%;
         float: left;
-        top: 380%;
+        top: 1000%;
         right: 10%;
         background-color: #ff3333;
         opacity: 0.5;
@@ -148,12 +151,17 @@
         font-size: 80%;
         position: relative;
         float: right;
-        left: 120%;
-        top: 100%;
+        left: 110%;
+        top:425%;
         background-color: #ff3333;
         opacity: 0.5;
     }
-
+    nav{
+        visibility: hidden;
+    }
+    nav:houver{
+        visibility: show;
+    }
     [name="Resposta_artificial"]{
         background-color: #ff3333;
         font-size: 80%;
@@ -169,7 +177,7 @@
         width: 20%;
         float: left;
         left: 217%;
-        top: 100%;
+        top: 430%;
     }
     [name="nome_jogador"]{
         position: relative;
@@ -223,6 +231,7 @@
         background-color: rgb(127,127,229);
 
     }
+      /* continuar.html*/
     h4{
         position: fixed;
         float: left;
@@ -291,6 +300,7 @@
         left: 58%;
         bottom: 17%;
     }
+      /* jogo.html*/
     .esquerda{
         position: absolute;
         border: 1px dotted black;
@@ -421,7 +431,7 @@
 } 
 
 @media screen and (min-width: 500px)  and (max-width:700px) and (orientation:landscape) {
-
+  /* continuar.html*/
     h4{
         position: fixed;
         float: left;
@@ -476,6 +486,7 @@
     .LI-profile-badge {
         display: none;
     }
+      /* jogo.html*/
     .temporizador{
         position: relative;
         left:40%;

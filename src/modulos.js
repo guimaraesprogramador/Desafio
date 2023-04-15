@@ -10,16 +10,18 @@ class modulos {
             this.m = 0;
 
             while(this.num >0){
-                this.n = Math.floor(Math.random() *100);
-                this.m = Math.floor(Math.random() *100);
+                this.n = Math.floor(Math.random() *10);
+                this.m = Math.floor(Math.random() *10);
                 if(this.n == 0 || this.m == 0){
-                    this.n = 1; 
+                    this.num = 1; 
+
                 }
                 else {
                     this.link.push(this.n.toString());
                     this.link.push(this.m.toString());
                     this.num = this.num - 1;
                 }
+
             }
 
             this.operador = Math.floor(Math.random() *4);
@@ -33,11 +35,11 @@ class modulos {
             this.m = 0;
             this.p = 0;
             while(this.num >0){
-                this.n = Math.floor(Math.random() *100);
-                this.m = Math.floor(Math.random() *100);
-                this.p = Math.floor(Math.random() *100);
+                this.n = Math.floor(Math.random() *10);
+                this.m = Math.floor(Math.random() *10);
+                this.p = Math.floor(Math.random() *10);
                 if(this.n == 0 || this.m == 0 || this.p == 0){
-                    this.n = 1;
+                    this.num = 1;
                 }
                 else {
                     this.link.push(this.n.toString());
