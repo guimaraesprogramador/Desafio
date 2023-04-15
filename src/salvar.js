@@ -1,8 +1,8 @@
 class salvar{
     constructor(){
         this._index = [];
-        window.indexedDB.open('dbdesafio',1);
-        const db  = window.indexedDB.open('dbdesafio',2);
+        window.indexedDB.open('dbRegras_Operador',1);
+        const db  = window.indexedDB.open('dbRegras_Operador',2);
         db.onupgradeneeded = function(e){
             var minhaconnect = e.target.result;
             minhaconnect.createObjectStore('usuario',{autoIncrement:true});
@@ -13,7 +13,7 @@ class salvar{
     }
     get banco(){
         return new Promise((res,respo)=>{
-            var  db  = window.indexedDB.open('dbdesafio',2);
+            var  db  = window.indexedDB.open('dbRegras_Operador',2);
             db.onsuccess = function(ev){
                 res(ev.target.result);
             }
