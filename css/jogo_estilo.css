@@ -109,7 +109,6 @@
     }
     [name="placar"]{
         color: black;
-        margin-left: 12%;
     }
     .operação{
         background-color: white;
@@ -131,7 +130,7 @@
     .img_jogador{
 
         position: relative;
-        left:45%;
+        left:57%;
         top: 30%;
         filter: grayscale(100%);
         filter: gray;
@@ -139,7 +138,7 @@
     input[name="jogador_texto"]{
 
         position: relative;
-        left: 58%;
+        left: 37%;
         bottom: 35%;
     }
     [name="artificial_texto"]{
@@ -154,9 +153,10 @@
     }
     [name="salvar"]{
         position: relative;
-        top: 50%;
+        top: 100%;
+        top: 54%;
         background-color: #ff3333;
-        left: 18%;
+        left: 29%;
         color: black;
         opacity: 0.5;
     }
@@ -167,7 +167,7 @@
         color: black;
         position: relative;
         bottom:40%;
-        left:70%;
+        left:40%;
         opacity: 0.5;
     }
     [name="Resposta_artificial"]{
@@ -181,7 +181,7 @@
     }
     .interrogação{
         position: relative;
-        left:75%;
+        left:42%;
         filter: grayscale(100%);
         filter: gray;
         bottom: 35%;;
@@ -189,7 +189,7 @@
     }
     [name="nome_jogador"]{
         position: relative;
-        left: 75%;
+        left: 46%;
         bottom: 100%
     }
     [name="nome_artificial"]{
@@ -384,7 +384,7 @@
         color: black;
         position: relative;
         bottom:50%;
-        left: 55%;
+        left: 17%;
         opacity: 0.5;
     }
     [name="Resposta_artificial"]{

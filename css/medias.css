@@ -96,7 +96,8 @@
     }
     [name="placar"]{
         position: relative;
-        left: 20%;
+        left:4%;
+        visibility: visible;
     }
     .operação{
         background-color: white;
@@ -123,15 +124,14 @@
         filter: grayscale(100%);
         width:35%;
         float:inherit;
-        top: 340%;
-        left: 40%;
+        top: 20%;
+        left: 35%;
     }
     input[name="jogador_texto"]{
         position: relative;
-        float: right;
-        width: 100%;
-        top: 475%;
-        left:40%;
+        float: left;
+        width: 50%;
+        left: 23%;
         display: block;
         padding-right: 20%;
     }
@@ -151,8 +151,7 @@
         font-size: 80%;
         position: relative;
         float: right;
-        left: 110%;
-        top:425%;
+        left: 11px;
         background-color: #ff3333;
         opacity: 0.5;
     }
@@ -176,19 +175,22 @@
         filter: grayscale(100%);
         width: 20%;
         float: left;
-        left: 217%;
-        top: 430%;
+        left: 21%;
+        top: 100%;
     }
     [name="nome_jogador"]{
         position: relative;
-        left: 100%;
-        top: 60%;
+        float: left;
+        bottom: 30%;
+        left: 47%;
     }
     [name="valor_jogador"]{
         position: relative;
+        visibility: visible;
     }
     [name="Derrota_jogador"]{
         position: relative;
+        visibility: visible;
 
     }
     [name="nome_artificial"]{
@@ -221,6 +223,7 @@
     }   
     [name="Vitoria_jogador"]{
         position: relative;
+        visibility: visible;
     }
 }
 
