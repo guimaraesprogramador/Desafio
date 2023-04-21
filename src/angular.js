@@ -110,9 +110,37 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                        ||
                                        window.location.pathname == "/Regras_Operador/")
                                     {
-                                        var iniciar = document.getElementsByTagName("button")[0];
+                                        var continuar = document.getElementsByTagName("button")[0];
+                                        continuar.onclick =  function(e){
+                                            const db = window.indexedDB.open('dbRegras_Operador',2);
+                                            db.onsuccess = function(e){
 
-                                        iniciar.onclick = function(ev){
+                                                var dados = e.target.result;
+                                                if(dados){
+                                                   var object_usuário =  dados.objectStoreNames[1];
+                                                   var transaction = dados.transaction(object_usuário,'readwrite');
+                                                   var curso = transaction.objectStore(object_usuário).openCursor();
+                                                   curso.onsuccess = function(event){
+                                                    var dados2 = event.target.result;
+                                                    if(dados2){
+                                                        console.log(dados2.value);
+
+                                                    }
+                                                    else {
+                                                        Swal.fire({
+                                                            icon:"error",
+                                                            title: 'Oops...',
+                                                            text:"Não tem salve"
+                                                        })
+                                                    }
+                                                    
+                                                   }
+                                                }
+                                            }
+                                            }
+                                        var novo_jogo = document.getElementsByTagName("button")[1];
+
+                                        novo_jogo.onclick = function(ev){
 
 
                                             if(valor.length != 0){
@@ -127,20 +155,20 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                         }
 
-                                        var continuar = document.getElementsByTagName("button")[1];
-                                        continuar.onclick = function(ev){
+                                        var carregar = document.getElementsByTagName("button")[2];
+                                        carregar.onclick = function(ev){
                                             var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
-                                                window.location.host.toString() + window.location.pathname +"continuar.html" :
+                                                window.location.host.toString() +"/continuar.html" :
                                             window.location.protocol +"//"+  window.location.host.toString() 
-                                            + window.location.pathname +"continuar.html";
+                                            +"/continuar.html";
                                             window.location.assign(caminho);
                                         }
-                                        var quem_somos = document.getElementsByTagName("button")[2];
+                                        var quem_somos = document.getElementsByTagName("button")[3];
                                         quem_somos.onclick = function(ev){
                                             var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
-                                                window.location.host.toString() + window.location.pathname +"quem_somos.html" :
+                                                window.location.host.toString() +"/quem_somos.html" :
                                             window.location.protocol +"//"+  window.location.host.toString() 
-                                            + window.location.pathname +"quem_somos.html";
+                                            +"/quem_somos.html";
                                             window.location.assign(caminho);
                                         }
 
@@ -382,7 +410,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                 $scope.resposta_artificial = "";
-                                $scope.temporizador = "05:00";
+                                $scope.temporizador = "00:30";
 
                                 if(window.location.pathname == "/jogo.html"
                                    ||
