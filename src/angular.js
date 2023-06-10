@@ -71,7 +71,7 @@ app.run( function() {
     {
 
 
-        window.location.replace(window.location.href.replace(window.location.pathname.toString(),"/Regras_Operador/404.html"));
+        window.location.replace(window.location.href.toString()+"404.html");
     }    
 });
 
@@ -157,18 +157,14 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
                                         var carregar = document.getElementsByTagName("button")[2];
                                         carregar.onclick = function(ev){
-                                            var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
-                                                window.location.host.toString() +"/continuar.html" :
-                                            window.location.protocol +"//"+  window.location.host.toString() 
-                                            +"/continuar.html";
+                                            var caminho = window.location.href.toString() 
+                                            +"continuar.html";
                                             window.location.assign(caminho);
                                         }
                                         var quem_somos = document.getElementsByTagName("button")[3];
                                         quem_somos.onclick = function(ev){
-                                            var caminho =  window.location.pathname != "/" ? window.location.protocol +"//"+  
-                                                window.location.host.toString() +"/quem_somos.html" :
-                                            window.location.protocol +"//"+  window.location.host.toString() 
-                                            +"/quem_somos.html";
+                                            var caminho =  wwindow.location.href.toString() 
+                                            +"quem_somos.html";
                                             window.location.assign(caminho);
                                         }
 
