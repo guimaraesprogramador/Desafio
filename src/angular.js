@@ -163,7 +163,7 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                         }
                                         var quem_somos = document.getElementsByTagName("button")[3];
                                         quem_somos.onclick = function(ev){
-                                            var caminho =  wwindow.location.href.toString() 
+                                            var caminho =  window.location.href.toString() 
                                             +"quem_somos.html";
                                             window.location.assign(caminho);
                                         }
