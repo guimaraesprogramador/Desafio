@@ -76,21 +76,33 @@ class modulos {
 
     }
     artificial(musica){ 
-
+        if(this.fundo == undefined)this.fundo2 = [];
         if(musica == undefined){
-            if(document.querySelector(".som") != undefined)document.querySelector(".som").remove();
+            if(document.querySelector(".som") != undefined){
+                document.querySelector(".som").remove();
+            }
             this.fundo = document.createElement("audio");
             this.fundo.src = "./musicas/bensound-ukulele.mp3";
             this.fundo.loop = "true";
             this.fundo.className ="fundo";
             this.fundo.play();
             document.body.append(this.fundo);
+            this.fundo2.push(this.fundo);
             return "permitida";
         }
         else{
-                if(this.fundo != undefined || document.querySelector(".fundo") != undefined){
-                    document.querySelector(".fundo").remove();
-                    this.fundo.remove();
+                if(document.querySelector(".fundo") != undefined){
+                    var audio = document.getElementsByClassName("fundo").length;
+                    var  i = 0;
+                    while( i < audio){
+                        document.getElementsByClassName("fundo").item(i).remove();
+                        i++;
+                    }
+                    i = 0;
+                    while(i < this.fundo2.length){
+                        this.fundo2[i].remove();
+                        i++;
+                    }
                 }
 
             var efeito = document.createElement("audio");
@@ -112,20 +124,20 @@ class modulos {
                         efeito.remove();
                     }
                 clearTimeout(tempo);
-                document.querySelector(".temporizador").textContent = "05:00";
+                document.querySelector(".temporizador").textContent = "00:30";
                 document.querySelector("[name=artificial_texto]").textContent = "";
                 document.querySelector("[name=jogador_texto]").value = "";
                 document.querySelector(".img_resultado0").src = "";
                 document.querySelector(".img_resultado1").src = "";
-                modulo.artificial(undefined);
                 modulo.temporizador();
+                modulo.artificial(undefined);
             },5000);
 
         }
     }
     temporizador(){
-        var segundo = 59;
-        var minutos = 4;
+        var segundo = 30;
+        var minutos = 0;
 
         this.contagem =  window.setInterval(function(){
             if(segundo > 0){

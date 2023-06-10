@@ -118,13 +118,25 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
                                                 var dados = e.target.result;
                                                 if(dados){
                                                    var object_usuário =  dados.objectStoreNames[1];
-                                                   var transaction = dados.transaction(object_usuário,'readwrite');
+                                                   var transaction = dados.transaction(object_usuário,'readwrite')
                                                    var curso = transaction.objectStore(object_usuário).openCursor();
-                                                   curso.onsuccess = function(event){
-                                                    var dados2 = event.target.result;
-                                                    if(dados2){
-                                                        console.log(dados2.value);
-
+                                                   curso.onsuccess = function(event2){
+                                                    var dados_usuario = event2.target.result.value;
+                                                    console.log(dados_usuario)
+                                                    if(dados_usuario){
+                
+                                                        window.localStorage.setItem("positivo_ia",parseInt(dados_usuario.positivo));
+                                                        window.localStorage.setItem("negativo_ai",parseInt(dados_usuario.negativo));
+                                                        
+                                                        var separar =  window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/jogo.html"  : "/jogo.html";
+                                                        var anterior = window.location.pathname != "/"  && window.location.pathname == "/Regras_Operador/continuar.html"  ? "/Regras_Operador/" : "/";
+                                                        var caminho =  window.location.origin.toString() +separar+"?token="+dados_usuario.chave;
+                                                        window.localStorage.setItem("nome-usuário",dados_usuario.nome);
+                                                        window.localStorage.setItem("chave-publica",dados_usuario.chave);
+                                                        window.localStorage.setItem("positivo", parseInt(dados_usuario.positivo));
+                                                        window.localStorage.setItem("negativo",parseInt(dados_usuario.negativo));
+                                                        window.localStorage.setItem("sexo",dados_usuario.sexo);
+                                                        //window.location.replace(caminho);
                                                     }
                                                     else {
                                                         Swal.fire({
@@ -144,7 +156,11 @@ app.controller('Contra-IA',['$scope','appBrowser','$location',
 
 
                                             if(valor.length != 0){
-                                                var caminho = valor[3]+"?token="+valor[1];
+                                                var caminho = '';
+                                                if(valor[3].indexOf("index.html") != -1){
+                                                    caminho =  valor[3].split("index.html")[0] +"login.html?token="+valor[1]
+                                                }
+                                                else caminho = valor[3] +"?token="+valor[1];
                                                 window.localStorage.setItem("chave-publica",valor[0]);
                                                 window.localStorage.setItem("mod",valor[2]);
                                                 window.location.assign(caminho);
